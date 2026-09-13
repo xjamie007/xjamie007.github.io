@@ -14,7 +14,8 @@
     "check": "astro check",
     "todo": "node scripts/todo.mjs",
     "lb:review": "node scripts/lb-review.mjs",
-    "verify": "node scripts/verify.mjs"
+    "verify": "node scripts/verify.mjs",
+    "lb:export": "node scripts/lb-export.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

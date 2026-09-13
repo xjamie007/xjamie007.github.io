@@ -11,3 +11,6 @@ dist/
 
 # macOS iCloud-Duplikate („Datei 2.html"), die im Desktop-Ordner entstehen
 *\ [0-9].*
+
+# Erzeugt aus lb.json: npm run lb:export
+lb-text.md

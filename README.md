@@ -132,8 +132,9 @@ macht seine Arbeit nur kürzer. Wo ein Fachbegriff unsicher war, steht der
 deutsche Begriff als `"note"` daneben, statt frei zu erfinden.
 
 ```bash
-npm run lb:review                       # Liste im Terminal
-npm run lb:review -- --csv > lb.csv     # Blatt zum Durchgehen
+npm run lb:review                       # was noch offen ist
+npm run lb:review -- --csv > lb.csv     # dasselbe als Tabelle
+npm run lb:export                       # ALLES als lb-text.md, mit DE daneben
 ```
 
 Wer einen Satz freigibt, setzt `"reviewed": true`. Rechtschreibung nach dem
