@@ -3,6 +3,24 @@
 Website für **Emballages en Bois Kasel S.à r.l.**, 12, Zone Industrielle,
 L-9166 Mertzig.
 
+**Live (Vorschau): <https://xjamie007.github.io/>**
+
+> Das ist eine **Vorschau**, keine Produktion. Das Anfrageformular schickt noch
+> nichts (siehe „Offene Punkte"), und die Bildrechte sind noch nicht bestätigt.
+
+### Umzug auf kasel.lu
+
+Zwei Handgriffe, kein Code-Edit:
+
+1. Im Repository unter *Settings → Secrets and variables → Actions → Variables*
+   eine Variable `SITE_URL` mit dem Wert `https://www.kasel.lu` anlegen.
+2. Die Zeile `Sitemap:` in `public/robots.txt` auf dieselbe Adresse setzen.
+   `npm run verify` prüft, dass beide zusammenpassen.
+
+Beim nächsten Push stehen Canonicals, hreflang und Sitemap auf der neuen
+Domain. Für die Domain selbst noch *Settings → Pages → Custom domain* setzen
+und den DNS-Eintrag beim Anbieter auf GitHub zeigen lassen.
+
 Astro, statisch generiert, vier Sprachen, eine React-Island. Der Zweck der
 Seite ist eine qualifizierte Anfrage — nicht Markenaufbau, nicht Shop.
 
