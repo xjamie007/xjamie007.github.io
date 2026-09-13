@@ -7,15 +7,16 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
-    "build:fast": "astro build",
+    "build": "npm run pdf && astro check && astro build",
+    "build:fast": "npm run pdf && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
     "todo": "node scripts/todo.mjs",
     "lb:review": "node scripts/lb-review.mjs",
     "verify": "node scripts/verify.mjs",
-    "lb:export": "node scripts/lb-export.mjs"
+    "lb:export": "node scripts/lb-export.mjs",
+    "pdf": "node scripts/make-pdf.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

@@ -19,13 +19,12 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import CrateSvg from './CrateSvg';
-import { RULES, defaultBuild, derive, matchCargo, needsIppc } from '../../lib/crate-rules';
+import { RULES, defaultBuild, derive, matchCargo } from '../../lib/crate-rules';
 import type { CargoKind, CrateBuild, Destination } from '../../data/products';
 
 export interface ConfiguratorStrings {
   heading: string;
   lead: string;
-  disclaimer: string;
   fieldsetSize: string;
   fieldsetBuild: string;
   exampleTag: string;
@@ -47,21 +46,11 @@ export interface ConfiguratorStrings {
   destOptions: Record<Destination, string>;
   buildOptions: Record<CrateBuild, string>;
   buildAutoNote: string;
-  outHeading: string;
-  outOuter: string;
-  outSkids: string;
-  outBoard: string;
-  outVolume: string;
-  outGuide: string;
   stampOn: string;
   stampOff: string;
-  ruleThird: string;
-  ruleEu: string;
   actionSubmit: string;
   actionDownload: string;
   noscript: string;
-  drawingStatic: string;
-  liveIntro: string;
   srSummary: string;
   mm: string;
   kg: string;
@@ -214,7 +203,6 @@ export default function Configurator({
     [s.build, s.buildOptions[build]],
     [s.qty, numeric(qty) ? String(numeric(qty)) : '–'],
     [s.outerLabel, `${outer} ${s.mm}`],
-    [s.outSkids, String(d.skids)],
     ['ISPM 15', stampText],
   ];
 
@@ -239,28 +227,11 @@ export default function Configurator({
               ippc: 'IPPC', example: s.exampleTag, ariaLabel: spoken,
             }}
           />
-          <figcaption className="t-caption cfg__caption">
-            {isExample ? s.drawingStatic : `${s.liveIntro} — ${s.outerHint}`}
-          </figcaption>
-        </figure>
-
-        <div className="cfg__out">
-          <h3 className="t-label">{s.outHeading}</h3>
-          <dl className="cfg__outList">
-            <div><dt className="t-label">{s.outOuter}</dt><dd className="t-num">{outer} {s.mm}</dd></div>
-            <div><dt className="t-label">{s.outSkids}</dt><dd className="t-num">{d.skids}</dd></div>
-            <div><dt className="t-label">{s.outBoard}</dt><dd className="t-num">{d.boardMm} {s.mm}</dd></div>
-            <div><dt className="t-label">{s.outVolume}</dt><dd className="t-num">{d.volumeM3} m³</dd></div>
-          </dl>
-          {/* `outGuide` steht schon als Wort im Disclaimer — zweimal hintereinander
-              liest sich wie ein Fehler. */}
-          <p className="t-caption cfg__guide">{s.disclaimer}</p>
-
-          <p className="cfg__rule">{needsIppc(dest) ? s.ruleThird : s.ruleEu}</p>
-
-          {/* Wat sech ofleet, gëtt ugesot — net nëmme gezeechent. */}
+          {/* Was sich ableitet, wird angesagt — auch wenn es niemand sieht.
+              Die Zahlen stehen auf der Zeichnung und fahren mit der Anfrage
+              mit; ein zweiter Kasten mit denselben Werten war nur Wiederholung. */}
           <p className="sr-only" aria-live="polite">{spoken}</p>
-        </div>
+        </figure>
       </div>
 
       <div className="cfg__form">

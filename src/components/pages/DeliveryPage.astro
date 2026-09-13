@@ -51,15 +51,14 @@ const showSteps = delivery.accessThroughMainHall.publish;
 
   <div class="pg__map"><MapBlock locale={locale} headingLevel="h2" /></div>
 
-  <p class="pg__print no-print">
-    <button class="btn btn--quiet" type="button" data-print>{t(locale, 'common.print')}</button>
-    <span class="t-caption">{t(locale, 'delivery.printBody')}</span>
-  </p>
+  <div class="pg__sheet no-print">
+    <div>
+      <h2 class="t-h3">{t(locale, 'delivery.ctaHeading')}</h2>
+      <p class="t-caption pg__sheetBody">{t(locale, 'delivery.ctaBody')}</p>
+    </div>
+    <a class="btn btn--primary" href={`/downloads/kasel-${locale}.pdf`} download>{t(locale, 'delivery.ctaLabel')}</a>
+  </div>
 </Section>
-
-<script>
-  document.querySelector('[data-print]')?.addEventListener('click', () => window.print());
-</script>
 
 <style>
   .pg__h1 { margin-block-start: 1rem; }
@@ -69,6 +68,13 @@ const showSteps = delivery.accessThroughMainHall.publish;
   .pg__yard { display: block; margin-block-start: 2.5rem; max-inline-size: 38rem; }
   .pg__yard :global(img) { inline-size: 100%; block-size: auto; display: block; border-radius: 2px; }
   .pg__map { margin-block-start: 3rem; }
-  .pg__print { margin-block-start: 2.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; }
+  /* Das Blatt für den Fahrer steht abgesetzt am Fuß der Seite: wer es braucht,
+     sucht es dort, und wer die Seite nur liest, stolpert nicht darüber. */
+  .pg__sheet {
+    margin-block-start: 3rem; padding: 1.5rem; border: 1px solid var(--band-line); border-radius: 3px;
+    display: grid; gap: 1.25rem; align-items: center;
+  }
+  @media (width >= 40rem) { .pg__sheet { grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; } }
+  .pg__sheetBody { margin-block-start: 0.35rem; max-inline-size: 48ch; }
 
 </style>

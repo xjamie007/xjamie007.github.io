@@ -10,7 +10,6 @@
     "optional": "optional",
     "backHome": "Back to the home page",
     "readMore": "More on this",
-    "print": "Print this page",
     "phone": "Phone",
     "fax": "Fax",
     "email": "Email",
@@ -91,8 +90,7 @@
     "body": "Our own sawmill in Mertzig, 9,000 m² of storage. We cut the timber once your order is in.",
     "ctaPrimary": "Send a request",
     "ctaSecondary": "Configure a crate",
-    "stampAlt": "The IPPC mark: the wheat-ear symbol, the country code LU, the registration number 079 and the treatment code.",
-    "markAlt": "KASEL"
+    "stampAlt": "The IPPC mark: the wheat-ear symbol, the country code LU, the registration number 079 and the treatment code."
   },
   "facts": {
     "heading": "At a glance",
@@ -118,7 +116,6 @@
     "authority": "Authority",
     "registry": "Register",
     "treatment": "Treatment",
-    "pallets": "Pallets",
     "crates": "Crates",
     "cratesValue": "made to size",
     "configurator": "Configurator",
@@ -177,7 +174,6 @@
   "config": {
     "heading": "Configure a crate",
     "lead": "Enter the dimensions of your goods. The drawing shows the matching crate. Everything you enter travels with the request.",
-    "disclaimer": "The drawing is a guide value, not a construction specification. Price and final design come from us once we have read your request.",
     "fieldsetSize": "Size and weight",
     "fieldsetBuild": "Cargo, destination and construction",
     "exampleTag": "Example",
@@ -221,81 +217,18 @@
       "slatted": "slatted",
       "autoNote": "Preset follows the cargo. You can switch."
     },
-    "out": {
-      "heading": "What follows from this",
-      "outer": "Outer dimensions",
-      "skids": "Skids",
-      "boardThickness": "Board thickness",
-      "volume": "Volume",
-      "guide": "guide value",
-      "stampOn": "IPPC mark on two opposite sides",
-      "stampOff": "No IPPC mark needed"
-    },
-    "rule": {
-      "third": "China, Australia and New Zealand require ISPM 15 treated timber carrying the IPPC mark. We may apply it, registration number 079.",
-      "eu": "Inside the EU no ISPM 15 treatment is required; where needed, the mark replaces the plant passport."
-    },
     "actions": {
       "submit": "Send as enquiry",
       "download": "Download drawing",
       "reset": "Reset"
     },
     "noscript": "Without JavaScript the drawing does not update. The fields below still work: fill them in and send them with the request. We need the inner dimensions, the weight, the cargo, the destination and the quantity.",
-    "drawingLabelStatic": "Example drawing of an export crate with dimension lines, skids and the IPPC mark.",
-    "liveIntro": "Drawing",
-    "srSummary": "Crate {outer} mm outside, {skids} skids, {build}, {stamp}."
+    "srSummary": "Crate {outer} mm outside, {skids} skids, {build}, {stamp}.",
+    "stampOn": "IPPC mark on two opposite sides",
+    "stampOff": "No IPPC mark needed"
   },
   "stamp": {
-    "heading": "The mark",
-    "lead": "The mark carries everything the inspector at the destination port needs. Here is each field on its own: what it means, and what happens when it is missing.",
-    "fields": {
-      "ippc": {
-        "title": "The IPPC symbol",
-        "what": "The stylised wheat ear shows that the timber was treated under ISPM 15, the international plant protection standard.",
-        "without": "Without it, customs at the destination treat the consignment as untreated timber."
-      },
-      "lu": {
-        "title": "LU",
-        "what": "The ISO country code of the country where the timber was treated and marked.",
-        "without": "It tells the authority at the destination which register to check."
-      },
-      "number": {
-        "title": "079",
-        "what": "Our registration number with ASTA, the Administration des Services Techniques de l'Agriculture. It is unique, non-transferable and publicly verifiable.",
-        "without": "Luxembourg has three registered producers."
-      },
-      "code": {
-        "title": "The treatment code",
-        "what": "It states how the timber was treated: HT for heat treatment, DB for debarked.",
-        "without": "Without the code the mark is incomplete and therefore invalid."
-      },
-      "twoSides": {
-        "title": "Two sides",
-        "what": "The mark must be applied visibly and permanently, preferably on two opposite sides.",
-        "without": "Then the inspector finds it no matter how the crate sits in the container."
-      },
-      "noRedOrange": {
-        "title": "Not red, not orange",
-        "what": "Those colours are reserved for marking dangerous goods.",
-        "without": "Which is why you do not see them on this website either."
-      },
-      "afterRepair": {
-        "title": "Marked again after every repair",
-        "what": "If a pallet is reused, recycled or repaired, it has to be marked again, and every component has to be treated.",
-        "without": "Which is why we do not only repair. We re-mark as well."
-      },
-      "replaces": {
-        "title": "What it replaces",
-        "what": "Inside the EU the mark replaces the plant passport; on export it replaces the phytosanitary certificate.",
-        "without": "It applies to solid timber from 6 mm thick, not to processed wood panels."
-      }
-    },
-    "whatItMeans": "What it means",
-    "whatIfMissing": "What happens when it is missing",
-    "registryHeading": "The three registered producers in Luxembourg",
-    "registryNote": "This is not a claim of ours, it is in the public register.",
-    "sourceLine": "Source: Single Window for Logistics, Luxembourg (ASTA), as at 8 April 2025.",
-    "cta": "Configure a crate"
+    "sourceLine": "Source: Single Window for Logistics, Luxembourg (ASTA), as at 8 April 2025."
   },
   "delivery": {
     "heading": "Delivery & collection",
@@ -329,10 +262,19 @@
     "addressHeading": "Address and position",
     "mapAlt": "Map of the industrial estate in Mertzig with the position of the works, a scale bar and a north arrow.",
     "mapAttribution": "Map data © OpenStreetMap contributors. The image is hosted on this page. Nothing is requested from outside.",
-    "printHeading": "One page to print",
-    "printBody": "This page is set to fit on a single sheet. Print it and keep it in the cab.",
-    "shortHeading": "Short version",
-    "pending": "We will put these details online as soon as they are confirmed. Until then: call us and we will talk you in. {phone}"
+    "pending": "We will put these details online as soon as they are confirmed. Until then: call us and we will talk you in. {phone}",
+    "pdf": {
+      "subtitle": "Address and contact for deliveries and collections",
+      "addressLabel": "Address",
+      "positionLabel": "Position",
+      "coordinatesLabel": "Coordinates",
+      "contactLabel": "Contact",
+      "phoneAlt": "Direct line",
+      "note": "Show this sheet in the yard if anything is unclear. If in doubt, call before you set off."
+    },
+    "ctaHeading": "Sheet for the driver",
+    "ctaBody": "Address, Plus Code and phone number on one A4 sheet. Download it, print it, keep it in the cab.",
+    "ctaLabel": "Download PDF"
   },
   "history": {
     "heading": "History",
@@ -468,7 +410,7 @@
   },
   "pallets": {
     "h1": "Wooden pallets",
-    "lead": "Standard pallets, CP pallets and pallets to your technical specification. Because we saw our own timber, we are not tied to stock sizes.",
+    "lead": "Standard pallets, made-to-measure pallets of every kind, CP pallets. Because we saw our own timber, we are not tied to stock sizes.",
     "standardHeading": "Standard sizes",
     "cpHeading": "CP pallets",
     "cpNote": "CP dimensions are fixed by the CP standard. Which types we hold and which we build to order: ask us.",
@@ -483,7 +425,9 @@
       "ispm": "ISPM 15",
       "type": "Type",
       "ispmYes": "possible"
-    }
+    },
+    "agrementLabel": "Approval",
+    "agrement": "We hold the approval of the Service Technique de l’Agriculture for building pallets to the import requirements of China, Australia and New Zealand."
   },
   "crates": {
     "h1": "Crates made to size",
@@ -510,24 +454,19 @@
       "Replace broken boards, blocks and skids",
       "Re-mark after repair, as the standard requires",
       "Deliver back to your site or hold on call-off"
-    ],
-    "cta": "Offer us your used pallets"
+    ]
   },
   "ispm15": {
     "h1": "ISPM 15 in Luxembourg",
-    "lead": "ISPM 15 is the international standard for wood packaging in world trade. It exists to stop pests travelling from one continent to another inside packaging timber. Who may treat and mark under the standard is listed in a public register.",
-    "whoHeading": "Who may apply the mark in Luxembourg",
-    "whoBody": "Three companies. We are one of them, with registration number 079. The list is kept by ASTA and it is public.",
-    "fieldsHeading": "The mark, field by field",
-    "rulesHeading": "What else applies",
+    "lead": "ISPM 15 is the international standard for wood packaging in world trade. It exists to stop pests travelling from one continent to another inside packaging timber. For you it comes down to this: for certain destinations the wood has to be treated and marked. We do both ourselves.",
+    "rulesHeading": "What else you need to know about the mark",
     "rules": [
-      "The mark must be permanent and must not be transferable.",
-      "It must be applied visibly, preferably on two opposite sides.",
-      "Red and orange are to be avoided, because those colours are reserved for dangerous goods.",
-      "If a pallet is reused, recycled or repaired, it must be marked again; every component must be treated.",
-      "The marking may only be destroyed by complete incineration.",
-      "It applies to solid timber from 6 mm thick, not to processed wood panels.",
-      "The mark replaces the plant passport in intra-EU movement and the phytosanitary certificate on export."
+      "We treat and mark in our own yard. Registration number 079, treatment code HT. No second company involved, no extra wait.",
+      "The mark goes on two opposite sides so that it stays visible inside the container. It is permanent and may not be moved from one crate to another.",
+      "It applies to solid wood from 6 mm upwards. Plywood, OSB and other engineered panels need no treatment.",
+      "No red, no orange: those two colours are reserved for dangerous goods.",
+      "A pallet that is repaired or re-used has to be marked again. Every single component must be treated.",
+      "Inside the EU you need no ISPM 15 treatment. Where a plant passport is required, the mark takes its place."
     ],
     "whenHeading": "When you need it",
     "whenBody": "For China, Australia and New Zealand, always. For other third countries it depends on the destination. Put it in your request and we will tell you.",
@@ -537,7 +476,6 @@
     "h1": "Contact",
     "lead": "Write and tell us what you need. The more precise the request, the sooner you have a quote.",
     "directHeading": "Direct",
-    "visitHeading": "On site",
     "driverHint": "Are you a driver? Everything you need is on the Delivery & collection page."
   },
   "thanks": {

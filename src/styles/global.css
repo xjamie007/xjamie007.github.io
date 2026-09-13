@@ -468,53 +468,36 @@
     .cfg__form { grid-column: 1; grid-row: 1; }
   }
 
-  .crate { inline-size: 100%; block-size: auto; color: var(--color-ink); }
-  .cfg__caption { margin-block-start: 0.5rem; }
-
-  /* Container-Query statt Media-Query: dës Lëscht steet an enger Spalt, déi
-     mol breet a mol schmuel ass — wat zielt, ass hir eege Breet, net déi vum
-     Bildschierm. Soss brécht „2490 × 1190 × 1670 mm" op dräi Zeilen ëm. */
-  .cfg__out { margin-block-start: 1.5rem; container-type: inline-size; }
-  .cfg__outList { margin-block-start: 0.75rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.85rem 1.5rem; }
-  .cfg__outList > div:first-child { grid-column: span 2; }
-  @container (width >= 40rem) {
-    .cfg__outList { grid-template-columns: 1.6fr 1fr 1fr 1fr; }
-    .cfg__outList > div:first-child { grid-column: auto; }
+  /* Die Zeichnung liegt auf einem eigenen Blatt. Sie ist jetzt das Einzige,
+     was rechts steht — die abgeleiteten Zahlen standen ohnehin schon auf ihr,
+     ein zweiter Kasten daneben war nur Wiederholung. */
+  .cfg__figure {
+    margin: 0;
+    padding: 1.25rem;
+    background: var(--color-paper);
+    border: 1px solid var(--band-line);
+    border-radius: 4px;
   }
-  .cfg__outList dt { color: var(--band-tech); }
-  .cfg__outList dd { margin-block-start: 0.15rem; font-size: 1.125rem; }
-  .cfg__guide { margin-block-start: 1rem; }
-  .cfg__rule {
-    margin-block-start: 1.25rem;
-    padding-inline-start: 1rem;
-    border-inline-start: 3px solid var(--color-blue-deep);
-    font-family: var(--font-read);
-    font-size: 1rem;
-    line-height: 1.55;
-    max-inline-size: 56ch;
-  }
+  .crate { inline-size: 100%; block-size: auto; color: var(--color-ink); display: block; }
 
   @media (width < 64rem) {
-    /* Am Handy war der klebende Block 740 px hoch bei 812 px Bildschirm: die
-       Zeichnung PLUS die abgeleiteten Werte. Damit lagen die Eingabefelder
-       dauerhaft darunter und waren praktisch nicht erreichbar.
-       `display: contents` löst die Klammer auf, dann lässt sich die Reihenfolge
-       einzeln setzen: Zeichnung (klebt, klein) → Eingabe → Ergebnis. */
+    /* Am Handy klebt das Blatt oben, damit man beim Tippen sieht, was entsteht.
+       `display: contents` löst die Klammer auf, sonst klebte der ganze Block. */
     .cfg__stage { display: contents; }
     .cfg__figure {
       order: 1;
       position: sticky;
       top: 0;
       z-index: 1;
-      margin: 0;
-      padding-block-end: 0.6rem;
+      padding: 0.75rem;
+      border-inline: 0;
+      border-block-start: 0;
+      border-radius: 0;
       background: var(--band-bg);
-      border-block-end: 1px solid var(--band-line);
     }
-    .cfg__figure .crate { max-block-size: 24vh; inline-size: auto; margin-inline: auto; }
+    .cfg__figure .crate { max-block-size: 32vh; inline-size: auto; margin-inline: auto; }
     .cfg__form { order: 2; }
-    .cfg__out { order: 3; margin-block-start: 0; padding-block-start: 1.5rem; border-block-start: 1px solid var(--band-line); }
-    .cfg { gap: 1.5rem; }
+    .cfg { gap: 1.25rem; }
   }
 
   .cfg__set { border: 0; padding: 0; margin: 0; }
@@ -629,6 +612,11 @@
   .frm--centred > h2,
   .frm--centred > .frm__lead { text-align: center; max-inline-size: 40rem; margin-inline: auto; }
   .frm__grid { margin-block-start: 1.75rem; display: grid; gap: 1.25rem; }
+  /* Textfeld und Dateiauswahl bringen eine eigene Mindestbreite mit (das
+     `cols`-Attribut, der „Datei wählen"-Knopf). Ohne diese beiden Zeilen zieht
+     sie die Rasterspur auf 312 px auf und die Seite läuft auf schmalen
+     Telefonen seitlich über. */
+  .frm__field { min-inline-size: 0; }
   @media (width >= 40rem) { .frm__grid--two { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
   .frm__field label { display: block; color: var(--band-tech); }
@@ -649,6 +637,8 @@
   }
   .frm__select { font-family: var(--font-mark); font-weight: 500; appearance: none; }
   .frm__area { min-block-size: 8rem; resize: vertical; }
+  .frm__area, .frm__file { max-inline-size: 100%; }
+  .frm__area { inline-size: 100%; }
   .frm__input:hover, .frm__area:hover, .frm__select:hover { border-color: var(--color-ink); }
   .frm__input:focus, .frm__area:focus, .frm__select:focus { background: #fff; }
 

@@ -4,7 +4,7 @@ import RailItem from '../RailItem.astro';
 import Breadcrumb from '../Breadcrumb.astro';
 import RepairDrawing from '../drawings/RepairDrawing.astro';
 import Photo from '../Photo.astro';
-import { ispm15, stampLine } from '../../data/company';
+import { stampLine } from '../../data/company';
 import { t, tList } from '../../i18n';
 import { path, type Locale } from '../../i18n/routes';
 
@@ -37,8 +37,7 @@ const { locale } = Astro.props;
   </ul>
 
   <p class="pg__cta">
-    <a class="btn btn--primary" href={`${path('contact', locale)}#ufro`}>{t(locale, 'repair.cta')}</a>
-    <a class="btn btn--secondary" href={path('ispm15', locale)}>{ispm15.countryCode} – {ispm15.registrationNumber}</a>
+    <a class="btn btn--primary" href={`${path('contact', locale)}#ufro`}>{t(locale, 'form.submit')}</a>
   </p>
 </Section>
 

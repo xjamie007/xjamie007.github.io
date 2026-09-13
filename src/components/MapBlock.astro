@@ -85,6 +85,12 @@ const routeUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lo
 </div>
 
 <style>
+  /* Der Block steht einmal über die volle Seitenbreite (Anlieferung) und
+     einmal in einer halben Spalte (Kontakt). Deshalb richtet er sich nach
+     SEINER eigenen Breite, nicht nach der des Fensters — sonst teilt er sich
+     in der halben Spalte noch einmal und die Adresse steht als Buchstaben-
+     kolonne da. */
+  .map { container-type: inline-size; }
   .map__head { display: block; }
 
   .map__grid {
@@ -93,7 +99,7 @@ const routeUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lo
     gap: 1.75rem;
     align-items: start;
   }
-  @media (width >= 46rem) {
+  @container (width >= 46rem) {
     .map__grid { grid-template-columns: minmax(0, 22rem) minmax(0, 1fr); gap: 2.5rem; }
   }
 
@@ -107,13 +113,13 @@ const routeUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lo
   }
   /* Am Handy sonst fast ein Drittel des Bildschirms. Beschnitten statt
      verkleinert — verkleinert wäre die Beschriftung nicht mehr lesbar. */
-  @media (width < 46rem) {
+  @container (width < 46rem) {
     .map__fig img { block-size: 11rem; object-fit: cover; object-position: center; }
   }
   .map__fig figcaption { margin-block-start: 0.5rem; }
 
   .map__data { display: grid; gap: 1rem 2rem; }
-  @media (width >= 30rem) { .map__data { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @container (width >= 30rem) { .map__data { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   .map__data dd { margin-block-start: 0.2rem; font-size: 1rem; }
   .map__address { font-style: normal; line-height: 1.5; }
 

@@ -2,18 +2,16 @@
 /**
  * ISPM 15.
  *
- * Reihenfolge nach dem, was den Einkäufer bewegt — nicht nach dem, was uns
- * schmeichelt: zuerst „brauche ich einen Stempel?", dann die häufigen Fragen,
- * dann was auf dem Cachet steht, und ganz zuletzt der Registereintrag als
- * Beleg. Wer bis dorthin liest, sucht den Beleg; alle anderen haben ihre
- * Antwort schon in den ersten zwanzig Zeilen.
+ * Zwei Abschnitte, mehr braucht die Seite nicht: „brauche ich einen Stempel?"
+ * mit den drei häufigsten Fragen, danach die Regeln, die ein Einkäufer
+ * tatsächlich betreffen. Das Cachet Feld für Feld und der Registerauszug
+ * standen früher darunter — beides interessiert den Kontrolleur, nicht den
+ * Kunden, und ist deshalb weg.
  */
 import Section from '../Section.astro';
 import RailItem from '../RailItem.astro';
 import Breadcrumb from '../Breadcrumb.astro';
 import IppcMark from '../IppcMark.astro';
-import StampFields from '../sections/StampFields.astro';
-import ProducerRegistry from '../ProducerRegistry.astro';
 import Photo from '../Photo.astro';
 import { ispm15, stampLine } from '../../data/company';
 import { t, tList } from '../../i18n';
@@ -70,41 +68,26 @@ const verdicts = [
   </p>
 </Section>
 
-<Section tone="dark" labelledby="isp-fields" class="band--tight">
+<Section class="band--mist" labelledby="isp-rules">
   <Fragment slot="rail">
-    <RailItem term={t(locale, 'rail.stamp')} value="8" />
+    <RailItem term={t(locale, 'rail.authority')} value={ispm15.authority.abbr} numeric={false} />
   </Fragment>
 
   <div class="isp__head">
     <div>
-      <h2 id="isp-fields" class="t-h2">{t(locale, 'ispm15.fieldsHeading')}</h2>
-      <p class="t-caption isp__sub">{t(locale, 'stamp.lead')}</p>
+      <h2 id="isp-rules" class="t-h2">{t(locale, 'ispm15.rulesHeading')}</h2>
+      <ul class="isp__rules">
+        {tList(locale, 'ispm15.rules').map((r) => <li class="isp__rule reveal">{r}</li>)}
+      </ul>
+      <p class="t-caption isp__source">
+        {t(locale, 'stamp.sourceLine')}{' '}
+        <a class="link" href={ispm15.source.url} rel="noopener">{ispm15.source.label}</a>
+      </p>
     </div>
     <div class="isp__mark drawing">
       <IppcMark label={t(locale, 'hero.stampAlt')} weight={3} />
     </div>
   </div>
-
-  <div class="isp__fields"><StampFields locale={locale} /></div>
-
-  <h2 class="t-h2 isp__h2">{t(locale, 'ispm15.rulesHeading')}</h2>
-  <ul class="isp__rules">
-    {tList(locale, 'ispm15.rules').map((r) => <li class="isp__rule reveal">{r}</li>)}
-  </ul>
-</Section>
-
-<Section class="band--mist" labelledby="isp-who">
-  <Fragment slot="rail">
-    <RailItem term={t(locale, 'rail.authority')} value={ispm15.authority.abbr} numeric={false} />
-  </Fragment>
-
-  <h2 id="isp-who" class="t-h2">{t(locale, 'ispm15.whoHeading')}</h2>
-  <p class="t-body">{t(locale, 'ispm15.whoBody')}</p>
-  <ProducerRegistry locale={locale} />
-  <p class="t-caption isp__source">
-    {t(locale, 'stamp.sourceLine')}{' '}
-    <a class="link" href={ispm15.source.url} rel="noopener">{ispm15.source.label}</a>
-  </p>
 </Section>
 
 <style>
@@ -131,13 +114,13 @@ const verdicts = [
   .isp__faq { display: grid; gap: 1.75rem; max-inline-size: 68ch; }
   .isp__qa p { margin-block-start: 0.4rem; }
 
-  .isp__head { display: grid; gap: 2rem; align-items: start; }
-  @media (width >= 52rem) { .isp__head { grid-template-columns: minmax(0, 1fr) 18rem; gap: 3rem; } }
-  .isp__sub { margin-block-start: 0.85rem; }
-  .isp__mark { max-inline-size: 18rem; }
-  .isp__fields { margin-block-start: 2.5rem; }
+  .isp__head { display: grid; gap: 2.5rem; align-items: start; }
+  @media (width >= 52rem) { .isp__head { grid-template-columns: minmax(0, 1fr) 15rem; gap: 3.5rem; } }
+  /* Am Handy steht das Cachet über der Liste — es erklärt, wovon die Rede ist. */
+  .isp__mark { max-inline-size: 15rem; order: -1; }
+  @media (width >= 52rem) { .isp__mark { order: 0; position: sticky; top: 2.5rem; } }
 
-  .isp__rules { max-inline-size: 66ch; border-block-start: 2px solid var(--band-line); }
+  .isp__rules { margin-block-start: 1.25rem; max-inline-size: 66ch; border-block-start: 2px solid var(--band-line); }
   .isp__rule { padding-block: 0.75rem; border-block-end: 1px solid var(--band-line); font-size: 1rem; line-height: 1.55; }
 
   .isp__source { margin-block-start: 1.5rem; }

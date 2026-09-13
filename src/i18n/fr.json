@@ -10,7 +10,6 @@
     "optional": "facultatif",
     "backHome": "Retour à l’accueil",
     "readMore": "En savoir plus",
-    "print": "Imprimer cette page",
     "phone": "Téléphone",
     "fax": "Fax",
     "email": "E-mail",
@@ -91,8 +90,7 @@
     "body": "Scierie intégrée à Mertzig, 9 000 m² de stockage. Nous coupons le bois seulement quand votre commande est là.",
     "ctaPrimary": "Envoyer une demande",
     "ctaSecondary": "Configurer une caisse",
-    "stampAlt": "Le cachet IPPC : le symbole de l’épi, le code pays LU, le numéro d’enregistrement 079 et le code de traitement.",
-    "markAlt": "KASEL"
+    "stampAlt": "Le cachet IPPC : le symbole de l’épi, le code pays LU, le numéro d’enregistrement 079 et le code de traitement."
   },
   "facts": {
     "heading": "En bref",
@@ -118,7 +116,6 @@
     "authority": "Autorité",
     "registry": "Registre",
     "treatment": "Traitement",
-    "pallets": "Palettes",
     "crates": "Caisses",
     "cratesValue": "sur mesure",
     "configurator": "Configurateur",
@@ -177,7 +174,6 @@
   "config": {
     "heading": "Configurer une caisse",
     "lead": "Indiquez les dimensions de votre marchandise. Le dessin montre la caisse correspondante. Toutes les indications partent avec la demande.",
-    "disclaimer": "Le dessin est un ordre de grandeur, pas une indication de construction. Le prix et le dimensionnement définitif vous parviennent dès que nous avons lu votre demande.",
     "fieldsetSize": "Dimensions et poids",
     "fieldsetBuild": "Marchandise, destination et construction",
     "exampleTag": "Exemple",
@@ -221,81 +217,18 @@
       "slatted": "à claire-voie",
       "autoNote": "Préréglage selon la marchandise. Vous pouvez changer."
     },
-    "out": {
-      "heading": "Ce qui en découle",
-      "outer": "Dimensions extérieures",
-      "skids": "Semelles",
-      "boardThickness": "Épaisseur des planches",
-      "volume": "Volume",
-      "guide": "Ordre de grandeur",
-      "stampOn": "Cachet IPPC sur deux faces opposées",
-      "stampOff": "Pas de cachet IPPC nécessaire"
-    },
-    "rule": {
-      "third": "La Chine, l’Australie et la Nouvelle-Zélande exigent du bois traité NIMP 15 avec cachet IPPC. Nous pouvons l’apposer, numéro d’enregistrement 079.",
-      "eu": "À l’intérieur de l’UE, aucun traitement NIMP 15 n’est requis ; le cachet remplace au besoin le passeport phytosanitaire."
-    },
     "actions": {
       "submit": "Envoyer comme demande",
       "download": "Télécharger le dessin",
       "reset": "Réinitialiser"
     },
     "noscript": "Sans JavaScript, le dessin ne se met pas à jour. Les champs ci-dessous fonctionnent malgré tout : remplissez-les et envoyez-les avec la demande. Il nous faut les dimensions intérieures, le poids, la marchandise, la destination et la quantité.",
-    "drawingLabelStatic": "Dessin d’exemple d’une caisse export avec lignes de cote, semelles et cachet IPPC.",
-    "liveIntro": "Dessin",
-    "srSummary": "Caisse {outer} mm à l’extérieur, {skids} semelles, {build}, {stamp}."
+    "srSummary": "Caisse {outer} mm à l’extérieur, {skids} semelles, {build}, {stamp}.",
+    "stampOn": "Cachet IPPC sur deux faces opposées",
+    "stampOff": "Pas de cachet IPPC nécessaire"
   },
   "stamp": {
-    "heading": "Le cachet",
-    "lead": "Sur le cachet figure tout ce dont le contrôleur du port de destination a besoin. Voici chaque champ, un par un : ce qu’il signifie, et ce qui se passe s’il manque.",
-    "fields": {
-      "ippc": {
-        "title": "Le symbole IPPC",
-        "what": "L’épi stylisé indique que le bois a été traité conformément à la norme phytosanitaire internationale NIMP 15.",
-        "without": "S’il manque, la douane du pays de destination traite l’envoi comme du bois non traité."
-      },
-      "lu": {
-        "title": "LU",
-        "what": "Le code pays ISO du pays où le traitement et le marquage ont eu lieu.",
-        "without": "Il indique à l’autorité du pays de destination quel registre elle doit consulter."
-      },
-      "number": {
-        "title": "079",
-        "what": "Notre numéro d’enregistrement auprès de l’ASTA, l’Administration des Services Techniques de l’Agriculture. Il est unique, incessible et vérifiable publiquement.",
-        "without": "Au Luxembourg, il existe trois producteurs enregistrés."
-      },
-      "code": {
-        "title": "Le code de traitement",
-        "what": "Il indique le traitement appliqué : HT pour traitement thermique, DB pour écorcé.",
-        "without": "Sans code, le cachet est incomplet et donc invalide."
-      },
-      "twoSides": {
-        "title": "Deux faces",
-        "what": "Le cachet doit être apposé de façon visible et durable, de préférence sur deux faces opposées.",
-        "without": "Le contrôleur le trouve alors, quelle que soit la position de la caisse dans le conteneur."
-      },
-      "noRedOrange": {
-        "title": "Ni rouge, ni orange",
-        "what": "Ces couleurs sont réservées au marquage des marchandises dangereuses.",
-        "without": "C’est pourquoi vous ne les voyez pas non plus sur ce site."
-      },
-      "afterRepair": {
-        "title": "À remarquer après chaque réparation",
-        "what": "Si une palette est réemployée, recyclée ou réparée, elle doit être marquée à nouveau, et tous ses composants doivent être traités.",
-        "without": "C’est pourquoi nous ne réparons pas seulement, nous remarquons aussi."
-      },
-      "replaces": {
-        "title": "Ce qu’il remplace",
-        "what": "À l’intérieur de l’UE, le cachet remplace le passeport phytosanitaire ; à l’export, le certificat phytosanitaire.",
-        "without": "Il s’applique au bois massif à partir de 6 mm d’épaisseur, pas au bois reconstitué."
-      }
-    },
-    "whatItMeans": "Ce que cela signifie",
-    "whatIfMissing": "Ce qui se passe si cela manque",
-    "registryHeading": "Les trois producteurs enregistrés au Luxembourg",
-    "registryNote": "Ce n’est pas une affirmation de notre part, c’est inscrit au registre public.",
-    "sourceLine": "Source : Single Window for Logistics, Luxembourg (ASTA), état au 8 avril 2025.",
-    "cta": "Configurer une caisse"
+    "sourceLine": "Source : Single Window for Logistics, Luxembourg (ASTA), état au 8 avril 2025."
   },
   "delivery": {
     "heading": "Livraison & enlèvement",
@@ -329,10 +262,19 @@
     "addressHeading": "Adresse et position",
     "mapAlt": "Carte de la Zone Industrielle de Mertzig avec la position de l’entreprise, une échelle et une flèche du nord.",
     "mapAttribution": "Données cartographiques © OpenStreetMap contributors. L'image est hébergée sur cette page. Aucune requête ne part vers l'extérieur.",
-    "printHeading": "Sur une page, à imprimer",
-    "printBody": "Cette page est composée pour tenir sur une feuille. Imprimez-la et posez-la dans le camion.",
-    "shortHeading": "En bref",
-    "pending": "Nous mettrons ces indications en ligne dès qu’elles seront confirmées. D’ici là : appelez, nous vous indiquons le chemin. {phone}"
+    "pending": "Nous mettrons ces indications en ligne dès qu’elles seront confirmées. D’ici là : appelez, nous vous indiquons le chemin. {phone}",
+    "pdf": {
+      "subtitle": "Adresse et contact pour les livraisons et les enlèvements",
+      "addressLabel": "Adresse",
+      "positionLabel": "Position",
+      "coordinatesLabel": "Coordonnées",
+      "contactLabel": "Contact",
+      "phoneAlt": "Ligne directe",
+      "note": "Présentez cette feuille dans la cour en cas de doute. Pour toute question, appelez avant de partir."
+    },
+    "ctaHeading": "Feuille pour le chauffeur",
+    "ctaBody": "Adresse, Plus Code et numéro de téléphone sur une feuille A4. À télécharger, imprimer et garder dans le camion.",
+    "ctaLabel": "Télécharger le PDF"
   },
   "history": {
     "heading": "Historique",
@@ -468,7 +410,7 @@
   },
   "pallets": {
     "h1": "Palettes en bois",
-    "lead": "Palettes standard, palettes CP et palettes selon votre spécification technique. Comme nous scions nous-mêmes, nous ne dépendons pas des dimensions en stock.",
+    "lead": "Palettes standard, palettes de toutes sortes sur mesure, palettes CP. Comme nous scions nous-mêmes, nous ne sommes pas liés à des dimensions de stock.",
     "standardHeading": "Dimensions standard",
     "cpHeading": "Palettes CP",
     "cpNote": "Les dimensions CP sont fixées par la norme CP. Quels types nous avons en stock et lesquels nous fabriquons à la commande : demandez-nous.",
@@ -483,7 +425,9 @@
       "ispm": "NIMP 15",
       "type": "Type",
       "ispmYes": "possible"
-    }
+    },
+    "agrementLabel": "Agrément",
+    "agrement": "Agrément du Service Technique de l’Agriculture pour la fabrication de palettes selon les stipulations d’importation de la Chine, de l’Australie et de la Nouvelle-Zélande."
   },
   "crates": {
     "h1": "Caisses sur mesure",
@@ -510,24 +454,19 @@
       "Remplacer planches, dés et semelles abîmés",
       "Remarquer après réparation, comme la norme l’exige",
       "Livrer sur site ou tenir à disposition sur appel"
-    ],
-    "cta": "Proposer des palettes d’occasion"
+    ]
   },
   "ispm15": {
     "h1": "NIMP 15 au Luxembourg",
-    "lead": "NIMP 15 est la norme internationale applicable aux emballages en bois dans le commerce mondial. Elle vise à empêcher que des organismes nuisibles passent d'un continent à l'autre avec le bois d'emballage. Qui peut traiter et marquer selon la norme figure dans un registre public.",
-    "whoHeading": "Qui peut apposer le cachet au Luxembourg",
-    "whoBody": "Trois entreprises. Nous en sommes une, avec le numéro d’enregistrement 079. La liste est tenue par l’ASTA et elle est publique.",
-    "fieldsHeading": "Le cachet, champ par champ",
-    "rulesHeading": "Ce qui s’applique par ailleurs",
+    "lead": "NIMP 15 est la norme internationale applicable aux emballages en bois dans le commerce mondial. Elle vise à empêcher que des organismes nuisibles voyagent d’un continent à l’autre avec le bois d’emballage. Pour vous, cela veut dire : vers certaines destinations, le bois doit être traité et marqué. Nous faisons les deux nous-mêmes.",
+    "rulesHeading": "Ce qu’il faut encore savoir sur le cachet",
     "rules": [
-      "Le cachet doit être durable et ne peut pas être transféré.",
-      "Il doit être apposé de façon visible, de préférence sur deux faces opposées.",
-      "Le rouge et l’orange sont à éviter, car ces couleurs sont réservées aux marchandises dangereuses.",
-      "Si une palette est réemployée, recyclée ou réparée, elle doit être marquée à nouveau ; tous ses composants doivent être traités.",
-      "Le marquage ne peut être détruit que par incinération complète.",
-      "Il s’applique au bois massif à partir de 6 mm d’épaisseur, pas au bois reconstitué.",
-      "Le cachet remplace le passeport phytosanitaire dans les échanges intracommunautaires et le certificat phytosanitaire à l’export."
+      "Nous traitons et marquons dans notre propre atelier. Numéro d’enregistrement 079, code de traitement HT. Pas de second prestataire, pas d’attente supplémentaire.",
+      "Le cachet est apposé sur deux faces opposées, pour qu’il reste visible dans le conteneur. Il est durable et ne peut pas être reporté d’une caisse à l’autre.",
+      "Il s’applique au bois massif à partir de 6 mm. Le contreplaqué, l’OSB et les autres panneaux reconstitués n’ont pas besoin de traitement.",
+      "Ni rouge ni orange : ces deux couleurs sont réservées aux marchandises dangereuses.",
+      "Une palette réparée ou réemployée doit être marquée à nouveau. Chacun de ses composants doit être traité.",
+      "À l’intérieur de l’UE, aucun traitement NIMP 15 n’est requis. Là où un passeport phytosanitaire est exigé, le cachet en tient lieu."
     ],
     "whenHeading": "Quand vous en avez besoin",
     "whenBody": "Pour la Chine, l'Australie et la Nouvelle-Zélande, toujours. Pour les autres pays tiers, cela dépend de la destination. Indiquez-la dans votre demande, nous vous le dirons.",
@@ -537,7 +476,6 @@
     "h1": "Contact",
     "lead": "Écrivez-nous ce dont vous avez besoin. Plus la demande est précise, plus vite vous aurez une offre.",
     "directHeading": "En direct",
-    "visitHeading": "Sur place",
     "driverHint": "Vous êtes chauffeur ? Tout ce qu’il vous faut se trouve sur la page Livraison & enlèvement."
   },
   "thanks": {

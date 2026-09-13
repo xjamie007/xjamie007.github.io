@@ -10,13 +10,12 @@
     "optional": "optional",
     "backHome": "Zurück zur Startseite",
     "readMore": "Mehr dazu",
-    "print": "Diese Seite drucken",
     "phone": "Telefon",
     "fax": "Fax",
     "email": "E-Mail",
     "address": "Adresse",
     "country": "Luxemburg",
-    "vatId": "MwSt-Nummer",
+    "vatId": "TVA-Nummer",
     "rcs": "RCS Luxemburg",
     "plusCode": "Plus Code",
     "coordinates": "Koordinaten",
@@ -91,8 +90,7 @@
     "body": "Eigene Sägerei in Mertzig, 9.000 m² Lager. Wir schneiden das Holz erst, wenn Ihre Bestellung da ist.",
     "ctaPrimary": "Anfrage senden",
     "ctaSecondary": "Kiste konfigurieren",
-    "stampAlt": "Der IPPC-Stempel: das Ähren-Symbol, der Ländercode LU, die Registriernummer 079 und der Behandlungscode.",
-    "markAlt": "KASEL"
+    "stampAlt": "Der IPPC-Stempel: das Ähren-Symbol, der Ländercode LU, die Registriernummer 079 und der Behandlungscode."
   },
   "facts": {
     "heading": "Auf einen Blick",
@@ -118,7 +116,6 @@
     "authority": "Behörde",
     "registry": "Register",
     "treatment": "Behandlung",
-    "pallets": "Paletten",
     "crates": "Kisten",
     "cratesValue": "nach Maß",
     "configurator": "Konfigurator",
@@ -151,7 +148,7 @@
     },
     "repair": {
       "title": "Reparatur und Wiederverwendung",
-      "body": "Wir reparieren gebrauchte Kisten und Paletten und stempeln sie neu. Das dürfen nur Betriebe mit Registriernummer. Unsere ist 079.",
+      "body": "Wir reparieren gebrauchte Kisten und Paletten und stempeln sie neu. Das dürfen nur Betriebe machen, die eine Registriernummer haben. Unsere ist 079.",
       "link": "Was bei einer Reparatur gilt",
       "drawingAlt": "Zeichnung einer Palette, bei der ein Deckbrett ersetzt wird, und des neuen Stempels."
     }
@@ -177,7 +174,6 @@
   "config": {
     "heading": "Kiste konfigurieren",
     "lead": "Tragen Sie die Maße Ihrer Ware ein. Die Zeichnung zeigt, wie die Kiste dazu aussieht. Alle Angaben gehen mit der Anfrage an uns.",
-    "disclaimer": "Die Zeichnung ist ein Richtwert, keine Konstruktionsangabe. Preis und endgültige Auslegung bekommen Sie von uns, sobald wir Ihre Anfrage gelesen haben.",
     "fieldsetSize": "Maß und Gewicht",
     "fieldsetBuild": "Ladegut, Ziel und Bauweise",
     "exampleTag": "Beispiel",
@@ -221,81 +217,18 @@
       "slatted": "gelattet",
       "autoNote": "Voreinstellung nach Ladegut. Sie können umschalten."
     },
-    "out": {
-      "heading": "Was daraus folgt",
-      "outer": "Außenmaß",
-      "skids": "Kufen",
-      "boardThickness": "Brettstärke",
-      "volume": "Volumen",
-      "guide": "Anhaltswert",
-      "stampOn": "IPPC-Stempel auf zwei gegenüberliegenden Seiten",
-      "stampOff": "Kein IPPC-Stempel nötig"
-    },
-    "rule": {
-      "third": "China, Australien und Neuseeland verlangen ISPM-15-behandeltes Holz mit IPPC-Stempel. Das können wir aufbringen, Registriernummer 079.",
-      "eu": "Innerhalb der EU ist keine ISPM-15-Behandlung nötig; der Stempel ersetzt bei Bedarf den Pflanzenpass."
-    },
     "actions": {
       "submit": "Als Anfrage senden",
       "download": "Zeichnung herunterladen",
       "reset": "Zurücksetzen"
     },
     "noscript": "Ohne JavaScript wird die Zeichnung nicht mitgezeichnet. Die Felder darunter funktionieren trotzdem: füllen Sie sie aus und schicken Sie sie mit der Anfrage ab. Wir brauchen Innenmaß, Gewicht, Ladegut, Ziel und Stückzahl.",
-    "drawingLabelStatic": "Beispielzeichnung einer Exportkiste mit Maßlinien, Kufen und dem IPPC-Stempel.",
-    "liveIntro": "Zeichnung",
-    "srSummary": "Kiste {outer} mm außen, {skids} Kufen, {build}, {stamp}."
+    "srSummary": "Kiste {outer} mm außen, {skids} Kufen, {build}, {stamp}.",
+    "stampOn": "IPPC-Stempel auf zwei gegenüberliegenden Seiten",
+    "stampOff": "Kein IPPC-Stempel nötig"
   },
   "stamp": {
-    "heading": "Der Stempel",
-    "lead": "Auf dem Stempel steht alles, was der Kontrolleur im Zielhafen braucht. Hier ist jedes Feld einzeln: was es bedeutet, und was passiert, wenn es fehlt.",
-    "fields": {
-      "ippc": {
-        "title": "Das IPPC-Symbol",
-        "what": "Die stilisierte Ähre zeigt, dass das Holz nach der internationalen Pflanzenschutznorm ISPM 15 behandelt wurde.",
-        "without": "Fehlt sie, behandelt der Zoll im Zielland die Sendung wie unbehandeltes Holz."
-      },
-      "lu": {
-        "title": "LU",
-        "what": "Der ISO-Ländercode des Landes, in dem behandelt und gekennzeichnet wurde.",
-        "without": "Er sagt der Behörde im Zielland, welches Register sie prüfen muss."
-      },
-      "number": {
-        "title": "079",
-        "what": "Unsere Registriernummer bei der ASTA, der Administration des Services Techniques de l'Agriculture. Sie ist einmalig, nicht übertragbar und öffentlich nachprüfbar.",
-        "without": "In Luxemburg gibt es drei eingetragene Produzenten."
-      },
-      "code": {
-        "title": "Der Behandlungscode",
-        "what": "Er sagt, wie behandelt wurde: HT für Wärmebehandlung, DB für entrindet.",
-        "without": "Ohne Code ist der Stempel unvollständig und damit ungültig."
-      },
-      "twoSides": {
-        "title": "Zwei Seiten",
-        "what": "Der Stempel muss sichtbar und dauerhaft angebracht sein, vorzugsweise auf zwei gegenüberliegenden Seiten.",
-        "without": "Dann findet ihn der Kontrolleur, egal wie die Kiste im Container steht."
-      },
-      "noRedOrange": {
-        "title": "Nicht rot, nicht orange",
-        "what": "Diese Farben sind der Kennzeichnung gefährlicher Güter vorbehalten.",
-        "without": "Deshalb sehen Sie sie auch auf dieser Website nicht."
-      },
-      "afterRepair": {
-        "title": "Nach jeder Reparatur neu",
-        "what": "Wird eine Palette wiederverwendet, recycelt oder repariert, muss sie neu gekennzeichnet werden, und alle Bauteile müssen behandelt sein.",
-        "without": "Deshalb reparieren wir nicht nur, wir stempeln auch neu."
-      },
-      "replaces": {
-        "title": "Was er ersetzt",
-        "what": "Innerhalb der EU ersetzt der Stempel den Pflanzenpass, beim Export das Pflanzengesundheitszeugnis.",
-        "without": "Er gilt für Massivholz ab 6 mm Dicke, nicht für Pressholz."
-      }
-    },
-    "whatItMeans": "Was es bedeutet",
-    "whatIfMissing": "Was passiert, wenn es fehlt",
-    "registryHeading": "Die drei eingetragenen Produzenten in Luxemburg",
-    "registryNote": "Das ist keine Behauptung von uns, das steht im öffentlichen Register.",
-    "sourceLine": "Quelle: Single Window for Logistics, Luxemburg (ASTA), Stand 8. April 2025.",
-    "cta": "Kiste konfigurieren"
+    "sourceLine": "Quelle: Single Window for Logistics, Luxemburg (ASTA), Stand 8. April 2025."
   },
   "delivery": {
     "heading": "Anlieferung & Abholung",
@@ -329,10 +262,19 @@
     "addressHeading": "Adresse und Position",
     "mapAlt": "Karte der Zone Industrielle in Mertzig mit der Position des Betriebs, einem Maßstab und Nordpfeil.",
     "mapAttribution": "Kartendaten © OpenStreetMap contributors. Das Bild liegt auf dieser Seite. Beim Aufruf geht keine Anfrage nach außen.",
-    "printHeading": "Auf einer Seite zum Drucken",
-    "printBody": "Diese Seite ist so gesetzt, dass sie auf ein Blatt passt. Drucken Sie sie aus und legen Sie sie in den LKW.",
-    "shortHeading": "Kurzfassung",
-    "pending": "Wir stellen diese Angaben online, sobald sie bestätigt sind. Bis dahin: rufen Sie an, wir sagen Ihnen den Weg. {phone}"
+    "pending": "Wir stellen diese Angaben online, sobald sie bestätigt sind. Bis dahin: rufen Sie an, wir sagen Ihnen den Weg. {phone}",
+    "pdf": {
+      "subtitle": "Adresse und Kontakt für Anlieferung und Abholung",
+      "addressLabel": "Adresse",
+      "positionLabel": "Position",
+      "coordinatesLabel": "Koordinaten",
+      "contactLabel": "Kontakt",
+      "phoneAlt": "Durchwahl",
+      "note": "Zeigen Sie dieses Blatt auf dem Hof, wenn etwas unklar ist. Bei Fragen rufen Sie an, bevor Sie losfahren."
+    },
+    "ctaHeading": "Blatt für den Fahrer",
+    "ctaBody": "Adresse, Plus Code und Telefonnummer auf einem A4-Blatt. Herunterladen, ausdrucken, in den LKW legen.",
+    "ctaLabel": "PDF herunterladen"
   },
   "history": {
     "heading": "Historie",
@@ -458,7 +400,7 @@
     "langHeading": "Sprache",
     "legal": "Impressum",
     "privacy": "Datenschutz",
-    "rcsLine": "RCS Luxemburg {rcs} · MwSt {vat}",
+    "rcsLine": "RCS Luxemburg {rcs} · TVA {vat}",
     "madeIn": "Gebaut in Mertzig, Kanton Diekirch, Luxemburg."
   },
   "hours": {
@@ -468,7 +410,7 @@
   },
   "pallets": {
     "h1": "Holzpaletten",
-    "lead": "Standardpaletten, CP-Paletten und Paletten nach Ihrer technischen Spezifikation. Weil wir selbst sägen, sind wir nicht an Lagermaße gebunden.",
+    "lead": "Standardpaletten, Sonderpaletten jeder Art nach Maß, CP-Paletten. Weil wir selbst sägen, sind wir nicht an Lagermaße gebunden.",
     "standardHeading": "Standardmaße",
     "cpHeading": "CP-Paletten",
     "cpNote": "Die CP-Maße sind durch die CP-Norm festgelegt. Welche Typen wir auf Lager haben und welche wir auf Bestellung bauen: fragen Sie uns.",
@@ -483,7 +425,9 @@
       "ispm": "ISPM 15",
       "type": "Typ",
       "ispmYes": "möglich"
-    }
+    },
+    "agrementLabel": "Zulassung",
+    "agrement": "Wir haben die Zulassung des Service Technique de l’Agriculture für die Herstellung von Paletten nach den Einfuhrbestimmungen von China, Australien und Neuseeland."
   },
   "crates": {
     "h1": "Kisten nach Maß",
@@ -503,31 +447,26 @@
     "h1": "Reparatur und Wiederverwendung",
     "lead": "Wir reparieren gebrauchte Kisten und Paletten und setzen sie neu in Betrieb. Viele unserer Emballagen sind so mehrere Jahre im Einsatz.",
     "ruleHeading": "Warum die Nummer 079 hier zählt",
-    "ruleBody": "Eine Palette, die wiederverwendet, recycelt oder repariert wird, muss neu gekennzeichnet werden. Alle Bauteile müssen behandelt sein. Das dürfen nur Betriebe mit einer Registriernummer. Wir haben eine, deshalb bekommen Sie die Palette mit gültigem Stempel zurück.",
+    "ruleBody": "Eine Palette, die wiederverwendet, recycelt oder repariert wird, muss neu gekennzeichnet werden, und alle Bauteile müssen behandelt sein. Das dürfen nur Betriebe machen, die eine Registriernummer haben. Wir haben eine, deshalb bekommen Sie die Palette mit gültigem Stempel zurück.",
     "whatHeading": "Was wir machen",
     "whatItems": [
       "Gebrauchte Paletten und Kisten prüfen und sortieren",
       "Kaputte Bretter, Klötze und Kufen ersetzen",
       "Nach der Reparatur neu stempeln, wie es die Norm verlangt",
       "Zurück auf den Betrieb liefern oder auf Abruf halten"
-    ],
-    "cta": "Gebrauchte Paletten anbieten"
+    ]
   },
   "ispm15": {
     "h1": "ISPM 15 in Luxemburg",
-    "lead": "ISPM 15 ist die internationale Norm für Holzverpackung im Welthandel. Sie soll verhindern, dass Schädlinge mit dem Verpackungsholz von einem Kontinent auf den anderen kommen. Wer nach der Norm behandeln und stempeln darf, steht in einem öffentlichen Register.",
-    "whoHeading": "Wer in Luxemburg stempeln darf",
-    "whoBody": "Drei Betriebe. Wir sind einer davon, mit der Registriernummer 079. Die Liste wird von der ASTA geführt und ist öffentlich.",
-    "fieldsHeading": "Der Stempel, Feld für Feld",
-    "rulesHeading": "Was sonst noch gilt",
+    "lead": "ISPM 15 ist die internationale Norm für Holzverpackung im Welthandel. Sie soll verhindern, dass Schädlinge mit dem Verpackungsholz von einem Kontinent auf den anderen reisen. Für Sie heißt das: Bei bestimmten Zielländern muss das Holz behandelt und gestempelt sein. Wir machen beides selbst.",
+    "rulesHeading": "Was Sie sonst noch über den Stempel wissen müssen",
     "rules": [
-      "Der Stempel muss dauerhaft sein und darf nicht übertragen werden.",
-      "Er muss sichtbar angebracht sein, vorzugsweise auf zwei gegenüberliegenden Seiten.",
-      "Rot und Orange sind zu vermeiden, weil diese Farben für Gefahrgut reserviert sind.",
-      "Wird eine Palette wiederverwendet, recycelt oder repariert, muss sie neu gekennzeichnet werden; alle Bauteile müssen behandelt sein.",
-      "Die Kennzeichnung darf nur durch vollständige Verbrennung zerstört werden.",
-      "Sie gilt für Massivholz ab 6 mm Dicke, nicht für Pressholz.",
-      "Der Stempel ersetzt den Pflanzenpass im innergemeinschaftlichen Verkehr und das Pflanzengesundheitszeugnis beim Export."
+      "Wir behandeln und stempeln im eigenen Betrieb. Registriernummer 079, Behandlungscode HT. Sie brauchen keinen zweiten Betrieb und warten nicht länger.",
+      "Der Stempel kommt auf zwei gegenüberliegende Seiten, damit er im Container sichtbar bleibt. Er ist dauerhaft und darf nicht von einer Kiste auf die andere übertragen werden.",
+      "Er gilt für Massivholz ab 6 mm. Sperrholz, OSB und andere Pressholzwerkstoffe brauchen keine Behandlung.",
+      "Rot und Orange kommen nicht vor: Diese beiden Farben sind für Gefahrgut reserviert.",
+      "Wird eine Palette repariert oder wiederverwendet, muss sie neu gestempelt werden. Jedes einzelne Bauteil muss behandelt sein.",
+      "Innerhalb der EU brauchen Sie keine ISPM-15-Behandlung. Wo ein Pflanzenpass verlangt wird, tritt der Stempel an seine Stelle."
     ],
     "whenHeading": "Wann Sie ihn brauchen",
     "whenBody": "Bei China, Australien und Neuseeland immer. Bei anderen Drittländern hängt es vom Zielland ab. Schreiben Sie uns das Ziel in die Anfrage, wir sagen es Ihnen.",
@@ -537,7 +476,6 @@
     "h1": "Kontakt",
     "lead": "Schreiben Sie uns, was Sie brauchen. Je genauer die Anfrage, desto schneller haben Sie ein Angebot.",
     "directHeading": "Direkt",
-    "visitHeading": "Vor Ort",
     "driverHint": "Sind Sie Fahrer? Dann steht alles, was Sie brauchen, auf der Seite Anlieferung & Abholung."
   },
   "thanks": {

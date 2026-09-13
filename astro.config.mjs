@@ -54,6 +54,14 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()],
+    /* Ohne diese Zeile bricht die Konfigurator-Insel im Dev-Server mit
+       „jsxDEV is not a function" ab: Vite bündelt die Entwicklungsvariante
+       der JSX-Runtime sonst erst beim ersten Import nach und die Insel ist
+       zu dem Zeitpunkt schon montiert. Der Produktions-Build ist davon nicht
+       betroffen, der Dev-Server aber unbrauchbar. */
+    optimizeDeps: {
+      include: ['react', 'react-dom/client', 'react/jsx-runtime', 'react/jsx-dev-runtime'],
+    },
   },
   build: {
     inlineStylesheets: 'auto',

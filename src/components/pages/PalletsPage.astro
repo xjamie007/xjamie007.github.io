@@ -24,6 +24,11 @@ const hasStandard = standardPallets.some((p) => p.published);
   <h1 id="pal-h1" class="t-h1 pg__h1">{t(locale, 'pallets.h1')}</h1>
   <p class="t-body pg__lead">{t(locale, 'pallets.lead')}</p>
 
+  <p class="pg__agrement reveal">
+    <span class="t-label pg__agrementLabel">{t(locale, 'pallets.agrementLabel')}</span>
+    <span class="t-body">{t(locale, 'pallets.agrement')}</span>
+  </p>
+
   <div class="pg__media reveal">
     <Photo locale={locale} name="pallets" sizes="(min-width: 48rem) 26rem, 92vw" class="pg__photo" />
     <figure class="pg__drawing drawing">
@@ -67,7 +72,15 @@ const hasStandard = standardPallets.some((p) => p.published);
 <style>
   .pg__h1 { margin-block-start: 1rem; }
   .pg__lead { margin-block-start: 1rem; }
-  .pg__media { margin-block-start: 2rem; display: grid; gap: 2rem; align-items: start; }
+  /* Die Zulassung ist das Argument, das die Firma selbst voranstellt —
+     abgesetzt, aber ohne Kasten: es ist ein Satz, keine Warnung. */
+  .pg__agrement {
+    margin-block-start: 1.75rem; max-inline-size: 62ch;
+    padding-inline-start: 1.25rem; border-inline-start: 3px solid var(--color-blue);
+    display: grid; gap: 0.3rem;
+  }
+  .pg__agrementLabel { color: var(--band-tech); }
+  .pg__media { margin-block-start: 2.5rem; display: grid; gap: 2rem; align-items: start; }
   @media (width >= 48rem) { .pg__media { grid-template-columns: 26rem 16rem; gap: 3rem; } }
   .pg__photo :global(img) { inline-size: 100%; block-size: auto; display: block; border-radius: 2px; }
   .pg__drawing { margin: 0; color: var(--color-ink); max-inline-size: 16rem; }

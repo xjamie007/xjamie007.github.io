@@ -14,3 +14,6 @@ dist/
 
 # Erzeugt aus lb.json: npm run lb:export
 lb-text.md
+
+# Wird bei jedem Build aus src/data/company.ts und src/i18n/ neu gesetzt.
+public/downloads/
