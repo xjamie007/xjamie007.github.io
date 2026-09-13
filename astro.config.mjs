@@ -12,7 +12,11 @@ import tailwindcss from '@tailwindcss/vite';
 // Code-Edit ist: SITE_URL setzen, bauen, fertig. Danach auch die
 // Sitemap-Zeile in `public/robots.txt` mitziehen — `npm run verify` prüft,
 // dass die beiden zusammenpassen.
-const SITE = process.env.SITE_URL ?? 'https://xjamie007.github.io';
+//
+// `||`, nicht `??`: eine nicht gesetzte GitHub-Variable kommt als LEERER
+// String an, nicht als undefined. Mit `??` wäre das ein gültiger Wert und
+// Astro bricht mit „site: Invalid url" ab.
+const SITE = process.env.SITE_URL || 'https://xjamie007.github.io';
 
 export default defineConfig({
   site: SITE,
