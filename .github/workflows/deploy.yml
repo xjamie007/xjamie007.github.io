@@ -41,12 +41,24 @@ jobs:
 
       - name: Bauen
         env:
+          # Umzug auf kasel.lu: Repository-Variable SITE_URL setzen, sonst
+          # bleibt es bei der GitHub-Pages-Adresse aus astro.config.mjs.
+          SITE_URL: ${{ vars.SITE_URL }}
           PUBLIC_INQUIRY_ENDPOINT: ${{ secrets.PUBLIC_INQUIRY_ENDPOINT }}
         run: npx astro build
 
-      # Faarwen, hreflang, Alt-Texter, dout Linken, JS-Budget, Geheimnisser.
-      - name: Iwwergab-Préifung
-        run: node scripts/verify.mjs
+      # Farben, Kontrast, hreflang, Alt-Texte, tote Links, JS-Budget, Geheimnisse.
+      # Ohne hinterlegten Endpunkt läuft die Prüfung im Vorschaumodus: dann ist
+      # das fehlende Postfach ein Hinweis statt eines Fehlers. Alles andere
+      # bleibt ein hartes Tor — was hier durchfällt, geht nicht live.
+      - name: Übergabe-Prüfung
+        run: |
+          if [ -n "${{ secrets.PUBLIC_INQUIRY_ENDPOINT }}" ]; then
+            node scripts/verify.mjs
+          else
+            echo "::warning::PUBLIC_INQUIRY_ENDPOINT ist nicht gesetzt — Vorschau-Deploy, das Formular schickt noch nichts."
+            node scripts/verify.mjs --preview
+          fi
 
       - uses: actions/upload-pages-artifact@v3
         with:

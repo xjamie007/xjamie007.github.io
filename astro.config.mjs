@@ -4,9 +4,15 @@ import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
-// Produktiv-URL. Muss mat der Domain iwwereneestëmmen, soss stëmmen
-// Canonicals, hreflang an d'Sitemap net.
-const SITE = 'https://www.kasel.lu';
+// Die Adresse, unter der die Seite wirklich liegt. Sie steckt in jedem
+// Canonical, in jedem hreflang und in der Sitemap — stimmt sie nicht, hält
+// Google die vier Sprachfassungen für doppelten Inhalt.
+//
+// Über die Umgebungsvariable, damit der Umzug auf kasel.lu später kein
+// Code-Edit ist: SITE_URL setzen, bauen, fertig. Danach auch die
+// Sitemap-Zeile in `public/robots.txt` mitziehen — `npm run verify` prüft,
+// dass die beiden zusammenpassen.
+const SITE = process.env.SITE_URL ?? 'https://xjamie007.github.io';
 
 export default defineConfig({
   site: SITE,

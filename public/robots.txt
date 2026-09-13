@@ -1,5 +1,7 @@
-# Emballages en Bois Kasel S.à r.l. — kasel.lu
+# Emballages en Bois Kasel S.à r.l.
+# Die Sitemap-Zeile muss zur Adresse in astro.config.mjs passen.
+# `npm run verify` prüft das.
 User-agent: *
 Allow: /
 
-Sitemap: https://www.kasel.lu/sitemap-index.xml
+Sitemap: https://xjamie007.github.io/sitemap-index.xml

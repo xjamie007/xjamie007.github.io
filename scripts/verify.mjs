@@ -13,6 +13,12 @@ import { gzipSync } from 'node:zlib';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const DIST = join(ROOT, 'dist');
 
+/* `--preview` stuft genau eine Prüfung herab: den Formular-Endpunkt. Eine
+   Vorschau darf ohne Postfach online gehen, die Produktion nicht. Alles andere
+   — Farben, Kontrast, hreflang, Alt-Texte, tote Links, Geheimnisse — bleibt ein
+   hartes Tor, sonst wäre die Prüfung keine. */
+const PREVIEW = process.argv.includes('--preview');
+
 let fails = 0, warns = 0;
 const ok = (m) => console.log(`  ✓ ${m}`);
 const bad = (m) => { fails++; console.log(`  ✗ ${m}`); };
@@ -215,8 +221,10 @@ const PLACEHOLDER = 'CHANGE-ME.supabase.co';
 const withForm = pages.filter((p) => /<form[^>]+method="post"/.test(readFileSync(p, 'utf8')));
 const placeholder = pages.filter((p) => readFileSync(p, 'utf8').includes(PLACEHOLDER));
 if (!withForm.length) bad('keine einzige Seite enthält ein Formular — das kann nicht stimmen');
-else if (placeholder.length) bad(`${placeholder.length} Seiten tragen noch den Platzhalter-Endpunkt — PUBLIC_INQUIRY_ENDPOINT setzen`);
-else ok(`${withForm.length} Seiten mit Formular, Endpunkt gesetzt`);
+else if (placeholder.length) {
+  const msg = `${placeholder.length} Seiten tragen noch den Platzhalter-Endpunkt — PUBLIC_INQUIRY_ENDPOINT setzen`;
+  PREVIEW ? warn(`${msg} (Vorschau: Anfragen gehen noch nirgends hin)`) : bad(msg);
+} else ok(`${withForm.length} Seiten mit Formular, Endpunkt gesetzt`);
 
 /* ── 9 · Keng Schlësselen am Build ──────────────────────────────────────── */
 head('9 · Keng Zougangsdaten am Build');
@@ -244,11 +252,20 @@ for (const f of ['sitemap-index.xml', 'sitemap-0.xml', 'robots.txt', 'favicon.sv
 for (const l of ['lb', 'de', 'fr', 'en']) {
   existsSync(join(DIST, `img/og-${l}.jpg`)) ? ok(`img/og-${l}.jpg`) : bad(`img/og-${l}.jpg feelt`);
 }
+/* robots.txt und die gebaute Sitemap müssen auf dieselbe Adresse zeigen.
+   Beim Domainwechsel wird das erfahrungsgemäß an genau einer Stelle vergessen. */
+const robots = readFileSync(join(DIST, 'robots.txt'), 'utf8');
+const sitemapHost = (readFileSync(join(DIST, 'sitemap-index.xml'), 'utf8').match(/<loc>(https?:\/\/[^/]+)/) ?? [])[1];
+const robotsHost = (robots.match(/Sitemap:\s*(https?:\/\/[^/]+)/i) ?? [])[1];
+if (sitemapHost && robotsHost === sitemapHost) ok(`robots.txt und Sitemap zeigen beide auf ${sitemapHost}`);
+else bad(`robots.txt zeigt auf ${robotsHost ?? '—'}, die Sitemap auf ${sitemapHost ?? '—'}`);
+
 const locs = (readFileSync(join(DIST, 'sitemap-0.xml'), 'utf8').match(/<loc>/g) ?? []).length;
 locs === 40 ? ok(`${locs} URLen an der Sitemap (10 Säiten × 4 Sproochen)`) : warn(`${locs} URLen an der Sitemap — erwaart 40`);
 
 /* ── Ofschloss ──────────────────────────────────────────────────────────── */
 console.log(`\n${'═'.repeat(76)}`);
+if (PREVIEW) console.log('Vorschaumodus: der Formular-Endpunkt ist nur ein Hinweis, kein Fehler.');
 if (fails === 0) console.log(`Alles duerch. ${warns} Hiweis${warns === 1 ? '' : 'er'}.\n`);
 else console.log(`${fails} Feeler, ${warns} Hiweiser.\n`);
 process.exit(fails ? 1 : 0);
