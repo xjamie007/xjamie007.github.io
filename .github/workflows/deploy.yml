@@ -35,6 +35,11 @@ jobs:
 
       - run: npm ci
 
+      # D'Blat fir de Chauffeur gëtt bei all Build nei gesat, datt Adress an
+      # Telefonsnummer ni auserneelafen. Reng Node, keng extern Ofhängegkeet.
+      - name: Fahrerblatt setzen
+        run: npm run pdf
+
       # Typen a Sproochen: eng feelend Iwwersetzung brécht de Build mat Absicht.
       - name: Typen préiwen
         run: npx astro check
