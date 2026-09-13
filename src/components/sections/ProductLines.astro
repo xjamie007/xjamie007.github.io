@@ -41,7 +41,7 @@ const lines: { key: 'pallets' | 'crates' | 'repair'; route: RouteKey; photo: Pho
 
   <h2 id="produkter-h2" class="t-h2">{t(locale, 'products.heading')}</h2>
 
-  <div class="lines">
+  <div class="lines stagger">
     {lines.map(({ key, route, photo }) => (
       <article class="line reveal">
         <a class="line__link hoverable" href={path(route, locale)} tabindex="-1" aria-hidden="true">

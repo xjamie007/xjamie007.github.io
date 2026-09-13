@@ -39,6 +39,9 @@ const links: { key: RouteKey; label: string }[] = [
 ---
 
 <header class="masthead">
+  <!-- Lesefortschritt. Hängt am Scroll-Fortschritt des Dokuments, nicht an
+       einem Skript; Browser ohne `scroll()` sehen die Linie einfach nicht. -->
+  <div class="masthead__progress" aria-hidden="true"></div>
   <div class="shell masthead__grid">
     <a class="masthead__home logo-slot" href={path('home', locale)}>
       <Logo title={false} variant="wordmark" />
@@ -87,6 +90,7 @@ const links: { key: RouteKey; label: string }[] = [
 
 <style>
   .masthead {
+    position: relative;
     background: var(--color-paper);
     color: var(--color-ink);
     --band-fg: var(--color-ink);
@@ -94,6 +98,26 @@ const links: { key: RouteKey; label: string }[] = [
     --band-line: var(--color-line);
     border-block-end: 1px solid var(--band-line);
   }
+
+  .masthead__progress {
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: -1px;
+    block-size: 2px;
+    background: var(--color-blue);
+    transform-origin: 0 50%;
+    scale: 0 1;
+    pointer-events: none;
+  }
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .masthead__progress {
+        animation: read-progress linear both;
+        animation-timeline: scroll(root block);
+      }
+    }
+  }
+  @keyframes read-progress { to { scale: 1 1; } }
 
   /* Am Handy eine Spalte: Logo in Zeile 1, das Klapp-Panel in Zeile 2 über die
      volle Breite. Die Leiste selbst wird neben das Logo gepinnt — sonst säße

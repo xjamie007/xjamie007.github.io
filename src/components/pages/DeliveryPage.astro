@@ -18,7 +18,7 @@ const { locale } = Astro.props;
 const showSteps = delivery.accessThroughMainHall.publish;
 ---
 
-<Section labelledby="del-h1">
+<Section class="band--sky" labelledby="del-h1">
   <Fragment slot="rail">
     <RailItem term={t(locale, 'rail.ramp')} value={company.address.locality} numeric={false} />
     <RailItem term={t(locale, 'common.plusCode')} value={company.geo.plusCode} />
@@ -41,17 +41,17 @@ const showSteps = delivery.accessThroughMainHall.publish;
       ))}
     </ol>
   ) : (
-    <p class="t-body pg__pending">
+    <p class="t-body pg__pending reveal">
       {t(locale, 'delivery.pending').split('{phone}')[0]}
       <a class="link" href={`tel:${company.phoneE164}`}>{company.phoneDisplay}</a>
     </p>
   )}
 
-  <Photo locale={locale} name="yard" sizes="(min-width: 48rem) 38rem, 92vw" class="pg__yard reveal reveal--zoom" />
+  <Photo locale={locale} name="yard" sizes="(min-width: 48rem) 38rem, 92vw" class="pg__yard drift reveal reveal--zoom" />
 
-  <div class="pg__map"><MapBlock locale={locale} headingLevel="h2" /></div>
+  <div class="pg__map panel reveal"><MapBlock locale={locale} headingLevel="h2" /></div>
 
-  <div class="pg__sheet no-print">
+  <div class="pg__sheet no-print reveal">
     <div>
       <h2 class="t-h3">{t(locale, 'delivery.ctaHeading')}</h2>
       <p class="t-caption pg__sheetBody">{t(locale, 'delivery.ctaBody')}</p>
@@ -64,17 +64,36 @@ const showSteps = delivery.accessThroughMainHall.publish;
   .pg__h1 { margin-block-start: 1rem; }
   .pg__lead { margin-block-start: 1rem; }
   .pg__steps { margin-block-start: 2.5rem; max-inline-size: 60ch; }
-  .pg__pending { margin-block-start: 2rem; }
+  /* Solange der Weg über den Hof nicht bestätigt ist, steht hier nur die
+     Telefonnummer — dann soll sie wenigstens aussehen wie ein Angebot und
+     nicht wie eine Entschuldigung. */
+  .pg__pending {
+    margin-block-start: 2rem; max-inline-size: 58ch;
+    padding: 1.25rem 1.5rem;
+    background: color-mix(in srgb, var(--color-blue) 8%, var(--color-paper));
+    border-inline-start: 3px solid var(--color-blue);
+    border-radius: 0 4px 4px 0;
+  }
   .pg__yard { display: block; margin-block-start: 2.5rem; max-inline-size: 38rem; }
   .pg__yard :global(img) { inline-size: 100%; block-size: auto; display: block; border-radius: 2px; }
-  .pg__map { margin-block-start: 3rem; }
+  .pg__map { margin-block-start: 3rem; padding: 1.25rem; }
+  @media (width >= 40rem) { .pg__map { padding: 1.5rem; } }
   /* Das Blatt für den Fahrer steht abgesetzt am Fuß der Seite: wer es braucht,
      sucht es dort, und wer die Seite nur liest, stolpert nicht darüber. */
   .pg__sheet {
-    margin-block-start: 3rem; padding: 1.5rem; border: 1px solid var(--band-line); border-radius: 3px;
+    margin-block-start: 3rem; padding: 1.75rem;
     display: grid; gap: 1.25rem; align-items: center;
+    color: var(--color-paper);
+    background:
+      radial-gradient(120% 160% at 100% 0%, color-mix(in srgb, var(--color-blue) 55%, transparent) 0%, transparent 62%),
+      var(--color-blue-deep);
+    border-radius: 5px;
   }
+  .pg__sheet .btn--primary {
+    background: var(--color-paper); color: var(--color-blue-deep); border-color: var(--color-paper);
+  }
+  @media (hover: hover) { .pg__sheet .btn--primary:hover { background: var(--color-blue-tint); border-color: var(--color-blue-tint); } }
   @media (width >= 40rem) { .pg__sheet { grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; } }
-  .pg__sheetBody { margin-block-start: 0.35rem; max-inline-size: 48ch; }
+  .pg__sheetBody { margin-block-start: 0.35rem; max-inline-size: 48ch; color: color-mix(in srgb, var(--color-paper) 90%, transparent); }
 
 </style>

@@ -242,6 +242,49 @@
     background-image: linear-gradient(180deg, var(--color-paper) 0%, var(--color-blue-tint) 22%);
   }
 
+  /* Zeichenbrett. Der Konfigurator IST eine Zeichnung, also liegt er auf
+     Millimeterpapier: ein feines und ein grobes Raster übereinander, beide
+     aus der Hausfarbe, beide so schwach, dass Text darauf ungestört bleibt.
+     Die Maske lässt das Raster zu den Rändern hin auslaufen — sonst sähe die
+     Sektion aus wie ein aufgeklebtes Stück Karopapier. */
+  .band--blueprint {
+    --band-bg: var(--color-blue-tint);
+    --band-line: color-mix(in srgb, var(--color-blue) 24%, transparent);
+    position: relative;
+    isolation: isolate;
+    background-image: linear-gradient(180deg, var(--color-paper) 0%, var(--color-blue-tint) 18%);
+  }
+  .band--blueprint::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image:
+      linear-gradient(var(--rule-strong) 1px, transparent 1px),
+      linear-gradient(90deg, var(--rule-strong) 1px, transparent 1px),
+      linear-gradient(var(--rule-fine) 1px, transparent 1px),
+      linear-gradient(90deg, var(--rule-fine) 1px, transparent 1px);
+    background-size: 7.5rem 7.5rem, 7.5rem 7.5rem, 1.5rem 1.5rem, 1.5rem 1.5rem;
+    --rule-strong: color-mix(in srgb, var(--color-blue) 15%, transparent);
+    --rule-fine: color-mix(in srgb, var(--color-blue) 7%, transparent);
+    mask-image: radial-gradient(120% 90% at 50% 45%, #000 25%, transparent 78%);
+  }
+
+  /* Heller Himmel. Die ganze Bahn liegt in der Hausfarbe, die weißen Flächen
+     darauf heben sich ab — vorher war beides weiß und die Seite fing als
+     leeres Blatt an. Oben wächst der Ton aus dem weißen Kopf heraus, oben
+     rechts steht ein Schimmer, damit die Fläche nicht wie Farbe aus der Dose
+     wirkt. Für Kontakt und Liwwerung. */
+  .band--sky {
+    --band-bg: var(--color-blue-tint);
+    --band-line: color-mix(in srgb, var(--color-blue) 20%, transparent);
+    background-image:
+      radial-gradient(75% 55% at 100% 0%, color-mix(in srgb, var(--color-blue) 26%, transparent) 0%, transparent 68%),
+      radial-gradient(60% 45% at 0% 100%, color-mix(in srgb, var(--color-blue) 14%, transparent) 0%, transparent 70%),
+      linear-gradient(180deg, var(--color-paper) 0%, var(--color-blue-tint) 15%);
+  }
+
   .band--dark {
     --band-fg: var(--color-paper);
     --band-bg: var(--color-ink);
@@ -269,6 +312,62 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 1.5rem 2.5rem;
+  }
+
+  /* Eine Fläche, auf der Inhalt liegt statt im Nichts zu schweben. Der
+     Schatten ist absichtlich fast unsichtbar: er soll die Kante lösen, nicht
+     das Papier anheben. */
+  .panel {
+    background: var(--color-paper);
+    border: 1px solid var(--band-line);
+    border-radius: 4px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 1px rgb(16 32 48 / 0.03), 0 14px 30px -24px rgb(16 32 48 / 0.30);
+  }
+  @media (width >= 40rem) { .panel { padding: 1.75rem 2rem; } }
+  .panel--accent { border-block-start: 3px solid var(--color-blue); }
+  .panel--flush { padding: 0; overflow: hidden; }
+
+  /* Weiterführender Link mit Pfeil. Der Pfeil läuft beim Überfahren los und
+     der Unterstrich wächst aus dem Wort heraus — dieselbe Geste wie bei den
+     Leistungen auf der Startseite, deshalb hier einmal zentral. */
+  .arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mark);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--band-accent);
+    text-decoration: none;
+    padding-block: 0.25rem;
+  }
+  .arrow span {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 2px;
+    transition: background-size 280ms cubic-bezier(0.22, 0.8, 0.3, 1);
+    padding-block-end: 0.12em;
+  }
+  .arrow svg {
+    inline-size: 1.35rem;
+    block-size: auto;
+    flex: none;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 280ms cubic-bezier(0.22, 0.8, 0.3, 1);
+  }
+  @media (hover: hover) {
+    .arrow:hover span, .arrow:focus-visible span { background-size: 100% 2px; }
+    .arrow:hover svg { transform: translateX(5px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .arrow span { transition: none; background-size: 100% 2px; }
+    .arrow svg { transition: none; }
   }
 
   .band--tight > .band__grid { padding-block: 2.25rem; }
@@ -477,6 +576,7 @@
     background: var(--color-paper);
     border: 1px solid var(--band-line);
     border-radius: 4px;
+    box-shadow: 0 1px 1px rgb(16 32 48 / 0.04), 0 18px 36px -26px rgb(16 32 48 / 0.38);
   }
   .crate { inline-size: 100%; block-size: auto; color: var(--color-ink); display: block; }
 
@@ -493,7 +593,10 @@
       border-inline: 0;
       border-block-start: 0;
       border-radius: 0;
-      background: var(--band-bg);
+      /* Papier, nicht Zeichenbrett: das Blatt klebt hier oben fest, und was
+         darunter wegscrollt, darf nicht durchscheinen. */
+      background: var(--color-paper);
+      box-shadow: 0 10px 16px -14px rgb(16 32 48 / 0.45);
     }
     .cfg__figure .crate { max-block-size: 32vh; inline-size: auto; margin-inline: auto; }
     .cfg__form { order: 2; }
@@ -770,20 +873,37 @@
   .js .reveal--zoom { transform: scale(1.02); }
   .js .reveal--zoom.is-in { transform: none; }
 
+  /* Eine Reihe gleichartiger Kacheln soll nicht auf einen Schlag erscheinen,
+     sondern der Reihe nach — das Auge folgt der Leserichtung. Acht Stufen
+     reichen; was danach kommt, läuft ohne weiteren Versatz mit. */
+  .js .stagger > *:nth-child(2) { --reveal-delay: 70ms; }
+  .js .stagger > *:nth-child(3) { --reveal-delay: 140ms; }
+  .js .stagger > *:nth-child(4) { --reveal-delay: 210ms; }
+  .js .stagger > *:nth-child(5) { --reveal-delay: 280ms; }
+  .js .stagger > *:nth-child(6) { --reveal-delay: 350ms; }
+  .js .stagger > *:nth-child(7) { --reveal-delay: 420ms; }
+  .js .stagger > *:nth-child(n + 8) { --reveal-delay: 490ms; }
+
+  /* Von der Seite hereinkommen — für Inhalt, der in einer Spalte steht und
+     bei dem ein Versatz nach oben nicht zur Leserichtung passt. */
+  .js .reveal--left { transform: translate3d(-18px, 0, 0); }
+  .js .reveal--right { transform: translate3d(18px, 0, 0); }
+  .js .reveal--left.is-in, .js .reveal--right.is-in { transform: none; }
+
   /* -- Zeiger und Finger --------------------------------------------------- */
   .btn { transition: background-color 140ms linear, color 140ms linear, border-color 140ms linear, transform 90ms ease-out; }
   .btn:active { transform: translateY(1px); }
 
   /* Ein Foto, das auf den Zeiger reagiert, sagt: hier geht es weiter. */
   .hoverable { --hover-lift: 0; }
-  .hoverable :global(img) {
+  .hoverable img {
     transition: transform 520ms cubic-bezier(0.22, 0.8, 0.3, 1), filter 320ms linear;
   }
   @media (hover: hover) {
-    .hoverable:hover :global(img),
-    .hoverable:focus-within :global(img) { transform: scale(1.035); }
+    .hoverable:hover img,
+    .hoverable:focus-within img { transform: scale(1.035); }
   }
-  .hoverable :global(picture) { display: block; overflow: hidden; border-radius: 2px; }
+  .hoverable picture { display: block; overflow: hidden; border-radius: 2px; }
 
   .lift { transition: transform 220ms cubic-bezier(0.22, 0.8, 0.3, 1), border-color 220ms linear; }
   @media (hover: hover) { .lift:hover { transform: translateY(-3px); } }
@@ -801,6 +921,37 @@
   }
   .link:hover, .link:focus-visible { background-size: 100% 2px; }
 
+  /* -- An den Bildlauf gekoppelt ------------------------------------------- */
+  /* Kein Skript, keine Rechnerei bei jedem Bildlauf: der Browser bindet die
+     Animation an die Position des Elements im Bild. Wo `view()` fehlt, steht
+     das Bild einfach still — es geht nichts verloren. */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .drift { overflow: hidden; }
+      .drift img {
+        animation: drift linear both;
+        animation-timeline: view();
+        animation-range: entry 0% exit 100%;
+        will-change: transform;
+      }
+
+      /* Die Zeichnung richtet sich auf, während sie ins Bild kommt. */
+      .cfg__figure {
+        animation: sheet-settle linear both;
+        animation-timeline: view();
+        animation-range: entry 10% entry 90%;
+      }
+    }
+  }
+  @keyframes drift {
+    from { transform: translate3d(0, 2.5%, 0) scale(1.07); }
+    to   { transform: translate3d(0, -2.5%, 0) scale(1.07); }
+  }
+  @keyframes sheet-settle {
+    from { opacity: 0.35; transform: translate3d(0, 16px, 0) scale(0.985); }
+    to   { opacity: 1; transform: none; }
+  }
+
   /* -- Kopf ---------------------------------------------------------------- */
   .masthead { transition: box-shadow 240ms linear, border-color 240ms linear; }
   .masthead.is-scrolled {
@@ -811,14 +962,17 @@
 
 @media (prefers-reduced-motion: reduce) {
   .js .reveal,
-  .js .reveal--zoom { opacity: 1; transform: none; transition: none; }
-  .hoverable :global(img),
+  .js .reveal--zoom,
+  .js .reveal--left,
+  .js .reveal--right { opacity: 1; transform: none; transition: none; }
+  .js .stagger > * { --reveal-delay: 0ms; }
+  .hoverable img,
   .lift,
   .btn,
   .link,
   .masthead { transition: none; }
   @media (hover: hover) {
-    .hoverable:hover :global(img),
+    .hoverable:hover img,
     .lift:hover { transform: none; }
   }
   .link { background-size: 100% 2px; }

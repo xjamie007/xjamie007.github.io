@@ -15,7 +15,7 @@
     "email": "E-Mail",
     "address": "Adresse",
     "country": "Luxemburg",
-    "vatId": "TVA-Nummer",
+    "vatId": "MwSt-Nummer",
     "rcs": "RCS Luxemburg",
     "plusCode": "Plus Code",
     "coordinates": "Koordinaten",
@@ -148,7 +148,7 @@
     },
     "repair": {
       "title": "Reparatur und Wiederverwendung",
-      "body": "Wir reparieren gebrauchte Kisten und Paletten und stempeln sie neu. Das dürfen nur Betriebe machen, die eine Registriernummer haben. Unsere ist 079.",
+      "body": "Wir reparieren gebrauchte Kisten und Paletten und stempeln sie neu. Das dürfen nur Betriebe mit Registriernummer. Unsere ist 079.",
       "link": "Was bei einer Reparatur gilt",
       "drawingAlt": "Zeichnung einer Palette, bei der ein Deckbrett ersetzt wird, und des neuen Stempels."
     }
@@ -400,7 +400,7 @@
     "langHeading": "Sprache",
     "legal": "Impressum",
     "privacy": "Datenschutz",
-    "rcsLine": "RCS Luxemburg {rcs} · TVA {vat}",
+    "rcsLine": "RCS Luxemburg {rcs} · MwSt {vat}",
     "madeIn": "Gebaut in Mertzig, Kanton Diekirch, Luxemburg."
   },
   "hours": {
@@ -447,7 +447,7 @@
     "h1": "Reparatur und Wiederverwendung",
     "lead": "Wir reparieren gebrauchte Kisten und Paletten und setzen sie neu in Betrieb. Viele unserer Emballagen sind so mehrere Jahre im Einsatz.",
     "ruleHeading": "Warum die Nummer 079 hier zählt",
-    "ruleBody": "Eine Palette, die wiederverwendet, recycelt oder repariert wird, muss neu gekennzeichnet werden, und alle Bauteile müssen behandelt sein. Das dürfen nur Betriebe machen, die eine Registriernummer haben. Wir haben eine, deshalb bekommen Sie die Palette mit gültigem Stempel zurück.",
+    "ruleBody": "Eine Palette, die wiederverwendet, recycelt oder repariert wird, muss neu gekennzeichnet werden. Alle Bauteile müssen behandelt sein. Das dürfen nur Betriebe mit einer Registriernummer. Wir haben eine, deshalb bekommen Sie die Palette mit gültigem Stempel zurück.",
     "whatHeading": "Was wir machen",
     "whatItems": [
       "Gebrauchte Paletten und Kisten prüfen und sortieren",

@@ -25,7 +25,7 @@ const facts = [
 
 <Section wide tight labelledby="facts-h2" class="facts">
   <h2 id="facts-h2" class="sr-only">{t(locale, 'facts.heading')}</h2>
-  <dl class="facts__list">
+  <dl class="facts__list stagger">
     {facts.map((f) => (
       <div class="facts__item reveal">
         <dt class="t-label facts__term">{f.term}</dt>
