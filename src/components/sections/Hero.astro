@@ -1,0 +1,82 @@
+---
+/**
+ * Hero.
+ *
+ * Links die Aussage, rechts ein Foto aus der eigenen Halle mit dem IPPC-Cachet
+ * darüber. Kein Stockfoto und keine große Zahl mit Verlauf — beides Bilder aus
+ * dem Betrieb bzw. aus der Norm, nach der er stempelt.
+ *
+ * Die Überschrift ist EINFARBIG. Kein Wort hervorgehoben, nicht kursiv, nicht
+ * in einer anderen Farbe.
+ */
+import IppcMark from '../IppcMark.astro';
+import Photo from '../Photo.astro';
+import Section from '../Section.astro';
+import { t } from '../../i18n';
+import { anchors, type Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+---
+
+<Section id="hero" tone="dark" wide labelledby="hero-h1" class="hero">
+  <div class="hero__grid">
+    <div class="hero__text reveal">
+      <h1 id="hero-h1" class="t-h1 hero__h1">{t(locale, 'hero.h1')}</h1>
+      <p class="t-body hero__body">{t(locale, 'hero.body')}</p>
+      <p class="hero__actions">
+        <a class="btn btn--primary" href={`#${anchors.inquiry}`}>{t(locale, 'hero.ctaPrimary')}</a>
+        <a class="btn btn--secondary" href={`#${anchors.configurator}`}>{t(locale, 'hero.ctaSecondary')}</a>
+      </p>
+    </div>
+
+    <figure class="hero__figure">
+      <Photo locale={locale} name="hall" eager sizes="(min-width: 60rem) 32rem, 92vw" class="hero__photo" />
+      <div class="hero__stamp stamp-press">
+        <IppcMark label={t(locale, 'hero.stampAlt')} weight={3} />
+      </div>
+    </figure>
+  </div>
+</Section>
+
+<style>
+  .hero__grid { display: grid; gap: 2.5rem; align-items: center; }
+  @media (width >= 60rem) {
+    .hero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 30rem); gap: 4rem; }
+  }
+
+  .hero__h1 { max-inline-size: 16ch; }
+  .hero__body { margin-block-start: 1.25rem; }
+  .hero__actions { margin-block-start: 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+  .hero__figure { position: relative; margin: 0; }
+  .hero__photo { display: block; }
+  .hero__photo :global(img) {
+    inline-size: 100%;
+    block-size: auto;
+    display: block;
+    border-radius: 2px;
+  }
+
+  /* Das Cachet liegt an der unteren Kante des Fotos. Nach außen ragen darf es
+     erst, wenn daneben Platz ist — am schmalen Bildschirm liegt es im Bild,
+     sonst hängt es unten aus dem Band heraus. */
+  .hero__stamp {
+    position: absolute;
+    inset-inline-start: 0.75rem;
+    inset-block-end: 0.75rem;
+    inline-size: min(52%, 13rem);
+    padding: 0.75rem 0.9rem;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    border: 1px solid color-mix(in srgb, var(--color-paper) 30%, transparent);
+    border-radius: 2px;
+  }
+  @media (width >= 60rem) {
+    .hero__stamp {
+      inset-inline-start: -2.25rem;
+      inset-block-end: -1.75rem;
+      inline-size: 16rem;
+    }
+  }
+</style>

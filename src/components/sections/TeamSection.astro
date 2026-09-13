@@ -1,0 +1,40 @@
+---
+/**
+ * Equipe — rendert nëmmen, wann et Daten gëtt.
+ * Kee Platzhalter, kee groe Kapp-Icon, keng erfonnte Rollen.
+ * TODO[FEHLT] `src/data/team.ts` fëllen, dann erschéngt d'Sektioun vun eleng.
+ */
+import Section from '../Section.astro';
+import RailItem from '../RailItem.astro';
+import { team } from '../../data/team';
+import { t } from '../../i18n';
+import type { Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+---
+
+{team.length > 0 && (
+  <Section id="equipe" labelledby="equipe-h2" tight>
+    <Fragment slot="rail">
+      <RailItem term={t(locale, 'rail.team')} value={String(team.length)} />
+    </Fragment>
+    <h2 id="equipe-h2" class="t-h2">{t(locale, 'rail.team')}</h2>
+    <ul class="team">
+      {team.map((m) => (
+        <li class="team__row">
+          <span class="team__name">{m.name}</span>
+          <span class="t-caption">{t(locale, m.roleKey)}</span>
+          {m.email && <a class="link" href={`mailto:${m.email}`}>{m.email}</a>}
+        </li>
+      ))}
+    </ul>
+  </Section>
+)}
+
+<style>
+  .team { margin-block-start: 1.5rem; border-block-start: 2px solid var(--band-line); }
+  .team__row { display: grid; gap: 0.15rem; padding-block: 0.85rem; border-block-end: 1px solid var(--band-line); }
+  .team__name { font-family: var(--font-mark); font-weight: 600; font-size: 1.125rem; }
+  @media (width >= 34rem) { .team__row { grid-template-columns: 16rem 1fr auto; align-items: baseline; gap: 1.5rem; } }
+</style>

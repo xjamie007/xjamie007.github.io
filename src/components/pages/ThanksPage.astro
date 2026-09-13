@@ -1,0 +1,43 @@
+---
+import Section from '../Section.astro';
+import RailItem from '../RailItem.astro';
+import { company } from '../../data/company';
+import { t, tList } from '../../i18n';
+import { path, type Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+---
+
+<Section labelledby="thx-h1">
+  <Fragment slot="rail">
+    <RailItem term={t(locale, 'rail.reply')} value="1" note={t(locale, 'thanks.body')} />
+  </Fragment>
+
+  <h1 id="thx-h1" class="t-h1">{t(locale, 'thanks.h1')}</h1>
+  <p class="t-body thx__body">{t(locale, 'thanks.body')}</p>
+
+  <h2 class="t-h2 thx__h2">{t(locale, 'thanks.nextHeading')}</h2>
+  <ol class="thx__list">
+    {tList(locale, 'thanks.next').map((x, i) => (
+      <li class="thx__item"><span class="t-num thx__no" aria-hidden="true">{i + 1}</span><span>{x}</span></li>
+    ))}
+  </ol>
+
+  <p class="t-body thx__urgent">
+    {t(locale, 'thanks.urgent').split('{phone}')[0]}
+    <a class="link" href={`tel:${company.phoneE164}`}>{company.phoneDisplay}</a>
+  </p>
+
+  <p class="thx__cta"><a class="btn btn--secondary" href={path('home', locale)}>{t(locale, 'common.backHome')}</a></p>
+</Section>
+
+<style>
+  .thx__body { margin-block-start: 1rem; }
+  .thx__h2 { margin-block-start: 2.5rem; }
+  .thx__list { margin-block-start: 1.25rem; max-inline-size: 60ch; border-block-start: 2px solid var(--band-line); }
+  .thx__item { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: 1rem; align-items: baseline; padding-block: 0.85rem; border-block-end: 1px solid var(--band-line); font-family: var(--font-read); font-size: 1.0625rem; }
+  .thx__no { color: var(--band-tech); }
+  .thx__urgent { margin-block-start: 1.75rem; }
+  .thx__cta { margin-block-start: 2rem; }
+</style>

@@ -1,0 +1,140 @@
+---
+/**
+ * „Über uns" und die Etappen — ein Block.
+ *
+ * Die beiden gehören zusammen: erst wer der Betrieb ist, dann wie er dahin
+ * gekommen ist. Deshalb ein gemeinsamer Grund und eine gemeinsame Überschrift,
+ * mit den Jahreszahlen als Unterkapitel, statt zwei Sektionen, die dasselbe
+ * Thema zweimal anfangen.
+ *
+ * Die Linie füllt sich beim Scrollen (`animation-timeline: view()`), ohne
+ * Scroll-Listener und ohne JavaScript. Wo der Browser das nicht kann, steht
+ * sie fertig da.
+ */
+import Section from '../Section.astro';
+import Photo from '../Photo.astro';
+import { history } from '../../data/history';
+import { t } from '../../i18n';
+import { anchors, path, type Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+---
+
+<Section id={anchors.history} wide labelledby="about-h2" class="band--tint">
+  <div class="ab reveal">
+    <div class="ab__text">
+      <h2 id="about-h2" class="t-h2">{t(locale, 'about.heading')}</h2>
+      <p class="t-body ab__body">{t(locale, 'about.body')}</p>
+      <p class="ab__more">
+        <a class="link" href={path('history', locale)}>{t(locale, 'common.readMore')}</a>
+      </p>
+    </div>
+    <Photo locale={locale} name="worker" sizes="(min-width: 52rem) 26rem, 92vw" class="ab__photo" />
+  </div>
+
+  <h3 class="t-label ab__sub">{t(locale, 'about.timeline')}</h3>
+
+  <ol class="hs">
+    <span class="hs__fill" aria-hidden="true"></span>
+    {history.map((h) => (
+      <li class="hs__item reveal">
+        <span class="hs__dot" aria-hidden="true"></span>
+        <span class="t-num hs__year">{h.year}</span>
+        <span class="hs__label">{t(locale, `history.short.${h.id}`)}</span>
+      </li>
+    ))}
+  </ol>
+</Section>
+
+<style>
+  .ab { display: grid; gap: 2rem; align-items: center; }
+  @media (width >= 52rem) { .ab { grid-template-columns: minmax(0, 1fr) minmax(0, 26rem); gap: 4rem; } }
+
+  .ab__body { margin-block-start: 1rem; }
+  .ab__more { margin-block-start: 1.25rem; }
+  .ab__photo :global(img) {
+    inline-size: 100%;
+    block-size: auto;
+    display: block;
+    border-radius: 3px;
+  }
+
+  .ab__sub {
+    margin-block-start: 3.5rem;
+    color: var(--band-tech);
+    display: block;
+  }
+
+  /* ── Etappen als waagerechtes Band ─────────────────────────────────────
+     Untereinander ließen acht kurze Zeilen die halbe Breite leer stehen. */
+  .hs {
+    position: relative;
+    margin-block-start: 2rem;
+    padding-block-start: 1.75rem;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.75rem 1.5rem;
+  }
+  @media (width >= 40rem) { .hs { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  @media (width >= 64rem) { .hs { grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 1.5rem 1rem; } }
+
+  .hs::before {
+    content: '';
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline: 0.4rem;
+    block-size: 2px;
+    background: var(--band-line);
+  }
+  .hs__fill {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0.4rem;
+    inline-size: calc(100% - 0.8rem);
+    block-size: 2px;
+    background: var(--color-blue);
+    transform-origin: left;
+    scale: 1 1;
+  }
+  @supports (animation-timeline: view()) {
+    .hs__fill {
+      scale: 0 1;
+      animation: hs-grow linear both;
+      animation-timeline: view();
+      animation-range: cover 22% cover 68%;
+    }
+  }
+  @keyframes hs-grow { to { scale: 1 1; } }
+
+  .hs__item { position: relative; display: grid; gap: 0.2rem; }
+  .hs__dot {
+    position: absolute;
+    inset-block-start: -2.1rem;
+    inset-inline-start: 0;
+    inline-size: 0.7rem;
+    block-size: 0.7rem;
+    border-radius: 50%;
+    background: var(--band-bg);
+    border: 2px solid var(--color-blue);
+    transition: background-color 200ms linear, transform 220ms cubic-bezier(0.22, 0.8, 0.3, 1);
+  }
+  .hs__year {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-blue-deep);
+    white-space: nowrap;
+    transition: color 200ms linear;
+  }
+  .hs__label { font-size: 0.9375rem; line-height: 1.4; color: var(--band-muted); }
+
+  @media (hover: hover) {
+    .hs__item:hover .hs__dot { background: var(--color-blue); transform: scale(1.3); }
+    .hs__item:hover .hs__label { color: var(--band-fg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hs__fill { animation: none; scale: 1 1; }
+    .hs__dot, .hs__year, .hs__label { transition: none; }
+  }
+</style>

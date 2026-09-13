@@ -1,0 +1,63 @@
+---
+/**
+ * Palette: Plang vun uewen a Riss vun der Säit.
+ *
+ * Zwou orthogonal Usiichten, keng Isometrie — esou gesäit een d'Decksbrieder,
+ * d'Klëtz an d'Ënnerbrieder gläichzäiteg, an et ënnerscheet sech vun der
+ * Këschtezeechnung.
+ *
+ * Zeechnungsreiefolleg ass hei d'Informatioun: ënnen d'Ënnerbrieder, dann
+ * d'Klëtz, uewen d'Decksbrieder mat Papeierfëllung. Wat dobaussent de Spalte
+ * duerchschéngt, ass dat, wat wierklech drënner läit.
+ *
+ * Keng Moosszuelen: d'Zuele stinn an der Tabell op der Palettesäit, wou se
+ * nopréifbar sinn. Eng Zuel, déi zweemol steet, leeft fréier oder spéider
+ * auserneen.
+ */
+interface Props { label: string }
+const { label } = Astro.props;
+const uid = `pal-${Math.random().toString(36).slice(2, 8)}`;
+const PAPER = 'fill: var(--band-bg, #FFFFFF)';
+
+const X0 = 10, X1 = 250, Y0 = 10, Y1 = 170;
+
+/* Fënnef Decksbrieder, déi laanscht déi kuerz Kant lafen — déi baussenzwee méi
+   breet, wéi et bei enger Palette üblech ass. */
+const decks = [
+  { x: 10, w: 26 }, { x: 68, w: 20 }, { x: 120, w: 20 }, { x: 172, w: 20 }, { x: 224, w: 26 },
+];
+/* Dräi Ënnerbrieder laanscht déi laang Kant, an néng Klëtz dertëschent. */
+const runnerY = [10, 79, 148];
+const blockX = [10, 117, 224];
+const RUN_H = 22;
+---
+
+<svg viewBox="0 0 260 232" role="img" aria-labelledby={`${uid}-t`} focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <title id={`${uid}-t`}>{label}</title>
+
+  <g fill="none" stroke="currentColor" stroke-linejoin="round">
+    <!-- 1 · Ënnerbrieder -->
+    <g stroke-width="1.1" opacity="0.7">
+      {runnerY.map((y) => <rect x={X0} y={y} width={X1 - X0} height={RUN_H} />)}
+    </g>
+
+    <!-- 2 · Klëtz, duerch d'Decksbrieder duerchgesinn → gestréchelt -->
+    <g stroke-width="1.1" stroke-dasharray="4 3" opacity="0.85">
+      {blockX.map((x) => runnerY.map((y) => <rect x={x} y={y} width="26" height={RUN_H} />))}
+    </g>
+
+    <!-- 3 · Decksbrieder -->
+    <g stroke-width="1.6">
+      {decks.map((b) => <rect x={b.x} y={Y0} width={b.w} height={Y1 - Y0} style={PAPER} />)}
+    </g>
+
+    <!-- Riss vun der Säit: Deckbriet, Klëtz, Ënnerbriet -->
+    <g stroke-width="1.6">
+      <rect x={X0} y="188" width={X1 - X0} height="7" style={PAPER} />
+      {blockX.map((x) => <rect x={x} y="195" width="26" height="18" style={PAPER} />)}
+      <rect x={X0} y="213" width={X1 - X0} height="7" style={PAPER} />
+    </g>
+  </g>
+
+  <line x1={X0} y1="179" x2={X1} y2="179" stroke="currentColor" stroke-width="0.8" stroke-dasharray="2 4" opacity="0.45" />
+</svg>

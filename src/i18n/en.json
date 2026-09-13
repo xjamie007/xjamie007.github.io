@@ -1,0 +1,596 @@
+{
+  "common": {
+    "onRequest": "on request",
+    "skipToContent": "Skip to content",
+    "menu": "Menu",
+    "closeMenu": "Close menu",
+    "langLabel": "Language",
+    "langSwitch": "Change language",
+    "required": "required",
+    "optional": "optional",
+    "backHome": "Back to the home page",
+    "readMore": "More on this",
+    "print": "Print this page",
+    "phone": "Phone",
+    "fax": "Fax",
+    "email": "Email",
+    "address": "Address",
+    "country": "Luxembourg",
+    "vatId": "VAT number",
+    "rcs": "RCS Luxembourg",
+    "plusCode": "Plus Code",
+    "coordinates": "Coordinates",
+    "openRoute": "Open route in Google Maps",
+    "openRouteNote": "The link only goes out when you click it.",
+    "source": "Source",
+    "breadcrumb": "You are here"
+  },
+  "nav": {
+    "pallets": "Pallets",
+    "crates": "Crates",
+    "stamp": "The mark",
+    "delivery": "Delivery",
+    "contact": "Contact",
+    "label": "Main navigation",
+    "repair": "Repair"
+  },
+  "meta": {
+    "home": {
+      "title": "KASEL — Wooden pallets and custom export crates, Mertzig",
+      "description": "Wooden pallets and crates made in Mertzig, Luxembourg. Standard sizes, built to specification, export crates with the IPPC mark. Own sawmill, 9,000 m² storage."
+    },
+    "pallets": {
+      "title": "Wooden pallets Luxembourg — sizes, loads, CP | KASEL",
+      "description": "Standard pallets, CP pallets and special pallets to your technical specification. Cut to order in our own sawmill in Mertzig, Luxembourg. Ask us for a quote."
+    },
+    "crates": {
+      "title": "Custom wooden export crates for sea freight | KASEL",
+      "description": "Wooden crates for copper, glass, aluminium and machinery. Closed or slatted, with the IPPC mark for China, Australia, New Zealand and other third countries."
+    },
+    "repair": {
+      "title": "Pallet repair in Luxembourg — re-marked, 079 | KASEL",
+      "description": "We repair used pallets and crates and re-mark them as the standard requires. Only registered companies may do that — our registration number is 079. In Mertzig."
+    },
+    "ispm15": {
+      "title": "ISPM 15 in Luxembourg — IPPC mark, number 079 | KASEL",
+      "description": "Three companies in Luxembourg are listed as producers in the ISPM 15 register. When you need a mark, what it replaces, and what happens when it is missing."
+    },
+    "delivery": {
+      "title": "Delivery & collection — access, ramp, hours | KASEL",
+      "description": "For drivers and hauliers: how to reach our yard in Mertzig, the ramp, the paperwork, the languages we speak. Address, Plus Code and map on one printable page."
+    },
+    "history": {
+      "title": "Since 1959 — the story of a family business | KASEL",
+      "description": "From a joinery in Bissen in 1959 to 9,000 m² of halls in Mertzig. The stages of the Kasel family business, year by year. Three generations, one works."
+    },
+    "contact": {
+      "title": "Contact and enquiry — KASEL, Zone Industrielle Mertzig",
+      "description": "Enquiry for pallets, custom crates, repair or storage. 12, Zone Industrielle, L-9166 Mertzig, Luxembourg. Phone +352 888 334-1, tom@kasel.lu. Write to us."
+    },
+    "thanks": {
+      "title": "Thank you for your enquiry | KASEL",
+      "description": "Your enquiry has arrived. Here is what happens next and how to reach us directly."
+    },
+    "legal": {
+      "title": "Legal notice — Emballages en Bois Kasel S.à r.l. | KASEL",
+      "description": "Company name, legal form, address, phone, email, RCS and VAT numbers of Emballages en Bois Kasel S.à r.l. in Mertzig, Luxembourg. Director: Tom Kasel."
+    },
+    "privacy": {
+      "title": "Privacy — how we handle your data at KASEL, Mertzig",
+      "description": "What the enquiry form collects, what for, on what legal basis, how long we keep it and what rights you have. No cookies on this site, and no tracking."
+    },
+    "notfound": {
+      "title": "Page not found | KASEL",
+      "description": "This page does not exist (any more)."
+    }
+  },
+  "hero": {
+    "h1": "Wooden pallets and crates, built to size.",
+    "body": "Our own sawmill in Mertzig, 9,000 m² of storage. We cut the timber once your order is in.",
+    "ctaPrimary": "Send a request",
+    "ctaSecondary": "Configure a crate",
+    "stampAlt": "The IPPC mark: the wheat-ear symbol, the country code LU, the registration number 079 and the treatment code.",
+    "markAlt": "KASEL"
+  },
+  "facts": {
+    "heading": "At a glance",
+    "sinceTerm": "Since",
+    "sawmillTerm": "Sawmill",
+    "sawmillValue": "in-house",
+    "storageTerm": "Storage",
+    "exportTerm": "Export",
+    "exportValue": "worldwide"
+  },
+  "stampShort": {
+    "heading": "Does your consignment need an IPPC mark?",
+    "yesTerm": "China, Australia, New Zealand",
+    "yesValue": "yes",
+    "noTerm": "Inside the EU",
+    "noValue": "no",
+    "body": "For those countries the timber has to be treated and marked. Without the mark the consignment stops at the destination port. We do it ourselves, you do not have to arrange anything.",
+    "link": "What you need, and when"
+  },
+  "rail": {
+    "ispm": "ISPM 15",
+    "producer": "Producer",
+    "authority": "Authority",
+    "registry": "Register",
+    "treatment": "Treatment",
+    "pallets": "Pallets",
+    "crates": "Crates",
+    "cratesValue": "made to size",
+    "configurator": "Configurator",
+    "stamp": "Mark",
+    "ramp": "Ramp",
+    "spaces": "Truck bays",
+    "since": "Since",
+    "faq": "Questions",
+    "inquiry": "Enquiry",
+    "storage": "Storage",
+    "sawmill": "Sawmill",
+    "sawmillValue": "in-house",
+    "team": "Team",
+    "references": "References",
+    "reply": "Reply"
+  },
+  "products": {
+    "heading": "What we make",
+    "pallets": {
+      "title": "Pallets",
+      "body": "Standard pallets, CP pallets and special sizes. Because we saw our own timber, we are not tied to stock sizes.",
+      "link": "Range and specification",
+      "drawingAlt": "Drawing of a pallet from above and from the side: deck boards, blocks and skids."
+    },
+    "crates": {
+      "title": "Crates made to size",
+      "body": "Crates for sea freight of copper, glass, aluminium and machinery. Closed or slatted, with the IPPC mark for third countries.",
+      "link": "Construction types and cargo",
+      "drawingAlt": "Drawing of a closed export crate with skids underneath and the IPPC mark on the side."
+    },
+    "repair": {
+      "title": "Repair and reuse",
+      "body": "We repair used crates and pallets and mark them again. Only registered companies may do that. Ours is number 079.",
+      "link": "What applies when we repair",
+      "drawingAlt": "Drawing of a pallet with one deck board being replaced, and of the new mark."
+    }
+  },
+  "about": {
+    "heading": "About us",
+    "body": "A family business. Henry Kasel started in Bissen in 1959; today his grandson Tom runs production. The administration has stayed in the family.",
+    "timeline": "The stages"
+  },
+  "photos": {
+    "hall": "Inside the storage hall: stacks of pallets and crates under the blue steel structure.",
+    "pallets": "Stacked pallets close up: deck boards, blocks and bottom boards.",
+    "crates": "Stacked wooden crates built from squared timber and board material.",
+    "marked": "Finished crates carrying applied markings on the end face.",
+    "repair": "Used pallets stacked in the yard, waiting to be checked and repaired.",
+    "machine": "The pallet machine in the hall, with robot arm and timber on the infeed.",
+    "sawline": "The long sawing line in the production hall.",
+    "worker": "An employee at the sawing line in the hall.",
+    "yard": "The yard with the hall and pallet stacks, seen from outside.",
+    "timber": "Cut squared timber, stacked, growth rings visible at the end grain.",
+    "credit": "Photos"
+  },
+  "config": {
+    "heading": "Configure a crate",
+    "lead": "Enter the dimensions of your goods. The drawing shows the matching crate. Everything you enter travels with the request.",
+    "disclaimer": "The drawing is a guide value, not a construction specification. Price and final design come from us once we have read your request.",
+    "fieldsetSize": "Size and weight",
+    "fieldsetBuild": "Cargo, destination and construction",
+    "exampleTag": "Example",
+    "fields": {
+      "inner": {
+        "label": "Inner dimensions of the cargo",
+        "hint": "in millimetres"
+      },
+      "length": "Length",
+      "width": "Width",
+      "height": "Height",
+      "weight": {
+        "label": "Weight",
+        "hint": "in kilograms"
+      },
+      "cargo": "Cargo",
+      "cargoHint": "Type anything. For example copper, glass, aluminium, machinery.",
+      "dest": "Destination",
+      "qty": "Quantity",
+      "build": "Construction",
+      "outer": {
+        "label": "Outer dimensions",
+        "hint": "inner size plus wall thickness"
+      }
+    },
+    "cargo": {
+      "copper": "Copper",
+      "glass": "Glass",
+      "aluminium": "Aluminium",
+      "machine": "Machine or plant"
+    },
+    "dest": {
+      "eu": "EU",
+      "cn": "China",
+      "au": "Australia",
+      "nz": "New Zealand",
+      "third": "other third country"
+    },
+    "build": {
+      "closed": "closed",
+      "slatted": "slatted",
+      "autoNote": "Preset follows the cargo. You can switch."
+    },
+    "out": {
+      "heading": "What follows from this",
+      "outer": "Outer dimensions",
+      "skids": "Skids",
+      "boardThickness": "Board thickness",
+      "volume": "Volume",
+      "guide": "guide value",
+      "stampOn": "IPPC mark on two opposite sides",
+      "stampOff": "No IPPC mark needed"
+    },
+    "rule": {
+      "third": "China, Australia and New Zealand require ISPM 15 treated timber carrying the IPPC mark. We may apply it, registration number 079.",
+      "eu": "Inside the EU no ISPM 15 treatment is required; where needed, the mark replaces the plant passport."
+    },
+    "actions": {
+      "submit": "Send as enquiry",
+      "download": "Download drawing",
+      "reset": "Reset"
+    },
+    "noscript": "Without JavaScript the drawing does not update. The fields below still work: fill them in and send them with the request. We need the inner dimensions, the weight, the cargo, the destination and the quantity.",
+    "drawingLabelStatic": "Example drawing of an export crate with dimension lines, skids and the IPPC mark.",
+    "liveIntro": "Drawing",
+    "srSummary": "Crate {outer} mm outside, {skids} skids, {build}, {stamp}."
+  },
+  "stamp": {
+    "heading": "The mark",
+    "lead": "The mark carries everything the inspector at the destination port needs. Here is each field on its own: what it means, and what happens when it is missing.",
+    "fields": {
+      "ippc": {
+        "title": "The IPPC symbol",
+        "what": "The stylised wheat ear shows that the timber was treated under ISPM 15, the international plant protection standard.",
+        "without": "Without it, customs at the destination treat the consignment as untreated timber."
+      },
+      "lu": {
+        "title": "LU",
+        "what": "The ISO country code of the country where the timber was treated and marked.",
+        "without": "It tells the authority at the destination which register to check."
+      },
+      "number": {
+        "title": "079",
+        "what": "Our registration number with ASTA, the Administration des Services Techniques de l'Agriculture. It is unique, non-transferable and publicly verifiable.",
+        "without": "Luxembourg has three registered producers."
+      },
+      "code": {
+        "title": "The treatment code",
+        "what": "It states how the timber was treated: HT for heat treatment, DB for debarked.",
+        "without": "Without the code the mark is incomplete and therefore invalid."
+      },
+      "twoSides": {
+        "title": "Two sides",
+        "what": "The mark must be applied visibly and permanently, preferably on two opposite sides.",
+        "without": "Then the inspector finds it no matter how the crate sits in the container."
+      },
+      "noRedOrange": {
+        "title": "Not red, not orange",
+        "what": "Those colours are reserved for marking dangerous goods.",
+        "without": "Which is why you do not see them on this website either."
+      },
+      "afterRepair": {
+        "title": "Marked again after every repair",
+        "what": "If a pallet is reused, recycled or repaired, it has to be marked again, and every component has to be treated.",
+        "without": "Which is why we do not only repair. We re-mark as well."
+      },
+      "replaces": {
+        "title": "What it replaces",
+        "what": "Inside the EU the mark replaces the plant passport; on export it replaces the phytosanitary certificate.",
+        "without": "It applies to solid timber from 6 mm thick, not to processed wood panels."
+      }
+    },
+    "whatItMeans": "What it means",
+    "whatIfMissing": "What happens when it is missing",
+    "registryHeading": "The three registered producers in Luxembourg",
+    "registryNote": "This is not a claim of ours, it is in the public register.",
+    "sourceLine": "Source: Single Window for Logistics, Luxembourg (ASTA), as at 8 April 2025.",
+    "cta": "Configure a crate"
+  },
+  "delivery": {
+    "heading": "Delivery & collection",
+    "lead": "For drivers and hauliers: this is how delivery works at our yard.",
+    "stepsHeading": "The way onto the site",
+    "steps": {
+      "entry": {
+        "title": "Enter through the main hall",
+        "body": "That is the only access to the yard and the ramp."
+      },
+      "yard": {
+        "title": "Carry on into the yard",
+        "body": "Drive straight through, along the hall."
+      },
+      "ramp": {
+        "title": "Pull up at the ramp",
+        "body": "Stay in the cab, we come to you."
+      },
+      "papers": {
+        "title": "We bring the paperwork to the truck",
+        "body": "You do not have to walk up to the office."
+      }
+    },
+    "factsHeading": "On site",
+    "facts": {
+      "spaces": "Truck bays",
+      "overnight": "Overnight parking possible",
+      "languages": "Languages spoken",
+      "access": "Access"
+    },
+    "addressHeading": "Address and position",
+    "mapAlt": "Map of the industrial estate in Mertzig with the position of the works, a scale bar and a north arrow.",
+    "mapAttribution": "Map data © OpenStreetMap contributors. The image is hosted on this page. Nothing is requested from outside.",
+    "printHeading": "One page to print",
+    "printBody": "This page is set to fit on a single sheet. Print it and keep it in the cab.",
+    "shortHeading": "Short version",
+    "pending": "We will put these details online as soon as they are confirmed. Until then: call us and we will talk you in. {phone}"
+  },
+  "history": {
+    "heading": "History",
+    "lead": "Three generations, one works.",
+    "entries": {
+      "1959": "Henry Kasel founds a joinery with three employees in Bissen. Wooden packaging grows out of it step by step.",
+      "1973": "Maison Kasel is founded in Bissen.",
+      "1994": "18 employees, capacity is exhausted. International customers want larger plant.",
+      "1995": "The move to the industrial estate in Mertzig, with storage and offices.",
+      "1997": "Two more storage halls. Total floor area has stood at 9,000 m² since then.",
+      "2002": "A thorough modernisation of every part of the works.",
+      "2008": "The new pallet machine goes into service.",
+      "2014": "Emballages en Bois Kasel S.à r.l. is founded under Tom Kasel and takes over production."
+    },
+    "short": {
+      "1959": "Joinery in Bissen",
+      "1973": "Maison Kasel founded",
+      "1994": "18 staff, site too small",
+      "1995": "Move to Mertzig",
+      "1997": "Two halls, 9,000 m²",
+      "2002": "Everything modernised",
+      "2008": "New pallet machine",
+      "2014": "Tom Kasel takes over"
+    },
+    "family": "Pierrot Kasel succeeded his father Henry. The family still runs the administration. Tom Kasel heads the production company."
+  },
+  "faq": {
+    "heading": "Frequently asked",
+    "items": {
+      "china": {
+        "q": "Does my consignment to China need an IPPC mark?",
+        "a": "Yes. China, Australia and New Zealand require ISPM 15 treated timber with a valid IPPC mark. We may apply it, registration number 079."
+      },
+      "eu": {
+        "q": "And inside the EU?",
+        "a": "No ISPM 15 treatment is required there. Where needed, the mark replaces the plant passport."
+      },
+      "leadtime": {
+        "q": "How quickly can you deliver?",
+        "a": "We cut the timber once the order comes in, and we have 9,000 m² of storage. How long it takes in your case we will tell you as soon as we have read your request. Send us the quantity and the date you need it."
+      },
+      "repair": {
+        "q": "Can you repair our used pallets?",
+        "a": "Yes, and we mark them again afterwards, as the standard requires."
+      },
+      "storage": {
+        "q": "Can you store finished goods for us?",
+        "a": "Yes. Finished goods usually go straight out, but they can be stored and shipped on call-off."
+      },
+      "sizes": {
+        "q": "Which sizes are standard?",
+        "a": "Standard pallets, CP pallets and special pallets to your specification. Tell us the size you need. We cut to order and are not tied to stock sizes."
+      },
+      "driver-access": {
+        "q": "Where do I drive in?",
+        "a": "Through the main hall. That is the only access to the yard and the ramp. The full route is on the Delivery & collection page."
+      }
+    },
+    "lead": "What buyers and drivers ask us most often.",
+    "nudge": "Your question is not here? Write to us and we will answer.",
+    "nudgeCta": "Send a request"
+  },
+  "form": {
+    "heading": "Enquiry",
+    "lead": "Five fields are required. The more you fill in, the more precise our answer can be.",
+    "summaryHeading": "From the configurator",
+    "summaryEdit": "Change",
+    "summaryEmpty": "Nothing configured yet.",
+    "fields": {
+      "company": "Company",
+      "contact": "Contact person",
+      "email": "Email",
+      "subject": "What should we build?",
+      "message": "Message",
+      "phone": "Phone",
+      "qty": "Quantity",
+      "leadDate": {
+        "label": "Date needed",
+        "hint": "the day you need the goods"
+      },
+      "place": {
+        "label": "Delivery location",
+        "hint": "town and country are enough"
+      },
+      "file": {
+        "label": "Drawing or photo",
+        "hint": "PDF, PNG or JPG · one file · 10 MB max."
+      }
+    },
+    "subjects": {
+      "pallets": "Pallets",
+      "crates": "Crates made to size",
+      "repair": "Repair",
+      "storage": "Storage",
+      "unsure": "not decided yet"
+    },
+    "consent": "I agree that my details may be stored and used to answer this enquiry. The specifics are in the privacy notice.",
+    "consentLink": "privacy notice",
+    "submit": "Send request",
+    "sending": "sending …",
+    "errors": {
+      "company": "Enter the company name.",
+      "contact": "Enter who we will be speaking to.",
+      "email": "Please check the email address. For example: name@company.lu",
+      "subject": "Choose what we should build.",
+      "message": "Tell us briefly what this is about.",
+      "consent": "Without your consent we may not process these details.",
+      "file": "This file will not go through. PDF, PNG or JPG up to 10 MB are accepted.",
+      "summary": "{count} entry is still missing.",
+      "summaryPlural": "{count} entries are still missing.",
+      "network": "The enquiry did not get through. Try again, or write straight to {email}."
+    },
+    "successHeading": "Thank you. Your enquiry has arrived.",
+    "successBody": "We will come back to you within one working day.",
+    "successNext": "If it is urgent, call: {phone}.",
+    "summaryRemove": "Remove the sizes",
+    "summaryRemoveHint": "The request then goes out without the crate sizes."
+  },
+  "footer": {
+    "company": "Company",
+    "pages": "Pages",
+    "legalNav": "Legal",
+    "langHeading": "Language",
+    "legal": "Legal notice",
+    "privacy": "Privacy",
+    "rcsLine": "RCS Luxembourg {rcs} · VAT {vat}",
+    "madeIn": "Built in Mertzig, canton of Diekirch, Luxembourg."
+  },
+  "hours": {
+    "office": "Office and phone",
+    "ramp": "Delivery and collection",
+    "heading": "Opening hours"
+  },
+  "pallets": {
+    "h1": "Wooden pallets",
+    "lead": "Standard pallets, CP pallets and pallets to your technical specification. Because we saw our own timber, we are not tied to stock sizes.",
+    "standardHeading": "Standard sizes",
+    "cpHeading": "CP pallets",
+    "cpNote": "CP dimensions are fixed by the CP standard. Which types we hold and which we build to order: ask us.",
+    "customHeading": "Special pallets",
+    "customBody": "Send us your drawing or your technical specification. We build to your requirements.",
+    "table": {
+      "caption": "Values still missing here, we will give you on request.",
+      "size": "Size (mm)",
+      "load": "Load capacity",
+      "wood": "Timber",
+      "drying": "Drying",
+      "ispm": "ISPM 15",
+      "type": "Type",
+      "ispmYes": "possible"
+    }
+  },
+  "crates": {
+    "h1": "Crates made to size",
+    "lead": "Crates for sea freight of copper, glass, aluminium and machinery. Closed or slatted, according to weight and cargo.",
+    "buildHeading": "Construction types",
+    "closedTitle": "Closed",
+    "closedBody": "Fully boarded. For glass and for anything that tolerates neither dust nor damp.",
+    "slattedTitle": "Slatted",
+    "slattedBody": "Battens with gaps between them. Lighter and cheaper when the goods are stable in themselves. Typical for machinery and aluminium profiles.",
+    "cargoHeading": "Cargo",
+    "cargoBody": "Copper, glass and aluminium go by sea most often. All three place different demands on the skids and on the securing. So send us the weight and the centre of gravity as well.",
+    "exportHeading": "Overseas shipping",
+    "exportBody": "We hold the approval of the Service Technique de l'Agriculture for making pallets and crates that meet the import rules of China, Australia and New Zealand.",
+    "configCta": "Configure a crate"
+  },
+  "repair": {
+    "h1": "Repair and reuse",
+    "lead": "We repair used crates and pallets and put them back into service. Many of our packagings stay in use for several years that way.",
+    "ruleHeading": "Why the number 079 matters here",
+    "ruleBody": "A pallet that is reused, recycled or repaired has to be marked again. Every component has to be treated. Only registered companies may do that. We are one, so you get the pallet back with a valid mark.",
+    "whatHeading": "What we do",
+    "whatItems": [
+      "Check and sort used pallets and crates",
+      "Replace broken boards, blocks and skids",
+      "Re-mark after repair, as the standard requires",
+      "Deliver back to your site or hold on call-off"
+    ],
+    "cta": "Offer us your used pallets"
+  },
+  "ispm15": {
+    "h1": "ISPM 15 in Luxembourg",
+    "lead": "ISPM 15 is the international standard for wood packaging in world trade. It exists to stop pests travelling from one continent to another inside packaging timber. Who may treat and mark under the standard is listed in a public register.",
+    "whoHeading": "Who may apply the mark in Luxembourg",
+    "whoBody": "Three companies. We are one of them, with registration number 079. The list is kept by ASTA and it is public.",
+    "fieldsHeading": "The mark, field by field",
+    "rulesHeading": "What else applies",
+    "rules": [
+      "The mark must be permanent and must not be transferable.",
+      "It must be applied visibly, preferably on two opposite sides.",
+      "Red and orange are to be avoided, because those colours are reserved for dangerous goods.",
+      "If a pallet is reused, recycled or repaired, it must be marked again; every component must be treated.",
+      "The marking may only be destroyed by complete incineration.",
+      "It applies to solid timber from 6 mm thick, not to processed wood panels.",
+      "The mark replaces the plant passport in intra-EU movement and the phytosanitary certificate on export."
+    ],
+    "whenHeading": "When you need it",
+    "whenBody": "For China, Australia and New Zealand, always. For other third countries it depends on the destination. Put it in your request and we will tell you.",
+    "cta": "Configure a crate"
+  },
+  "contact": {
+    "h1": "Contact",
+    "lead": "Write and tell us what you need. The more precise the request, the sooner you have a quote.",
+    "directHeading": "Direct",
+    "visitHeading": "On site",
+    "driverHint": "Are you a driver? Everything you need is on the Delivery & collection page."
+  },
+  "thanks": {
+    "h1": "Thank you. Your enquiry has arrived.",
+    "body": "We will come back to you within one working day.",
+    "nextHeading": "What happens now",
+    "next": [
+      "Tom reads the request and checks whether anything is missing.",
+      "You get an answer by email, with price, sizes and lead time, if the details are enough.",
+      "If something is unclear, he calls."
+    ],
+    "urgent": "Urgent? Call: {phone}."
+  },
+  "legal": {
+    "h1": "Legal notice",
+    "operatorHeading": "Operator of this website",
+    "contactHeading": "Contact",
+    "registerHeading": "Register and tax",
+    "responsibleHeading": "Responsible for the content",
+    "purposeHeading": "Company purpose",
+    "disputeHeading": "Dispute resolution",
+    "disputeBody": "The European Commission provides a platform for online dispute resolution. We are neither obliged nor willing to take part in dispute resolution proceedings before a consumer arbitration body.",
+    "liabilityHeading": "Liability for links",
+    "liabilityBody": "Our site contains links to external websites. We have no influence over their content. Responsibility for the content of linked pages always rests with their operator.",
+    "supervisionHeading": "Supervision",
+    "supervisionBody": "The ISPM 15 registration is kept by the Administration des Services Techniques de l'Agriculture (ASTA).",
+    "licenceHeading": "Autorisation d'établissement"
+  },
+  "privacy": {
+    "h1": "Privacy",
+    "lead": "In short: we set no cookies, we run no tracking, and the fonts and the map on this site do not load from anyone else's servers. Which is why there is no banner to click away.",
+    "controllerHeading": "Controller",
+    "whatHeading": "What data we receive",
+    "whatBody": "Only what you type into the request form yourself: company, contact person, email and the description of your job. Optionally phone, quantity, date needed, delivery location and, if you attach one, a file. If you use the configurator, the configured values travel with it. You see them on the page before you send.",
+    "whyHeading": "What for",
+    "whyBody": "To answer your enquiry and, if it turns into an order, to carry it out.",
+    "legalBasisHeading": "Legal basis",
+    "legalBasisBody": "Art. 6(1)(b) GDPR (steps prior to a contract) and, as far as the tick box is concerned, Art. 6(1)(a) GDPR (consent). You may withdraw consent at any time.",
+    "retentionHeading": "How long",
+    "retentionBody": "Requests that do not turn into an order are deleted after two years. Requests that do are kept as long as commercial and tax law requires. In Luxembourg, ten years.",
+    "processorsHeading": "Who else is involved",
+    "processorsBody": "The form runs through a server function at Supabase; processing takes place in the EU. The email itself goes through our mail provider. We do not pass your data on and we do not sell it.",
+    "hostingHeading": "Hosting and server logs",
+    "hostingBody": "The web server records technical access data, as every server does. Those logs are used only to run and secure the site.",
+    "cookiesHeading": "Cookies",
+    "cookiesBody": "None. Neither ours nor anyone else's. There is no analytics either.",
+    "rightsHeading": "Your rights",
+    "rightsBody": "You have the right of access, rectification, erasure, restriction of processing, data portability and objection. Write to {email} for that.",
+    "authorityHeading": "Supervisory authority",
+    "authorityBody": "Commission nationale pour la protection des données (CNPD), 15, boulevard du Jazz, L-4370 Belvaux, Luxembourg.",
+    "updatedHeading": "Last updated"
+  },
+  "notfound": {
+    "h1": "This page does not exist.",
+    "body": "The address may have changed, or the link is old. Here are the pages that do exist.",
+    "searchHint": "Looking for something specific? Write to us: {email}"
+  }
+}

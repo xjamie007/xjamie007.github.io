@@ -1,0 +1,65 @@
+---
+/**
+ * D'Wuerzel `/`.
+ *
+ * Standardsprooch ass Lëtzebuergesch, also geet et op `/lb/`. Op engem statesche
+ * Server (GitHub Pages) gëtt et keng 301 — dofir eng Meta-Weiderleedung plus e
+ * Canonical op `/lb/`.
+ *
+ * Doriwwer eraus steet hei eng richteg Sproochwiel: wien ouni JavaScript oder
+ * mat ausgeschalter Weiderleedung kënnt, stitt net virun enger eidler Säit.
+ */
+import '../styles/global.css';
+import Logo from '../components/Logo.astro';
+import { LOCALES, localeNames, htmlLang, path, DEFAULT_LOCALE } from '../i18n/routes';
+import { t } from '../i18n';
+import { absolute } from '../lib/seo';
+
+const target = path('home', DEFAULT_LOCALE);
+const canonical = absolute(Astro.site, target);
+---
+
+<!doctype html>
+<html lang={htmlLang[DEFAULT_LOCALE]}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="refresh" content={`0; url=${target}`} />
+    <title>{t(DEFAULT_LOCALE, 'meta.home.title')}</title>
+    <meta name="description" content={t(DEFAULT_LOCALE, 'meta.home.description')} />
+    <link rel="canonical" href={canonical} />
+    {LOCALES.map((l) => <link rel="alternate" hreflang={htmlLang[l]} href={absolute(Astro.site, path('home', l))} />)}
+    <link rel="alternate" hreflang="x-default" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="preload" href="/fonts/archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <meta name="theme-color" content="#1C2126" />
+  </head>
+  <body>
+    <main class="band" id="inhalt">
+      <div class="band__grid">
+        <div aria-hidden="true"></div>
+        <div class="band__body">
+          <span class="root__logo logo-slot"><Logo /></span>
+          <h1 class="t-h1 root__h1">{t(DEFAULT_LOCALE, 'common.langLabel')}</h1>
+          <ul class="root__list">
+            {LOCALES.map((l) => (
+              <li>
+                <a class="btn btn--secondary root__btn" href={path('home', l)} hreflang={htmlLang[l]} lang={htmlLang[l]}>
+                  {localeNames[l]}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  .root__logo { block-size: 7rem; }
+  .root__h1 { margin-block-start: 2rem; }
+  .root__list { margin-block-start: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .root__btn { min-inline-size: 11rem; justify-content: flex-start; }
+</style>

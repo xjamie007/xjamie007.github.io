@@ -1,0 +1,145 @@
+---
+/**
+ * ISPM 15.
+ *
+ * Reihenfolge nach dem, was den Einkäufer bewegt — nicht nach dem, was uns
+ * schmeichelt: zuerst „brauche ich einen Stempel?", dann die häufigen Fragen,
+ * dann was auf dem Cachet steht, und ganz zuletzt der Registereintrag als
+ * Beleg. Wer bis dorthin liest, sucht den Beleg; alle anderen haben ihre
+ * Antwort schon in den ersten zwanzig Zeilen.
+ */
+import Section from '../Section.astro';
+import RailItem from '../RailItem.astro';
+import Breadcrumb from '../Breadcrumb.astro';
+import IppcMark from '../IppcMark.astro';
+import StampFields from '../sections/StampFields.astro';
+import ProducerRegistry from '../ProducerRegistry.astro';
+import Photo from '../Photo.astro';
+import { ispm15, stampLine } from '../../data/company';
+import { t, tList } from '../../i18n';
+import { anchors, path, type Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const verdicts = [
+  { term: t(locale, 'stampShort.yesTerm'), value: t(locale, 'stampShort.yesValue'), yes: true },
+  { term: t(locale, 'stampShort.noTerm'), value: t(locale, 'stampShort.noValue'), yes: false },
+];
+---
+
+<Section labelledby="isp-h1">
+  <Fragment slot="rail">
+    <RailItem term={t(locale, 'rail.registry')} value={stampLine} note={t(locale, 'rail.producer')} />
+    <RailItem term={t(locale, 'rail.treatment')} value={ispm15.treatmentCode} note={t(locale, 'rail.ispm')} />
+  </Fragment>
+
+  <Breadcrumb locale={locale} label={t(locale, 'ispm15.h1')} />
+  <h1 id="isp-h1" class="t-h1 pg__h1">{t(locale, 'ispm15.h1')}</h1>
+  <p class="t-body pg__lead">{t(locale, 'ispm15.lead')}</p>
+
+  <h2 class="t-h2 isp__h2">{t(locale, 'ispm15.whenHeading')}</h2>
+  <div class="isp__when reveal">
+    <div>
+      <dl class="isp__verdicts">
+        {verdicts.map((v) => (
+          <div class:list={['isp__row', v.yes && 'is-yes']}>
+            <dt class="isp__dest">{v.term}</dt>
+            <dd class="isp__verdict">{v.value}</dd>
+          </div>
+        ))}
+      </dl>
+      <p class="t-body isp__whenBody">{t(locale, 'ispm15.whenBody')}</p>
+    </div>
+    <Photo locale={locale} name="marked" sizes="(min-width: 48rem) 22rem, 92vw" class="isp__photo" />
+  </div>
+
+  <h2 class="t-h2 isp__h2">{t(locale, 'faq.heading')}</h2>
+  <div class="isp__faq">
+    {['china', 'eu', 'repair'].map((id) => (
+      <div class="isp__qa reveal">
+        <h3 class="t-h3">{t(locale, `faq.items.${id}.q`)}</h3>
+        <p class="t-body">{t(locale, `faq.items.${id}.a`)}</p>
+      </div>
+    ))}
+  </div>
+
+  <p class="isp__cta">
+    <a class="btn btn--primary" href={`${path('home', locale)}#${anchors.configurator}`}>{t(locale, 'ispm15.cta')}</a>
+    <a class="btn btn--secondary" href={path('crates', locale)}>{t(locale, 'nav.crates')}</a>
+  </p>
+</Section>
+
+<Section tone="dark" labelledby="isp-fields" class="band--tight">
+  <Fragment slot="rail">
+    <RailItem term={t(locale, 'rail.stamp')} value="8" />
+  </Fragment>
+
+  <div class="isp__head">
+    <div>
+      <h2 id="isp-fields" class="t-h2">{t(locale, 'ispm15.fieldsHeading')}</h2>
+      <p class="t-caption isp__sub">{t(locale, 'stamp.lead')}</p>
+    </div>
+    <div class="isp__mark drawing">
+      <IppcMark label={t(locale, 'hero.stampAlt')} weight={3} />
+    </div>
+  </div>
+
+  <div class="isp__fields"><StampFields locale={locale} /></div>
+
+  <h2 class="t-h2 isp__h2">{t(locale, 'ispm15.rulesHeading')}</h2>
+  <ul class="isp__rules">
+    {tList(locale, 'ispm15.rules').map((r) => <li class="isp__rule reveal">{r}</li>)}
+  </ul>
+</Section>
+
+<Section class="band--mist" labelledby="isp-who">
+  <Fragment slot="rail">
+    <RailItem term={t(locale, 'rail.authority')} value={ispm15.authority.abbr} numeric={false} />
+  </Fragment>
+
+  <h2 id="isp-who" class="t-h2">{t(locale, 'ispm15.whoHeading')}</h2>
+  <p class="t-body">{t(locale, 'ispm15.whoBody')}</p>
+  <ProducerRegistry locale={locale} />
+  <p class="t-caption isp__source">
+    {t(locale, 'stamp.sourceLine')}{' '}
+    <a class="link" href={ispm15.source.url} rel="noopener">{ispm15.source.label}</a>
+  </p>
+</Section>
+
+<style>
+  .pg__h1 { margin-block-start: 1rem; }
+  .pg__lead { margin-block-start: 1rem; }
+  .isp__h2 { margin-block-start: 3rem; margin-block-end: 1.25rem; }
+
+  .isp__when { display: grid; gap: 2rem; align-items: start; }
+  @media (width >= 48rem) { .isp__when { grid-template-columns: minmax(0, 1fr) 22rem; gap: 3rem; } }
+  .isp__photo :global(img) { inline-size: 100%; block-size: auto; display: block; border-radius: 2px; }
+
+  .isp__verdicts { display: grid; gap: 0.75rem; }
+  .isp__row {
+    display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+    gap: 0.5rem 1rem; padding: 1rem 1.25rem;
+    background: var(--color-mist); border-inline-start: 4px solid var(--color-line); border-radius: 2px;
+  }
+  .isp__row.is-yes { border-inline-start-color: var(--color-blue); }
+  .isp__dest { font-family: var(--font-mark); font-weight: 500; font-size: 1rem; }
+  .isp__verdict { font-family: var(--font-mark); font-weight: 700; font-size: 1.5rem; line-height: 1; color: var(--color-grey); }
+  .isp__row.is-yes .isp__verdict { color: var(--color-blue-deep); }
+  .isp__whenBody { margin-block-start: 1.25rem; }
+
+  .isp__faq { display: grid; gap: 1.75rem; max-inline-size: 68ch; }
+  .isp__qa p { margin-block-start: 0.4rem; }
+
+  .isp__head { display: grid; gap: 2rem; align-items: start; }
+  @media (width >= 52rem) { .isp__head { grid-template-columns: minmax(0, 1fr) 18rem; gap: 3rem; } }
+  .isp__sub { margin-block-start: 0.85rem; }
+  .isp__mark { max-inline-size: 18rem; }
+  .isp__fields { margin-block-start: 2.5rem; }
+
+  .isp__rules { max-inline-size: 66ch; border-block-start: 2px solid var(--band-line); }
+  .isp__rule { padding-block: 0.75rem; border-block-end: 1px solid var(--band-line); font-size: 1rem; line-height: 1.55; }
+
+  .isp__source { margin-block-start: 1.5rem; }
+  .isp__cta { margin-block-start: 2.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+</style>

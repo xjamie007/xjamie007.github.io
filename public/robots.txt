@@ -1,0 +1,5 @@
+# Emballages en Bois Kasel S.à r.l. — kasel.lu
+User-agent: *
+Allow: /
+
+Sitemap: https://www.kasel.lu/sitemap-index.xml

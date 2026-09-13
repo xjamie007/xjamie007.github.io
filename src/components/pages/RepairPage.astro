@@ -1,0 +1,56 @@
+---
+import Section from '../Section.astro';
+import RailItem from '../RailItem.astro';
+import Breadcrumb from '../Breadcrumb.astro';
+import RepairDrawing from '../drawings/RepairDrawing.astro';
+import Photo from '../Photo.astro';
+import { ispm15, stampLine } from '../../data/company';
+import { t, tList } from '../../i18n';
+import { path, type Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+---
+
+<Section labelledby="rep-h1">
+  <Fragment slot="rail">
+    <RailItem term={t(locale, 'rail.stamp')} value={stampLine} note={t(locale, 'rail.ispm')} />
+  </Fragment>
+
+  <Breadcrumb locale={locale} label={t(locale, 'repair.h1')} />
+  <h1 id="rep-h1" class="t-h1 pg__h1">{t(locale, 'repair.h1')}</h1>
+  <p class="t-body pg__lead">{t(locale, 'repair.lead')}</p>
+
+  <div class="pg__media reveal">
+    <Photo locale={locale} name="repair" sizes="(min-width: 48rem) 26rem, 92vw" class="pg__photo" />
+    <figure class="pg__drawing drawing">
+      <RepairDrawing label={t(locale, 'products.repair.drawingAlt')} />
+    </figure>
+  </div>
+
+  <h2 class="t-h2 pg__h2">{t(locale, 'repair.ruleHeading')}</h2>
+  <p class="t-body">{t(locale, 'repair.ruleBody')}</p>
+
+  <h2 class="t-h2 pg__h2">{t(locale, 'repair.whatHeading')}</h2>
+  <ul class="pg__list">
+    {tList(locale, 'repair.whatItems').map((x) => <li class="pg__item">{x}</li>)}
+  </ul>
+
+  <p class="pg__cta">
+    <a class="btn btn--primary" href={`${path('contact', locale)}#ufro`}>{t(locale, 'repair.cta')}</a>
+    <a class="btn btn--secondary" href={path('ispm15', locale)}>{ispm15.countryCode} – {ispm15.registrationNumber}</a>
+  </p>
+</Section>
+
+<style>
+  .pg__h1 { margin-block-start: 1rem; }
+  .pg__lead { margin-block-start: 1rem; }
+  .pg__media { margin-block-start: 2rem; display: grid; gap: 2rem; align-items: start; }
+  @media (width >= 48rem) { .pg__media { grid-template-columns: 26rem 16rem; gap: 3rem; } }
+  .pg__photo :global(img) { inline-size: 100%; block-size: auto; display: block; border-radius: 2px; }
+  .pg__drawing { margin: 0; color: var(--color-ink); max-inline-size: 16rem; }
+  .pg__h2 { margin-block-start: 3rem; margin-block-end: 1rem; }
+  .pg__list { max-inline-size: 60ch; border-block-start: 2px solid var(--band-line); }
+  .pg__item { padding-block: 0.75rem; border-block-end: 1px solid var(--band-line); font-family: var(--font-read); font-size: 1.0625rem; }
+  .pg__cta { margin-block-start: 2.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+</style>

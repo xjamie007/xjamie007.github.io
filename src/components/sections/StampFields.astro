@@ -1,0 +1,45 @@
+---
+/**
+ * D'Felder vum Stempel, Feld fir Feld.
+ *
+ * Pro Feld zwee Sätz: wat et heescht, a wat geschitt, wann et feelt. D'Typo
+ * ënnerscheet déi zwee — fir de Screenreader steet d'Ënnerscheedung als
+ * onsichtbar Label dobäi, soss wier d'Struktur do fort.
+ *
+ * Dat ass reng Informatioun, kee zweet Spillzeich: keng Akkordeonen, keng
+ * Klappen. Alles steet op.
+ */
+import { t } from '../../i18n';
+import type { Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale; headingLevel?: 'h3' | 'h4' }
+const { locale, headingLevel = 'h3' } = Astro.props;
+const H = headingLevel;
+
+const fields = ['ippc', 'lu', 'number', 'code', 'twoSides', 'noRedOrange', 'afterRepair', 'replaces'];
+---
+
+<div class="fields">
+  {fields.map((f) => (
+    <article class="fields__item reveal">
+      <H class="t-h3 fields__title">{t(locale, `stamp.fields.${f}.title`)}</H>
+      <p class="t-body fields__what">
+        <span class="sr-only">{t(locale, 'stamp.whatItMeans')}: </span>
+        {t(locale, `stamp.fields.${f}.what`)}
+      </p>
+      <p class="t-caption fields__without">
+        <span class="sr-only">{t(locale, 'stamp.whatIfMissing')}: </span>
+        {t(locale, `stamp.fields.${f}.without`)}
+      </p>
+    </article>
+  ))}
+</div>
+
+<style>
+  .fields { display: grid; gap: 1.75rem 3rem; }
+  @media (width >= 48rem) { .fields { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  .fields__item { padding-block-start: 1rem; border-block-start: 1px solid var(--band-line); }
+  .fields__what { margin-block-start: 0.4rem; font-size: 1rem; }
+  .fields__without { margin-block-start: 0.4rem; color: var(--band-muted); }
+</style>

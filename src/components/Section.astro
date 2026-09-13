@@ -1,0 +1,35 @@
+---
+/**
+ * E Band: eng Sektioun iwwer déi ganz Breet, dobannen déi schmuel lénks Schinn
+ * an d'breet Liesespalt.
+ *
+ * D'Schinn bleift am Desktop stoen, soulaang HIR Sektioun um Bildschierm ass.
+ * Dat leeft reng iwwer `position: sticky` am Rasterfeld — kee Scroll-Listener,
+ * dee bei all Pixel feiert, an kee JavaScript.
+ */
+interface Props {
+  id?: string;
+  tone?: 'light' | 'dark';
+  tight?: boolean;
+  /** Ohne Schiene, volle Breite. Die Startseite nutzt das durchgehend: dort
+   *  zählt schnelles Erfassen, nicht das technische Register. */
+  wide?: boolean;
+  labelledby?: string;
+  class?: string;
+}
+const { id, tone = 'light', tight = false, wide = false, labelledby, class: className } = Astro.props;
+const hasRail = Astro.slots.has('rail');
+const hasBg = Astro.slots.has('bg');
+---
+
+<section
+  id={id}
+  aria-labelledby={labelledby}
+  class:list={['band', tone === 'dark' && 'band--dark', tight && 'band--tight', wide && 'band--wide', className]}
+>
+  {hasBg && <div class="band__bg" aria-hidden="true"><slot name="bg" /></div>}
+  <div class="band__grid">
+    {!wide && (hasRail ? <dl class="rail"><slot name="rail" /></dl> : <div aria-hidden="true"></div>)}
+    <div class="band__body"><slot /></div>
+  </div>
+</section>

@@ -1,0 +1,82 @@
+---
+/**
+ * 404.
+ *
+ * E statesche Server weess net, a wéi enger Sprooch de Besucher ënnerwee war —
+ * dofir steet dës Säit a allen véier Sproochen do, a net nëmmen an enger.
+ */
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Section from '../components/Section.astro';
+import RailItem from '../components/RailItem.astro';
+import { company } from '../data/company';
+import { t } from '../i18n';
+import { LOCALES, localeNames, htmlLang, path, DEFAULT_LOCALE, type RouteKey } from '../i18n/routes';
+
+const links: RouteKey[] = ['home', 'pallets', 'crates', 'ispm15', 'delivery', 'contact'];
+const label = (l: (typeof LOCALES)[number], r: RouteKey) =>
+  r === 'home' ? company.brand
+  : r === 'pallets' ? t(l, 'nav.pallets')
+  : r === 'crates' ? t(l, 'nav.crates')
+  : r === 'ispm15' ? t(l, 'nav.stamp')
+  : r === 'delivery' ? t(l, 'nav.delivery')
+  : t(l, 'nav.contact');
+---
+
+<!doctype html>
+<html lang={htmlLang[DEFAULT_LOCALE]}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{t(DEFAULT_LOCALE, 'meta.notfound.title')}</title>
+    <meta name="description" content={t(DEFAULT_LOCALE, 'meta.notfound.description')} />
+    <meta name="robots" content="noindex, follow" />
+    <link rel="preload" href="/fonts/archivo-var-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#1C2126" />
+  </head>
+  <body>
+    <a class="skip-link" href="#inhalt">{t(DEFAULT_LOCALE, 'common.skipToContent')}</a>
+    <Header locale={DEFAULT_LOCALE} route="home" />
+    <main id="inhalt">
+      <Section labelledby="nf-h1">
+        <Fragment slot="rail"><RailItem term="HTTP" value="404" /></Fragment>
+
+        <h1 id="nf-h1" class="t-h1">{t(DEFAULT_LOCALE, 'notfound.h1')}</h1>
+
+        <div class="nf">
+          {LOCALES.map((l) => (
+            <section class="nf__col" lang={htmlLang[l]}>
+              <h2 class="t-label">{localeNames[l]}</h2>
+              <p class="t-caption nf__body">{t(l, 'notfound.body')}</p>
+              <ul class="nf__list">
+                {links.map((r) => (
+                  <li><a class="link" href={path(r, l)}>{label(l, r)}</a></li>
+                ))}
+              </ul>
+            </section>
+          ))}
+        </div>
+
+        <p class="t-caption nf__mail">
+          {t(DEFAULT_LOCALE, 'notfound.searchHint').split('{email}')[0]}
+          <a class="link" href={`mailto:${company.email}`}>{company.email}</a>
+        </p>
+      </Section>
+    </main>
+    <Footer locale={DEFAULT_LOCALE} route="home" />
+  </body>
+</html>
+
+<style>
+  .nf { margin-block-start: 2.5rem; display: grid; gap: 2rem; }
+  @media (width >= 40rem) { .nf { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem 3rem; } }
+  @media (width >= 64rem) { .nf { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  .nf__col { padding-block-start: 0.85rem; border-block-start: 1px solid var(--band-line); }
+  .nf__body { margin-block-start: 0.4rem; }
+  .nf__list { margin-block-start: 0.85rem; display: grid; gap: 0.35rem; font-size: 1rem; }
+  .nf__mail { margin-block-start: 2.5rem; }
+</style>

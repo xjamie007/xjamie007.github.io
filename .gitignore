@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+.env
+.env.*
+!.env.example
+*.log
+.vercel
+.netlify
+
+# macOS iCloud-Duplikate („Datei 2.html"), die im Desktop-Ordner entstehen
+*\ [0-9].*

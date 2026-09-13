@@ -1,0 +1,292 @@
+---
+/**
+ * Ufro-Formulaire — den Zweck vun der ganzer Säit.
+ *
+ * Fënnef Flichtfelder. All Feld muss dozou bäidroen, datt den Tom OUNI Réckruff
+ * äntwere kann. Dat al Formulaire huet Privattelefon, Stroos, PLZ a Land
+ * gefrot, also d'Wunnadress vum Besucher — an näischt iwwer den Optrag.
+ * Genee dat ass ëmgedréint.
+ *
+ * Ouni JavaScript: e ganz normale POST. D'Server-Funktioun äntwert mat engem
+ * 303 op d'Merci-Säit. Alles funktionéiert.
+ * Mat JavaScript: Feelermeldunge stinn um Feld, an d'Bestätegung kënnt ouni
+ * Säitewiessel.
+ */
+import { company } from '../data/company';
+import { inquirySubjects } from '../data/products';
+import { t } from '../i18n';
+import { path, anchors, htmlLang, type Locale } from '../i18n/routes';
+
+interface Props {
+  locale: Locale;
+  /** `true` op der Startsäit: d'Stéckzuel kënnt do aus dem Konfigurator. */
+  hasConfigurator?: boolean;
+  headingLevel?: 'h2' | 'h1';
+  id?: string;
+  /** Auf der Startseite: der Block steht allein und bekommt eine Mitte. */
+  centred?: boolean;
+}
+const { locale, hasConfigurator = false, headingLevel = 'h2', id = anchors.inquiry, centred = false } = Astro.props;
+const H = headingLevel;
+
+/* TODO[EINRICHTUNG] `PUBLIC_INQUIRY_ENDPOINT` an `.env` setzen (kuck
+   `.env.example`). De Platzhalter hei ënnen ass mat Absicht onbrauchbar a
+   sichtbar — esou fällt en op, ier d'Säit live geet. */
+const FALLBACK = 'https://CHANGE-ME.supabase.co/functions/v1/send-inquiry';
+const endpoint = import.meta.env.PUBLIC_INQUIRY_ENDPOINT || FALLBACK;
+if (endpoint === FALLBACK) {
+  console.warn('\n[kasel] PUBLIC_INQUIRY_ENDPOINT ass net gesat — d\'Formulaire schéckt nach néierens hin.\n');
+}
+
+const errorKeys = ['company', 'contact', 'email', 'subject', 'message', 'consent', 'file', 'summary', 'summaryPlural', 'network'];
+const strings = Object.fromEntries(errorKeys.map((k) => [k, t(locale, `form.errors.${k}`)]));
+const ui = {
+  errors: strings,
+  success: {
+    heading: t(locale, 'form.successHeading'),
+    body: t(locale, 'form.successBody'),
+    next: t(locale, 'form.successNext').replace('{phone}', company.phoneDisplay),
+  },
+  sending: t(locale, 'form.sending'),
+  submit: t(locale, 'form.submit'),
+  email: company.email,
+};
+---
+
+<div class:list={['frm', centred && 'frm--centred']} id={id}>
+  <H class="t-h2">{t(locale, 'form.heading')}</H>
+  <p class="t-body frm__lead">{t(locale, 'form.lead')}</p>
+
+  <form
+    id="ufro-form"
+    class="frm__form"
+    action={endpoint}
+    method="post"
+    enctype="multipart/form-data"
+    accept-charset="utf-8"
+  >
+    <input type="hidden" name="lang" value={htmlLang[locale]} />
+    <input type="hidden" name="page" value={Astro.url.pathname} />
+
+    <!-- Hei kënnt d'Zesummefaassung aus dem Konfigurator eran — sichtbar, net
+         verstoppt. De Benotzer muss gesinn, wat hie schéckt. -->
+    <div id="ufro-config-summary"></div>
+
+    <div class="frm__grid frm__grid--two">
+      <div class="frm__field">
+        <label class="t-label" for="f-company">
+          {t(locale, 'form.fields.company')} <span class="frm__req" aria-hidden="true">*</span>
+        </label>
+        <input class="frm__input" id="f-company" name="company" type="text" required autocomplete="organization" maxlength="120" />
+        <p class="frm__error" id="e-company" hidden></p>
+      </div>
+
+      <div class="frm__field">
+        <label class="t-label" for="f-contact">
+          {t(locale, 'form.fields.contact')} <span class="frm__req" aria-hidden="true">*</span>
+        </label>
+        <input class="frm__input" id="f-contact" name="contact" type="text" required autocomplete="name" maxlength="120" />
+        <p class="frm__error" id="e-contact" hidden></p>
+      </div>
+
+      <div class="frm__field">
+        <label class="t-label" for="f-email">
+          {t(locale, 'form.fields.email')} <span class="frm__req" aria-hidden="true">*</span>
+        </label>
+        <input class="frm__input" id="f-email" name="email" type="email" required autocomplete="email" maxlength="180" />
+        <p class="frm__error" id="e-email" hidden></p>
+      </div>
+
+      <div class="frm__field">
+        <label class="t-label" for="f-phone">{t(locale, 'form.fields.phone')}</label>
+        <input class="frm__input" id="f-phone" name="phone" type="tel" autocomplete="tel" maxlength="40" />
+      </div>
+    </div>
+
+    <div class="frm__grid">
+      <div class="frm__field">
+        <label class="t-label" for="f-subject">
+          {t(locale, 'form.fields.subject')} <span class="frm__req" aria-hidden="true">*</span>
+        </label>
+        <select class="frm__select" id="f-subject" name="subject" required>
+          <option value="">—</option>
+          {inquirySubjects.map((s) => (
+            <option value={s}>{t(locale, `form.subjects.${s}`)}</option>
+          ))}
+        </select>
+        <p class="frm__error" id="e-subject" hidden></p>
+      </div>
+    </div>
+
+    <div class="frm__grid frm__grid--two">
+      {!hasConfigurator && (
+        <div class="frm__field">
+          <label class="t-label" for="f-qty">{t(locale, 'form.fields.qty')}</label>
+          <input class="frm__input" id="f-qty" name="qty" type="number" inputmode="numeric" min="1" max="9999" step="1" />
+        </div>
+      )}
+      <div class="frm__field">
+        <label class="t-label" for="f-date">{t(locale, 'form.fields.leadDate.label')}</label>
+        <input class="frm__input" id="f-date" name="lead_date" type="date" aria-describedby="h-date" />
+        <p class="t-caption frm__hint" id="h-date">{t(locale, 'form.fields.leadDate.hint')}</p>
+      </div>
+      <div class="frm__field">
+        <label class="t-label" for="f-place">{t(locale, 'form.fields.place.label')}</label>
+        <input class="frm__input" id="f-place" name="place" type="text" maxlength="120" autocomplete="address-level2" aria-describedby="h-place" />
+        <p class="t-caption frm__hint" id="h-place">{t(locale, 'form.fields.place.hint')}</p>
+      </div>
+    </div>
+
+    <div class="frm__grid">
+      <div class="frm__field">
+        <label class="t-label" for="f-message">
+          {t(locale, 'form.fields.message')} <span class="frm__req" aria-hidden="true">*</span>
+        </label>
+        <textarea class="frm__area" id="f-message" name="message" required maxlength="4000" rows="6"></textarea>
+        <p class="frm__error" id="e-message" hidden></p>
+      </div>
+
+      <div class="frm__field">
+        <label class="t-label" for="f-file">{t(locale, 'form.fields.file.label')}</label>
+        <input class="frm__file" id="f-file" name="attachment" type="file" accept=".pdf,.png,.jpg,.jpeg,application/pdf,image/png,image/jpeg" aria-describedby="h-file" />
+        <p class="t-caption frm__hint" id="h-file">{t(locale, 'form.fields.file.hint')}</p>
+        <p class="frm__error" id="e-file" hidden></p>
+      </div>
+    </div>
+
+    <!-- Spam-Schutz: Honeypot plus Préifung op der Server-Säit. Kee Captcha. -->
+    <div class="frm__pot" aria-hidden="true">
+      <label for="f-website">Website</label>
+      <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <label class="frm__consent">
+      <input type="checkbox" name="consent" value="1" required id="f-consent" />
+      <span>
+        {t(locale, 'form.consent')}{' '}
+        <a class="link" href={path('privacy', locale)}>{t(locale, 'form.consentLink')}</a>
+      </span>
+    </label>
+    <p class="frm__error" id="e-consent" hidden></p>
+
+    <p class="frm__actions">
+      <button class="btn btn--primary" type="submit" id="f-submit">{t(locale, 'form.submit')}</button>
+      <span class="t-caption" id="f-count" role="status" aria-live="polite"></span>
+    </p>
+  </form>
+
+  <div class="frm__status" id="f-status" hidden role="status" aria-live="polite"></div>
+
+  <script type="application/json" id="ufro-strings" is:inline set:html={JSON.stringify(ui)}></script>
+</div>
+
+<script>
+  /**
+   * Progressiv Verbesserung. Ouni dëst Skript funktionéiert d'Formulaire
+   * vollstänneg — de Browser validéiert, schéckt an d'Server-Funktioun äntwert
+   * mat engem 303 op d'Merci-Säit.
+   */
+  const form = document.getElementById('ufro-form') as HTMLFormElement | null;
+  const box = document.getElementById('ufro-strings');
+  if (form && box) {
+    const S = JSON.parse(box.textContent || '{}');
+    const status = document.getElementById('f-status') as HTMLElement;
+    const countEl = document.getElementById('f-count') as HTMLElement;
+    const submit = document.getElementById('f-submit') as HTMLButtonElement;
+    const MAX = 10 * 1024 * 1024;
+
+    // Mir iwwerhuelen d'Validéierung, dofir déi nativ Blosen ausschalten.
+    form.noValidate = true;
+
+    const checks: { name: string; err: string; test: () => boolean }[] = [
+      { name: 'company', err: 'e-company', test: () => !!(form.company as HTMLInputElement).value.trim() },
+      { name: 'contact', err: 'e-contact', test: () => !!(form.contact as HTMLInputElement).value.trim() },
+      { name: 'email', err: 'e-email', test: () => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((form.email as HTMLInputElement).value.trim()) },
+      { name: 'subject', err: 'e-subject', test: () => !!(form.subject as HTMLSelectElement).value },
+      { name: 'message', err: 'e-message', test: () => !!(form.message as HTMLTextAreaElement).value.trim() },
+      { name: 'consent', err: 'e-consent', test: () => (form.consent as HTMLInputElement).checked },
+      {
+        name: 'attachment', err: 'e-file',
+        test: () => {
+          const f = (form.attachment as HTMLInputElement).files?.[0];
+          return !f || (f.size <= MAX && /pdf|png|jpe?g/i.test(f.type || f.name));
+        },
+      },
+    ];
+
+    const messageFor = (n: string) => S.errors[n === 'attachment' ? 'file' : n] ?? '';
+
+    function mark(c: (typeof checks)[number], ok: boolean) {
+      const field = form!.elements.namedItem(c.name) as HTMLElement | null;
+      const err = document.getElementById(c.err);
+      if (!field || !err) return;
+      if (ok) {
+        field.removeAttribute('aria-invalid');
+        err.hidden = true;
+        err.textContent = '';
+        const d = field.getAttribute('aria-describedby');
+        if (d) field.setAttribute('aria-describedby', d.replace(c.err, '').trim());
+      } else {
+        field.setAttribute('aria-invalid', 'true');
+        err.textContent = messageFor(c.name);
+        err.hidden = false;
+        const d = field.getAttribute('aria-describedby');
+        field.setAttribute('aria-describedby', d ? `${d} ${c.err}` : c.err);
+      }
+    }
+
+    // Eng Korrektur soll de Feeler direkt verschwanne loossen, net eréischt
+    // beim nächste Versuch.
+    for (const c of checks) {
+      const el = form.elements.namedItem(c.name) as HTMLElement | null;
+      el?.addEventListener('input', () => { if (el.getAttribute('aria-invalid')) mark(c, c.test()); });
+      el?.addEventListener('change', () => { if (el.getAttribute('aria-invalid')) mark(c, c.test()); });
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const bad = checks.filter((c) => !c.test());
+      checks.forEach((c) => mark(c, c.test()));
+
+      if (bad.length) {
+        const tpl = bad.length === 1 ? S.errors.summary : S.errors.summaryPlural;
+        countEl.textContent = tpl.replace('{count}', String(bad.length));
+        (form.elements.namedItem(bad[0].name) as HTMLElement)?.focus();
+        return;
+      }
+      countEl.textContent = '';
+
+      const data = new FormData(form);
+      // D'konfiguréiert Zeechnung fiert als Datei mat — den Tom gesäit direkt,
+      // wat gemengt ass.
+      const svg = document.querySelector('svg.crate');
+      if (svg && data.get('crate_length')) {
+        const xml = new XMLSerializer().serializeToString(svg);
+        data.append('crate_svg', new Blob([xml], { type: 'image/svg+xml' }), 'keschte.svg');
+      }
+
+      submit.disabled = true;
+      const label = submit.textContent;
+      submit.textContent = S.sending;
+
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+        if (!res.ok) throw new Error(String(res.status));
+        form.hidden = true;
+        status.hidden = false;
+        status.innerHTML = `<h3>${S.success.heading}</h3><p>${S.success.body}</p><p>${S.success.next}</p>`;
+        status.focus?.();
+      } catch {
+        submit.disabled = false;
+        submit.textContent = label;
+        status.hidden = false;
+        status.innerHTML = `<p>${S.errors.network.replace('{email}', `<a class="link" href="mailto:${S.email}">${S.email}</a>`)}</p>`;
+      }
+    });
+  }
+</script>
+
+<style>
+  .frm__lead { margin-block-start: 0.85rem; }
+  .frm__form { margin-block-start: 0.5rem; }
+</style>

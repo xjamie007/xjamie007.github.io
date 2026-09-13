@@ -1,0 +1,1836 @@
+{
+  "common": {
+    "onRequest": {
+      "value": "op Nofro",
+      "reviewed": false
+    },
+    "skipToContent": {
+      "value": "Direkt zum Inhalt",
+      "reviewed": false
+    },
+    "menu": {
+      "value": "Menü",
+      "reviewed": false
+    },
+    "closeMenu": {
+      "value": "Menü zoumaachen",
+      "reviewed": false
+    },
+    "langLabel": {
+      "value": "Sprooch",
+      "reviewed": false
+    },
+    "langSwitch": {
+      "value": "Sprooch wiesselen",
+      "reviewed": false
+    },
+    "required": {
+      "value": "Flichtfeld",
+      "reviewed": false
+    },
+    "optional": {
+      "value": "fakultativ",
+      "reviewed": false
+    },
+    "backHome": {
+      "value": "Zréck op d'Startsäit",
+      "reviewed": false
+    },
+    "readMore": {
+      "value": "Méi doriwwer",
+      "reviewed": false
+    },
+    "print": {
+      "value": "Dës Säit drécken",
+      "reviewed": false
+    },
+    "phone": {
+      "value": "Telefon",
+      "reviewed": false
+    },
+    "fax": {
+      "value": "Fax",
+      "reviewed": false
+    },
+    "email": {
+      "value": "E-Mail",
+      "reviewed": false
+    },
+    "address": {
+      "value": "Adress",
+      "reviewed": false
+    },
+    "country": {
+      "value": "Lëtzebuerg",
+      "reviewed": false
+    },
+    "vatId": {
+      "value": "MwSt-Nummer",
+      "reviewed": false
+    },
+    "rcs": {
+      "value": "RCS Lëtzebuerg",
+      "reviewed": false
+    },
+    "plusCode": {
+      "value": "Plus Code",
+      "reviewed": false
+    },
+    "coordinates": {
+      "value": "Koordinaten",
+      "reviewed": false
+    },
+    "openRoute": {
+      "value": "D'Streck a Google Maps opmaachen",
+      "reviewed": false
+    },
+    "openRouteNote": {
+      "value": "De Link geet eréischt beim Klick no baussen.",
+      "reviewed": false
+    },
+    "source": {
+      "value": "Quell",
+      "reviewed": false
+    },
+    "breadcrumb": {
+      "value": "Dir sidd hei",
+      "reviewed": false
+    }
+  },
+  "nav": {
+    "pallets": {
+      "value": "Paletten",
+      "reviewed": false
+    },
+    "crates": {
+      "value": "Këschten",
+      "reviewed": false
+    },
+    "stamp": {
+      "value": "De Stempel",
+      "reviewed": false
+    },
+    "delivery": {
+      "value": "Liwwerung",
+      "reviewed": false
+    },
+    "contact": {
+      "value": "Kontakt",
+      "reviewed": false
+    },
+    "label": {
+      "value": "Haaptnavigatioun",
+      "reviewed": false
+    },
+    "repair": {
+      "value": "Reparatur",
+      "reviewed": false
+    }
+  },
+  "meta": {
+    "home": {
+      "title": {
+        "value": "KASEL — Holzpaletten a Këschten op Mooss zu Mertzig",
+        "reviewed": false
+      },
+      "description": {
+        "value": "Paletten a Këschten aus Holz aus Mertzig. Standardmoossen, Mooss no Ärer Spezifikatioun, Exportkëschte mat IPPC-Stempel. Eege Sägerei, 9.000 m² Lager, Nr. 079.",
+        "reviewed": false
+      }
+    },
+    "pallets": {
+      "title": {
+        "value": "Holzpaletten aus Lëtzebuerg — Moossen a CP | KASEL",
+        "reviewed": false
+      },
+      "description": {
+        "value": "Standardpaletten, CP-Paletten a Sonderpaletten no Ärer technescher Spezifikatioun. Zuschnitt op Bestellung an eiser eegener Sägerei zu Mertzig, Lëtzebuerg.",
+        "reviewed": false
+      }
+    },
+    "crates": {
+      "title": {
+        "value": "Këschten op Mooss fir de Seetransport, Mertzig | KASEL",
+        "reviewed": false
+      },
+      "description": {
+        "value": "Holzkëschte fir Koffer, Glas, Aluminium a Maschinnen. Zou oder gelatt, mat IPPC-Stempel fir China, Australien, Neiséiland an aner Drëttlänner. Nr. 079.",
+        "reviewed": false
+      }
+    },
+    "repair": {
+      "title": {
+        "value": "Paletten a Këschte reparéieren zu Lëtzebuerg | KASEL",
+        "reviewed": false
+      },
+      "description": {
+        "value": "Mir reparéieren gebrauchte Paletten a Këschten a stemplen se no der Norm nei. Nëmme Betriber mat Registréierungsnummer dierfen dat — eis ass 079. Zu Mertzig.",
+        "reviewed": false
+      }
+    },
+    "ispm15": {
+      "title": {
+        "value": "ISPM 15 zu Lëtzebuerg — IPPC-Stempel, Nr. 079 | KASEL",
+        "reviewed": false
+      },
+      "description": {
+        "value": "Dräi Betriber zu Lëtzebuerg sinn als Produzent am ISPM-15-Register agedroen. Wéini Dir e Stempel braucht, wat en ersetzt, a wat geschitt, wann en feelt.",
+        "reviewed": false
+      }
+    },
+    "delivery": {
+      "title": {
+        "value": "Liwwerung & Ofholung — Zoufaart, Haff a Rampe | KASEL",
+        "reviewed": false
+      },
+      "description": {
+        "value": "Fir Chauffeuren a Spediteuren: Zoufaart op de Betrib zu Mertzig, Haff, Rampe, Pabeieren, Sproochen. Adress, Plus Code a Kaart op enger Säit. Fir auszedrécken.",
+        "reviewed": false
+      }
+    },
+    "history": {
+      "title": {
+        "value": "Zanter 1959 — d'Geschicht vum Familljebetrib | KASEL",
+        "reviewed": false
+      },
+      "description": {
+        "value": "Vun der Schreinerei zu Biissen 1959 bis op 9.000 m² Halleflächen zu Mertzig. D'Etappe vum Familljebetrib Kasel, Joer fir Joer. Dräi Generatiounen, ee Betrib.",
+        "reviewed": false
+      }
+    },
+    "contact": {
+      "title": {
+        "value": "Kontakt an Ufro — KASEL, Zone Industrielle Mertzig",
+        "reviewed": false
+      },
+      "description": {
+        "value": "Ufro fir Paletten, Këschten op Mooss, Reparatur oder Alagerung. 12, Zone Industrielle, L-9166 Mertzig. Telefon +352 888 334-1, tom@kasel.lu. Mir äntweren.",
+        "reviewed": false
+      }
+    },
+    "thanks": {
+      "title": {
+        "value": "Merci fir Är Ufro | KASEL",
+        "reviewed": false
+      },
+      "description": {
+        "value": "Är Ufro ass ukomm. Hei steet, wat elo geschitt a wéi Dir eis am direkte Wee erreecht.",
+        "reviewed": false
+      }
+    },
+    "legal": {
+      "title": {
+        "value": "Impressum — Emballages en Bois Kasel S.à r.l. | KASEL",
+        "reviewed": false
+      },
+      "description": {
+        "value": "Firmennumm, Rechtsform, Adress, Telefon, E-Mail, RCS- a MwSt-Nummer vun Emballages en Bois Kasel S.à r.l. zu Mertzig, Lëtzebuerg. Verantwortlech: Tom Kasel.",
+        "reviewed": false
+      }
+    },
+    "privacy": {
+      "title": {
+        "value": "Dateschutz — wéi mir mat Ären Daten ëmginn | KASEL",
+        "reviewed": false
+      },
+      "description": {
+        "value": "Wéi eng Daten mir iwwer den Ufro-Formulaire erhiewen, firwat, op wéi enger Rechtsgrondlag, wéi laang mir se halen a wéi eng Rechter Dir hutt. Keng Cookien.",
+        "reviewed": false
+      }
+    },
+    "notfound": {
+      "title": {
+        "value": "Säit net fonnt | KASEL",
+        "reviewed": false
+      },
+      "description": {
+        "value": "Dës Säit gëtt et net (méi).",
+        "reviewed": false
+      }
+    }
+  },
+  "hero": {
+    "h1": {
+      "value": "Paletten a Këschten aus Holz, op Mooss gebaut.",
+      "reviewed": false
+    },
+    "body": {
+      "value": "Eege Sägerei zu Mertzig, 9.000 m² Lager. Mir schneiden d'Holz eréischt, wann Är Bestellung do ass.",
+      "reviewed": false
+    },
+    "ctaPrimary": {
+      "value": "Ufro schécken",
+      "reviewed": false
+    },
+    "ctaSecondary": {
+      "value": "Këscht konfiguréieren",
+      "reviewed": false
+    },
+    "stampAlt": {
+      "value": "Den IPPC-Stempel: d'Ähresymbol, den ISO-Code LU, d'Registréierungsnummer 079 an de Behandlungscode.",
+      "reviewed": false
+    },
+    "markAlt": {
+      "value": "KASEL",
+      "reviewed": false
+    }
+  },
+  "facts": {
+    "heading": {
+      "value": "Op ee Bléck",
+      "reviewed": false
+    },
+    "sinceTerm": {
+      "value": "Zanter",
+      "reviewed": false
+    },
+    "sawmillTerm": {
+      "value": "Sägerei",
+      "reviewed": false
+    },
+    "sawmillValue": {
+      "value": "am Haus",
+      "reviewed": false
+    },
+    "storageTerm": {
+      "value": "Lager",
+      "reviewed": false
+    },
+    "exportTerm": {
+      "value": "Export",
+      "reviewed": false
+    },
+    "exportValue": {
+      "value": "weltwäit",
+      "reviewed": false
+    }
+  },
+  "stampShort": {
+    "heading": {
+      "value": "Braucht Är Sendung en IPPC-Stempel?",
+      "reviewed": false
+    },
+    "yesTerm": {
+      "value": "China, Australien, Neiséiland",
+      "reviewed": false
+    },
+    "yesValue": {
+      "value": "jo",
+      "reviewed": false
+    },
+    "noTerm": {
+      "value": "Bannent der EU",
+      "reviewed": false
+    },
+    "noValue": {
+      "value": "neen",
+      "reviewed": false
+    },
+    "body": {
+      "value": "Fir dës Länner muss d'Holz behandelt a gestempelt sinn. Feelt de Stempel, bleift d'Sendung am Zilhafen stoen. Mir maachen dat selwer, Dir musst Iech ëm näischt këmmeren.",
+      "reviewed": false
+    },
+    "link": {
+      "value": "Wéini Dir wat braucht",
+      "reviewed": false
+    }
+  },
+  "rail": {
+    "ispm": {
+      "value": "ISPM 15",
+      "reviewed": false
+    },
+    "producer": {
+      "value": "Produzent",
+      "reviewed": false
+    },
+    "authority": {
+      "value": "Autoritéit",
+      "reviewed": false
+    },
+    "registry": {
+      "value": "Register",
+      "reviewed": false
+    },
+    "treatment": {
+      "value": "Behandlung",
+      "reviewed": false
+    },
+    "pallets": {
+      "value": "Paletten",
+      "reviewed": false
+    },
+    "crates": {
+      "value": "Këschten",
+      "reviewed": false
+    },
+    "cratesValue": {
+      "value": "op Mooss",
+      "reviewed": false
+    },
+    "configurator": {
+      "value": "Konfigurator",
+      "reviewed": false
+    },
+    "stamp": {
+      "value": "Cachet",
+      "reviewed": false
+    },
+    "ramp": {
+      "value": "Rampe",
+      "reviewed": false
+    },
+    "spaces": {
+      "value": "Stellplazen",
+      "reviewed": false
+    },
+    "since": {
+      "value": "Zanter",
+      "reviewed": false
+    },
+    "faq": {
+      "value": "Froen",
+      "reviewed": false
+    },
+    "inquiry": {
+      "value": "Ufro",
+      "reviewed": false
+    },
+    "storage": {
+      "value": "Lager",
+      "reviewed": false
+    },
+    "sawmill": {
+      "value": "Sägerei",
+      "reviewed": false
+    },
+    "sawmillValue": {
+      "value": "am Haus",
+      "reviewed": false
+    },
+    "team": {
+      "value": "Equipe",
+      "reviewed": false
+    },
+    "references": {
+      "value": "Referenzen",
+      "reviewed": false
+    },
+    "reply": {
+      "value": "Äntwert",
+      "reviewed": false
+    }
+  },
+  "products": {
+    "heading": {
+      "value": "Wat mir maachen",
+      "reviewed": false
+    },
+    "pallets": {
+      "title": {
+        "value": "Paletten",
+        "reviewed": false
+      },
+      "body": {
+        "value": "Standardpaletten, CP-Paletten a Sonderpaletten op Mooss. Well mir selwer sägen, si mir net u Lagermoossen gebonnen.",
+        "reviewed": false
+      },
+      "link": {
+        "value": "Sortiment a Spezifikatioun",
+        "reviewed": false
+      },
+      "drawingAlt": {
+        "value": "Zeechnung vun enger Palette vun uewen a vun der Säit: Deckbrieder, Klëtz a Kuffen.",
+        "reviewed": false
+      }
+    },
+    "crates": {
+      "title": {
+        "value": "Këschten op Mooss",
+        "reviewed": false
+      },
+      "body": {
+        "value": "Këschte fir de Seetransport vu Koffer, Glas, Aluminium a Maschinnen. Zou oder gelatt, mat IPPC-Stempel fir Drëttlänner.",
+        "reviewed": false
+      },
+      "link": {
+        "value": "Bauweisen a Ladegutt",
+        "reviewed": false
+      },
+      "drawingAlt": {
+        "value": "Zeechnung vun enger geschlossener Exportkëscht mat Kuffen ënnen an dem IPPC-Stempel op der Säit.",
+        "reviewed": false
+      }
+    },
+    "repair": {
+      "title": {
+        "value": "Reparatur a Widderverwendung",
+        "reviewed": false
+      },
+      "body": {
+        "value": "Mir reparéieren gebrauchte Këschten a Paletten a stemplen se nei. Dat dierfen nëmme Betriber mat enger Registréierungsnummer. Eis ass 079.",
+        "reviewed": false
+      },
+      "link": {
+        "value": "Wat bei enger Reparatur gëllt",
+        "reviewed": false
+      },
+      "drawingAlt": {
+        "value": "Zeechnung vun enger Palette, bei där ee Deckbriet ersat gëtt, a vum neie Stempel.",
+        "reviewed": false
+      }
+    }
+  },
+  "about": {
+    "heading": {
+      "value": "Iwwer eis",
+      "reviewed": false
+    },
+    "body": {
+      "value": "E Familljebetrib. Den Henry Kasel huet 1959 zu Biissen ugefaangen, haut féiert säin Enkel Tom d'Produktioun. D'Verwaltung ass an der Famill bliwwen.",
+      "reviewed": false
+    },
+    "timeline": {
+      "value": "D'Etappen",
+      "reviewed": false
+    }
+  },
+  "photos": {
+    "hall": {
+      "value": "Bléck an d'Lagerhal: Stapele vu Paletten a Këschten ënner der bloer Stolkonstruktioun.",
+      "reviewed": false
+    },
+    "pallets": {
+      "value": "Gestapelte Paletten vun no: Decksbrieder, Klëtz an Ënnerbrieder.",
+      "reviewed": false
+    },
+    "crates": {
+      "value": "Gestapelte Holzkëschte mat Kanthëlzer a Plattematerial.",
+      "reviewed": false
+    },
+    "marked": {
+      "value": "Fäerdeg Këschte mat opgedroene Kennzeechnungen op der Stirsäit.",
+      "reviewed": false
+    },
+    "repair": {
+      "value": "Gebrauchte Paletten, gestapelt am Haff, fir ze préiwen an ze reparéieren.",
+      "reviewed": false
+    },
+    "machine": {
+      "value": "D'Palettemaschinn an der Hal, mat Roboterarm a Holz um Zoulaf.",
+      "reviewed": false
+    },
+    "sawline": {
+      "value": "Déi laang Sägelinn an der Produktiounshal.",
+      "reviewed": false
+    },
+    "worker": {
+      "value": "E Mataarbechter un der Sägelinn an der Hal.",
+      "reviewed": false
+    },
+    "yard": {
+      "value": "Den Haff mat der Hal a Stapele vu Paletten, vu bausse gesinn.",
+      "reviewed": false
+    },
+    "timber": {
+      "value": "Zougeschnidde Kanthëlzer, gestapelt, mat de Joresréng an der Stirsäit.",
+      "reviewed": false
+    },
+    "credit": {
+      "value": "Fotoen",
+      "reviewed": false
+    }
+  },
+  "config": {
+    "heading": {
+      "value": "Këscht konfiguréieren",
+      "reviewed": false
+    },
+    "lead": {
+      "value": "Schreift d'Moossen vun Ärer Wuer an. D'Zeechnung weist, wéi d'Këscht dozou ausgesäit. All Ugab geet mat der Ufro un eis.",
+      "reviewed": false
+    },
+    "disclaimer": {
+      "value": "D'Zeechnung ass e Richtwäert, keng Konstruktiounsugab. De Präis an déi lescht Auslegung kritt Dir vun eis, wa mir Är Ufro gelies hunn.",
+      "reviewed": false
+    },
+    "fieldsetSize": {
+      "value": "Mooss a Gewiicht",
+      "reviewed": false
+    },
+    "fieldsetBuild": {
+      "value": "Ladegutt, Zil a Bauweis",
+      "reviewed": false
+    },
+    "exampleTag": {
+      "value": "Beispill",
+      "reviewed": false
+    },
+    "fields": {
+      "inner": {
+        "label": {
+          "value": "Bannemooss vum Ladegutt",
+          "reviewed": false,
+          "note": "DE: Innenmaß des Ladeguts"
+        },
+        "hint": {
+          "value": "a Millimeter",
+          "reviewed": false
+        }
+      },
+      "length": {
+        "value": "Längt",
+        "reviewed": false
+      },
+      "width": {
+        "value": "Breet",
+        "reviewed": false
+      },
+      "height": {
+        "value": "Héicht",
+        "reviewed": false
+      },
+      "weight": {
+        "label": {
+          "value": "Gewiicht",
+          "reviewed": false
+        },
+        "hint": {
+          "value": "a Kilogramm",
+          "reviewed": false
+        }
+      },
+      "cargo": {
+        "value": "Ladegutt",
+        "reviewed": false
+      },
+      "cargoHint": {
+        "value": "Fräi androen. Zum Beispill Koffer, Glas, Aluminium, Maschinnen.",
+        "reviewed": false
+      },
+      "dest": {
+        "value": "Zil",
+        "reviewed": false
+      },
+      "qty": {
+        "value": "Stéckzuel",
+        "reviewed": false
+      },
+      "build": {
+        "value": "Bauweis",
+        "reviewed": false
+      },
+      "outer": {
+        "label": {
+          "value": "Baussemooss",
+          "reviewed": false,
+          "note": "DE: Außenmaß"
+        },
+        "hint": {
+          "value": "Bannemooss plus Wanddickt",
+          "reviewed": false
+        }
+      }
+    },
+    "cargo": {
+      "copper": {
+        "value": "Koffer",
+        "reviewed": false
+      },
+      "glass": {
+        "value": "Glas",
+        "reviewed": false
+      },
+      "aluminium": {
+        "value": "Aluminium",
+        "reviewed": false
+      },
+      "machine": {
+        "value": "Maschinn oder Anlag",
+        "reviewed": false
+      }
+    },
+    "dest": {
+      "eu": {
+        "value": "EU",
+        "reviewed": false
+      },
+      "cn": {
+        "value": "China",
+        "reviewed": false
+      },
+      "au": {
+        "value": "Australien",
+        "reviewed": false
+      },
+      "nz": {
+        "value": "Neiséiland",
+        "reviewed": false
+      },
+      "third": {
+        "value": "anert Drëttland",
+        "reviewed": false
+      }
+    },
+    "build": {
+      "closed": {
+        "value": "zou",
+        "reviewed": false,
+        "note": "DE: geschlossene Bauweise"
+      },
+      "slatted": {
+        "value": "gelatt",
+        "reviewed": false,
+        "note": "DE: gelattete Bauweise"
+      },
+      "autoNote": {
+        "value": "Voreestellung no Ladegutt. Dir kënnt ëmschalten.",
+        "reviewed": false
+      }
+    },
+    "out": {
+      "heading": {
+        "value": "Wat doraus follegt",
+        "reviewed": false
+      },
+      "outer": {
+        "value": "Baussemooss",
+        "reviewed": false
+      },
+      "skids": {
+        "value": "Kuffen",
+        "reviewed": false,
+        "note": "DE: Kufen"
+      },
+      "boardThickness": {
+        "value": "Brietdickt",
+        "reviewed": false,
+        "note": "DE: Brettstärke"
+      },
+      "volume": {
+        "value": "Volume",
+        "reviewed": false
+      },
+      "guide": {
+        "value": "Richtwäert",
+        "reviewed": false
+      },
+      "stampOn": {
+        "value": "IPPC-Stempel op zwou géintiwwerleiende Säiten",
+        "reviewed": false
+      },
+      "stampOff": {
+        "value": "Kee IPPC-Stempel néideg",
+        "reviewed": false
+      }
+    },
+    "rule": {
+      "third": {
+        "value": "China, Australien an Neiséiland verlaangen ISPM-15-behandelt Holz mat IPPC-Stempel. Deen dierfe mir uwenden, Registréierungsnummer 079.",
+        "reviewed": false
+      },
+      "eu": {
+        "value": "Bannent der EU ass keng ISPM-15-Behandlung néideg; de Stempel ersetzt bei Bedarf de Planzepass.",
+        "reviewed": false
+      }
+    },
+    "actions": {
+      "submit": {
+        "value": "Als Ufro schécken",
+        "reviewed": false
+      },
+      "download": {
+        "value": "Zeechnung eroflueden",
+        "reviewed": false
+      },
+      "reset": {
+        "value": "Zerécksetzen",
+        "reviewed": false
+      }
+    },
+    "noscript": {
+      "value": "Ouni JavaScript gëtt d'Zeechnung net matgezeechent. D'Felder hei drënner funktionéieren trotzdem: fëllt se aus a schéckt se mat der Ufro of. Mir brauchen d'Bannemooss, d'Gewiicht, d'Ladegutt, d'Zil an d'Stéckzuel.",
+      "reviewed": false
+    },
+    "drawingLabelStatic": {
+      "value": "Beispillzeechnung vun enger Exportkëscht mat Moosslinnen, Kuffen an dem IPPC-Stempel.",
+      "reviewed": false
+    },
+    "liveIntro": {
+      "value": "Zeechnung",
+      "reviewed": false
+    },
+    "srSummary": {
+      "value": "Këscht {outer} mm baussen, {skids} Kuffen, {build}, {stamp}.",
+      "reviewed": false
+    }
+  },
+  "stamp": {
+    "heading": {
+      "value": "De Stempel",
+      "reviewed": false
+    },
+    "lead": {
+      "value": "Um Stempel steet alles, wat de Kontrolleur am Zilhafen brauch. Hei ass all Feld eenzel: wat et heescht, a wat geschitt, wann et feelt.",
+      "reviewed": false
+    },
+    "fields": {
+      "ippc": {
+        "title": {
+          "value": "D'IPPC-Symbol",
+          "reviewed": false
+        },
+        "what": {
+          "value": "Déi styliséiert Ähr weist, datt d'Holz no der internationaler Planzeschutznorm ISPM 15 behandelt gouf.",
+          "reviewed": false
+        },
+        "without": {
+          "value": "Feelt se, behandelt den Zoll am Zilland d'Sendung wéi onbehandelt Holz.",
+          "reviewed": false
+        }
+      },
+      "lu": {
+        "title": {
+          "value": "LU",
+          "reviewed": false
+        },
+        "what": {
+          "value": "Den ISO-Code vum Land, an deem behandelt a gekennzeechent gouf.",
+          "reviewed": false
+        },
+        "without": {
+          "value": "Hie seet der Autoritéit am Zilland, wéi ee Register si préife muss.",
+          "reviewed": false
+        }
+      },
+      "number": {
+        "title": {
+          "value": "079",
+          "reviewed": false
+        },
+        "what": {
+          "value": "Eis Registréierungsnummer bei der ASTA, der Administration des Services Techniques de l'Agriculture. Si ass eemoleg, net iwwerdrobar an ëffentlech nopréifbar.",
+          "reviewed": false
+        },
+        "without": {
+          "value": "Zu Lëtzebuerg gëtt et dräi agedroe Produzenten.",
+          "reviewed": false
+        }
+      },
+      "code": {
+        "title": {
+          "value": "De Behandlungscode",
+          "reviewed": false
+        },
+        "what": {
+          "value": "Hie seet, wéi behandelt gouf: HT fir Wäermebehandlung, DB fir Holz ouni Rinn.",
+          "reviewed": false,
+          "note": "DE: Wärmebehandlung / entrindet"
+        },
+        "without": {
+          "value": "Ouni Code ass de Stempel onvollstänneg an domat ongëlteg.",
+          "reviewed": false
+        }
+      },
+      "twoSides": {
+        "title": {
+          "value": "Zwou Säiten",
+          "reviewed": false
+        },
+        "what": {
+          "value": "De Stempel muss sichtbar an dauerhaft ugebruecht sinn, am beschten op zwou géintiwwerleiende Säiten.",
+          "reviewed": false
+        },
+        "without": {
+          "value": "Da fënnt en de Kontrolleur, egal wéi d'Këscht am Container steet.",
+          "reviewed": false
+        }
+      },
+      "noRedOrange": {
+        "title": {
+          "value": "Net rout, net orange",
+          "reviewed": false
+        },
+        "what": {
+          "value": "Dës Faarwe si fir d'Kennzeechnung vu geféierleche Gidder reservéiert.",
+          "reviewed": false
+        },
+        "without": {
+          "value": "Dofir gesitt Dir se och op dëser Websäit net.",
+          "reviewed": false
+        }
+      },
+      "afterRepair": {
+        "title": {
+          "value": "No all Reparatur nei",
+          "reviewed": false
+        },
+        "what": {
+          "value": "Gëtt eng Palette nei benotzt, recycléiert oder reparéiert, muss se nei gekennzeechent ginn, an all Bauteil muss behandelt sinn.",
+          "reviewed": false
+        },
+        "without": {
+          "value": "Dofir reparéiere mir net nëmmen, mir stemplen och nei.",
+          "reviewed": false
+        }
+      },
+      "replaces": {
+        "title": {
+          "value": "Wat en ersetzt",
+          "reviewed": false
+        },
+        "what": {
+          "value": "Bannent der EU ersetzt de Stempel de Planzepass, beim Export d'Planzegesondheetszertifikat.",
+          "reviewed": false,
+          "note": "DE: Pflanzenpass / Pflanzengesundheitszeugnis"
+        },
+        "without": {
+          "value": "Hie gëllt fir Massivholz vu 6 mm Déckt un, net fir Pressholz.",
+          "reviewed": false
+        }
+      }
+    },
+    "whatItMeans": {
+      "value": "Wat et heescht",
+      "reviewed": false
+    },
+    "whatIfMissing": {
+      "value": "Wat geschitt, wann et feelt",
+      "reviewed": false
+    },
+    "registryHeading": {
+      "value": "Déi dräi agedroe Produzenten zu Lëtzebuerg",
+      "reviewed": false
+    },
+    "registryNote": {
+      "value": "Dat ass keng Behaaptung vun eis, dat steet am ëffentleche Register.",
+      "reviewed": false
+    },
+    "sourceLine": {
+      "value": "Quell: Single Window for Logistics, Lëtzebuerg (ASTA), Stand 8. Abrëll 2025.",
+      "reviewed": false
+    },
+    "cta": {
+      "value": "Këscht konfiguréieren",
+      "reviewed": false
+    }
+  },
+  "delivery": {
+    "heading": {
+      "value": "Liwwerung & Ofholung",
+      "reviewed": false
+    },
+    "lead": {
+      "value": "Fir Chauffeuren a Spediteuren: esou leeft d'Uliwwerung bei eis of.",
+      "reviewed": false
+    },
+    "stepsHeading": {
+      "value": "De Wee op de Betrib",
+      "reviewed": false
+    },
+    "steps": {
+      "entry": {
+        "title": {
+          "value": "Erafaart iwwer d'Haapthal",
+          "reviewed": false
+        },
+        "body": {
+          "value": "Dat ass den eenzegen Zougang zu Haff a Rampe.",
+          "reviewed": false
+        }
+      },
+      "yard": {
+        "title": {
+          "value": "Duerch op den Haff",
+          "reviewed": false
+        },
+        "body": {
+          "value": "Duerch bis op den Haff, laanscht d'Hal.",
+          "reviewed": false
+        }
+      },
+      "ramp": {
+        "title": {
+          "value": "Un der Rampe unstellen",
+          "reviewed": false,
+          "note": "DE: an der Rampe anstellen"
+        },
+        "body": {
+          "value": "Waart am Camion, mir kommen bei Iech.",
+          "reviewed": false
+        }
+      },
+      "papers": {
+        "title": {
+          "value": "D'Pabeieren bréngen mir un de Camion",
+          "reviewed": false
+        },
+        "body": {
+          "value": "Dir musst net an de Büro eropgoen.",
+          "reviewed": false
+        }
+      }
+    },
+    "factsHeading": {
+      "value": "Op der Plaz",
+      "reviewed": false
+    },
+    "facts": {
+      "spaces": {
+        "value": "LKW-Stellplazen",
+        "reviewed": false
+      },
+      "overnight": {
+        "value": "Iwwernuechtung méiglech",
+        "reviewed": false
+      },
+      "languages": {
+        "value": "Sproochen um Empfang",
+        "reviewed": false
+      },
+      "access": {
+        "value": "Zoufaart",
+        "reviewed": false
+      }
+    },
+    "addressHeading": {
+      "value": "Adress a Positioun",
+      "reviewed": false
+    },
+    "mapAlt": {
+      "value": "Kaart vun der Zone Industrielle zu Mertzig mat der Positioun vum Betrib, engem Moossstaf a Nordpfeil.",
+      "reviewed": false
+    },
+    "mapAttribution": {
+      "value": "Kaartendaten © OpenStreetMap contributors. D'Bild läit op dëser Säit. Beim Opruff geet keng Ufro no baussen.",
+      "reviewed": false
+    },
+    "printHeading": {
+      "value": "Op enger Säit zum Drécken",
+      "reviewed": false
+    },
+    "printBody": {
+      "value": "Dës Säit ass esou gesat, datt se op ee Blat passt. Dréckt se aus a leet se an de Camion.",
+      "reviewed": false
+    },
+    "shortHeading": {
+      "value": "Kuerzfassung",
+      "reviewed": false
+    },
+    "pending": {
+      "value": "Mir setzen dës Ugaben online, soubal se bestätegt sinn. Bis dohin: rufft un, mir soen Iech de Wee. {phone}",
+      "reviewed": false
+    }
+  },
+  "history": {
+    "heading": {
+      "value": "Historik",
+      "reviewed": false
+    },
+    "lead": {
+      "value": "Dräi Generatiounen, ee Betrib.",
+      "reviewed": false
+    },
+    "entries": {
+      "1959": {
+        "value": "Henry Kasel grënnt zu Biissen eng Schreinerei mat dräi Mataarbechter. Doraus entwéckelt sech Schrëtt fir Schrëtt d'Holzverpakung.",
+        "reviewed": false
+      },
+      "1973": {
+        "value": "Grënnung vun der Maison Kasel zu Biissen.",
+        "reviewed": false
+      },
+      "1994": {
+        "value": "18 Mataarbechter, d'Kapazitéitsgrenz ass erreecht. International Clienten verlaangen méi grouss Anlagen.",
+        "reviewed": false
+      },
+      "1995": {
+        "value": "Ëmzuch an d'Zone Industrielle Mertzig, mat Lager a Büroen.",
+        "reviewed": false
+      },
+      "1997": {
+        "value": "Zwou weider Lagerhalen. D'Gesamtfläch läit zanterhier bei 9.000 m².",
+        "reviewed": false
+      },
+      "2002": {
+        "value": "Ëmfaassend Moderniséierung vun alle Beräicher.",
+        "reviewed": false
+      },
+      "2008": {
+        "value": "Déi nei Palettemaschinn geet a Betrib.",
+        "reviewed": false
+      },
+      "2014": {
+        "value": "Grënnung vun der Emballages en Bois Kasel S.à r.l. ënner Tom Kasel, déi d'Produktioun iwwerhëlt.",
+        "reviewed": false
+      }
+    },
+    "short": {
+      "1959": {
+        "value": "Schreinerei zu Biissen",
+        "reviewed": false
+      },
+      "1973": {
+        "value": "Maison Kasel gegrënnt",
+        "reviewed": false
+      },
+      "1994": {
+        "value": "18 Leit, Plaz ze kleng",
+        "reviewed": false
+      },
+      "1995": {
+        "value": "Ëmzuch op Mertzig",
+        "reviewed": false
+      },
+      "1997": {
+        "value": "Zwou Halen, 9.000 m²",
+        "reviewed": false
+      },
+      "2002": {
+        "value": "Alles moderniséiert",
+        "reviewed": false
+      },
+      "2008": {
+        "value": "Nei Palettemaschinn",
+        "reviewed": false
+      },
+      "2014": {
+        "value": "Tom Kasel iwwerhëlt",
+        "reviewed": false
+      }
+    },
+    "family": {
+      "value": "De Pierrot Kasel ass op säi Papp Henry gefollegt. Famillemembere féieren d'Verwaltung weider. Den Tom Kasel leet d'Produktiounsgesellschaft.",
+      "reviewed": false
+    }
+  },
+  "faq": {
+    "heading": {
+      "value": "Dacks gefrot",
+      "reviewed": false
+    },
+    "items": {
+      "china": {
+        "q": {
+          "value": "Brauch meng Sendung no China en IPPC-Stempel?",
+          "reviewed": false
+        },
+        "a": {
+          "value": "Jo. China, Australien an Neiséiland verlaangen ISPM-15-behandelt Holz mat gëltegem IPPC-Stempel. Mir dierfen en uwenden, Registréierungsnummer 079.",
+          "reviewed": false
+        }
+      },
+      "eu": {
+        "q": {
+          "value": "A bannent der EU?",
+          "reviewed": false
+        },
+        "a": {
+          "value": "Do ass keng ISPM-15-Behandlung néideg. De Stempel ersetzt bei Bedarf de Planzepass.",
+          "reviewed": false
+        }
+      },
+      "leadtime": {
+        "q": {
+          "value": "Wéi séier kënnt Dir liwweren?",
+          "reviewed": false
+        },
+        "a": {
+          "value": "Mir schneiden d'Holz, wann d'Bestellung kënnt, an hunn 9.000 m² Lager. Wéi laang et an Ärem Fall dauert, soe mir Iech, soubal mir Är Ufro gelies hunn. Schreift eis d'Stéckzuel an de Wonschtermin dobäi.",
+          "reviewed": false
+        }
+      },
+      "repair": {
+        "q": {
+          "value": "Kënnt Dir eis gebrauchte Paletten reparéieren?",
+          "reviewed": false
+        },
+        "a": {
+          "value": "Jo, a mir kennzeechnen se duerno nei, wéi d'Norm et verlaangt.",
+          "reviewed": false
+        }
+      },
+      "storage": {
+        "q": {
+          "value": "Kënnt Dir fäerdeg Wuer fir eis alageren?",
+          "reviewed": false
+        },
+        "a": {
+          "value": "Jo. Fäerdegwuer gëtt meeschtens direkt geliwwert, kann awer alagert an op Ofruff verschéckt ginn.",
+          "reviewed": false
+        }
+      },
+      "sizes": {
+        "q": {
+          "value": "Wéi eng Moosse sinn Standard?",
+          "reviewed": false
+        },
+        "a": {
+          "value": "Standardpaletten, CP-Paletten a Sonderpaletten no Ärer Spezifikatioun. Schreift eis d'Mooss, dat Dir braucht. Mir schneiden op Bestellung a sinn net u Lagermoossen gebonnen.",
+          "reviewed": false
+        }
+      },
+      "driver-access": {
+        "q": {
+          "value": "Wou fueren ech als Chauffer eran?",
+          "reviewed": false
+        },
+        "a": {
+          "value": "Iwwer d'Haapthal. Dat ass den eenzegen Zougang zu Haff a Rampe. De ganze Wee steet op der Säit Liwwerung & Ofholung.",
+          "reviewed": false
+        }
+      }
+    },
+    "lead": {
+      "value": "Wat Akeefer a Chauffeuren eis am dackste froen.",
+      "reviewed": false
+    },
+    "nudge": {
+      "value": "Är Fro ass net dobäi? Schreift eis, mir äntweren.",
+      "reviewed": false
+    },
+    "nudgeCta": {
+      "value": "Ufro schécken",
+      "reviewed": false
+    }
+  },
+  "form": {
+    "heading": {
+      "value": "Ufro",
+      "reviewed": false
+    },
+    "lead": {
+      "value": "Fënnef Felder si Flicht. Wat Dir méi ausfëllt, wat mir méi genee äntwerte kënnen.",
+      "reviewed": false
+    },
+    "summaryHeading": {
+      "value": "Aus dem Konfigurator",
+      "reviewed": false
+    },
+    "summaryEdit": {
+      "value": "Änneren",
+      "reviewed": false
+    },
+    "summaryEmpty": {
+      "value": "Nach näischt konfiguréiert.",
+      "reviewed": false
+    },
+    "fields": {
+      "company": {
+        "value": "Firma",
+        "reviewed": false
+      },
+      "contact": {
+        "value": "Uspriechpartner",
+        "reviewed": false
+      },
+      "email": {
+        "value": "E-Mail",
+        "reviewed": false
+      },
+      "subject": {
+        "value": "Wat soll gebaut ginn?",
+        "reviewed": false
+      },
+      "message": {
+        "value": "Noriicht",
+        "reviewed": false
+      },
+      "phone": {
+        "value": "Telefon",
+        "reviewed": false
+      },
+      "qty": {
+        "value": "Stéckzuel",
+        "reviewed": false
+      },
+      "leadDate": {
+        "label": {
+          "value": "Wonschtermin",
+          "reviewed": false,
+          "note": "DE: Wunschtermin"
+        },
+        "hint": {
+          "value": "Dag, u deem Dir d'Wuer braucht",
+          "reviewed": false
+        }
+      },
+      "place": {
+        "label": {
+          "value": "Liwwerplaz",
+          "reviewed": false,
+          "note": "DE: Lieferort"
+        },
+        "hint": {
+          "value": "Uert a Land geet duer",
+          "reviewed": false
+        }
+      },
+      "file": {
+        "label": {
+          "value": "Zeechnung oder Foto",
+          "reviewed": false
+        },
+        "hint": {
+          "value": "PDF, PNG oder JPG · eng Datei · max. 10 MB",
+          "reviewed": false
+        }
+      }
+    },
+    "subjects": {
+      "pallets": {
+        "value": "Paletten",
+        "reviewed": false
+      },
+      "crates": {
+        "value": "Këschten op Mooss",
+        "reviewed": false
+      },
+      "repair": {
+        "value": "Reparatur",
+        "reviewed": false
+      },
+      "storage": {
+        "value": "Alagerung",
+        "reviewed": false
+      },
+      "unsure": {
+        "value": "nach onkloer",
+        "reviewed": false
+      }
+    },
+    "consent": {
+      "value": "Ech sinn averstanen, datt meng Ugabe fir d'Beäntwerte vun dëser Ufro gespäichert a benotzt ginn. D'Detailer stinn an der Dateschutzerklärung.",
+      "reviewed": false
+    },
+    "consentLink": {
+      "value": "Dateschutzerklärung",
+      "reviewed": false
+    },
+    "submit": {
+      "value": "Ufro schécken",
+      "reviewed": false
+    },
+    "sending": {
+      "value": "gëtt geschéckt …",
+      "reviewed": false
+    },
+    "errors": {
+      "company": {
+        "value": "Schreift de Firmennumm eran.",
+        "reviewed": false
+      },
+      "contact": {
+        "value": "Schreift eran, mat wiem mir schwätzen.",
+        "reviewed": false
+      },
+      "email": {
+        "value": "Kuckt d'E-Mail-Adress w.e.g. nach eng Kéier no. Zum Beispill: numm@firma.lu",
+        "reviewed": false
+      },
+      "subject": {
+        "value": "Wielt aus, wat gebaut soll ginn.",
+        "reviewed": false
+      },
+      "message": {
+        "value": "Schreift eis kuerz, ëm wat et geet.",
+        "reviewed": false
+      },
+      "consent": {
+        "value": "Ouni Är Zoustëmmung dierfe mir d'Ugaben net verschaffen.",
+        "reviewed": false
+      },
+      "file": {
+        "value": "Dës Datei geet net. Erlaabt sinn PDF, PNG oder JPG bis 10 MB.",
+        "reviewed": false
+      },
+      "summary": {
+        "value": "{count} Ugab feelt nach.",
+        "reviewed": false
+      },
+      "summaryPlural": {
+        "value": "{count} Ugabe feelen nach.",
+        "reviewed": false
+      },
+      "network": {
+        "value": "D'Ufro ass net duerchkomm. Probéiert et nach eng Kéier, oder schreift direkt un {email}.",
+        "reviewed": false
+      }
+    },
+    "successHeading": {
+      "value": "Merci. Är Ufro ass do.",
+      "reviewed": false
+    },
+    "successBody": {
+      "value": "Mir mellen eis bannen engem Aarbechtsdag.",
+      "reviewed": false
+    },
+    "successNext": {
+      "value": "Wann et pressant ass, rufft un: {phone}.",
+      "reviewed": false
+    },
+    "summaryRemove": {
+      "value": "Moossen eraushuelen",
+      "reviewed": false
+    },
+    "summaryRemoveHint": {
+      "value": "Da geet d'Ufro ouni Këschtemoossen eraus.",
+      "reviewed": false
+    }
+  },
+  "footer": {
+    "company": {
+      "value": "Betrib",
+      "reviewed": false
+    },
+    "pages": {
+      "value": "Säiten",
+      "reviewed": false
+    },
+    "legalNav": {
+      "value": "Recht",
+      "reviewed": false
+    },
+    "langHeading": {
+      "value": "Sprooch",
+      "reviewed": false
+    },
+    "legal": {
+      "value": "Impressum",
+      "reviewed": false
+    },
+    "privacy": {
+      "value": "Dateschutz",
+      "reviewed": false
+    },
+    "rcsLine": {
+      "value": "RCS Lëtzebuerg {rcs} · MwSt {vat}",
+      "reviewed": false
+    },
+    "madeIn": {
+      "value": "Gebaut zu Mertzig, Kanton Dikrech, Lëtzebuerg.",
+      "reviewed": false
+    }
+  },
+  "hours": {
+    "office": {
+      "value": "Büro an Telefon",
+      "reviewed": false
+    },
+    "ramp": {
+      "value": "Uliwwerung an Ofholung",
+      "reviewed": false
+    },
+    "heading": {
+      "value": "Ëffnungszäiten",
+      "reviewed": false
+    }
+  },
+  "pallets": {
+    "h1": {
+      "value": "Holzpaletten",
+      "reviewed": false
+    },
+    "lead": {
+      "value": "Standardpaletten, CP-Paletten a Paletten no Ärer technescher Spezifikatioun. Well mir selwer sägen, si mir net u Lagermoossen gebonnen.",
+      "reviewed": false
+    },
+    "standardHeading": {
+      "value": "Standardmoossen",
+      "reviewed": false
+    },
+    "cpHeading": {
+      "value": "CP-Paletten",
+      "reviewed": false
+    },
+    "cpNote": {
+      "value": "D'CP-Moosse sinn duerch d'CP-Norm festgeluecht. Wéi eng Typen mir op Lager hunn a wéi eng mir op Bestellung maachen: frot eis.",
+      "reviewed": false
+    },
+    "customHeading": {
+      "value": "Sonderpaletten",
+      "reviewed": false
+    },
+    "customBody": {
+      "value": "Schéckt eis Är Zeechnung oder Är technesch Spezifikatioun. Mir bauen no Äre Virgaben.",
+      "reviewed": false
+    },
+    "table": {
+      "caption": {
+        "value": "Wäerter, déi hei nach feelen, soe mir Iech op Nofro.",
+        "reviewed": false
+      },
+      "size": {
+        "value": "Mooss (mm)",
+        "reviewed": false
+      },
+      "load": {
+        "value": "Traglaascht",
+        "reviewed": false,
+        "note": "DE: Traglast"
+      },
+      "wood": {
+        "value": "Holzaart",
+        "reviewed": false
+      },
+      "drying": {
+        "value": "Dréchnungsgrad",
+        "reviewed": false,
+        "note": "DE: Trocknungsgrad"
+      },
+      "ispm": {
+        "value": "ISPM 15",
+        "reviewed": false
+      },
+      "type": {
+        "value": "Typ",
+        "reviewed": false
+      },
+      "ispmYes": {
+        "value": "méiglech",
+        "reviewed": false
+      }
+    }
+  },
+  "crates": {
+    "h1": {
+      "value": "Këschten op Mooss",
+      "reviewed": false
+    },
+    "lead": {
+      "value": "Këschte fir de Seetransport vu Koffer, Glas, Aluminium a Maschinnen. Zou oder gelatt, no Gewiicht a Ladegutt.",
+      "reviewed": false
+    },
+    "buildHeading": {
+      "value": "Bauweisen",
+      "reviewed": false
+    },
+    "closedTitle": {
+      "value": "Zou",
+      "reviewed": false
+    },
+    "closedBody": {
+      "value": "Voll bepliankt. Fir Glas a fir alles, wat kee Stëbs a kee Reen verdréit.",
+      "reviewed": false
+    },
+    "slattedTitle": {
+      "value": "Gelatt",
+      "reviewed": false
+    },
+    "slattedBody": {
+      "value": "Lattung mat Zwëschenraim. Méi liicht a méi bëlleg, wann d'Wuer selwer stabil ass. Typesch bei Maschinnen an Aluminiumprofiler.",
+      "reviewed": false
+    },
+    "cargoHeading": {
+      "value": "Ladegutt",
+      "reviewed": false
+    },
+    "cargoBody": {
+      "value": "Koffer, Glas an Aluminium ginn am dackste iwwer d'Mier. All dräi stellen aner Ufuerderungen un d'Kuffen an un d'Fixéierung. Schreift eis dofir d'Gewiicht an de Schwéierpunkt dobäi.",
+      "reviewed": false
+    },
+    "exportHeading": {
+      "value": "Iwwerseeversand",
+      "reviewed": false
+    },
+    "exportBody": {
+      "value": "Mir hunn den Agrément vum Service Technique de l'Agriculture fir d'Hierstellung vu Paletten a Këschten no den Importbestëmmunge vu China, Australien an Neiséiland.",
+      "reviewed": false
+    },
+    "configCta": {
+      "value": "Këscht konfiguréieren",
+      "reviewed": false
+    }
+  },
+  "repair": {
+    "h1": {
+      "value": "Reparatur a Widderverwendung",
+      "reviewed": false
+    },
+    "lead": {
+      "value": "Mir reparéieren gebrauchte Këschten a Paletten a setzen se nei a Betrib. Vill vun eisen Emballagen sinn esou méi Joren am Asaz.",
+      "reviewed": false
+    },
+    "ruleHeading": {
+      "value": "Firwat d'Nummer 079 hei zielt",
+      "reviewed": false
+    },
+    "ruleBody": {
+      "value": "Eng Palette, déi nei benotzt, recycléiert oder reparéiert gëtt, muss nei gekennzeechent ginn. All Bauteil muss behandelt sinn. Dat dierfen nëmme Betriber mat enger Registréierungsnummer. Mir hunn der eng, dofir kritt Dir d'Palette mat gëltegem Stempel zréck.",
+      "reviewed": false
+    },
+    "whatHeading": {
+      "value": "Wat mir maachen",
+      "reviewed": false
+    },
+    "whatItems": {
+      "value": [
+        "Gebrauchte Paletten a Këschte préiwen a sortéieren",
+        "Kaputt Brieder, Klëtz a Kuffen ersetzen",
+        "No der Reparatur nei stemplen, wéi d'Norm et verlaangt",
+        "Zréck op de Betrib liwweren oder op Ofruff halen"
+      ],
+      "reviewed": false
+    },
+    "cta": {
+      "value": "Gebrauchte Paletten uweisen",
+      "reviewed": false
+    }
+  },
+  "ispm15": {
+    "h1": {
+      "value": "ISPM 15 zu Lëtzebuerg",
+      "reviewed": false
+    },
+    "lead": {
+      "value": "ISPM 15 ass déi international Norm fir Holzverpakung am Wielthandel. Si soll verhënneren, datt Schiedlinge mam Verpakungsholz vun engem Kontinent op deen aneren kommen. Wien no der Norm behandele a stemplen dierf, steet an engem ëffentleche Register.",
+      "reviewed": false
+    },
+    "whoHeading": {
+      "value": "Wien dierf zu Lëtzebuerg stemplen",
+      "reviewed": false
+    },
+    "whoBody": {
+      "value": "Dräi Betriber. Mir sinn een dovun, mat der Registréierungsnummer 079. D'Lëscht gëtt vun der ASTA gefouert an ass ëffentlech.",
+      "reviewed": false
+    },
+    "fieldsHeading": {
+      "value": "De Stempel, Feld fir Feld",
+      "reviewed": false
+    },
+    "rulesHeading": {
+      "value": "Wat soss nach gëllt",
+      "reviewed": false
+    },
+    "rules": {
+      "value": [
+        "De Stempel muss dauerhaft sinn an dierf net iwwerdroe ginn.",
+        "Hie muss sichtbar ugebruecht sinn, am beschten op zwou géintiwwerleiende Säiten.",
+        "Rout an Orange si ze vermeiden, well dës Faarwe fir Gefaargutt reservéiert sinn.",
+        "Gëtt eng Palette nei benotzt, recycléiert oder reparéiert, muss se nei gekennzeechent ginn; all Bauteil muss behandelt sinn.",
+        "D'Kennzeechnung dierf nëmmen duerch vollstänneg Verbrennung zerstéiert ginn.",
+        "Si gëllt fir Massivholz ab 6 mm Déckt, net fir Pressholz.",
+        "De Stempel ersetzt de Pflanzepass am innergemeinschaftleche Verkéier an d'Pflanzegesondheetszeugnis beim Export."
+      ],
+      "reviewed": false
+    },
+    "whenHeading": {
+      "value": "Wéini Dir en braucht",
+      "reviewed": false
+    },
+    "whenBody": {
+      "value": "Bei China, Australien an Neiséiland ëmmer. Bei anere Drëttlänner hänkt et vum Zilland of. Schreift eis d'Zil an d'Ufro, mir soen et Iech.",
+      "reviewed": false
+    },
+    "cta": {
+      "value": "Këscht konfiguréieren",
+      "reviewed": false
+    }
+  },
+  "contact": {
+    "h1": {
+      "value": "Kontakt",
+      "reviewed": false
+    },
+    "lead": {
+      "value": "Schreift eis, wat Dir braucht. Wat d'Ufro méi genee ass, wat Dir méi séier eng Offert hutt.",
+      "reviewed": false
+    },
+    "directHeading": {
+      "value": "Direkt",
+      "reviewed": false
+    },
+    "visitHeading": {
+      "value": "Op der Plaz",
+      "reviewed": false
+    },
+    "driverHint": {
+      "value": "Sidd Dir Chauffer? Da steet alles, wat Dir braucht, op der Säit Liwwerung & Ofholung.",
+      "reviewed": false
+    }
+  },
+  "thanks": {
+    "h1": {
+      "value": "Merci. Är Ufro ass do.",
+      "reviewed": false
+    },
+    "body": {
+      "value": "Mir mellen eis bannen engem Aarbechtsdag.",
+      "reviewed": false
+    },
+    "nextHeading": {
+      "value": "Wat elo geschitt",
+      "reviewed": false
+    },
+    "next": {
+      "value": [
+        "Den Tom liest d'Ufro a kuckt, ob eppes feelt.",
+        "Dir kritt eng Äntwert per E-Mail, mat Präis, Mooss a Liwwerzäit, wann d'Ugaben duergoen.",
+        "Wann eppes onkloer ass, rifft hien un."
+      ],
+      "reviewed": false
+    },
+    "urgent": {
+      "value": "Pressant? Rufft un: {phone}.",
+      "reviewed": false
+    }
+  },
+  "legal": {
+    "h1": {
+      "value": "Impressum",
+      "reviewed": false
+    },
+    "operatorHeading": {
+      "value": "Betreiwer vun dëser Websäit",
+      "reviewed": false
+    },
+    "contactHeading": {
+      "value": "Kontakt",
+      "reviewed": false
+    },
+    "registerHeading": {
+      "value": "Register a Steieren",
+      "reviewed": false
+    },
+    "responsibleHeading": {
+      "value": "Verantwortlech fir den Inhalt",
+      "reviewed": false
+    },
+    "purposeHeading": {
+      "value": "Gesellschaftszweck",
+      "reviewed": false
+    },
+    "disputeHeading": {
+      "value": "Sträitschlichtung",
+      "reviewed": false
+    },
+    "disputeBody": {
+      "value": "D'Europäesch Kommissioun stellt eng Plattform fir Online-Sträitschlichtung zur Verfügung. Mir sinn net verflicht a net gewëllt, un engem Sträitschlichtungsverfahre virun enger Verbraucherschlichtungsstell deelzehuelen.",
+      "reviewed": false
+    },
+    "liabilityHeading": {
+      "value": "Haftung fir Linken",
+      "reviewed": false
+    },
+    "liabilityBody": {
+      "value": "Eis Säit enthält Linken op extern Websäiten. Op hiren Inhalt hu mir kee Afloss. Fir den Inhalt vun de verlinkte Säiten ass ëmmer dee jeeweilege Betreiwer verantwortlech.",
+      "reviewed": false
+    },
+    "supervisionHeading": {
+      "value": "Iwwerwaachung",
+      "reviewed": false
+    },
+    "supervisionBody": {
+      "value": "D'ISPM-15-Registréierung gëtt vun der Administration des Services Techniques de l'Agriculture (ASTA) gefouert.",
+      "reviewed": false
+    },
+    "licenceHeading": {
+      "value": "Autorisatioun d'établissement",
+      "reviewed": false
+    }
+  },
+  "privacy": {
+    "h1": {
+      "value": "Dateschutz",
+      "reviewed": false
+    },
+    "lead": {
+      "value": "Kuerz virof: mir setze keng Cookien, mir hunn keen Tracking, an d'Schrëften an d'Kaart op dëser Säit lueden net vu fremde Serveren. Dofir gesitt Dir och kee Banner.",
+      "reviewed": false
+    },
+    "controllerHeading": {
+      "value": "Verantwortlech Stell",
+      "reviewed": false
+    },
+    "whatHeading": {
+      "value": "Wéi eng Daten mir kréien",
+      "reviewed": false
+    },
+    "whatBody": {
+      "value": "Nëmmen déi, déi Dir am Ufro-Formulaire selwer aschreift: Firma, Uspriechpartner, E-Mail an d'Beschreiwung vun Ärem Optrag. Fakultativ dozou Telefon, Stéckzuel, Wonschtermin, Liwwerplaz an eventuell eng Datei, déi Dir uhänkt. Wann Dir de Konfigurator benotzt, ginn déi konfiguréiert Wäerter matgeschéckt. Dir gesitt se virum Ofschécken op der Säit.",
+      "reviewed": false
+    },
+    "whyHeading": {
+      "value": "Firwat",
+      "reviewed": false
+    },
+    "whyBody": {
+      "value": "Fir Är Ufro ze beäntweren an, wann et zu engem Optrag kënnt, fir en auszeféieren.",
+      "reviewed": false
+    },
+    "legalBasisHeading": {
+      "value": "Rechtsgrondlag",
+      "reviewed": false
+    },
+    "legalBasisBody": {
+      "value": "Art. 6 Abs. 1 lit. b DSGVO (Schrëtt virun engem Vertrag) an, wat de Krees am Formulaire ugeet, Art. 6 Abs. 1 lit. a DSGVO (Zoustëmmung). Dir kënnt d'Zoustëmmung zu all Moment zeréckzéien.",
+      "reviewed": false
+    },
+    "retentionHeading": {
+      "value": "Wéi laang",
+      "reviewed": false
+    },
+    "retentionBody": {
+      "value": "Ufroen, aus deene kee Optrag gëtt, läsche mir no zwee Joer. Ufroen, aus deenen en Optrag gëtt, halen mir esou laang, wéi d'Handels- a Steiergesetzer et verlaangen. Zu Lëtzebuerg sinn dat zéng Joer.",
+      "reviewed": false
+    },
+    "processorsHeading": {
+      "value": "Wien nach matverschafft",
+      "reviewed": false
+    },
+    "processorsBody": {
+      "value": "D'Formulaire leeft iwwer eng Server-Funktioun bei Supabase; d'Verschaffung geschitt an der EU. D'Mail selwer geet iwwer eise Mailversender. Mir ginn Är Daten net weider a verkafen se net.",
+      "reviewed": false
+    },
+    "hostingHeading": {
+      "value": "Hosting a Serverlogs",
+      "reviewed": false
+    },
+    "hostingBody": {
+      "value": "De Webserver protokolléiert technesch Zougrëffsdaten, wéi dat bei all Server esou ass. Dës Protokoller ginn nëmme fir de Betrib an d'Sécherheet vun der Säit benotzt.",
+      "reviewed": false
+    },
+    "cookiesHeading": {
+      "value": "Cookien",
+      "reviewed": false
+    },
+    "cookiesBody": {
+      "value": "Keng. Weder eege nach fremd. Et gëtt och keng Analytics.",
+      "reviewed": false
+    },
+    "rightsHeading": {
+      "value": "Är Rechter",
+      "reviewed": false
+    },
+    "rightsBody": {
+      "value": "Dir hutt d'Recht op Auskonft, Beriichtegung, Läschung, Aschränkung vun der Verschaffung, Dateniwwerdrobarkeet a Widdersproch. Schreift dofir un {email}.",
+      "reviewed": false
+    },
+    "authorityHeading": {
+      "value": "Opsiichtsbehörd",
+      "reviewed": false
+    },
+    "authorityBody": {
+      "value": "Commission nationale pour la protection des données (CNPD), 15, boulevard du Jazz, L-4370 Belvaux, Lëtzebuerg.",
+      "reviewed": false
+    },
+    "updatedHeading": {
+      "value": "Stand",
+      "reviewed": false
+    }
+  },
+  "notfound": {
+    "h1": {
+      "value": "Dës Säit gëtt et net.",
+      "reviewed": false
+    },
+    "body": {
+      "value": "Vläicht huet sech den Tipp geännert, oder de Link ass al. Hei sinn déi Säiten, déi et gëtt.",
+      "reviewed": false
+    },
+    "searchHint": {
+      "value": "Sicht Dir eppes Bestëmmtes? Schreift eis: {email}",
+      "reviewed": false
+    }
+  }
+}

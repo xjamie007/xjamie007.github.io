@@ -1,0 +1,38 @@
+---
+/**
+ * Ein Foto des Betriebs.
+ *
+ * AVIF zuerst, WebP daneben, beides in zwei Breiten. `width`/`height` stehen
+ * im Markup, damit beim Laden nichts springt.
+ */
+import { photos, PHOTO_W, PHOTO_H, type PhotoKey } from '../data/photos';
+import { t } from '../i18n';
+import type { Locale } from '../i18n/routes';
+
+interface Props {
+  locale: Locale;
+  name: PhotoKey;
+  /** Wie breit das Bild im Layout wirklich wird — steuert, welche Datei lädt. */
+  sizes?: string;
+  /** Nur für das Bild über der Falte. */
+  eager?: boolean;
+  class?: string;
+}
+const { locale, name, sizes = '(min-width: 60rem) 34rem, 92vw', eager = false, class: className } = Astro.props;
+const p = photos[name];
+const set = (ext: string) => `/img/foto/${p.file}-420.${ext} 420w, /img/foto/${p.file}-625.${ext} 625w`;
+---
+
+<picture class={className}>
+  <source type="image/avif" srcset={set('avif')} sizes={sizes} />
+  <source type="image/webp" srcset={set('webp')} sizes={sizes} />
+  <img
+    src={`/img/foto/${p.file}-625.webp`}
+    width={PHOTO_W}
+    height={PHOTO_H}
+    alt={t(locale, p.altKey)}
+    loading={eager ? 'eager' : 'lazy'}
+    fetchpriority={eager ? 'high' : undefined}
+    decoding={eager ? 'sync' : 'async'}
+  />
+</picture>

@@ -1,0 +1,167 @@
+---
+/**
+ * Häufige Fragen.
+ *
+ * Zweispaltig: links Überschrift und der Hinweis, was zu tun ist, wenn die
+ * eigene Frage nicht dabei ist — rechts die Fragen. Untereinander über die
+ * volle Breite sahen die Karten verloren aus; so trägt die Sektion ihre
+ * Breite und hat einen Anfang.
+ *
+ * Nur Fragen mit belegter Antwort. Eine Frage ohne Antwort bleibt im Projekt
+ * (`src/data/faq.ts`, `answered: false`) und wird von `npm run todo`
+ * aufgelistet, aber sie rendert nicht.
+ *
+ * `<details>` braucht kein JavaScript. Die Bewegung antwortet auf eine
+ * Handlung — das ist erlaubt; was nicht erlaubt wäre, sind Sektionen, die
+ * beim Scrollen von unten einfaden.
+ */
+import Section from '../Section.astro';
+import RailItem from '../RailItem.astro';
+import { answeredFaq } from '../../data/faq';
+import { t } from '../../i18n';
+import { anchors, path, type Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale; only?: string[]; wide?: boolean }
+const { locale, only, wide = false } = Astro.props;
+
+const items = only ? answeredFaq.filter((f) => only.includes(f.id)) : answeredFaq;
+const linkLabel: Record<string, string> = {
+  ispm15: t(locale, 'nav.stamp'),
+  pallets: t(locale, 'nav.pallets'),
+  repair: t(locale, 'nav.repair'),
+  delivery: t(locale, 'nav.delivery'),
+};
+---
+
+<Section id={anchors.faq} wide={wide} labelledby="faq-h2" class="band--mist">
+  {!wide && (
+    <Fragment slot="rail">
+      <RailItem term={t(locale, 'rail.faq')} value={String(items.length)} />
+    </Fragment>
+  )}
+
+  <div class="faqs">
+    <div class="faqs__aside">
+      <h2 id="faq-h2" class="t-h2">{t(locale, 'faq.heading')}</h2>
+      <p class="t-body faqs__lead">{t(locale, 'faq.lead')}</p>
+      <div class="faqs__nudge">
+        <p class="t-caption">{t(locale, 'faq.nudge')}</p>
+        <p class="faqs__cta">
+          <a class="btn btn--quiet" href={`#${anchors.inquiry}`}>{t(locale, 'faq.nudgeCta')}</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="faq">
+      {items.map((f, i) => (
+        <details class="faq__item reveal" name="faq">
+          <summary class="faq__q">
+            <span class="t-num faq__no" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <span class="faq__text">{t(locale, `faq.items.${f.id}.q`)}</span>
+          </summary>
+          <div class="faq__a">
+            <p class="t-body">{t(locale, `faq.items.${f.id}.a`)}</p>
+            {f.link && (
+              <p class="faq__link">
+                <a class="link" href={path(f.link.route, locale)}>{linkLabel[f.link.route] ?? t(locale, 'common.readMore')}</a>
+              </p>
+            )}
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</Section>
+
+<style>
+  .faqs { display: grid; gap: 2.5rem; align-items: start; }
+  @media (width >= 56rem) {
+    .faqs { grid-template-columns: minmax(0, 20rem) minmax(0, 1fr); gap: 4rem; }
+    .faqs__aside { position: sticky; top: 3rem; }
+  }
+
+  .faqs__lead { margin-block-start: 1rem; }
+  .faqs__nudge {
+    margin-block-start: 2rem;
+    padding-block-start: 1.25rem;
+    border-block-start: 2px solid var(--color-blue);
+  }
+  .faqs__cta { margin-block-start: 0.85rem; }
+
+  .faq { display: grid; gap: 0.75rem; }
+
+  .faq__item {
+    background: var(--color-paper);
+    border: 1px solid var(--band-line);
+    border-radius: 4px;
+    transition: border-color 200ms linear, box-shadow 220ms linear, transform 220ms cubic-bezier(0.22, 0.8, 0.3, 1);
+  }
+  @media (hover: hover) {
+    .faq__item:hover {
+      border-color: color-mix(in srgb, var(--color-blue) 50%, var(--band-line));
+      box-shadow: 0 10px 24px -18px rgb(12 32 48 / 0.45);
+      transform: translateY(-1px);
+    }
+    .faq__item:hover .faq__no { color: var(--color-blue); }
+  }
+  .faq__item[open] {
+    border-color: color-mix(in srgb, var(--color-blue) 55%, var(--band-line));
+    box-shadow: 0 12px 28px -20px rgb(12 32 48 / 0.5);
+  }
+  .faq__item:has(> summary:focus-visible) { border-color: var(--color-blue); }
+
+  .faq__q {
+    display: grid;
+    grid-template-columns: 2.25rem minmax(0, 1fr) 1.25rem;
+    align-items: baseline;
+    gap: 0 0.75rem;
+    padding: 1.25rem 1.4rem;
+    cursor: pointer;
+    list-style: none;
+  }
+  .faq__q::-webkit-details-marker { display: none; }
+
+  .faq__no { font-size: 0.875rem; color: var(--color-grey); transition: color 180ms linear; }
+  .faq__text {
+    font-family: var(--font-mark);
+    font-weight: 600;
+    font-size: 1.0625rem;
+    line-height: 1.35;
+  }
+
+  /* Eigenes Zeichen, weil das Standard-Dreieck nicht mitskaliert. Kein „→". */
+  .faq__q::after {
+    content: '';
+    align-self: center;
+    inline-size: 0.65rem;
+    block-size: 0.65rem;
+    border-inline-end: 2px solid var(--color-grey);
+    border-block-end: 2px solid var(--color-grey);
+    transform: rotate(45deg) translate(-0.08rem, -0.08rem);
+    transition: transform 220ms cubic-bezier(0.22, 0.8, 0.3, 1), border-color 180ms linear;
+  }
+  .faq__item[open] .faq__q::after {
+    transform: rotate(-135deg) translate(-0.12rem, -0.12rem);
+    border-color: var(--color-blue);
+  }
+
+  .faq__a { padding: 0 1.4rem 1.4rem calc(2.25rem + 2.15rem); }
+  .faq__item[open] .faq__a { animation: faq-open 280ms cubic-bezier(0.22, 0.8, 0.3, 1) both; }
+  @keyframes faq-open {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .faq__link { margin-block-start: 0.85rem; }
+
+  @media (width < 34rem) {
+    .faq__q { grid-template-columns: minmax(0, 1fr) 1.25rem; }
+    .faq__no { display: none; }
+    .faq__a { padding-inline-start: 1.4rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .faq__item, .faq__q::after, .faq__no { transition: none; }
+    .faq__item[open] .faq__a { animation: none; }
+    @media (hover: hover) { .faq__item:hover { transform: none; } }
+  }
+</style>

@@ -1,0 +1,41 @@
+---
+/**
+ * Referenzen — rendert nëmmen, wann et Zitater gëtt.
+ *
+ * Et existéiert online keng eenzeg Kundestëmm: all 14 Google-Bewertungen
+ * kommen vu Chauffeuren. Also keng erfonnte Testimonials, och keng
+ * anonymiséiert. Eng erfonnte Stëmm ass e Betrug um Liesser.
+ * TODO[FEHLT] `src/data/testimonials.ts` fëllen.
+ */
+import Section from '../Section.astro';
+import RailItem from '../RailItem.astro';
+import { testimonials } from '../../data/testimonials';
+import { t } from '../../i18n';
+import type { Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+---
+
+{testimonials.length > 0 && (
+  <Section id="referenzen" labelledby="ref-h2" tight>
+    <Fragment slot="rail">
+      <RailItem term={t(locale, 'rail.references')} value={String(testimonials.length)} />
+    </Fragment>
+    <h2 id="ref-h2" class="t-h2">{t(locale, 'rail.references')}</h2>
+    <ul class="refs">
+      {testimonials.map((r) => (
+        <li class="refs__item">
+          <blockquote lang={r.lang} class="t-body">{r.quote}</blockquote>
+          <p class="t-caption">{r.author}, {r.company}</p>
+        </li>
+      ))}
+    </ul>
+  </Section>
+)}
+
+<style>
+  .refs { margin-block-start: 1.5rem; display: grid; gap: 2rem; }
+  .refs__item { padding-block-start: 1rem; border-block-start: 1px solid var(--band-line); }
+  .refs__item p { margin-block-start: 0.6rem; }
+</style>

@@ -1,0 +1,107 @@
+---
+/**
+ * Grondgerüst vun all Säit.
+ *
+ * `<html lang>` gëtt korrekt gesat — Screenreader brauchen dat fir d'Aussprooch,
+ * an op enger Säit, déi et a véier Sproochen gëtt, ass dat keng Kleinegkeet.
+ */
+import '../styles/global.css';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { t } from '../i18n';
+import { htmlLang, type Locale, type RouteKey } from '../i18n/routes';
+
+interface Props {
+  locale: Locale;
+  route: RouteKey;
+  jsonld?: string;
+  /** Klass um <body>, z. B. fir d'Drécke-Layout vun der Fahrersäit. */
+  bodyClass?: string;
+}
+const { locale, route, jsonld, bodyClass } = Astro.props;
+---
+
+<!doctype html>
+<html lang={htmlLang[locale]}>
+  <head>
+    <BaseHead locale={locale} route={route} jsonld={jsonld} />
+    <slot name="head" />
+  </head>
+  <body class={bodyClass}>
+    <a class="skip-link" href="#inhalt">{t(locale, 'common.skipToContent')}</a>
+    <Header locale={locale} route={route} />
+    <main id="inhalt">
+      <slot />
+    </main>
+    <Footer locale={locale} route={route} />
+
+    <script>
+      /**
+       * Bewegung.
+       *
+       * Ein IntersectionObserver statt eines Scroll-Listeners: der feuert nur,
+       * wenn wirklich etwas den Rand kreuzt, nicht bei jedem Pixel. Jedes
+       * Element wird einmal hereingeholt und dann abgemeldet — was gelesen
+       * wurde, soll beim Zurückscrollen nicht wieder verschwinden.
+       */
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      function startReveals() {
+        const items = Array.from(document.querySelectorAll<HTMLElement>('.reveal'));
+        if (!items.length) return;
+
+        if (reduce.matches || !('IntersectionObserver' in window)) {
+          items.forEach((el) => el.classList.add('is-in'));
+          return;
+        }
+
+        const io = new IntersectionObserver(
+          (entries) => {
+            // Was gemeinsam hereinkommt, kommt versetzt herein — aber nur
+            // knapp, sonst wartet man auf den letzten Eintrag.
+            let step = 0;
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              const el = entry.target as HTMLElement;
+              el.style.setProperty('--reveal-delay', `${Math.min(step, 4) * 70}ms`);
+              el.classList.add('is-in');
+              io.unobserve(el);
+              step++;
+            }
+          },
+          { rootMargin: '0px 0px -12% 0px', threshold: 0.08 },
+        );
+
+        for (const el of items) io.observe(el);
+
+        // Was beim Laden schon im Bild steht, darf nicht auf den Observer
+        // warten — sonst flackert der Hero.
+        requestAnimationFrame(() => {
+          for (const el of items) {
+            if (el.getBoundingClientRect().top < window.innerHeight * 0.9) {
+              el.classList.add('is-in');
+              io.unobserve(el);
+            }
+          }
+        });
+      }
+
+      function watchHeader() {
+        const head = document.querySelector('.masthead');
+        if (!head) return;
+        const probe = document.createElement('div');
+        probe.setAttribute('aria-hidden', 'true');
+        probe.style.cssText = 'position:absolute;top:0;left:0;width:1px;height:1px;pointer-events:none';
+        document.body.prepend(probe);
+        new IntersectionObserver(
+          ([e]) => head.classList.toggle('is-scrolled', !e.isIntersecting),
+          { threshold: 0 },
+        ).observe(probe);
+      }
+
+      startReveals();
+      watchHeader();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+---
+/**
+ * Eng Zeil am technesche Register.
+ *
+ * D'Schinn ass keng Dekoratioun: si ass d'Kopfzeil vun engem Dateblat. Dofir
+ * steet do nëmmen, wat zu DËSER Sektioun gehéiert — an dofir ass et e `<dl>`,
+ * also Begrëff a Wäert, an net eng Lëscht vu Stëcker.
+ */
+interface Props {
+  /** Begrëff. Kapitälchen, normalt Tracking. */
+  term: string;
+  /** Wäert. Zuel oder Mooss → Archivo Expanded mat Tabelleziffer. */
+  value?: string;
+  /** Zweet Zeil a Fliesstext, fir eng kuerz Erklärung. */
+  note?: string;
+  /** `true` = de Wäert ass eng Zuel oder e Mooss. */
+  numeric?: boolean;
+}
+const { term, value, note, numeric = true } = Astro.props;
+---
+
+<div class="rail__group">
+  <dt class="t-label rail__key">{term}</dt>
+  {value && <dd class:list={['rail__val', numeric ? 't-num' : 't-label']}>{value}</dd>}
+  {note && <dd class="rail__note">{note}</dd>}
+</div>

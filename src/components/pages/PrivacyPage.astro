@@ -1,0 +1,71 @@
+---
+import Section from '../Section.astro';
+import RailItem from '../RailItem.astro';
+import Breadcrumb from '../Breadcrumb.astro';
+import { company } from '../../data/company';
+import { t } from '../../i18n';
+import type { Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+/* Stand vun dëser Erklärung. Bei all inhaltlecher Ännerung updaten. */
+const updated = '2026-09-11';
+const blocks = [
+  'controller', 'what', 'why', 'legalBasis', 'retention', 'processors', 'hosting', 'cookies', 'rights', 'authority',
+] as const;
+const headingKey: Record<(typeof blocks)[number], string> = {
+  controller: 'privacy.controllerHeading', what: 'privacy.whatHeading', why: 'privacy.whyHeading',
+  legalBasis: 'privacy.legalBasisHeading', retention: 'privacy.retentionHeading',
+  processors: 'privacy.processorsHeading', hosting: 'privacy.hostingHeading',
+  cookies: 'privacy.cookiesHeading', rights: 'privacy.rightsHeading', authority: 'privacy.authorityHeading',
+};
+const bodyKey: Record<string, string> = {
+  what: 'privacy.whatBody', why: 'privacy.whyBody', legalBasis: 'privacy.legalBasisBody',
+  retention: 'privacy.retentionBody', processors: 'privacy.processorsBody', hosting: 'privacy.hostingBody',
+  cookies: 'privacy.cookiesBody', rights: 'privacy.rightsBody', authority: 'privacy.authorityBody',
+};
+---
+
+<Section labelledby="pri-h1">
+  <Fragment slot="rail">
+    <RailItem term={t(locale, 'privacy.cookiesHeading')} value="0" />
+    <RailItem term={t(locale, 'privacy.updatedHeading')} value={updated} />
+  </Fragment>
+
+  <Breadcrumb locale={locale} label={t(locale, 'privacy.h1')} />
+  <h1 id="pri-h1" class="t-h1 pg__h1">{t(locale, 'privacy.h1')}</h1>
+  <p class="t-body pg__lead">{t(locale, 'privacy.lead')}</p>
+
+  <div class="prose-kasel pg__prose">
+    {blocks.map((b) => (
+      <>
+        <h2>{t(locale, headingKey[b])}</h2>
+        {b === 'controller' ? (
+          <address class="pri__address">
+            {company.legalName}<br />
+            {company.address.street}, {company.address.postalCode} {company.address.locality}, {t(locale, 'common.country')}<br />
+            <a href={`mailto:${company.email}`}>{company.email}</a> · <a href={`tel:${company.phoneE164}`}>{company.phoneDisplay}</a>
+          </address>
+        ) : b === 'rights' ? (
+          <p>
+            {t(locale, bodyKey[b]).split('{email}')[0]}
+            <a href={`mailto:${company.email}`}>{company.email}</a>.
+          </p>
+        ) : (
+          <p>{t(locale, bodyKey[b])}</p>
+        )}
+      </>
+    ))}
+
+    <h2>{t(locale, 'privacy.updatedHeading')}</h2>
+    <p><time datetime={updated}>{updated}</time></p>
+  </div>
+</Section>
+
+<style>
+  .pg__h1 { margin-block-start: 1rem; }
+  .pg__lead { margin-block-start: 1rem; }
+  .pg__prose { margin-block-start: 2rem; }
+  .pri__address { font-style: normal; line-height: 1.6; }
+</style>

@@ -1,0 +1,874 @@
+@import "tailwindcss";
+
+/* ===========================================================================
+   KASEL — Design-System
+   Faarwen aus dem Material an aus der Norm, no där gestempelt gëtt.
+   ISPM 15 verbitt Rout an Orange fir d'Kennzeechnung, well dës Faarwe fir
+   Gefaargutt reservéiert sinn. Dës Säit huet dofir KENG rout an keng orange
+   Téin — och net bei Feelerzoustänn.  →  `npm run verify` préift dat.
+   =========================================================================== */
+
+@theme {
+  /* -- Palette ------------------------------------------------------------
+     Aus der Hausfarbe des Betriebs. #0077B3 steht 43-mal im Stylesheet von
+     kasel.lu und ist die Farbe im EK-Logo. Schwarz und die Grauwerte stammen
+     aus derselben Quelle. Nichts hiervon ist erfunden.
+
+     Nebenbei erfüllt die Palette die ISPM-15-Regel von selbst: Rot und Orange
+     sind der Kennzeichnung gefährlicher Güter vorbehalten und kommen auf
+     dieser Seite nicht vor. `npm run verify` misst das. */
+  --color-blue:        #0077B3;  /* Hausfarbe. Logo, Flächen, Buttons        */
+  --color-blue-deep:   #00598A;  /* dieselbe Farbe als Text auf Weiß (7.5:1) */
+  --color-blue-light:  #4DA6D4;  /* dieselbe Farbe auf dunklem Grund         */
+  --color-blue-tint:   #E8F2F8;  /* Panel, Tabellenzeile                     */
+
+  --color-ink:         #1C2126;  /* Fließtext und dunkle Bänder              */
+  --color-black:       #000000;  /* Logo und Display — echtes Schwarz        */
+  --color-paper:       #FFFFFF;
+  --color-mist:        #F4F7F9;  /* zweiter heller Grund, hebt Sektionen ab  */
+
+  --color-grey:        #6B7379;  /* Sekundärtext auf Weiß, 4.8:1             */
+  --color-grey-light:  #9BA3A9;  /* Sekundärtext auf Ink                     */
+  --color-line:        #D8DEE3;
+
+  /* -- Schrift ------------------------------------------------------------
+     Eine Familie. Archivo ist eine neutrale Grotesk und liegt nah an der
+     Schrift im EK-Logo; zwei Familien hätten hier nur Reibung erzeugt und
+     222 KB gekostet. */
+  --font-mark: "Archivo", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-read: "Archivo", "Helvetica Neue", Arial, system-ui, sans-serif;
+
+  /* -- Layout ------------------------------------------------------------- */
+  --spacing-rail: 13rem;
+  --breakpoint-rail: 60rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Schrift — selbst gehostet. NIE über die Google-CDN: das überträgt die IP des
+   Besuchers in die USA und ist in der EU abgemahnt worden.
+   --------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("/fonts/archivo-var-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+  src: url("/fonts/archivo-var-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* ===========================================================================
+   Basis
+   =========================================================================== */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+
+  /* Standardwäerter fir d'Band-Tokens. `.band` an `.band--dark` iwwerschreiwen
+     se. Esou kann all Regel `--band-fg` / `--band-muted` / `--band-tech`
+     benotzen a stëmmt op hellem WIE op donkelem Grond — an néierens muss eng
+     Faarf zweemol geschriwwe ginn. */
+  :root {
+    --band-fg: var(--color-ink);
+    --band-bg: var(--color-paper);
+    --band-muted: var(--color-grey);
+    --band-tech: var(--color-grey);
+    --band-accent: var(--color-blue-deep);
+    --band-focus: var(--color-blue);
+    --band-line: var(--color-line);
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-read);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Kee gemeinsame Reset op Iwwerschrëften, deen duerno widderholl iwwerschriwwe
+     gëtt — d'Typo kënnt aus de `.t-*`-Klassen, an nëmmen dohir. */
+  :where(h1, h2, h3, h4, p, figure, blockquote, ul, ol, dl, dd) { margin: 0; }
+  :where(ul, ol) { padding: 0; list-style: none; }
+
+  :where(a) { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+
+  /* Fokus: ein Ring, nichts weiter. Die Hausfarbe erreicht auf Weiß 4.9:1
+     und auf dem dunklen Band über die aufgehellte Variante 4.7:1 — beides
+     weit über den 3:1, die ein Indikator braucht. */
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+    outline: 3px solid var(--band-focus, var(--color-blue));
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  :where(a, button, input, select, textarea, summary, [tabindex]):focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  ::selection { background: var(--color-blue); color: var(--color-paper); }
+
+  :where(img, svg, video) { display: block; max-width: 100%; height: auto; }
+
+  /* Zilgréisst fir Fanger — WCAG 2.2 AA (2.5.8) */
+  :where(a, button, summary, label, input[type="checkbox"], input[type="radio"]) {
+    min-block-size: 24px;
+  }
+}
+
+/* ===========================================================================
+   Type-Scale — verbindlech
+   =========================================================================== */
+@layer components {
+  .t-h1 {
+    font-family: var(--font-mark);
+    font-weight: 700;
+    font-stretch: 100%;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    text-align: left;
+    text-wrap: balance;
+  }
+
+  .t-h2 {
+    font-family: var(--font-mark);
+    font-weight: 600;
+    font-stretch: 100%;
+    font-size: 1.75rem;
+    line-height: 1.15;
+  }
+
+  .t-h3 {
+    font-family: var(--font-mark);
+    font-weight: 600;
+    font-stretch: 100%;
+    font-size: 1.25rem;
+    line-height: 1.25;
+  }
+
+  /* Label / Schinn — Kapitälchen, NORMAL Tracking.
+     Keng gespaarte Versalien, kee Monospace. */
+  .t-label {
+    font-family: var(--font-mark);
+    font-weight: 600;
+    font-stretch: 100%;
+    font-size: 0.8125rem;
+    line-height: 1.3;
+    letter-spacing: 0;
+    font-variant-caps: all-small-caps;
+  }
+
+  /* Zuel / Moossen */
+  .t-num {
+    font-family: var(--font-mark);
+    font-weight: 500;
+    font-stretch: 112%;                /* Expanded-Achs */
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0;
+  }
+
+  .t-body {
+    font-family: var(--font-read);
+    font-weight: 400;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    max-inline-size: 62ch;
+  }
+
+  .t-caption {
+    font-family: var(--font-read);
+    font-weight: 400;
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    color: var(--band-muted);
+    max-inline-size: 58ch;
+  }
+}
+
+/* ===========================================================================
+   Band + Schinn — d'Grondlayout
+   Eng Sektioun ass e Band iwwer déi ganz Breet. Dobannen: eng schmuel lénks
+   Schinn (technescht Register) an eng breet Liesespalt. D'Schinn bleift am
+   Desktop stoen, soulaang hir eege Sektioun um Bildschierm ass — dat ass reng
+   CSS, ouni Scroll-Listener.
+   =========================================================================== */
+@layer components {
+  .band {
+    --band-fg: var(--color-ink);
+    --band-bg: var(--color-paper);
+    --band-muted: var(--color-grey);
+    --band-tech: var(--color-grey);
+    --band-accent: var(--color-blue-deep);
+    --band-focus: var(--color-blue);
+    --band-line: var(--color-line);
+    background-color: var(--band-bg);
+    color: var(--band-fg);
+  }
+
+  /* Zweiter heller Grund. Hebt eine Sektion ab, ohne sie dunkel zu machen.
+     Der Verlauf lässt sie aus der vorigen weißen Sektion herauswachsen, statt
+     mit einer harten Kante anzufangen. */
+  .band--mist {
+    --band-bg: var(--color-mist);
+    background-image: linear-gradient(180deg, var(--color-paper) 0%, var(--color-mist) 20%);
+  }
+
+  /* Dritter heller Grund, eine Spur Hausfarbe. Damit hat die Seite einen
+     Rhythmus — weiß, kühl, weiß, kühl, blau — statt einer weißen Bahn mit
+     zwei dunklen Blöcken darin. */
+  .band--tint {
+    --band-bg: var(--color-blue-tint);
+    --band-line: color-mix(in srgb, var(--color-blue) 22%, transparent);
+    background-image: linear-gradient(180deg, var(--color-paper) 0%, var(--color-blue-tint) 22%);
+  }
+
+  .band--dark {
+    --band-fg: var(--color-paper);
+    --band-bg: var(--color-ink);
+    --band-muted: var(--color-grey-light);
+    --band-tech: var(--color-grey-light);
+    /* Auf dunklem Grund die aufgehellte Hausfarbe: #0077B3 käme dort nur auf
+       3.3:1, #4DA6D4 auf 4.7:1. Gleicher Ton, lesbarer Wert. */
+    --band-accent: var(--color-blue-light);
+    --band-focus: var(--color-blue-light);
+    --band-line: color-mix(in srgb, var(--color-paper) 26%, transparent);
+
+    /* Ein Schimmer der Hausfarbe oben rechts — dort, wo das Foto liegt und
+       kein Text steht. Der Anteil bleibt so niedrig, dass Weiß auf diesem
+       Grund weiterhin weit über 15:1 kommt. */
+    background-image:
+      radial-gradient(125% 85% at 88% 0%, color-mix(in srgb, var(--color-blue) 24%, transparent) 0%, transparent 60%),
+      linear-gradient(180deg, color-mix(in srgb, var(--color-blue) 7%, transparent) 0%, transparent 45%);
+  }
+
+  .band__grid {
+    margin-inline: auto;
+    max-inline-size: 84rem;
+    padding-inline: 1.25rem;
+    padding-block: 3.5rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem 2.5rem;
+  }
+
+  .band--tight > .band__grid { padding-block: 2.25rem; }
+  .band--wide > .band__grid { grid-template-columns: minmax(0, 1fr); }
+
+  @media (width >= 60rem) {
+    .band__grid {
+      grid-template-columns: var(--spacing-rail) minmax(0, 1fr);
+      padding-inline: 2.5rem;
+      padding-block: 5rem;
+    }
+    .band--tight > .band__grid { padding-block: 3rem; }
+    .band--wide > .band__grid { grid-template-columns: minmax(0, 1fr); }
+  }
+
+  /* -- d'Schinn --------------------------------------------------------- */
+  .rail {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 1.25rem;
+    padding-block-end: 0.75rem;
+    border-block-end: 1px solid var(--band-line);
+  }
+  .rail__group { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.75rem; }
+  .rail__key   { color: var(--band-tech); }
+  .rail__val   { font-size: 0.9375rem; color: var(--band-fg); }
+  .rail__note  { font-size: 0.875rem; color: var(--band-muted); font-family: var(--font-read); }
+
+  @media (width >= 60rem) {
+    .rail {
+      position: sticky;
+      top: 2.5rem;
+      align-self: start;
+      display: block;
+      padding-block-end: 0;
+      border-block-end: 0;
+      border-inline-start: 1px solid var(--band-line);
+      padding-inline-start: 1rem;
+    }
+    .rail__group + .rail__group { margin-block-start: 1.1rem; }
+    .rail__group { display: block; }
+    .rail__val { display: block; }
+    .rail__note { display: block; margin-block-start: 0.35rem; }
+  }
+
+  .band__body { min-inline-size: 0; }
+}
+
+/* ===========================================================================
+   Bedienelementer
+   =========================================================================== */
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-block-size: 3rem;
+    padding: 0.75rem 1.5rem;
+    font-family: var(--font-mark);
+    font-weight: 600;
+    font-stretch: 100%;
+    font-size: 1rem;
+    line-height: 1.2;
+    border: 2px solid transparent;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 120ms linear, color 120ms linear, border-color 120ms linear;
+  }
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+
+  /* Primär: Hausfarbe als Fläche, weißer Text. 4.9:1 — auf hellem wie auf
+     dunklem Band derselbe Button. */
+  .btn--primary {
+    background-color: var(--color-blue);
+    color: var(--color-paper);
+    border-color: var(--color-blue);
+  }
+  .btn--primary:hover {
+    background-color: var(--color-blue-deep);
+    border-color: var(--color-blue-deep);
+  }
+
+  .btn--secondary {
+    background-color: transparent;
+    color: var(--band-fg);
+    border-color: var(--band-fg);
+  }
+  .btn--secondary:hover { background-color: var(--band-fg); color: var(--band-bg); }
+
+  .btn--quiet {
+    background-color: transparent;
+    color: var(--band-fg);
+    border-color: var(--band-line);
+    min-block-size: 2.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9375rem;
+  }
+  .btn--quiet:hover { border-color: var(--band-fg); }
+
+  .link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--band-accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 0.2em;
+  }
+  .link:hover { color: var(--band-accent); text-decoration-color: currentColor; }
+
+  /* Gemeinsame Bunn fir alles, wat NET d'Band-Raster benotzt (Kopp, Fouss). */
+  .shell {
+    margin-inline: auto;
+    max-inline-size: 84rem;
+    padding-inline: 1.25rem;
+  }
+  @media (width >= 60rem) { .shell { padding-inline: 2.5rem; } }
+
+  .sr-only {
+    position: absolute; inline-size: 1px; block-size: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip-path: inset(50%); white-space: nowrap; border: 0;
+  }
+
+  .skip-link {
+    position: absolute; inset-block-start: 0.5rem; inset-inline-start: 0.5rem;
+    z-index: 50; transform: translateY(-200%);
+    background: var(--color-ink); color: var(--color-paper);
+    padding: 0.75rem 1.25rem; border-radius: 2px;
+    font-family: var(--font-mark); font-weight: 600;
+  }
+  .skip-link:focus { transform: translateY(0); }
+}
+
+/* ===========================================================================
+   Ein choreografierter Moment: das Cachet wird gesetzt.
+   Danach steht die Seite still. Es gibt keine zweite Ladeanimation und keine
+   Sektion, die beim Scrollen von unten einfadet.
+   =========================================================================== */
+@keyframes stamp-press {
+  from { transform: scale(1.045); opacity: 0; }
+  to   { transform: scale(1);     opacity: 1; }
+}
+
+.stamp-press {
+  transform-origin: 20% 80%;
+  animation: stamp-press 220ms cubic-bezier(0.2, 0.9, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Bei reduzierter Bewegung ist das Cachet von Anfang an gesetzt — in
+     Endfarbe und Endgröße. Es fehlt kein Inhalt. */
+  .stamp-press { animation: none; transform: none; opacity: 1; }
+}
+
+/* ===========================================================================
+   Fliesstext fir Riets-Säiten (Impressum, Dateschutz)
+   =========================================================================== */
+@layer components {
+  .prose-kasel { max-inline-size: 68ch; }
+  .prose-kasel > * + * { margin-block-start: 1rem; }
+  .prose-kasel h2 { margin-block-start: 2.5rem; font-family: var(--font-mark); font-weight: 600; font-size: 1.75rem; line-height: 1.15; }
+  .prose-kasel h3 { margin-block-start: 1.75rem; font-family: var(--font-mark); font-weight: 600; font-size: 1.25rem; line-height: 1.25; }
+  .prose-kasel ul { padding-inline-start: 1.25rem; list-style: disc; }
+  .prose-kasel li + li { margin-block-start: 0.4rem; }
+  .prose-kasel a { color: inherit; text-decoration: underline; text-decoration-color: var(--color-blue); text-decoration-thickness: 2px; text-underline-offset: 0.2em; }
+  .prose-kasel dt { font-family: var(--font-mark); font-weight: 600; font-size: 0.8125rem; font-variant-caps: all-small-caps; color: var(--band-tech); }
+  .prose-kasel dd { margin: 0 0 0.75rem; }
+}
+
+/* ===========================================================================
+   Datentabell — Moossen, Traglaaschten
+   =========================================================================== */
+@layer components {
+  .spec-table { inline-size: 100%; border-collapse: collapse; font-family: var(--font-mark); font-stretch: 100%; }
+  .spec-table caption { text-align: left; padding-block-end: 0.75rem; font-family: var(--font-read); font-size: 0.9375rem; color: var(--band-muted); }
+  .spec-table th, .spec-table td { text-align: left; padding: 0.6rem 0.9rem 0.6rem 0; border-block-end: 1px solid var(--band-line); vertical-align: baseline; white-space: nowrap; }
+  .spec-table thead th { font-size: 0.8125rem; font-weight: 600; font-variant-caps: all-small-caps; color: var(--band-tech); border-block-end-width: 2px; }
+  .spec-table td { font-size: 0.9375rem; font-weight: 500; font-stretch: 112%; font-variant-numeric: tabular-nums; }
+  .spec-table td.is-open { font-stretch: 100%; font-family: var(--font-read); color: var(--band-muted); }
+  .table-scroll { overflow-x: auto; }
+}
+
+/* ===========================================================================
+   Konfigurator + Formulaire
+   Dës Klasse stinn hei an net an enger Astro-Komponent, well se op DOM wierken,
+   dee React rendert — Astro säin `<style>` ass scoped a géif do net ukommen.
+   =========================================================================== */
+@layer components {
+  .cfg { display: grid; gap: 2.5rem; }
+
+  @media (width >= 64rem) {
+    /* Lénks d'Eingab, riets d'Zeechnung. Am DOM steet d'Zeechnung fir d'éischt,
+       well se um Handy uewe stoe soll — d'Raster dréint dat um Desktop ëm. */
+    .cfg { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 3.5rem; align-items: start; }
+    .cfg__stage { grid-column: 2; grid-row: 1; position: sticky; top: 2.5rem; }
+    .cfg__form { grid-column: 1; grid-row: 1; }
+  }
+
+  @media (width < 64rem) {
+    /* Um Handy bleift d'Zeechnung beim Scrollen vun der Eingab sichtbar. */
+    .cfg__stage { position: sticky; top: 0; z-index: 1; background: var(--band-bg); padding-block-end: 0.75rem; }
+    .cfg__figure { max-block-size: 42vh; display: flex; flex-direction: column; }
+    .cfg__figure .crate { max-block-size: 34vh; inline-size: auto; margin-inline: auto; }
+  }
+
+  .crate { inline-size: 100%; block-size: auto; color: var(--color-ink); }
+  .cfg__caption { margin-block-start: 0.5rem; }
+
+  /* Container-Query statt Media-Query: dës Lëscht steet an enger Spalt, déi
+     mol breet a mol schmuel ass — wat zielt, ass hir eege Breet, net déi vum
+     Bildschierm. Soss brécht „2490 × 1190 × 1670 mm" op dräi Zeilen ëm. */
+  .cfg__out { margin-block-start: 1.5rem; container-type: inline-size; }
+  .cfg__outList { margin-block-start: 0.75rem; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.85rem 1.5rem; }
+  .cfg__outList > div:first-child { grid-column: span 2; }
+  @container (width >= 40rem) {
+    .cfg__outList { grid-template-columns: 1.6fr 1fr 1fr 1fr; }
+    .cfg__outList > div:first-child { grid-column: auto; }
+  }
+  .cfg__outList dt { color: var(--band-tech); }
+  .cfg__outList dd { margin-block-start: 0.15rem; font-size: 1.125rem; }
+  .cfg__guide { margin-block-start: 1rem; }
+  .cfg__rule {
+    margin-block-start: 1.25rem;
+    padding-inline-start: 1rem;
+    border-inline-start: 3px solid var(--color-blue-deep);
+    font-family: var(--font-read);
+    font-size: 1rem;
+    line-height: 1.55;
+    max-inline-size: 56ch;
+  }
+
+  .cfg__set { border: 0; padding: 0; margin: 0; }
+  .cfg__set + .cfg__set { margin-block-start: 2rem; padding-block-start: 1.5rem; border-block-start: 1px solid var(--band-line); }
+  .cfg__legend { padding: 0; color: var(--band-tech); }
+
+  .cfg__dims { margin-block-start: 1rem; }
+  .cfg__groupLabel { color: var(--band-tech); }
+  .cfg__hint { margin-block-start: 0.25rem; }
+  .cfg__dimRow { margin-block-start: 0.6rem; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+
+  .cfg__pair { margin-block-start: 1.25rem; display: grid; gap: 1.25rem; }
+  @media (width >= 34rem) { .cfg__pair { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; } }
+
+  .cfg__field { margin-block-start: 1.25rem; }
+  .cfg__field:first-child, .cfg__pair > .cfg__field, .cfg__dimRow > .cfg__field { margin-block-start: 0; }
+  /* NUR die direkten Beschriftungen. Ohne den Kindkombinator trifft die Regel
+     auch das <label> der Radio-Zeile, macht daraus einen Block und hebelt
+     dessen `inline-flex` aus — dann sitzt der Punkt neben dem Wort statt davor. */
+  .cfg__field > label, .cfg__field > .t-label { display: block; color: var(--band-tech); }
+
+  .cfg__input {
+    margin-block-start: 0.3rem;
+    inline-size: 100%;
+    min-block-size: 3rem;
+    padding: 0.55rem 0.7rem;
+    font-family: var(--font-mark);
+    font-weight: 500;
+    font-size: 1.0625rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-ink);
+    background: color-mix(in srgb, var(--color-paper) 55%, #fff);
+    border: 1px solid var(--color-line);
+    border-radius: 2px;
+  }
+  .cfg__input:hover { border-color: var(--color-ink); }
+  .cfg__input:focus { background: #fff; }
+  select.cfg__input { appearance: none; background-image: none; }
+
+  .cfg__radios { margin-block-start: 0.5rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .cfg__radio {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    min-block-size: 3rem; padding: 0.5rem 1rem;
+    border: 1px solid var(--color-line); border-radius: 2px;
+    font-family: var(--font-mark); font-weight: 600; font-size: 1rem;
+    cursor: pointer;
+  }
+  .cfg__radio:has(input:checked) { background: var(--color-blue-deep); color: var(--color-paper); border-color: var(--color-blue-deep); }
+  /* `flex: none` und `margin: 0`, weil native Radios eigene Ränder mitbringen,
+     und `min-block-size: 0`, weil die 24-px-Regel für Klickflächen das Feld
+     sonst vertikal streckt — dann sitzt der Punkt neben statt vor dem Wort.
+     Die Klickfläche liefert das Label, es ist 3 rem hoch. */
+  .cfg__radio input {
+    flex: none;
+    margin: 0;
+    inline-size: 1.0625rem;
+    block-size: 1.0625rem;
+    min-block-size: 0;
+    accent-color: var(--color-blue-deep);
+  }
+  .cfg__radio:has(input:checked) input { accent-color: var(--color-paper); }
+  /* Ohne das ist die Box der Beschriftung um die Zeilenhöhe höher als die des
+     Feldes, und `align-items: center` legt zwei verschieden hohe Kästchen
+     mittig — der Punkt sitzt dann sichtbar zu hoch. */
+  .cfg__radio > span { line-height: 1; }
+
+  .cfg__actions { margin-block-start: 2rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .cfg__noscript { margin-block-start: 1rem; max-inline-size: 56ch; }
+
+  /* Zesummefaassung uewen am Formulaire — sichtbar, net verstoppt. De Benotzer
+     muss gesinn, wat hie schéckt. */
+  .sum { padding: 1.25rem; border: 2px solid var(--color-blue-deep); border-radius: 2px; }
+  .sum__head { color: var(--color-blue-deep); }
+  .sum__list { margin-block-start: 0.75rem; display: grid; gap: 0.7rem 1.5rem; }
+  @media (width >= 34rem) { .sum__list { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .sum__list dt { color: var(--band-tech); }
+  .sum__list dd { margin-block-start: 0.1rem; font-size: 1rem; }
+  .sum__actions {
+    margin-block-start: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem 1.5rem;
+  }
+  .sum__drop {
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    font-family: var(--font-read);
+    font-size: 1rem;
+    color: var(--color-grey);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    transition: color 160ms linear;
+  }
+  .sum__drop:hover { color: var(--color-ink); }
+  .sum__hint { margin-block-start: 0.4rem; }
+}
+
+/* ===========================================================================
+   Ufro-Formulaire
+   =========================================================================== */
+@layer components {
+  .frm { max-inline-size: 46rem; }
+
+  /* Das Anfrageformular steht am Ende der Seite allein. Links ausgerichtet
+     sah der dunkle Block halb leer aus; mittig hat er eine Mitte. Der Text
+     darin bleibt linksbündig — zentrierter Fließtext liest sich schlecht. */
+  .frm--centred { margin-inline: auto; }
+  .frm--centred > h2,
+  .frm--centred > .frm__lead { text-align: center; max-inline-size: 40rem; margin-inline: auto; }
+  .frm__grid { margin-block-start: 1.75rem; display: grid; gap: 1.25rem; }
+  @media (width >= 40rem) { .frm__grid--two { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  .frm__field label { display: block; color: var(--band-tech); }
+  .frm__req { color: var(--band-accent); font-family: var(--font-read); }
+
+  .frm__input, .frm__area, .frm__select {
+    margin-block-start: 0.3rem;
+    inline-size: 100%;
+    min-block-size: 3rem;
+    padding: 0.6rem 0.7rem;
+    font-family: var(--font-read);
+    font-size: 1.0625rem;
+    line-height: 1.4;
+    color: var(--color-ink);
+    background: color-mix(in srgb, var(--color-paper) 55%, #fff);
+    border: 1px solid var(--color-line);
+    border-radius: 2px;
+  }
+  .frm__select { font-family: var(--font-mark); font-weight: 500; appearance: none; }
+  .frm__area { min-block-size: 8rem; resize: vertical; }
+  .frm__input:hover, .frm__area:hover, .frm__select:hover { border-color: var(--color-ink); }
+  .frm__input:focus, .frm__area:focus, .frm__select:focus { background: #fff; }
+
+  .frm__hint { margin-block-start: 0.25rem; }
+
+  /* Feeler: keng rout Faarf. ISPM 15 reservéiert Rout an Orange fir Gefaargutt,
+     an dës Säit hält sech un hir eege Norm. Ee Feeler gëtt duerch d'Zeechen,
+     d'Fettschrëft an de méi décke Rummen erkannt — net duerch d'Faarf. */
+  .frm__error {
+    margin-block-start: 0.35rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.4rem;
+    font-family: var(--font-read);
+    font-weight: 700;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    color: var(--band-fg);
+  }
+  .frm__error::before {
+    content: '!';
+    flex: none;
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
+    display: inline-grid;
+    place-items: center;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    font-family: var(--font-mark);
+    font-weight: 800;
+    font-size: 0.8125rem;
+  }
+  /* De Feeler gëtt um Feld selwer markéiert, net duerch d'Faarf vum Band:
+     en duebele Rimm am hellen Feld gesäit een op hellem wéi op donkelem Grond. */
+  [aria-invalid='true'].frm__input,
+  [aria-invalid='true'].frm__area,
+  [aria-invalid='true'].frm__select {
+    border-width: 3px;
+    border-color: var(--color-ink);
+    box-shadow: inset 0 0 0 1.5px var(--color-ink);
+  }
+
+  .frm__consent { margin-block-start: 1.75rem; display: flex; gap: 0.75rem; align-items: flex-start; }
+  .frm__consent input {
+    flex: none;
+    margin: 0.2rem 0 0;
+    inline-size: 1.5rem;
+    block-size: 1.5rem;
+    min-block-size: 0;
+    accent-color: var(--color-blue-deep);
+  }
+  .frm__consent span { font-family: var(--font-read); font-size: 1rem; line-height: 1.5; }
+
+  .frm__file { margin-block-start: 0.3rem; font-family: var(--font-read); font-size: 1rem; }
+  .frm__actions { margin-block-start: 2rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+
+  /* Honeypot: fir Mënschen onsichtbar, fir Bots verlockend. Kee Captcha —
+     Captchaen kaschten echt Ufroen. */
+  .frm__pot { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); }
+
+  .frm__status { margin-block-start: 1.5rem; padding: 1.25rem; border: 2px solid var(--band-fg); border-radius: 2px; }
+  .frm__status h3 { font-family: var(--font-mark); font-weight: 600; font-size: 1.25rem; }
+  .frm__status p { margin-block-start: 0.5rem; font-size: 1rem; }
+}
+
+/* ===========================================================================
+   Drécken — d'Fahrersäit muss op ee Blat passen
+   =========================================================================== */
+@media print {
+  .masthead__side, .skip-link, .foot__list, .langs, .no-print { display: none !important; }
+  body { background: #fff; color: #000; font-size: 11pt; }
+  .band, .band--dark { background: #fff !important; color: #000 !important; }
+  .band__grid { padding-block: 0.5rem; padding-inline: 0; display: block; }
+  .rail { display: none; }
+  .map__fig img { max-inline-size: 12cm; }
+  a[href^='http']::after { content: ' (' attr(href) ')'; font-size: 9pt; word-break: break-all; }
+}
+
+@layer components {
+  /* Hannergrond-Slot: läit am Band, ënner dem Raster, an hëlt keng Klicken un. */
+  .band { position: relative; isolation: isolate; }
+  .band__bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+}
+
+/* ===========================================================================
+   Zeechnungen
+   Astro säi scoped `<style>` erreecht keng Elementer, déi an enger
+   KANDkomponent stinn — eng Klass, déi als Prop erageet, kritt d'Scope-Attribut
+   net a fällt dofir stëll ënnen duerch. D'Gréisst muss dofir um Behälter
+   stoen, an dës Regel hei mécht d'SVG dodrun fest.
+   =========================================================================== */
+@layer components {
+  .drawing { display: block; }
+  .drawing > svg { inline-size: 100%; block-size: auto; }
+
+  /* Logo: Höhe steht am Behälter, das SVG richtet sich danach. */
+  .logo-slot { display: block; color: var(--color-black); --logo-accent: var(--color-blue); }
+  .logo-slot > svg { block-size: 100%; inline-size: auto; display: block; }
+  .band--dark .logo-slot,
+  .logo-slot--invert { color: var(--color-paper); --logo-accent: var(--color-blue-light); }
+}
+
+/* ===========================================================================
+   Bewegung
+   Drei Arten, und keine vierte:
+     1 · Inhalt kommt beim Scrollen herein — einmal, dann bleibt er.
+     2 · Was anklickbar ist, antwortet auf Zeiger UND Finger.
+     3 · Der Kopf zeigt an, dass gescrollt wurde.
+   Alles hängt an `.js` am <html>: ohne Skript steht jeder Inhalt sofort da.
+   `prefers-reduced-motion: reduce` schaltet die Bewegung ab, nicht den Inhalt.
+   =========================================================================== */
+@layer components {
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition:
+      opacity 620ms cubic-bezier(0.22, 0.8, 0.3, 1) var(--reveal-delay, 0ms),
+      transform 620ms cubic-bezier(0.22, 0.8, 0.3, 1) var(--reveal-delay, 0ms);
+  }
+  .js .reveal.is-in { opacity: 1; transform: none; }
+
+  /* Bilder kommen etwas ruhiger als Text: leichter Zoom statt Verschiebung. */
+  .js .reveal--zoom { transform: scale(1.02); }
+  .js .reveal--zoom.is-in { transform: none; }
+
+  /* -- Zeiger und Finger --------------------------------------------------- */
+  .btn { transition: background-color 140ms linear, color 140ms linear, border-color 140ms linear, transform 90ms ease-out; }
+  .btn:active { transform: translateY(1px); }
+
+  /* Ein Foto, das auf den Zeiger reagiert, sagt: hier geht es weiter. */
+  .hoverable { --hover-lift: 0; }
+  .hoverable :global(img) {
+    transition: transform 520ms cubic-bezier(0.22, 0.8, 0.3, 1), filter 320ms linear;
+  }
+  @media (hover: hover) {
+    .hoverable:hover :global(img),
+    .hoverable:focus-within :global(img) { transform: scale(1.035); }
+  }
+  .hoverable :global(picture) { display: block; overflow: hidden; border-radius: 2px; }
+
+  .lift { transition: transform 220ms cubic-bezier(0.22, 0.8, 0.3, 1), border-color 220ms linear; }
+  @media (hover: hover) { .lift:hover { transform: translateY(-3px); } }
+  .lift:active { transform: translateY(0); }
+
+  /* Der Unterstrich wächst aus dem Wort heraus, statt einzublenden. */
+  .link {
+    background-image: linear-gradient(var(--band-accent), var(--band-accent));
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 2px;
+    text-decoration: none;
+    transition: background-size 260ms cubic-bezier(0.22, 0.8, 0.3, 1), color 160ms linear;
+    padding-block-end: 0.12em;
+  }
+  .link:hover, .link:focus-visible { background-size: 100% 2px; }
+
+  /* -- Kopf ---------------------------------------------------------------- */
+  .masthead { transition: box-shadow 240ms linear, border-color 240ms linear; }
+  .masthead.is-scrolled {
+    box-shadow: 0 1px 0 0 var(--color-line), 0 6px 20px -14px rgb(0 0 0 / 0.35);
+    border-block-end-color: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal,
+  .js .reveal--zoom { opacity: 1; transform: none; transition: none; }
+  .hoverable :global(img),
+  .lift,
+  .btn,
+  .link,
+  .masthead { transition: none; }
+  @media (hover: hover) {
+    .hoverable:hover :global(img),
+    .lift:hover { transform: none; }
+  }
+  .link { background-size: 100% 2px; }
+}
+
+/* ===========================================================================
+   Handy
+   Die Schiene ist eine Referenzspalte für den Desktop. Am Handy klappt sie
+   über den Inhalt und wiederholt dort meistens, was zwei Zeilen tiefer ohnehin
+   steht — Telefonnummer, Adresse, Nummer 079. Das las sich wie ein Fehler.
+   Also: unter 60 rem gibt es sie nicht.
+   =========================================================================== */
+@media (width < 60rem) {
+  .rail { display: none; }
+}
+
+/* ===========================================================================
+   Zeiger — was anfassbar ist, antwortet
+   =========================================================================== */
+@layer components {
+  /* Produktzeile: die ganze Zeile ist das Ziel, nicht nur der Link darin. */
+  .line { transition: background-color 220ms linear; }
+  @media (hover: hover) {
+    .line:hover { background-color: color-mix(in srgb, var(--color-blue) 4%, transparent); }
+    .line:hover .line__title { color: var(--band-accent); }
+  }
+  .line__title { transition: color 180ms linear; }
+
+  /* Zahlenkacheln, Registerzeilen, Tabellenzeilen, Wegstationen */
+  .facts__item { transition: border-color 200ms linear, transform 220ms cubic-bezier(0.22, 0.8, 0.3, 1); }
+  @media (hover: hover) {
+    .facts__item:hover { border-inline-start-color: var(--color-blue-deep); transform: translateX(2px); }
+    .registry__row:hover,
+    .steps__item:hover,
+    .spec-table tbody tr:hover { background-color: color-mix(in srgb, var(--color-blue) 5%, transparent); }
+    .exp__row { transition: border-color 200ms linear, transform 220ms cubic-bezier(0.22, 0.8, 0.3, 1); }
+    .exp__row:hover { transform: translateX(3px); }
+  }
+  .registry__row, .steps__item, .spec-table tbody tr { transition: background-color 200ms linear; }
+
+  /* Sprachumschalter und Fußzeilenlinks bekommen die Hausfarbe, nicht nur
+     einen Rahmen — Farbe liest sich schneller als eine Linie. */
+  @media (hover: hover) {
+    .langs__link:hover { border-color: var(--color-blue); color: var(--band-accent); }
+    .foot__link:hover { color: var(--color-blue-light); }
+    .crumb__link:hover { color: var(--band-accent); }
+  }
+  .langs__link, .foot__link, .crumb__link { transition: color 160ms linear, border-color 160ms linear; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .line, .facts__item, .registry__row, .steps__item, .exp__row,
+  .spec-table tbody tr, .langs__link, .foot__link, .crumb__link, .line__title {
+    transition: none;
+  }
+  @media (hover: hover) {
+    .facts__item:hover, .exp__row:hover { transform: none; }
+  }
+}

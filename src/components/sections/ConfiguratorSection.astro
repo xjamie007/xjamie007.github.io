@@ -1,0 +1,98 @@
+---
+/**
+ * D'Sektioun ronderëm de Konfigurator.
+ *
+ * Si hëlt déi vollste Breet, déi d'Layout erlaabt, a steet op hellem Grond.
+ * D'Insel gëtt eréischt gelueden, wa se an de Bléck kënnt (`client:visible`),
+ * domat se de gréisste sichtbare Faarfopbau um Bildschierm net belaascht.
+ */
+import Section from '../Section.astro';
+import RailItem from '../RailItem.astro';
+import Configurator from '../configurator/Configurator';
+import type { ConfiguratorStrings } from '../configurator/Configurator';
+import { cargoKinds, destinations } from '../../data/products';
+import { ispm15 } from '../../data/company';
+import { t } from '../../i18n';
+import { anchors, type Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale; wide?: boolean }
+const { locale, wide = false } = Astro.props;
+
+const s: ConfiguratorStrings = {
+  heading: t(locale, 'config.heading'),
+  lead: t(locale, 'config.lead'),
+  disclaimer: t(locale, 'config.disclaimer'),
+  fieldsetSize: t(locale, 'config.fieldsetSize'),
+  fieldsetBuild: t(locale, 'config.fieldsetBuild'),
+  exampleTag: t(locale, 'config.exampleTag'),
+  innerLabel: t(locale, 'config.fields.inner.label'),
+  innerHint: t(locale, 'config.fields.inner.hint'),
+  length: t(locale, 'config.fields.length'),
+  width: t(locale, 'config.fields.width'),
+  height: t(locale, 'config.fields.height'),
+  weightLabel: t(locale, 'config.fields.weight.label'),
+  weightHint: t(locale, 'config.fields.weight.hint'),
+  cargo: t(locale, 'config.fields.cargo'),
+  cargoHint: t(locale, 'config.fields.cargoHint'),
+  dest: t(locale, 'config.fields.dest'),
+  qty: t(locale, 'config.fields.qty'),
+  build: t(locale, 'config.fields.build'),
+  outerLabel: t(locale, 'config.fields.outer.label'),
+  outerHint: t(locale, 'config.fields.outer.hint'),
+  cargoOptions: Object.fromEntries(cargoKinds.map((k) => [k, t(locale, `config.cargo.${k}`)])) as ConfiguratorStrings['cargoOptions'],
+  destOptions: Object.fromEntries(destinations.map((k) => [k, t(locale, `config.dest.${k}`)])) as ConfiguratorStrings['destOptions'],
+  buildOptions: { closed: t(locale, 'config.build.closed'), slatted: t(locale, 'config.build.slatted') },
+  buildAutoNote: t(locale, 'config.build.autoNote'),
+  outHeading: t(locale, 'config.out.heading'),
+  outOuter: t(locale, 'config.out.outer'),
+  outSkids: t(locale, 'config.out.skids'),
+  outBoard: t(locale, 'config.out.boardThickness'),
+  outVolume: t(locale, 'config.out.volume'),
+  outGuide: t(locale, 'config.out.guide'),
+  stampOn: t(locale, 'config.out.stampOn'),
+  stampOff: t(locale, 'config.out.stampOff'),
+  ruleThird: t(locale, 'config.rule.third'),
+  ruleEu: t(locale, 'config.rule.eu'),
+  actionSubmit: t(locale, 'config.actions.submit'),
+  actionDownload: t(locale, 'config.actions.download'),
+  noscript: t(locale, 'config.noscript'),
+  drawingStatic: t(locale, 'config.drawingLabelStatic'),
+  liveIntro: t(locale, 'config.liveIntro'),
+  srSummary: t(locale, 'config.srSummary'),
+  // Eenheeten sinn a véier Sproochen déiselwecht Zeechen — keng Iwwersetzung.
+  mm: 'mm',
+  kg: 'kg',
+};
+---
+
+<Section wide={wide} id={anchors.configurator} labelledby="cfg-h2">
+{!wide && (
+    <Fragment slot="rail">
+    <RailItem term={t(locale, 'rail.configurator')} value={`${ispm15.countryCode} – ${ispm15.registrationNumber}`} />
+  </Fragment>
+  )}
+
+
+  <h2 id="cfg-h2" class="t-h2 reveal">{s.heading}</h2>
+  <p class="t-body cfgs__lead">{s.lead}</p>
+
+  <div class="cfgs__wrap reveal">
+    <Configurator
+      client:visible
+      s={s}
+      formId="ufro-form"
+      inquiryAnchor={anchors.inquiry}
+      summaryMountId="ufro-config-summary"
+      summaryHeading={t(locale, 'form.summaryHeading')}
+      summaryEdit={t(locale, 'form.summaryEdit')}
+      summaryRemove={t(locale, 'form.summaryRemove')}
+      summaryRemoveHint={t(locale, 'form.summaryRemoveHint')}
+      selfAnchor={anchors.configurator}
+    />
+  </div>
+</Section>
+
+<style>
+  .cfgs__lead { margin-block-start: 1rem; }
+  .cfgs__wrap { margin-block-start: 2.5rem; }
+</style>

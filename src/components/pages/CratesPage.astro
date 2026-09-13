@@ -1,0 +1,70 @@
+---
+import Section from '../Section.astro';
+import RailItem from '../RailItem.astro';
+import Breadcrumb from '../Breadcrumb.astro';
+import CrateDrawing from '../drawings/CrateDrawing.astro';
+import Photo from '../Photo.astro';
+import { exportApprovals } from '../../data/company';
+import { t } from '../../i18n';
+import { anchors, path, type Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const builds = [
+  { t: 'crates.closedTitle', b: 'crates.closedBody' },
+  { t: 'crates.slattedTitle', b: 'crates.slattedBody' },
+];
+---
+
+<Section labelledby="cra-h1">
+  <Fragment slot="rail">
+    <RailItem term={t(locale, 'rail.crates')} value={t(locale, 'rail.cratesValue')} numeric={false} />
+    <RailItem term={t(locale, 'crates.exportHeading')} value={exportApprovals.join(' · ')} numeric={false} />
+  </Fragment>
+
+  <Breadcrumb locale={locale} label={t(locale, 'crates.h1')} />
+  <h1 id="cra-h1" class="t-h1 pg__h1">{t(locale, 'crates.h1')}</h1>
+  <p class="t-body pg__lead">{t(locale, 'crates.lead')}</p>
+
+  <div class="pg__media reveal">
+    <Photo locale={locale} name="crates" sizes="(min-width: 48rem) 26rem, 92vw" class="pg__photo" />
+    <figure class="pg__drawing drawing">
+      <CrateDrawing label={t(locale, 'products.crates.drawingAlt')} />
+    </figure>
+  </div>
+
+  <h2 class="t-h2 pg__h2">{t(locale, 'crates.buildHeading')}</h2>
+  <div class="pg__two">
+    {builds.map((x) => (
+      <div class="pg__col">
+        <h3 class="t-h3">{t(locale, x.t)}</h3>
+        <p class="t-body">{t(locale, x.b)}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="t-h2 pg__h2">{t(locale, 'crates.cargoHeading')}</h2>
+  <p class="t-body">{t(locale, 'crates.cargoBody')}</p>
+
+  <h2 class="t-h2 pg__h2">{t(locale, 'crates.exportHeading')}</h2>
+  <p class="t-body">{t(locale, 'crates.exportBody')}</p>
+
+  <p class="pg__cta">
+    <a class="btn btn--primary" href={`${path('home', locale)}#${anchors.configurator}`}>{t(locale, 'crates.configCta')}</a>
+    <a class="btn btn--secondary" href={path('ispm15', locale)}>{t(locale, 'nav.stamp')}</a>
+  </p>
+</Section>
+
+<style>
+  .pg__h1 { margin-block-start: 1rem; }
+  .pg__lead { margin-block-start: 1rem; }
+  .pg__media { margin-block-start: 2rem; display: grid; gap: 2rem; align-items: start; }
+  @media (width >= 48rem) { .pg__media { grid-template-columns: 26rem 16rem; gap: 3rem; } }
+  .pg__photo :global(img) { inline-size: 100%; block-size: auto; display: block; border-radius: 2px; }
+  .pg__drawing { margin: 0; color: var(--color-ink); max-inline-size: 16rem; }
+  .pg__h2 { margin-block-start: 3rem; margin-block-end: 1rem; }
+  .pg__two { display: grid; gap: 2rem; }
+  @media (width >= 48rem) { .pg__two { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3rem; } }
+  .pg__col p { margin-block-start: 0.5rem; }
+  .pg__cta { margin-block-start: 2.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
+</style>

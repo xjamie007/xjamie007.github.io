@@ -1,0 +1,66 @@
+---
+/**
+ * Déi dräi agedroe Produzenten a Lëtzebuerg.
+ *
+ * Dat ass de Kär vum Alleinstellungsmerkmal, an et ass nopréifbar. Mir nennen
+ * dofir och déi zwee aner — genee dat mécht d'Behaaptung glafwierdeg.
+ *
+ * Eis Zeil ass net nëmmen duerch d'Faarf markéiert: si dréit e Wuert
+ * („Mir" / „Wir" / « Nous » / "Us") a Fettschrëft. Faarf allleng dierf op
+ * dëser Säit néierens eppes bedeiten.
+ */
+import { ispm15 } from '../data/company';
+import { t } from '../i18n';
+import type { Locale } from '../i18n/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const selfLabel: Record<Locale, string> = { lb: 'Mir', de: 'Wir', fr: 'Nous', en: 'Us' };
+---
+
+<div class="registry">
+  <h3 class="t-label registry__head">{t(locale, 'stamp.registryHeading')}</h3>
+  <ol class="registry__list">
+    {ispm15.producers.map((p) => (
+      <li class:list={['registry__row', 'reveal', p.self && 'is-self']}>
+        <span class="t-num registry__no">{ispm15.countryCode} – {p.number}</span>
+        <span class="registry__name">{p.name}</span>
+        <span class="registry__town">{p.town}</span>
+        {p.self && <span class="t-label registry__self">{selfLabel[locale]}</span>}
+      </li>
+    ))}
+  </ol>
+  <p class="t-caption registry__note">{t(locale, 'stamp.registryNote')}</p>
+</div>
+
+<style>
+  .registry { margin-block-start: 3rem; }
+  .registry__list { margin-block-start: 0.75rem; border-block-start: 2px solid var(--band-line); }
+
+  .registry__row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 0.15rem 1rem;
+    align-items: baseline;
+    padding-block: 0.7rem;
+    border-block-end: 1px solid var(--band-line);
+  }
+  .registry__no { font-size: 1rem; color: var(--band-tech); }
+  .registry__name { font-family: var(--font-mark); font-weight: 500; font-size: 1rem; }
+  .registry__town { font-size: 0.9375rem; color: var(--band-muted); }
+
+  .is-self .registry__no,
+  .is-self .registry__name { font-weight: 700; color: var(--band-fg); }
+
+  .registry__self {
+    grid-column: 1 / -1;
+    color: var(--band-accent);
+  }
+  .registry__note { margin-block-start: 0.85rem; }
+
+  @media (width >= 34rem) {
+    .registry__row { grid-template-columns: auto minmax(0, 1fr) auto auto; }
+    .registry__self { grid-column: auto; }
+  }
+</style>

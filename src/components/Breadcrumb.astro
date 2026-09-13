@@ -1,0 +1,23 @@
+---
+import { t } from '../i18n';
+import { company } from '../data/company';
+import { path, type Locale } from '../i18n/routes';
+
+interface Props { locale: Locale; label: string }
+const { locale, label } = Astro.props;
+---
+
+<nav class="crumb" aria-label={t(locale, 'common.breadcrumb')}>
+  <ol class="crumb__list">
+    <li><a class="crumb__link" href={path('home', locale)}>{company.brand}</a></li>
+    <li aria-current="page">{label}</li>
+  </ol>
+</nav>
+
+<style>
+  .crumb__list { display: flex; flex-wrap: wrap; gap: 0.5rem; font-family: var(--font-mark); font-size: 0.9375rem; }
+  .crumb__list li + li::before { content: '/'; margin-inline-end: 0.5rem; color: var(--band-tech); }
+  .crumb__link { color: inherit; text-decoration: none; border-block-end: 2px solid transparent; }
+  .crumb__link:hover { border-block-end-color: var(--color-blue); }
+  .crumb__list li[aria-current] { color: var(--band-muted); }
+</style>

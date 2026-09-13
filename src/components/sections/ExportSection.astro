@@ -1,0 +1,74 @@
+---
+/**
+ * Export und Stempel — die kurze Fassung.
+ *
+ * Auf der Startseite interessiert den Einkäufer genau eine Frage: brauche ich
+ * für mein Ziel einen Stempel oder nicht, und muss ich mich darum kümmern?
+ * Zwei Zeilen Antwort, ein Satz Begründung, ein Link. Alles Weitere — was auf
+ * dem Cachet steht, welches Register, welche Nummer — steht auf der eigenen
+ * Seite, wo es gesucht wird.
+ */
+import Section from '../Section.astro';
+import { t } from '../../i18n';
+import { anchors, path, type Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const rows = [
+  { term: t(locale, 'stampShort.yesTerm'), value: t(locale, 'stampShort.yesValue'), yes: true },
+  { term: t(locale, 'stampShort.noTerm'), value: t(locale, 'stampShort.noValue'), yes: false },
+];
+---
+
+<Section id={anchors.stamp} wide labelledby="exp-h2" class="band--mist">
+  <div class="exp">
+    <div class="exp__text reveal">
+      <h2 id="exp-h2" class="t-h2">{t(locale, 'stampShort.heading')}</h2>
+      <p class="t-body exp__body">{t(locale, 'stampShort.body')}</p>
+      <p class="exp__link">
+        <a class="link" href={path('ispm15', locale)}>{t(locale, 'stampShort.link')}</a>
+      </p>
+    </div>
+
+    <dl class="exp__answers reveal">
+      {rows.map((r) => (
+        <div class:list={['exp__row', r.yes && 'is-yes']}>
+          <dt class="exp__dest">{r.term}</dt>
+          <dd class="exp__verdict">{r.value}</dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</Section>
+
+<style>
+  .exp { display: grid; gap: 2.5rem; align-items: start; }
+  @media (width >= 52rem) { .exp { grid-template-columns: minmax(0, 1fr) minmax(0, 22rem); gap: 4rem; } }
+
+  .exp__body { margin-block-start: 1rem; }
+  .exp__link { margin-block-start: 1.25rem; }
+
+  .exp__answers { display: grid; gap: 0.75rem; }
+  .exp__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--color-paper);
+    border-inline-start: 4px solid var(--color-line);
+    border-radius: 2px;
+  }
+  .exp__row.is-yes { border-inline-start-color: var(--color-blue); }
+  .exp__dest { font-family: var(--font-mark); font-weight: 500; font-size: 1rem; }
+  .exp__verdict {
+    font-family: var(--font-mark);
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--color-grey);
+  }
+  .exp__row.is-yes .exp__verdict { color: var(--color-blue-deep); }
+</style>

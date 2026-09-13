@@ -1,0 +1,66 @@
+---
+/**
+ * Moosstabell.
+ *
+ * Wat an `src/data/products.ts` `null` ass, steet hei als „op Nofro" —
+ * NI als erfonnte Zuel a ni als Strich, deen een als Null liese kéint.
+ */
+import type { PalletSpec } from '../data/products';
+import { t } from '../i18n';
+import type { Locale } from '../i18n/routes';
+
+interface Props {
+  locale: Locale;
+  rows: PalletSpec[];
+  /** `true`: éischt Kolonn ass de Typnumm (CP1 …) statt d'Mooss. */
+  byType?: boolean;
+  caption?: string;
+}
+const { locale, rows, byType = false, caption } = Astro.props;
+const shown = rows.filter((r) => r.published);
+const open = t(locale, 'common.onRequest');
+---
+
+{shown.length > 0 && (
+  <div class="table-scroll">
+    <table class="spec-table">
+      {caption && <caption>{caption}</caption>}
+      <thead>
+        <tr>
+          <th scope="col">{byType ? t(locale, 'pallets.table.type') : t(locale, 'pallets.table.size')}</th>
+          {byType && <th scope="col">{t(locale, 'pallets.table.size')}</th>}
+          <th scope="col">{t(locale, 'pallets.table.load')}</th>
+          <th scope="col">{t(locale, 'pallets.table.wood')}</th>
+          <th scope="col">{t(locale, 'pallets.table.drying')}</th>
+          <th scope="col">{t(locale, 'pallets.table.ispm')}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {shown.map((r) => {
+          const size = r.width && r.length ? `${r.width} × ${r.length}` : null;
+          return (
+            <tr>
+              <th scope="row">{byType ? r.id : (size ?? open)}</th>
+              {byType && <td class:list={[!size && 'is-open']}>{size ?? open}</td>}
+              <td class:list={[!r.loadCapacityKg && 'is-open']}>
+                {r.loadCapacityKg ? `${r.loadCapacityKg} kg` : open}
+              </td>
+              <td class:list={[!r.woodKey && 'is-open']}>{r.woodKey ? t(locale, r.woodKey) : open}</td>
+              <td class:list={[!r.dryingKey && 'is-open']}>{r.dryingKey ? t(locale, r.dryingKey) : open}</td>
+              <td>{r.ispm15 ? t(locale, 'pallets.table.ispmYes') : open}</td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+)}
+
+<style>
+  .spec-table th[scope='row'] {
+    font-weight: 600;
+    font-stretch: 112%;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.9375rem;
+  }
+</style>

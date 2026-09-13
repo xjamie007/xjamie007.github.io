@@ -1,0 +1,55 @@
+---
+/**
+ * Ëffnungszäiten.
+ *
+ * Wann nach keng Zäite bestätegt sinn, rendert dës Komponent GUER NÄISCHT —
+ * kee „Mo–Fr 8–17" als Platzhalter. Eng falsch Zäit schéckt e Camion ëm
+ * 7 Auer virun en zouent Duer, an dat ass méi schlëmm wéi guer keng Ugab.
+ *
+ * TODO[FEHLT] Zäiten an `src/data/hours.ts` androen, da rendert et vun eleng.
+ */
+import { hours } from '../data/hours';
+import { t } from '../i18n';
+import type { Locale } from '../i18n/routes';
+
+interface Props {
+  locale: Locale;
+  headingLevel?: 'h2' | 'h3';
+}
+const { locale, headingLevel = 'h3' } = Astro.props;
+const Heading = headingLevel;
+
+const shown = hours.filter((h) => h.blocks && h.blocks.length > 0);
+const dayName: Record<string, Record<Locale, string>> = {
+  Mo: { lb: 'Méi', de: 'Mo', fr: 'lun', en: 'Mon' },
+  Tu: { lb: 'Dës', de: 'Di', fr: 'mar', en: 'Tue' },
+  We: { lb: 'Mët', de: 'Mi', fr: 'mer', en: 'Wed' },
+  Th: { lb: 'Don', de: 'Do', fr: 'jeu', en: 'Thu' },
+  Fr: { lb: 'Fre', de: 'Fr', fr: 'ven', en: 'Fri' },
+  Sa: { lb: 'Sam', de: 'Sa', fr: 'sam', en: 'Sat' },
+  Su: { lb: 'Son', de: 'So', fr: 'dim', en: 'Sun' },
+};
+---
+
+{shown.length > 0 && (
+  <div class="hours">
+    <Heading class="t-label">{t(locale, 'hours.heading')}</Heading>
+    <dl class="hours__list">
+      {shown.map((set) => (
+        <div>
+          <dt class="t-label">{t(locale, set.labelKey)}</dt>
+          {set.blocks!.map((b) => (
+            <dd class="t-num">
+              {b.days.map((d) => dayName[d][locale]).join('–')} {b.opens}–{b.closes}
+            </dd>
+          ))}
+        </div>
+      ))}
+    </dl>
+  </div>
+)}
+
+<style>
+  .hours__list > div + div { margin-block-start: 0.75rem; }
+  .hours__list dd { font-size: 0.9375rem; }
+</style>

@@ -1,0 +1,65 @@
+---
+/**
+ * Startseite.
+ *
+ * Auftrag an diese Seite: wer hier landet, soll in fünfzehn Sekunden wissen,
+ * was der Betrieb macht — ohne einen Absatz zu lesen. Deshalb zuerst der Satz,
+ * dann vier Zahlen, dann die drei Produktlinien mit Foto. Alles Weitere ist
+ * eine Kurzfassung mit Link auf die Seite, die es ausführt.
+ *
+ * Die Startseite läuft durchgehend ohne Schiene (`wide`): das technische
+ * Register gehört auf die Detailseiten, hier zählt schnelles Erfassen.
+ *
+ * Reihenfolge: Hero · Zahlen · Was wir machen · Konfigurator · Export &
+ * Stempel · Anlieferung · Historie · (Team) · (Referenzen) · FAQ · Anfrage.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/sections/Hero.astro';
+import FactsStrip from '../../components/sections/FactsStrip.astro';
+import ProductLines from '../../components/sections/ProductLines.astro';
+import ConfiguratorSection from '../../components/sections/ConfiguratorSection.astro';
+import ExportSection from '../../components/sections/ExportSection.astro';
+import DeliverySection from '../../components/sections/DeliverySection.astro';
+import AboutHistory from '../../components/sections/AboutHistory.astro';
+import TeamSection from '../../components/sections/TeamSection.astro';
+import TestimonialsSection from '../../components/sections/TestimonialsSection.astro';
+import FaqSection from '../../components/sections/FaqSection.astro';
+import Section from '../../components/Section.astro';
+import InquiryForm from '../../components/InquiryForm.astro';
+import { graph, organization, website, webPage, faqPage, service } from '../../lib/jsonld';
+import { t } from '../../i18n';
+import { LOCALES, type Locale } from '../../i18n/routes';
+import { productLines } from '../../data/products';
+
+export function getStaticPaths() {
+  return LOCALES.map((lang) => ({ params: { lang }, props: { locale: lang } }));
+}
+
+const { locale } = Astro.props as { locale: Locale };
+
+const jsonld = graph([
+  organization(Astro.site, locale),
+  website(Astro.site, locale),
+  webPage(Astro.site, locale, 'home'),
+  faqPage(locale),
+  ...productLines.map((k) => service(Astro.site, locale, k)),
+]);
+---
+
+<BaseLayout locale={locale} route="home" jsonld={jsonld}>
+  <Hero locale={locale} />
+  <FactsStrip locale={locale} />
+  <ProductLines locale={locale} wide />
+  <ConfiguratorSection locale={locale} wide />
+  <ExportSection locale={locale} />
+  <DeliverySection locale={locale} wide />
+  <AboutHistory locale={locale} />
+  <TeamSection locale={locale} />
+  <TestimonialsSection locale={locale} />
+  <FaqSection locale={locale} wide />
+
+  <Section id="ufro-band" wide labelledby="ufro-h2" class="band--dark">
+    <InquiryForm locale={locale} hasConfigurator centred id="ufro" />
+    <span id="ufro-h2" class="sr-only">{t(locale, 'form.heading')}</span>
+  </Section>
+</BaseLayout>

@@ -1,0 +1,74 @@
+---
+/**
+ * „Liwwerung & Ofholung" als eege Säit — dréckbar, an mat engem Deel, deen och
+ * op Englesch a Polnesch do steet, egal wéi eng Sprooch gewielt ass.
+ */
+import Section from '../Section.astro';
+import RailItem from '../RailItem.astro';
+import Breadcrumb from '../Breadcrumb.astro';
+import MapBlock from '../MapBlock.astro';
+import Photo from '../Photo.astro';
+import { delivery } from '../../data/delivery';
+import { company } from '../../data/company';
+import { t } from '../../i18n';
+import type { Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const showSteps = delivery.accessThroughMainHall.publish;
+---
+
+<Section labelledby="del-h1">
+  <Fragment slot="rail">
+    <RailItem term={t(locale, 'rail.ramp')} value={company.address.locality} numeric={false} />
+    <RailItem term={t(locale, 'common.plusCode')} value={company.geo.plusCode} />
+  </Fragment>
+
+  <Breadcrumb locale={locale} label={t(locale, 'delivery.heading')} />
+  <h1 id="del-h1" class="t-h1 pg__h1">{t(locale, 'delivery.heading')}</h1>
+  <p class="t-body pg__lead">{t(locale, 'delivery.lead')}</p>
+
+  {showSteps ? (
+    <ol class="steps pg__steps">
+      {delivery.steps.map((s, i) => (
+        <li class="steps__item">
+          <span class="t-num steps__no" aria-hidden="true">{i + 1}</span>
+          <div>
+            <h2 class="t-h3 steps__title">{t(locale, `delivery.steps.${s}.title`)}</h2>
+            <p class="t-caption steps__body">{t(locale, `delivery.steps.${s}.body`)}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+  ) : (
+    <p class="t-body pg__pending">
+      {t(locale, 'delivery.pending').split('{phone}')[0]}
+      <a class="link" href={`tel:${company.phoneE164}`}>{company.phoneDisplay}</a>
+    </p>
+  )}
+
+  <Photo locale={locale} name="yard" sizes="(min-width: 48rem) 38rem, 92vw" class="pg__yard reveal reveal--zoom" />
+
+  <div class="pg__map"><MapBlock locale={locale} headingLevel="h2" /></div>
+
+  <p class="pg__print no-print">
+    <button class="btn btn--quiet" type="button" data-print>{t(locale, 'common.print')}</button>
+    <span class="t-caption">{t(locale, 'delivery.printBody')}</span>
+  </p>
+</Section>
+
+<script>
+  document.querySelector('[data-print]')?.addEventListener('click', () => window.print());
+</script>
+
+<style>
+  .pg__h1 { margin-block-start: 1rem; }
+  .pg__lead { margin-block-start: 1rem; }
+  .pg__steps { margin-block-start: 2.5rem; max-inline-size: 60ch; }
+  .pg__pending { margin-block-start: 2rem; }
+  .pg__yard { display: block; margin-block-start: 2.5rem; max-inline-size: 38rem; }
+  .pg__yard :global(img) { inline-size: 100%; block-size: auto; display: block; border-radius: 2px; }
+  .pg__map { margin-block-start: 3rem; }
+  .pg__print { margin-block-start: 2.5rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; }
+
+</style>

@@ -1,0 +1,596 @@
+{
+  "common": {
+    "onRequest": "auf Anfrage",
+    "skipToContent": "Direkt zum Inhalt",
+    "menu": "Menü",
+    "closeMenu": "Menü schließen",
+    "langLabel": "Sprache",
+    "langSwitch": "Sprache wechseln",
+    "required": "Pflichtfeld",
+    "optional": "optional",
+    "backHome": "Zurück zur Startseite",
+    "readMore": "Mehr dazu",
+    "print": "Diese Seite drucken",
+    "phone": "Telefon",
+    "fax": "Fax",
+    "email": "E-Mail",
+    "address": "Adresse",
+    "country": "Luxemburg",
+    "vatId": "MwSt-Nummer",
+    "rcs": "RCS Luxemburg",
+    "plusCode": "Plus Code",
+    "coordinates": "Koordinaten",
+    "openRoute": "Route in Google Maps öffnen",
+    "openRouteNote": "Der Link geht erst beim Klick nach außen.",
+    "source": "Quelle",
+    "breadcrumb": "Sie sind hier"
+  },
+  "nav": {
+    "pallets": "Paletten",
+    "crates": "Kisten",
+    "stamp": "Der Stempel",
+    "delivery": "Anlieferung",
+    "contact": "Kontakt",
+    "label": "Hauptnavigation",
+    "repair": "Reparatur"
+  },
+  "meta": {
+    "home": {
+      "title": "KASEL — Holzpaletten und Exportkisten nach Maß, Mertzig",
+      "description": "Paletten und Kisten aus Holz aus Mertzig. Standardmaße, Maß nach Spezifikation, Exportkisten mit IPPC-Stempel. Eigene Sägerei, 9.000 m² Lager, Nummer 079."
+    },
+    "pallets": {
+      "title": "Holzpaletten Luxemburg — Maße, Traglasten, CP | KASEL",
+      "description": "Standardpaletten, CP-Paletten und Sonderpaletten nach Ihrer technischen Spezifikation. Zuschnitt auf Bestellung in eigener Sägerei in Mertzig, Luxemburg."
+    },
+    "crates": {
+      "title": "Holzkisten und Exportkisten nach Maß, Luxemburg | KASEL",
+      "description": "Holzkisten für Kupfer, Glas, Aluminium und Maschinen. Geschlossen oder gelattet, mit IPPC-Stempel für China, Australien, Neuseeland und andere Drittländer."
+    },
+    "repair": {
+      "title": "Paletten reparieren Luxemburg — neu stempeln | KASEL",
+      "description": "Wir reparieren gebrauchte Paletten und Kisten und kennzeichnen sie nach der Norm neu. Das dürfen nur Betriebe mit Registriernummer — unsere ist 079. In Mertzig."
+    },
+    "ispm15": {
+      "title": "ISPM 15 Luxemburg — IPPC-Stempel, Nummer 079 | KASEL",
+      "description": "Drei Betriebe in Luxemburg stehen als Hersteller im ISPM-15-Register. Wann Sie einen Stempel brauchen, was er ersetzt, und was passiert, wenn er fehlt. Nr. 079."
+    },
+    "delivery": {
+      "title": "Anlieferung & Abholung — Zufahrt und Rampe | KASEL",
+      "description": "Für Fahrer und Spediteure: Zufahrt zum Betrieb in Mertzig, Hof, Rampe, Papiere, Sprachen. Adresse, Plus Code und Karte auf einer Seite, druckbar. Nummer 079."
+    },
+    "history": {
+      "title": "Seit 1959 — die Geschichte des Familienbetriebs | KASEL",
+      "description": "Von der Schreinerei in Bissen 1959 bis zu 9.000 m² Halle in Mertzig. Die Etappen des Familienbetriebs Kasel, Jahr für Jahr. Drei Generationen, ein Betrieb."
+    },
+    "contact": {
+      "title": "Kontakt und Anfrage — KASEL, Zone Industrielle Mertzig",
+      "description": "Anfrage für Paletten, Kisten nach Maß, Reparatur oder Einlagerung. 12, Zone Industrielle, L-9166 Mertzig. Telefon +352 888 334-1, tom@kasel.lu. Wir antworten."
+    },
+    "thanks": {
+      "title": "Danke für Ihre Anfrage | KASEL",
+      "description": "Ihre Anfrage ist angekommen. Hier steht, was jetzt passiert und wie Sie uns auf dem direkten Weg erreichen."
+    },
+    "legal": {
+      "title": "Impressum — Emballages en Bois Kasel S.à r.l. | KASEL",
+      "description": "Firmenname, Rechtsform, Adresse, Telefon, E-Mail, RCS- und MwSt-Nummer von Emballages en Bois Kasel S.à r.l. in Mertzig, Luxemburg. Verantwortlich: Tom Kasel."
+    },
+    "privacy": {
+      "title": "Datenschutz — wie wir mit Ihren Daten umgehen | KASEL",
+      "description": "Welche Daten wir über das Anfrageformular erheben, wozu, auf welcher Rechtsgrundlage, wie lange wir sie halten und welche Rechte Sie haben. Keine Cookies."
+    },
+    "notfound": {
+      "title": "Seite nicht gefunden | KASEL",
+      "description": "Diese Seite gibt es nicht (mehr)."
+    }
+  },
+  "hero": {
+    "h1": "Paletten und Kisten aus Holz, nach Maß gebaut.",
+    "body": "Eigene Sägerei in Mertzig, 9.000 m² Lager. Wir schneiden das Holz erst, wenn Ihre Bestellung da ist.",
+    "ctaPrimary": "Anfrage senden",
+    "ctaSecondary": "Kiste konfigurieren",
+    "stampAlt": "Der IPPC-Stempel: das Ähren-Symbol, der Ländercode LU, die Registriernummer 079 und der Behandlungscode.",
+    "markAlt": "KASEL"
+  },
+  "facts": {
+    "heading": "Auf einen Blick",
+    "sinceTerm": "Seit",
+    "sawmillTerm": "Sägerei",
+    "sawmillValue": "im Haus",
+    "storageTerm": "Lager",
+    "exportTerm": "Export",
+    "exportValue": "weltweit"
+  },
+  "stampShort": {
+    "heading": "Braucht Ihre Sendung einen IPPC-Stempel?",
+    "yesTerm": "China, Australien, Neuseeland",
+    "yesValue": "ja",
+    "noTerm": "Innerhalb der EU",
+    "noValue": "nein",
+    "body": "Für diese Länder muss das Holz behandelt und gestempelt sein. Fehlt der Stempel, bleibt die Sendung im Zielhafen stehen. Wir machen das selbst, Sie müssen sich um nichts kümmern.",
+    "link": "Wann Sie was brauchen"
+  },
+  "rail": {
+    "ispm": "ISPM 15",
+    "producer": "Produzent",
+    "authority": "Behörde",
+    "registry": "Register",
+    "treatment": "Behandlung",
+    "pallets": "Paletten",
+    "crates": "Kisten",
+    "cratesValue": "nach Maß",
+    "configurator": "Konfigurator",
+    "stamp": "Cachet",
+    "ramp": "Rampe",
+    "spaces": "Stellplätze",
+    "since": "Seit",
+    "faq": "Fragen",
+    "inquiry": "Anfrage",
+    "storage": "Lager",
+    "sawmill": "Sägerei",
+    "sawmillValue": "im Haus",
+    "team": "Team",
+    "references": "Referenzen",
+    "reply": "Antwort"
+  },
+  "products": {
+    "heading": "Was wir machen",
+    "pallets": {
+      "title": "Paletten",
+      "body": "Standardpaletten, CP-Paletten und Sonderpaletten nach Maß. Weil wir selbst sägen, sind wir nicht an Lagermaße gebunden.",
+      "link": "Sortiment und Spezifikation",
+      "drawingAlt": "Zeichnung einer Palette von oben und von der Seite: Deckbretter, Klötze und Kufen."
+    },
+    "crates": {
+      "title": "Kisten nach Maß",
+      "body": "Kisten für den Seetransport von Kupfer, Glas, Aluminium und Maschinen. Geschlossen oder gelattet, mit IPPC-Stempel für Drittländer.",
+      "link": "Bauweisen und Ladegut",
+      "drawingAlt": "Zeichnung einer geschlossenen Exportkiste mit Kufen unten und dem IPPC-Stempel auf der Seite."
+    },
+    "repair": {
+      "title": "Reparatur und Wiederverwendung",
+      "body": "Wir reparieren gebrauchte Kisten und Paletten und stempeln sie neu. Das dürfen nur Betriebe mit Registriernummer. Unsere ist 079.",
+      "link": "Was bei einer Reparatur gilt",
+      "drawingAlt": "Zeichnung einer Palette, bei der ein Deckbrett ersetzt wird, und des neuen Stempels."
+    }
+  },
+  "about": {
+    "heading": "Über uns",
+    "body": "Ein Familienbetrieb. Henry Kasel hat 1959 in Bissen angefangen, heute führt sein Enkel Tom die Produktion. Die Verwaltung ist in der Familie geblieben.",
+    "timeline": "Die Etappen"
+  },
+  "photos": {
+    "hall": "Blick in die Lagerhalle: Stapel von Paletten und Kisten unter der blauen Stahlkonstruktion.",
+    "pallets": "Gestapelte Paletten aus der Nähe: Deckbretter, Klötze und Unterbretter.",
+    "crates": "Gestapelte Holzkisten aus Kanthölzern und Plattenmaterial.",
+    "marked": "Fertige Kisten mit aufgebrachten Kennzeichnungen auf der Stirnseite.",
+    "repair": "Gebrauchte Paletten, im Hof gestapelt, zum Prüfen und Reparieren.",
+    "machine": "Die Palettenmaschine in der Halle, mit Roboterarm und Holz am Zulauf.",
+    "sawline": "Die lange Sägelinie in der Produktionshalle.",
+    "worker": "Ein Mitarbeiter an der Sägelinie in der Halle.",
+    "yard": "Der Hof mit Halle und Palettenstapeln, von außen gesehen.",
+    "timber": "Zugeschnittene Kanthölzer, gestapelt, mit den Jahresringen in der Stirnseite.",
+    "credit": "Fotos"
+  },
+  "config": {
+    "heading": "Kiste konfigurieren",
+    "lead": "Tragen Sie die Maße Ihrer Ware ein. Die Zeichnung zeigt, wie die Kiste dazu aussieht. Alle Angaben gehen mit der Anfrage an uns.",
+    "disclaimer": "Die Zeichnung ist ein Richtwert, keine Konstruktionsangabe. Preis und endgültige Auslegung bekommen Sie von uns, sobald wir Ihre Anfrage gelesen haben.",
+    "fieldsetSize": "Maß und Gewicht",
+    "fieldsetBuild": "Ladegut, Ziel und Bauweise",
+    "exampleTag": "Beispiel",
+    "fields": {
+      "inner": {
+        "label": "Innenmaß des Ladeguts",
+        "hint": "in Millimeter"
+      },
+      "length": "Länge",
+      "width": "Breite",
+      "height": "Höhe",
+      "weight": {
+        "label": "Gewicht",
+        "hint": "in Kilogramm"
+      },
+      "cargo": "Ladegut",
+      "cargoHint": "Frei eintragen. Zum Beispiel Kupfer, Glas, Aluminium, Maschinen.",
+      "dest": "Ziel",
+      "qty": "Stückzahl",
+      "build": "Bauweise",
+      "outer": {
+        "label": "Außenmaß",
+        "hint": "Innenmaß plus Wandstärke"
+      }
+    },
+    "cargo": {
+      "copper": "Kupfer",
+      "glass": "Glas",
+      "aluminium": "Aluminium",
+      "machine": "Maschine oder Anlage"
+    },
+    "dest": {
+      "eu": "EU",
+      "cn": "China",
+      "au": "Australien",
+      "nz": "Neuseeland",
+      "third": "anderes Drittland"
+    },
+    "build": {
+      "closed": "geschlossen",
+      "slatted": "gelattet",
+      "autoNote": "Voreinstellung nach Ladegut. Sie können umschalten."
+    },
+    "out": {
+      "heading": "Was daraus folgt",
+      "outer": "Außenmaß",
+      "skids": "Kufen",
+      "boardThickness": "Brettstärke",
+      "volume": "Volumen",
+      "guide": "Anhaltswert",
+      "stampOn": "IPPC-Stempel auf zwei gegenüberliegenden Seiten",
+      "stampOff": "Kein IPPC-Stempel nötig"
+    },
+    "rule": {
+      "third": "China, Australien und Neuseeland verlangen ISPM-15-behandeltes Holz mit IPPC-Stempel. Das können wir aufbringen, Registriernummer 079.",
+      "eu": "Innerhalb der EU ist keine ISPM-15-Behandlung nötig; der Stempel ersetzt bei Bedarf den Pflanzenpass."
+    },
+    "actions": {
+      "submit": "Als Anfrage senden",
+      "download": "Zeichnung herunterladen",
+      "reset": "Zurücksetzen"
+    },
+    "noscript": "Ohne JavaScript wird die Zeichnung nicht mitgezeichnet. Die Felder darunter funktionieren trotzdem: füllen Sie sie aus und schicken Sie sie mit der Anfrage ab. Wir brauchen Innenmaß, Gewicht, Ladegut, Ziel und Stückzahl.",
+    "drawingLabelStatic": "Beispielzeichnung einer Exportkiste mit Maßlinien, Kufen und dem IPPC-Stempel.",
+    "liveIntro": "Zeichnung",
+    "srSummary": "Kiste {outer} mm außen, {skids} Kufen, {build}, {stamp}."
+  },
+  "stamp": {
+    "heading": "Der Stempel",
+    "lead": "Auf dem Stempel steht alles, was der Kontrolleur im Zielhafen braucht. Hier ist jedes Feld einzeln: was es bedeutet, und was passiert, wenn es fehlt.",
+    "fields": {
+      "ippc": {
+        "title": "Das IPPC-Symbol",
+        "what": "Die stilisierte Ähre zeigt, dass das Holz nach der internationalen Pflanzenschutznorm ISPM 15 behandelt wurde.",
+        "without": "Fehlt sie, behandelt der Zoll im Zielland die Sendung wie unbehandeltes Holz."
+      },
+      "lu": {
+        "title": "LU",
+        "what": "Der ISO-Ländercode des Landes, in dem behandelt und gekennzeichnet wurde.",
+        "without": "Er sagt der Behörde im Zielland, welches Register sie prüfen muss."
+      },
+      "number": {
+        "title": "079",
+        "what": "Unsere Registriernummer bei der ASTA, der Administration des Services Techniques de l'Agriculture. Sie ist einmalig, nicht übertragbar und öffentlich nachprüfbar.",
+        "without": "In Luxemburg gibt es drei eingetragene Produzenten."
+      },
+      "code": {
+        "title": "Der Behandlungscode",
+        "what": "Er sagt, wie behandelt wurde: HT für Wärmebehandlung, DB für entrindet.",
+        "without": "Ohne Code ist der Stempel unvollständig und damit ungültig."
+      },
+      "twoSides": {
+        "title": "Zwei Seiten",
+        "what": "Der Stempel muss sichtbar und dauerhaft angebracht sein, vorzugsweise auf zwei gegenüberliegenden Seiten.",
+        "without": "Dann findet ihn der Kontrolleur, egal wie die Kiste im Container steht."
+      },
+      "noRedOrange": {
+        "title": "Nicht rot, nicht orange",
+        "what": "Diese Farben sind der Kennzeichnung gefährlicher Güter vorbehalten.",
+        "without": "Deshalb sehen Sie sie auch auf dieser Website nicht."
+      },
+      "afterRepair": {
+        "title": "Nach jeder Reparatur neu",
+        "what": "Wird eine Palette wiederverwendet, recycelt oder repariert, muss sie neu gekennzeichnet werden, und alle Bauteile müssen behandelt sein.",
+        "without": "Deshalb reparieren wir nicht nur, wir stempeln auch neu."
+      },
+      "replaces": {
+        "title": "Was er ersetzt",
+        "what": "Innerhalb der EU ersetzt der Stempel den Pflanzenpass, beim Export das Pflanzengesundheitszeugnis.",
+        "without": "Er gilt für Massivholz ab 6 mm Dicke, nicht für Pressholz."
+      }
+    },
+    "whatItMeans": "Was es bedeutet",
+    "whatIfMissing": "Was passiert, wenn es fehlt",
+    "registryHeading": "Die drei eingetragenen Produzenten in Luxemburg",
+    "registryNote": "Das ist keine Behauptung von uns, das steht im öffentlichen Register.",
+    "sourceLine": "Quelle: Single Window for Logistics, Luxemburg (ASTA), Stand 8. April 2025.",
+    "cta": "Kiste konfigurieren"
+  },
+  "delivery": {
+    "heading": "Anlieferung & Abholung",
+    "lead": "Für Fahrer und Spediteure: So läuft die Anlieferung bei uns ab.",
+    "stepsHeading": "Der Weg auf den Betrieb",
+    "steps": {
+      "entry": {
+        "title": "Einfahrt über die Haupthalle",
+        "body": "Das ist der einzige Zugang zu Hof und Rampe."
+      },
+      "yard": {
+        "title": "Durch auf den Hof",
+        "body": "Durchfahren und an der Halle entlang."
+      },
+      "ramp": {
+        "title": "An der Rampe anstellen",
+        "body": "Bleiben Sie im LKW, wir kommen zu Ihnen."
+      },
+      "papers": {
+        "title": "Die Papiere bringen wir an den LKW",
+        "body": "Sie müssen nicht ins Büro hoch."
+      }
+    },
+    "factsHeading": "Vor Ort",
+    "facts": {
+      "spaces": "LKW-Stellplätze",
+      "overnight": "Übernachtung möglich",
+      "languages": "Sprachen am Empfang",
+      "access": "Zufahrt"
+    },
+    "addressHeading": "Adresse und Position",
+    "mapAlt": "Karte der Zone Industrielle in Mertzig mit der Position des Betriebs, einem Maßstab und Nordpfeil.",
+    "mapAttribution": "Kartendaten © OpenStreetMap contributors. Das Bild liegt auf dieser Seite. Beim Aufruf geht keine Anfrage nach außen.",
+    "printHeading": "Auf einer Seite zum Drucken",
+    "printBody": "Diese Seite ist so gesetzt, dass sie auf ein Blatt passt. Drucken Sie sie aus und legen Sie sie in den LKW.",
+    "shortHeading": "Kurzfassung",
+    "pending": "Wir stellen diese Angaben online, sobald sie bestätigt sind. Bis dahin: rufen Sie an, wir sagen Ihnen den Weg. {phone}"
+  },
+  "history": {
+    "heading": "Historie",
+    "lead": "Drei Generationen, ein Betrieb.",
+    "entries": {
+      "1959": "Henry Kasel gründet in Bissen eine Schreinerei mit drei Mitarbeitern. Daraus entwickelt sich schrittweise die Holzverpackung.",
+      "1973": "Gründung der Maison Kasel in Bissen.",
+      "1994": "18 Mitarbeiter, die Kapazitätsgrenze ist erreicht. Internationale Kunden verlangen größere Anlagen.",
+      "1995": "Umzug in die Zone Industrielle Mertzig, mit Lager und Büros.",
+      "1997": "Zwei weitere Lagerhallen. Die Gesamtfläche liegt seitdem bei 9.000 m².",
+      "2002": "Umfassende Modernisierung aller Bereiche.",
+      "2008": "Die neue Palettenmaschine geht in Betrieb.",
+      "2014": "Gründung der Emballages en Bois Kasel S.à r.l. unter Tom Kasel, die die Produktion übernimmt."
+    },
+    "short": {
+      "1959": "Schreinerei in Bissen",
+      "1973": "Maison Kasel gegründet",
+      "1994": "18 Mitarbeiter, Platz zu klein",
+      "1995": "Umzug nach Mertzig",
+      "1997": "Zwei Hallen, 9.000 m²",
+      "2002": "Alles modernisiert",
+      "2008": "Neue Palettenmaschine",
+      "2014": "Tom Kasel übernimmt"
+    },
+    "family": "Pierrot Kasel folgte auf seinen Vater Henry. Familienmitglieder führen weiterhin die Verwaltung. Tom Kasel leitet die Produktionsgesellschaft."
+  },
+  "faq": {
+    "heading": "Häufig gefragt",
+    "items": {
+      "china": {
+        "q": "Braucht meine Sendung nach China einen IPPC-Stempel?",
+        "a": "Ja. China, Australien und Neuseeland verlangen ISPM-15-behandeltes Holz mit gültigem IPPC-Stempel. Wir dürfen ihn aufbringen, Registriernummer 079."
+      },
+      "eu": {
+        "q": "Und innerhalb der EU?",
+        "a": "Dort ist keine ISPM-15-Behandlung nötig. Der Stempel ersetzt bei Bedarf den Pflanzenpass."
+      },
+      "leadtime": {
+        "q": "Wie schnell können Sie liefern?",
+        "a": "Wir schneiden das Holz, wenn die Bestellung kommt, und haben 9.000 m² Lager. Wie lange es in Ihrem Fall dauert, sagen wir Ihnen, sobald wir Ihre Anfrage gelesen haben. Schreiben Sie uns Stückzahl und Wunschtermin dazu."
+      },
+      "repair": {
+        "q": "Können Sie unsere gebrauchten Paletten reparieren?",
+        "a": "Ja, und wir kennzeichnen sie danach neu, wie es die Norm verlangt."
+      },
+      "storage": {
+        "q": "Können Sie fertige Ware für uns einlagern?",
+        "a": "Ja. Fertigware wird meist direkt geliefert, kann aber eingelagert und auf Abruf versandt werden."
+      },
+      "sizes": {
+        "q": "Welche Maße sind Standard?",
+        "a": "Standardpaletten, CP-Paletten und Sonderpaletten nach Ihrer Spezifikation. Schreiben Sie uns das Maß, das Sie brauchen. Wir schneiden auf Bestellung und sind nicht an Lagermaße gebunden."
+      },
+      "driver-access": {
+        "q": "Wo fahre ich als Fahrer rein?",
+        "a": "Über die Haupthalle. Das ist der einzige Zugang zu Hof und Rampe. Der ganze Weg steht auf der Seite Anlieferung & Abholung."
+      }
+    },
+    "lead": "Was Einkäufer und Fahrer uns am häufigsten fragen.",
+    "nudge": "Ihre Frage ist nicht dabei? Schreiben Sie uns, wir antworten.",
+    "nudgeCta": "Anfrage senden"
+  },
+  "form": {
+    "heading": "Anfrage",
+    "lead": "Fünf Felder sind Pflicht. Je mehr Sie ausfüllen, desto genauer können wir antworten.",
+    "summaryHeading": "Aus dem Konfigurator",
+    "summaryEdit": "Ändern",
+    "summaryEmpty": "Noch nichts konfiguriert.",
+    "fields": {
+      "company": "Firma",
+      "contact": "Ansprechpartner",
+      "email": "E-Mail",
+      "subject": "Was soll gebaut werden?",
+      "message": "Nachricht",
+      "phone": "Telefon",
+      "qty": "Stückzahl",
+      "leadDate": {
+        "label": "Wunschtermin",
+        "hint": "Tag, an dem Sie die Ware brauchen"
+      },
+      "place": {
+        "label": "Lieferort",
+        "hint": "Ort und Land genügen"
+      },
+      "file": {
+        "label": "Zeichnung oder Foto",
+        "hint": "PDF, PNG oder JPG · eine Datei · max. 10 MB"
+      }
+    },
+    "subjects": {
+      "pallets": "Paletten",
+      "crates": "Kisten nach Maß",
+      "repair": "Reparatur",
+      "storage": "Einlagerung",
+      "unsure": "noch unklar"
+    },
+    "consent": "Ich bin einverstanden, dass meine Angaben zur Beantwortung dieser Anfrage gespeichert und verwendet werden. Die Einzelheiten stehen in der Datenschutzerklärung.",
+    "consentLink": "Datenschutzerklärung",
+    "submit": "Anfrage senden",
+    "sending": "wird gesendet …",
+    "errors": {
+      "company": "Tragen Sie den Firmennamen ein.",
+      "contact": "Tragen Sie ein, mit wem wir sprechen.",
+      "email": "Bitte prüfen Sie die E-Mail-Adresse. Zum Beispiel: name@firma.lu",
+      "subject": "Wählen Sie aus, was gebaut werden soll.",
+      "message": "Schreiben Sie uns kurz, worum es geht.",
+      "consent": "Ohne Ihre Einwilligung dürfen wir die Angaben nicht verarbeiten.",
+      "file": "Diese Datei geht nicht. Erlaubt sind PDF, PNG oder JPG bis 10 MB.",
+      "summary": "{count} Angabe fehlt noch.",
+      "summaryPlural": "{count} Angaben fehlen noch.",
+      "network": "Die Anfrage ist nicht durchgekommen. Versuchen Sie es noch einmal, oder schreiben Sie direkt an {email}."
+    },
+    "successHeading": "Danke. Ihre Anfrage ist da.",
+    "successBody": "Wir melden uns innerhalb eines Arbeitstages.",
+    "successNext": "Wenn es eilt, rufen Sie an: {phone}.",
+    "summaryRemove": "Maße entfernen",
+    "summaryRemoveHint": "Dann geht die Anfrage ohne Kistenmaße raus."
+  },
+  "footer": {
+    "company": "Betrieb",
+    "pages": "Seiten",
+    "legalNav": "Recht",
+    "langHeading": "Sprache",
+    "legal": "Impressum",
+    "privacy": "Datenschutz",
+    "rcsLine": "RCS Luxemburg {rcs} · MwSt {vat}",
+    "madeIn": "Gebaut in Mertzig, Kanton Diekirch, Luxemburg."
+  },
+  "hours": {
+    "office": "Büro und Telefon",
+    "ramp": "Anlieferung und Abholung",
+    "heading": "Öffnungszeiten"
+  },
+  "pallets": {
+    "h1": "Holzpaletten",
+    "lead": "Standardpaletten, CP-Paletten und Paletten nach Ihrer technischen Spezifikation. Weil wir selbst sägen, sind wir nicht an Lagermaße gebunden.",
+    "standardHeading": "Standardmaße",
+    "cpHeading": "CP-Paletten",
+    "cpNote": "Die CP-Maße sind durch die CP-Norm festgelegt. Welche Typen wir auf Lager haben und welche wir auf Bestellung bauen: fragen Sie uns.",
+    "customHeading": "Sonderpaletten",
+    "customBody": "Schicken Sie uns Ihre Zeichnung oder Ihre technische Spezifikation. Wir bauen nach Ihren Vorgaben.",
+    "table": {
+      "caption": "Werte, die hier noch fehlen, nennen wir Ihnen auf Anfrage.",
+      "size": "Maß (mm)",
+      "load": "Traglast",
+      "wood": "Holzart",
+      "drying": "Trocknungsgrad",
+      "ispm": "ISPM 15",
+      "type": "Typ",
+      "ispmYes": "möglich"
+    }
+  },
+  "crates": {
+    "h1": "Kisten nach Maß",
+    "lead": "Kisten für den Seetransport von Kupfer, Glas, Aluminium und Maschinen. Geschlossen oder gelattet, nach Gewicht und Ladegut.",
+    "buildHeading": "Bauweisen",
+    "closedTitle": "Geschlossen",
+    "closedBody": "Voll beplankt. Für Glas und für alles, was keinen Staub und keine Nässe verträgt.",
+    "slattedTitle": "Gelattet",
+    "slattedBody": "Lattung mit Zwischenräumen. Leichter und günstiger, wenn die Ware selbst stabil ist. Typisch bei Maschinen und Aluminiumprofilen.",
+    "cargoHeading": "Ladegut",
+    "cargoBody": "Kupfer, Glas und Aluminium gehen am häufigsten über See. Alle drei stellen andere Anforderungen an Kufen und Fixierung. Schreiben Sie uns deshalb Gewicht und Schwerpunkt dazu.",
+    "exportHeading": "Überseeversand",
+    "exportBody": "Wir haben das Agrément des Service Technique de l'Agriculture für die Herstellung von Paletten und Kisten nach den Einfuhrbestimmungen von China, Australien und Neuseeland.",
+    "configCta": "Kiste konfigurieren"
+  },
+  "repair": {
+    "h1": "Reparatur und Wiederverwendung",
+    "lead": "Wir reparieren gebrauchte Kisten und Paletten und setzen sie neu in Betrieb. Viele unserer Emballagen sind so mehrere Jahre im Einsatz.",
+    "ruleHeading": "Warum die Nummer 079 hier zählt",
+    "ruleBody": "Eine Palette, die wiederverwendet, recycelt oder repariert wird, muss neu gekennzeichnet werden. Alle Bauteile müssen behandelt sein. Das dürfen nur Betriebe mit einer Registriernummer. Wir haben eine, deshalb bekommen Sie die Palette mit gültigem Stempel zurück.",
+    "whatHeading": "Was wir machen",
+    "whatItems": [
+      "Gebrauchte Paletten und Kisten prüfen und sortieren",
+      "Kaputte Bretter, Klötze und Kufen ersetzen",
+      "Nach der Reparatur neu stempeln, wie es die Norm verlangt",
+      "Zurück auf den Betrieb liefern oder auf Abruf halten"
+    ],
+    "cta": "Gebrauchte Paletten anbieten"
+  },
+  "ispm15": {
+    "h1": "ISPM 15 in Luxemburg",
+    "lead": "ISPM 15 ist die internationale Norm für Holzverpackung im Welthandel. Sie soll verhindern, dass Schädlinge mit dem Verpackungsholz von einem Kontinent auf den anderen kommen. Wer nach der Norm behandeln und stempeln darf, steht in einem öffentlichen Register.",
+    "whoHeading": "Wer in Luxemburg stempeln darf",
+    "whoBody": "Drei Betriebe. Wir sind einer davon, mit der Registriernummer 079. Die Liste wird von der ASTA geführt und ist öffentlich.",
+    "fieldsHeading": "Der Stempel, Feld für Feld",
+    "rulesHeading": "Was sonst noch gilt",
+    "rules": [
+      "Der Stempel muss dauerhaft sein und darf nicht übertragen werden.",
+      "Er muss sichtbar angebracht sein, vorzugsweise auf zwei gegenüberliegenden Seiten.",
+      "Rot und Orange sind zu vermeiden, weil diese Farben für Gefahrgut reserviert sind.",
+      "Wird eine Palette wiederverwendet, recycelt oder repariert, muss sie neu gekennzeichnet werden; alle Bauteile müssen behandelt sein.",
+      "Die Kennzeichnung darf nur durch vollständige Verbrennung zerstört werden.",
+      "Sie gilt für Massivholz ab 6 mm Dicke, nicht für Pressholz.",
+      "Der Stempel ersetzt den Pflanzenpass im innergemeinschaftlichen Verkehr und das Pflanzengesundheitszeugnis beim Export."
+    ],
+    "whenHeading": "Wann Sie ihn brauchen",
+    "whenBody": "Bei China, Australien und Neuseeland immer. Bei anderen Drittländern hängt es vom Zielland ab. Schreiben Sie uns das Ziel in die Anfrage, wir sagen es Ihnen.",
+    "cta": "Kiste konfigurieren"
+  },
+  "contact": {
+    "h1": "Kontakt",
+    "lead": "Schreiben Sie uns, was Sie brauchen. Je genauer die Anfrage, desto schneller haben Sie ein Angebot.",
+    "directHeading": "Direkt",
+    "visitHeading": "Vor Ort",
+    "driverHint": "Sind Sie Fahrer? Dann steht alles, was Sie brauchen, auf der Seite Anlieferung & Abholung."
+  },
+  "thanks": {
+    "h1": "Danke. Ihre Anfrage ist da.",
+    "body": "Wir melden uns innerhalb eines Arbeitstages.",
+    "nextHeading": "Was jetzt passiert",
+    "next": [
+      "Tom liest die Anfrage und schaut, ob etwas fehlt.",
+      "Sie bekommen eine Antwort per E-Mail, mit Preis, Maß und Lieferzeit, wenn die Angaben reichen.",
+      "Wenn etwas unklar ist, ruft er an."
+    ],
+    "urgent": "Eilig? Rufen Sie an: {phone}."
+  },
+  "legal": {
+    "h1": "Impressum",
+    "operatorHeading": "Betreiber dieser Website",
+    "contactHeading": "Kontakt",
+    "registerHeading": "Register und Steuern",
+    "responsibleHeading": "Verantwortlich für den Inhalt",
+    "purposeHeading": "Gesellschaftszweck",
+    "disputeHeading": "Streitschlichtung",
+    "disputeBody": "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung bereit. Wir sind nicht verpflichtet und nicht bereit, an einem Streitschlichtungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.",
+    "liabilityHeading": "Haftung für Links",
+    "liabilityBody": "Unsere Seite enthält Links auf externe Websites. Auf deren Inhalt haben wir keinen Einfluss. Für den Inhalt der verlinkten Seiten ist stets der jeweilige Betreiber verantwortlich.",
+    "supervisionHeading": "Aufsicht",
+    "supervisionBody": "Die ISPM-15-Registrierung wird von der Administration des Services Techniques de l'Agriculture (ASTA) geführt.",
+    "licenceHeading": "Autorisation d'établissement"
+  },
+  "privacy": {
+    "h1": "Datenschutz",
+    "lead": "Kurz vorab: wir setzen keine Cookies, wir haben kein Tracking, und die Schriften und die Karte auf dieser Seite laden nicht von fremden Servern. Deshalb sehen Sie auch kein Banner.",
+    "controllerHeading": "Verantwortliche Stelle",
+    "whatHeading": "Welche Daten wir bekommen",
+    "whatBody": "Nur die, die Sie im Anfrageformular selbst eintragen: Firma, Ansprechpartner, E-Mail und die Beschreibung Ihres Auftrags. Optional dazu Telefon, Stückzahl, Wunschtermin, Lieferort und gegebenenfalls eine Datei, die Sie anhängen. Wenn Sie den Konfigurator benutzen, werden die konfigurierten Werte mitgeschickt. Sie sehen sie vor dem Absenden auf der Seite.",
+    "whyHeading": "Wozu",
+    "whyBody": "Um Ihre Anfrage zu beantworten und, wenn es zu einem Auftrag kommt, ihn auszuführen.",
+    "legalBasisHeading": "Rechtsgrundlage",
+    "legalBasisBody": "Art. 6 Abs. 1 lit. b DSGVO (Schritte vor einem Vertrag) und, was das Kreuz im Formular angeht, Art. 6 Abs. 1 lit. a DSGVO (Einwilligung). Sie können die Einwilligung jederzeit zurückziehen.",
+    "retentionHeading": "Wie lange",
+    "retentionBody": "Anfragen, aus denen kein Auftrag wird, löschen wir nach zwei Jahren. Anfragen, aus denen ein Auftrag wird, halten wir so lange, wie es die Handels- und Steuergesetze verlangen. In Luxemburg sind das zehn Jahre.",
+    "processorsHeading": "Wer sonst mitverarbeitet",
+    "processorsBody": "Das Formular läuft über eine Serverfunktion bei Supabase; die Verarbeitung findet in der EU statt. Die Mail selbst geht über unseren Mailversender. Wir geben Ihre Daten nicht weiter und verkaufen sie nicht.",
+    "hostingHeading": "Hosting und Serverlogs",
+    "hostingBody": "Der Webserver protokolliert technische Zugriffsdaten, wie das bei jedem Server so ist. Diese Protokolle werden nur für den Betrieb und die Sicherheit der Seite verwendet.",
+    "cookiesHeading": "Cookies",
+    "cookiesBody": "Keine. Weder eigene noch fremde. Es gibt auch kein Analytics.",
+    "rightsHeading": "Ihre Rechte",
+    "rightsBody": "Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Schreiben Sie dafür an {email}.",
+    "authorityHeading": "Aufsichtsbehörde",
+    "authorityBody": "Commission nationale pour la protection des données (CNPD), 15, boulevard du Jazz, L-4370 Belvaux, Luxemburg.",
+    "updatedHeading": "Stand"
+  },
+  "notfound": {
+    "h1": "Diese Seite gibt es nicht.",
+    "body": "Vielleicht hat sich die Adresse geändert, oder der Link ist alt. Hier sind die Seiten, die es gibt.",
+    "searchHint": "Suchen Sie etwas Bestimmtes? Schreiben Sie uns: {email}"
+  }
+}

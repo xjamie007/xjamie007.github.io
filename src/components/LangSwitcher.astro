@@ -1,0 +1,65 @@
+---
+/**
+ * Sproochëmschalter.
+ *
+ * Hie bleift op DERSELWECHTER Säit a werft keen op d'Startsäit zeréck — dofir
+ * kritt en de Route-Schlëssel an net d'URL.
+ */
+import { LOCALES, localeNames, localeShort, htmlLang, path, type Locale, type RouteKey } from '../i18n/routes';
+import { t } from '../i18n';
+
+interface Props {
+  locale: Locale;
+  route: RouteKey;
+  class?: string;
+}
+const { locale, route, class: className } = Astro.props;
+---
+
+<nav class:list={['langs', className]} aria-label={t(locale, 'common.langSwitch')}>
+  <ul class="langs__list">
+    {LOCALES.map((l) => (
+      <li>
+        <a
+          href={path(route, l)}
+          hreflang={htmlLang[l]}
+          lang={htmlLang[l]}
+          class="langs__link"
+          aria-current={l === locale ? 'true' : undefined}
+        >
+          <span aria-hidden="true">{localeShort[l]}</span>
+          <span class="sr-only">{localeNames[l]}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .langs__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+  .langs__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-inline-size: 2.75rem;
+    min-block-size: 2.75rem;
+    padding: 0 0.5rem;
+    font-family: var(--font-mark);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    border: 1px solid var(--band-line);
+    border-radius: 2px;
+    color: inherit;
+  }
+  .langs__link:hover { border-color: currentColor; }
+  .langs__link[aria-current='true'] {
+    background: var(--band-fg);
+    color: var(--band-bg);
+    border-color: var(--band-fg);
+  }
+</style>

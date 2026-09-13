@@ -1,0 +1,75 @@
+---
+/**
+ * Exportkëscht, isometresch. Zou bepliankt, Kuffen ënnen, IPPC-Stempel op der
+ * Säit. Dat ass déi kleng Fassung fir d'Produktzeil — de Stempel steet hei als
+ * Form, net mat Text: bei dëser Gréisst wier d'Schrëft onliesbar, an eng
+ * onliesbar Schrëft ass schlëmmer wéi keng.
+ */
+interface Props { label: string; class?: string }
+const { label, class: className } = Astro.props;
+const uid = `cra-${Math.random().toString(36).slice(2, 8)}`;
+
+const C = Math.cos(Math.PI / 6);
+const S = Math.sin(Math.PI / 6);
+const L = 118, W = 68, H = 76, SH = 11, SW = 14;
+const P = (x: number, y: number, z: number) => `${((x - z) * C).toFixed(2)},${((x + z) * S - y).toFixed(2)}`;
+
+const top = [P(0, H, 0), P(L, H, 0), P(L, H, W), P(0, H, W)].join(' ');
+const right = [P(L, H, 0), P(L, H, W), P(L, 0, W), P(L, 0, 0)].join(' ');
+const front = [P(0, H, W), P(L, H, W), P(L, 0, W), P(0, 0, W)].join(' ');
+
+const plankX = [24, 48, 72, 96];
+const plankZ = [17, 34, 51];
+const skidX = [6, (L - SW) / 2, L - SW - 6];
+
+/* Matrix, déi d'Fläch z = W an der Isometrie trefft.
+   Uechtung: `d = -1` dréint d'y-Achs ëm — an de Fläche-Koordinate geet y NO
+   UEWEN, an engem SVG no ËNNEN. Wien dobannen normal zeechent, kritt de Stempel
+   op de Kapp. Dofir dréit d'Stempelgrupp mat `translate(u v+h) scale(1 -1)`
+   zréck, an de Stempel selwer gëtt ganz normal gezeechent. */
+const faceFront = `matrix(${C} ${S} 0 -1 ${(-W * C).toFixed(2)} ${(W * S).toFixed(2)})`;
+const STAMP = { u: 62, v: 20, w: 42, h: 24 };
+---
+
+<svg viewBox="-72 -86 190 208" class={className} role="img" aria-labelledby={`${uid}-t`} focusable="false" xmlns="http://www.w3.org/2000/svg">
+  <title id={`${uid}-t`}>{label}</title>
+
+  <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round">
+    <!-- Kuffen -->
+    {skidX.map((x) => (
+      <>
+        <polygon points={[P(x, 0, W), P(x + SW, 0, W), P(x + SW, -SH, W), P(x, -SH, W)].join(' ')} />
+        <polygon points={[P(x + SW, 0, W), P(x + SW, 0, 0), P(x + SW, -SH, 0), P(x + SW, -SH, W)].join(' ')} />
+      </>
+    ))}
+
+    {/* D'Flächen ginn an der Papeierfaarf gefëllt. Ouni dat wier d'Zeechnung
+        e richtegt Drohtgitter — an da leien d'Kuffen hir hënnescht Kante
+        matten duerch d'Këscht. Zeechnungsreiefolleg: Kuffen, dann d'Flächen,
+        dann d'Bepliankung. */}
+    <polygon points={top} style="fill: var(--band-bg, #FFFFFF)" />
+    <polygon points={right} style="fill: var(--band-bg, #FFFFFF)" />
+    <polygon points={front} style="fill: var(--band-bg, #FFFFFF)" />
+
+    <!-- Bepliankung -->
+    <g stroke-width="0.9" opacity="0.8">
+      {plankX.map((x) => <line x1={P(x, H, W).split(',')[0]} y1={P(x, H, W).split(',')[1]} x2={P(x, 0, W).split(',')[0]} y2={P(x, 0, W).split(',')[1]} />)}
+      {plankX.map((x) => <line x1={P(x, H, 0).split(',')[0]} y1={P(x, H, 0).split(',')[1]} x2={P(x, H, W).split(',')[0]} y2={P(x, H, W).split(',')[1]} />)}
+      {plankZ.map((z) => <line x1={P(L, H, z).split(',')[0]} y1={P(L, H, z).split(',')[1]} x2={P(L, 0, z).split(',')[0]} y2={P(L, 0, z).split(',')[1]} />)}
+    </g>
+  </g>
+
+  <!-- IPPC-Stempel op der Säitefläch -->
+  <g transform={`${faceFront} translate(${STAMP.u} ${STAMP.v + STAMP.h}) scale(1 -1)`}>
+    <g fill="none" stroke="currentColor" stroke-width="1.4">
+      <rect x="0" y="0" width="42" height="24" rx="2.5" style="fill: var(--band-bg, #FFFFFF)" />
+      <line x1="15" y1="0" x2="15" y2="24" />
+      <path d="M7.5 20V6" stroke-linecap="round" />
+      <path d="M7.5 16.5 4 14.5M7.5 16.5 11 14.5M7.5 12 4 10M7.5 12 11 10M7.5 7.5 5 6M7.5 7.5 10 6" stroke-width="1.1" stroke-linecap="round" />
+      <g stroke-width="2.2" stroke-linecap="round">
+        <line x1="20" y1="9" x2="37" y2="9" />
+        <line x1="20" y1="16" x2="28" y2="16" />
+      </g>
+    </g>
+  </g>
+</svg>

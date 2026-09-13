@@ -1,0 +1,79 @@
+---
+import Section from '../Section.astro';
+import RailItem from '../RailItem.astro';
+import Breadcrumb from '../Breadcrumb.astro';
+import MapBlock from '../MapBlock.astro';
+import OpeningHours from '../OpeningHours.astro';
+import InquiryForm from '../InquiryForm.astro';
+import { company } from '../../data/company';
+import { t } from '../../i18n';
+import { path, type Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+---
+
+<Section labelledby="con-h1">
+  <Fragment slot="rail">
+    <RailItem term={t(locale, 'common.phone')} value={company.phoneDisplay} />
+    <RailItem term={t(locale, 'rail.reply')} value={company.email} numeric={false} />
+  </Fragment>
+
+  <Breadcrumb locale={locale} label={t(locale, 'contact.h1')} />
+  <h1 id="con-h1" class="t-h1 pg__h1">{t(locale, 'contact.h1')}</h1>
+  <p class="t-body pg__lead">{t(locale, 'contact.lead')}</p>
+
+  <div class="con">
+    <div class="con__col">
+      <h2 class="t-label">{t(locale, 'contact.directHeading')}</h2>
+      <dl class="con__data">
+        <div>
+          <dt class="t-label">{t(locale, 'common.phone')}</dt>
+          <dd><a class="link" href={`tel:${company.phoneE164}`}>{company.phoneDisplay}</a></dd>
+        </div>
+        {company.phoneSecondary.publish && (
+          <div>
+            <dt class="t-label">{t(locale, 'common.phone')}</dt>
+            <dd><a class="link" href={`tel:${company.phoneSecondary.e164}`}>{company.phoneSecondary.display}</a></dd>
+          </div>
+        )}
+        <div>
+          <dt class="t-label">{t(locale, 'common.email')}</dt>
+          <dd><a class="link" href={`mailto:${company.email}`}>{company.email}</a></dd>
+        </div>
+        <div>
+          <dt class="t-label">{t(locale, 'common.fax')}</dt>
+          <dd class="t-num">{company.faxDisplay}</dd>
+        </div>
+      </dl>
+      <OpeningHours locale={locale} />
+      <p class="t-caption con__driver">
+        {t(locale, 'contact.driverHint')}{' '}
+        <a class="link" href={path('delivery', locale)}>{t(locale, 'delivery.heading')}</a>
+      </p>
+    </div>
+
+    <div class="con__col">
+      <MapBlock locale={locale} headingLevel="h2" />
+    </div>
+  </div>
+</Section>
+
+<Section tone="dark" labelledby="con-form">
+  <Fragment slot="rail">
+    <RailItem term={t(locale, 'rail.inquiry')} value="5" note={t(locale, 'common.required')} />
+  </Fragment>
+  <span id="con-form" class="sr-only">{t(locale, 'form.heading')}</span>
+  <InquiryForm locale={locale} id="ufro-anchor" />
+</Section>
+
+<style>
+  .pg__h1 { margin-block-start: 1rem; }
+  .pg__lead { margin-block-start: 1rem; }
+  .con { margin-block-start: 2.5rem; display: grid; gap: 2.5rem; }
+  @media (width >= 52rem) { .con { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 3.5rem; } }
+  .con__data { margin-block-start: 0.75rem; display: grid; gap: 0.85rem; }
+  .con__data dt { color: var(--band-tech); }
+  .con__data dd { margin-block-start: 0.1rem; font-size: 1.0625rem; }
+  .con__driver { margin-block-start: 1.75rem; }
+</style>

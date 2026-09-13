@@ -1,0 +1,114 @@
+---
+/**
+ * Kopp: d'Marke gëtt gesat, doniewent d'Navigatioun.
+ *
+ * Keng Hamburger-Menü a kee Skript: fënnef Linken passen och op engem Handy an
+ * eng Zeil, déi ëmbrécht. Dat spuert e Fokus-Trap, dee soss ëmmer falsch ass,
+ * a fonctionéiert och, wann d'Skript net lued.
+ */
+import Logo from './Logo.astro';
+import LangSwitcher from './LangSwitcher.astro';
+import { t } from '../i18n';
+import { path, type Locale, type RouteKey } from '../i18n/routes';
+
+interface Props {
+  locale: Locale;
+  route: RouteKey;
+}
+const { locale, route } = Astro.props;
+
+const links: { key: RouteKey; label: string }[] = [
+  { key: 'pallets', label: t(locale, 'nav.pallets') },
+  { key: 'crates', label: t(locale, 'nav.crates') },
+  { key: 'repair', label: t(locale, 'nav.repair') },
+  { key: 'ispm15', label: t(locale, 'nav.stamp') },
+  { key: 'delivery', label: t(locale, 'nav.delivery') },
+  { key: 'contact', label: t(locale, 'nav.contact') },
+];
+---
+
+<header class="masthead">
+  <div class="shell masthead__grid">
+    <a class="masthead__home logo-slot" href={path('home', locale)}>
+      <Logo title={false} variant="wordmark" />
+      <span class="sr-only">Emballages en Bois Kasel — {t(locale, 'common.backHome')}</span>
+    </a>
+
+    <div class="masthead__side">
+      <nav aria-label={t(locale, 'nav.label')}>
+        <ul class="masthead__nav">
+          {links.map((l) => (
+            <li>
+              <a href={path(l.key, locale)} class="masthead__link" aria-current={l.key === route ? 'page' : undefined}>
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <LangSwitcher locale={locale} route={route} />
+    </div>
+  </div>
+</header>
+
+<style>
+  .masthead {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    --band-fg: var(--color-ink);
+    --band-bg: var(--color-paper);
+    --band-line: color-mix(in srgb, var(--color-line) 45%, transparent);
+    border-block-end: 1px solid var(--band-line);
+  }
+
+  .masthead__grid {
+    padding-block: 1.25rem 0.75rem;
+    display: grid;
+    gap: 0.75rem 2rem;
+  }
+
+  .masthead__home {
+    text-decoration: none;
+    justify-self: start;
+    block-size: 3.25rem;
+  }
+  @media (width >= 60rem) { .masthead__home { block-size: 3.75rem; } }
+
+  .masthead__side {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+  }
+
+  .masthead__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.5rem;
+  }
+
+  .masthead__link {
+    display: inline-flex;
+    align-items: center;
+    min-block-size: 2.75rem;
+    font-family: var(--font-mark);
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    color: inherit;
+    border-block-end: 2px solid transparent;
+  }
+  .masthead__link:hover { color: var(--color-blue-deep); border-block-end-color: var(--color-blue); }
+  .masthead__link[aria-current='page'] { border-block-end-color: var(--color-blue); }
+
+  @media (width >= 60rem) {
+    .masthead__grid {
+      grid-template-columns: auto minmax(0, 1fr);
+      align-items: end;
+      padding-block: 1.5rem 1rem;
+    }
+    .masthead__side { justify-content: flex-end; padding-block-end: 0.5rem; }
+    .masthead__nav { gap: 0.25rem 1.75rem; }
+  }
+</style>

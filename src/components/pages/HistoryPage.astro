@@ -1,0 +1,15 @@
+---
+import Breadcrumb from '../Breadcrumb.astro';
+import HistorySection from '../sections/HistorySection.astro';
+import Section from '../Section.astro';
+import { t } from '../../i18n';
+import type { Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+---
+
+<Section tight>
+  <Breadcrumb locale={locale} label={t(locale, 'history.heading')} />
+</Section>
+<HistorySection locale={locale} full />

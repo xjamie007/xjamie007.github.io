@@ -1,0 +1,80 @@
+---
+import Section from '../Section.astro';
+import RailItem from '../RailItem.astro';
+import Breadcrumb from '../Breadcrumb.astro';
+import SpecTable from '../SpecTable.astro';
+import PalletDrawing from '../drawings/PalletDrawing.astro';
+import Photo from '../Photo.astro';
+import { standardPallets, cpPallets } from '../../data/products';
+import { t } from '../../i18n';
+import { path, type Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const hasStandard = standardPallets.some((p) => p.published);
+---
+
+<Section labelledby="pal-h1">
+  <Fragment slot="rail">
+    <RailItem term="CP" value={`1 – ${cpPallets.length}`} />
+    <RailItem term={t(locale, 'pallets.table.ispm')} value={t(locale, 'pallets.table.ispmYes')} numeric={false} />
+  </Fragment>
+
+  <Breadcrumb locale={locale} label={t(locale, 'pallets.h1')} />
+  <h1 id="pal-h1" class="t-h1 pg__h1">{t(locale, 'pallets.h1')}</h1>
+  <p class="t-body pg__lead">{t(locale, 'pallets.lead')}</p>
+
+  <div class="pg__media reveal">
+    <Photo locale={locale} name="pallets" sizes="(min-width: 48rem) 26rem, 92vw" class="pg__photo" />
+    <figure class="pg__drawing drawing">
+      <PalletDrawing label={t(locale, 'products.pallets.drawingAlt')} />
+    </figure>
+  </div>
+
+  {hasStandard && (
+    <>
+      <h2 class="t-h2 pg__h2">{t(locale, 'pallets.standardHeading')}</h2>
+      <SpecTable locale={locale} rows={standardPallets} caption={t(locale, 'pallets.table.caption')} />
+    </>
+  )}
+
+  <h2 class="t-h2 pg__h2">{t(locale, 'pallets.cpHeading')}</h2>
+  <p class="t-body pg__p">{t(locale, 'pallets.cpNote')}</p>
+  <SpecTable locale={locale} rows={cpPallets} byType />
+
+  <h2 class="t-h2 pg__h2">{t(locale, 'pallets.customHeading')}</h2>
+  <p class="t-body pg__p">{t(locale, 'pallets.customBody')}</p>
+  <p class="pg__cta">
+    <a class="btn btn--primary" href={`${path('contact', locale)}#ufro`}>{t(locale, 'form.submit')}</a>
+  </p>
+</Section>
+
+<Section tone="dark" tight labelledby="pal-faq">
+  <Fragment slot="rail">
+    <RailItem term={t(locale, 'rail.faq')} value="2" />
+  </Fragment>
+  <h2 id="pal-faq" class="t-h2">{t(locale, 'faq.heading')}</h2>
+  <div class="pg__faq">
+    {['sizes', 'repair'].map((id) => (
+      <div class="pg__qa">
+        <h3 class="t-h3">{t(locale, `faq.items.${id}.q`)}</h3>
+        <p class="t-body">{t(locale, `faq.items.${id}.a`)}</p>
+      </div>
+    ))}
+  </div>
+</Section>
+
+<style>
+  .pg__h1 { margin-block-start: 1rem; }
+  .pg__lead { margin-block-start: 1rem; }
+  .pg__media { margin-block-start: 2rem; display: grid; gap: 2rem; align-items: start; }
+  @media (width >= 48rem) { .pg__media { grid-template-columns: 26rem 16rem; gap: 3rem; } }
+  .pg__photo :global(img) { inline-size: 100%; block-size: auto; display: block; border-radius: 2px; }
+  .pg__drawing { margin: 0; color: var(--color-ink); max-inline-size: 16rem; }
+  .pg__h2 { margin-block-start: 3rem; margin-block-end: 1rem; }
+  .pg__p { margin-block-end: 1.25rem; }
+  .pg__cta { margin-block-start: 1.75rem; }
+  .pg__faq { margin-block-start: 1.5rem; display: grid; gap: 1.5rem; }
+  .pg__qa p { margin-block-start: 0.4rem; }
+  @media (width >= 48rem) { .pg__faq { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.5rem; } }
+</style>

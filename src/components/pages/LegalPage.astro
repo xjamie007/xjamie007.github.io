@@ -1,0 +1,101 @@
+---
+/**
+ * Impressum.
+ *
+ * All Ugab kënnt aus `src/data/company.ts`. Wat do `null` ass, rendert net —
+ * falsch Impressumsangabe sinn e richtege Problem, e feelende Block ass et net.
+ */
+import Section from '../Section.astro';
+import RailItem from '../RailItem.astro';
+import Breadcrumb from '../Breadcrumb.astro';
+import { company, ispm15 } from '../../data/company';
+import { photoCredit } from '../../data/photos';
+import { t } from '../../i18n';
+import type { Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+---
+
+<Section labelledby="leg-h1">
+  <Fragment slot="rail">
+    <RailItem term={t(locale, 'common.rcs')} value={company.rcs} />
+    <RailItem term={t(locale, 'common.vatId')} value={company.vatId} />
+  </Fragment>
+
+  <Breadcrumb locale={locale} label={t(locale, 'legal.h1')} />
+  <h1 id="leg-h1" class="t-h1 pg__h1">{t(locale, 'legal.h1')}</h1>
+
+  <div class="prose-kasel pg__prose">
+    <h2>{t(locale, 'legal.operatorHeading')}</h2>
+    <address class="leg__address">
+      {company.legalName}<br />
+      {company.legalForm}<br />
+      {company.address.street}<br />
+      {company.address.postalCode} {company.address.locality}<br />
+      {t(locale, 'common.country')}
+    </address>
+
+    <h2>{t(locale, 'legal.contactHeading')}</h2>
+    <dl>
+      <dt>{t(locale, 'common.phone')}</dt>
+      <dd><a href={`tel:${company.phoneE164}`}>{company.phoneDisplay}</a></dd>
+      {company.phoneSecondary.publish && (
+        <>
+          <dt>{t(locale, 'common.phone')}</dt>
+          <dd><a href={`tel:${company.phoneSecondary.e164}`}>{company.phoneSecondary.display}</a></dd>
+        </>
+      )}
+      <dt>{t(locale, 'common.fax')}</dt>
+      <dd>{company.faxDisplay}</dd>
+      <dt>{t(locale, 'common.email')}</dt>
+      <dd><a href={`mailto:${company.email}`}>{company.email}</a></dd>
+    </dl>
+
+    <h2>{t(locale, 'legal.registerHeading')}</h2>
+    <dl>
+      <dt>{t(locale, 'common.rcs')}</dt>
+      <dd>{company.rcs}</dd>
+      <dt>{t(locale, 'common.vatId')}</dt>
+      <dd>{company.vatId}</dd>
+      {/* TODO[FEHLT] Autorisation d'établissement — Nummer beim Client ufroen.
+          Soulaang `businessLicence` null ass, rendert dëse Block net. */}
+      {company.businessLicence && (
+        <>
+          <dt>{t(locale, 'legal.licenceHeading')}</dt>
+          <dd>{company.businessLicence}</dd>
+        </>
+      )}
+    </dl>
+
+    <h2>{t(locale, 'legal.responsibleHeading')}</h2>
+    <p>{company.managingDirector}, {t(locale, 'legal.operatorHeading').toLowerCase()}</p>
+
+    <h2>{t(locale, 'legal.purposeHeading')}</h2>
+    <p lang="fr">{company.purposeFr}</p>
+
+    <h2>{t(locale, 'legal.supervisionHeading')}</h2>
+    <p>
+      {t(locale, 'legal.supervisionBody')}{' '}
+      {ispm15.countryCode} – {ispm15.registrationNumber}.
+    </p>
+
+    <h2>{t(locale, 'photos.credit')}</h2>
+    {/* TODO[EINRICHTUNG] Urheber laut den Mentions légales von kasel.lu.
+        Vor dem Livegang schriftlich bestätigen lassen, dass Kasel die
+        Nutzungsrechte hat — sonst neu fotografieren. */}
+    <p>© {photoCredit}</p>
+
+    <h2>{t(locale, 'legal.liabilityHeading')}</h2>
+    <p>{t(locale, 'legal.liabilityBody')}</p>
+
+    <h2>{t(locale, 'legal.disputeHeading')}</h2>
+    <p>{t(locale, 'legal.disputeBody')}</p>
+  </div>
+</Section>
+
+<style>
+  .pg__h1 { margin-block-start: 1rem; }
+  .pg__prose { margin-block-start: 2rem; }
+  .leg__address { font-style: normal; line-height: 1.6; }
+</style>

@@ -1,0 +1,121 @@
+---
+/**
+ * „Liwwerung & Ofholung" — fir Chauffeuren.
+ *
+ * Dat ass keng Niewesaach. Et ass den eenzege Beréierungspunkt, iwwer deen et
+ * ëffentlech Réckmeldunge gëtt (14 Google-Bewertungen, all vu Chauffeuren,
+ * keng eenzeg vun engem Client), an d'Rëbbelung do ass behiewbar, andeem ee
+ * virdru seet, wéi et leeft.
+ *
+ * D'Nummeréierung vum Wee ass déi EENZEG Nummeréierung op der ganzer Säit —
+ * well et eng echt Reiefolleg ass. Produkter ginn net nummeréiert.
+ */
+import Section from '../Section.astro';
+import RailItem from '../RailItem.astro';
+import MapBlock from '../MapBlock.astro';
+import { delivery } from '../../data/delivery';
+import { company } from '../../data/company';
+import { t } from '../../i18n';
+import { anchors, path, type Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale; full?: boolean; wide?: boolean }
+const { locale, full = false, wide = false } = Astro.props;
+
+const showSteps = delivery.accessThroughMainHall.publish;
+const facts = [
+  delivery.truckSpaces.publish && { key: 'spaces', value: String(delivery.truckSpaces.value) },
+  delivery.overnight.publish && { key: 'overnight', value: null },
+  delivery.languages.publish && {
+    key: 'languages',
+    value: (delivery.languages.value as readonly string[]).map((l) => l.toUpperCase()).join(' '),
+  },
+].filter(Boolean) as { key: string; value: string | null }[];
+
+const nothingConfirmed = !showSteps && facts.length === 0;
+---
+
+<Section wide={wide} id={anchors.delivery} labelledby="liwwerung-h2">
+{!wide && (
+    <Fragment slot="rail">
+    <RailItem term={t(locale, 'rail.ramp')} value={company.address.locality} numeric={false} />
+    {delivery.truckSpaces.publish && (
+      <RailItem term={t(locale, 'rail.spaces')} value={String(delivery.truckSpaces.value)} />
+    )}
+  </Fragment>
+  )}
+
+
+  <h2 id="liwwerung-h2" class="t-h2 reveal">{t(locale, 'delivery.heading')}</h2>
+  <p class="t-body deliv__lead">{t(locale, 'delivery.lead')}</p>
+
+  {showSteps && (
+    <div class="deliv__steps">
+      <h3 class="t-label">{t(locale, 'delivery.stepsHeading')}</h3>
+      <ol class="steps">
+        {delivery.steps.map((s, i) => (
+          <li class="steps__item reveal">
+            <span class="t-num steps__no" aria-hidden="true">{i + 1}</span>
+            <div>
+              <h4 class="t-h3 steps__title">{t(locale, `delivery.steps.${s}.title`)}</h4>
+              <p class="t-caption steps__body">{t(locale, `delivery.steps.${s}.body`)}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  )}
+
+  {facts.length > 0 && (
+    <dl class="deliv__facts">
+      {facts.map((f) => (
+        <div>
+          <dt class="t-label">{t(locale, `delivery.facts.${f.key}`)}</dt>
+          {f.value && <dd class="t-num deliv__factVal">{f.value}</dd>}
+        </div>
+      ))}
+    </dl>
+  )}
+
+  {nothingConfirmed && (
+    <p class="t-body deliv__pending">
+      {t(locale, 'delivery.pending').split('{phone}')[0]}
+      <a class="link" href={`tel:${company.phoneE164}`}>{company.phoneDisplay}</a>
+    </p>
+  )}
+
+  <div class="deliv__map reveal">
+    <MapBlock locale={locale} headingLevel={full ? 'h2' : 'h3'} />
+  </div>
+
+  {!full && (
+    <p class="deliv__more">
+      <a class="btn btn--secondary" href={path('delivery', locale)}>{t(locale, 'delivery.heading')}</a>
+    </p>
+  )}
+</Section>
+
+<style>
+  .deliv__lead { margin-block-start: 1rem; }
+  .deliv__steps { margin-block-start: 2.5rem; }
+
+  /* Déi eenzeg Nummeréierung op der ganzer Säit. */
+  .steps { margin-block-start: 1rem; border-block-start: 2px solid var(--band-line); }
+  .steps__item {
+    display: grid;
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    gap: 0 1rem;
+    align-items: baseline;
+    padding-block: 1rem;
+    border-block-end: 1px solid var(--band-line);
+  }
+  .steps__no { font-size: 1.5rem; color: var(--band-tech); }
+  .steps__body { margin-block-start: 0.25rem; }
+
+  .deliv__facts { margin-block-start: 2rem; display: grid; gap: 1rem 2.5rem; }
+  @media (width >= 34rem) { .deliv__facts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .deliv__factVal { font-size: 1.5rem; margin-block-start: 0.2rem; }
+
+  .deliv__pending { margin-block-start: 1.75rem; }
+  .deliv__map { margin-block-start: 2.75rem; }
+  .deliv__more { margin-block-start: 2rem; }
+</style>

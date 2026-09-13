@@ -1,0 +1,141 @@
+---
+/**
+ * Historie als Zeitstrahl.
+ *
+ * Die Linie wächst beim Scrollen mit — über `animation-timeline: view()`, also
+ * ohne Scroll-Listener und ohne eine Zeile JavaScript. Wo der Browser das noch
+ * nicht kann, steht die Linie einfach fertig da; es fehlt nichts, es bewegt
+ * sich nur nichts.
+ *
+ * Die Jahreszahlen sind Daten, keine Dekoration: keine übergroße
+ * „75 Jahre Erfahrung"-Kachel, nur der Verlauf.
+ */
+import Section from '../Section.astro';
+import RailItem from '../RailItem.astro';
+import Photo from '../Photo.astro';
+import { history } from '../../data/history';
+import { t } from '../../i18n';
+import { anchors, path, type Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale; full?: boolean; wide?: boolean }
+const { locale, full = false, wide = false } = Astro.props;
+
+/* Auf der eigenen Historienseite ist das die Hauptüberschrift, auf der
+   Startseite eine Sektionsüberschrift. Eine Seite hat genau eine <h1>. */
+const H = full ? 'h1' : 'h2';
+---
+
+<Section id={anchors.history} wide={wide} labelledby="historik-h2" tight={!full}>
+  {!wide && (
+    <Fragment slot="rail">
+      <RailItem term={t(locale, 'rail.since')} value={history[0].year} />
+    </Fragment>
+  )}
+
+  <H id="historik-h2" class:list={[full ? 't-h1' : 't-h2']}>{t(locale, 'history.heading')}</H>
+  <p class="t-body hist__lead">{t(locale, 'history.lead')}</p>
+
+  <ol class="tl">
+    <span class="tl__fill" aria-hidden="true"></span>
+    {history.map((h) => (
+      <li class="tl__row reveal">
+        <span class="tl__dot" aria-hidden="true"></span>
+        <span class="t-num tl__year">{h.year}</span>
+        <p class="tl__text">{t(locale, `history.entries.${h.id}`)}</p>
+      </li>
+    ))}
+  </ol>
+
+  {full && <Photo locale={locale} name="machine" sizes="(min-width: 48rem) 32rem, 92vw" class="hist__photo reveal reveal--zoom" />}
+
+  <p class="t-caption hist__family">{t(locale, 'history.family')}</p>
+
+  {!full && (
+    <p class="hist__more"><a class="link" href={path('history', locale)}>{t(locale, 'common.readMore')}</a></p>
+  )}
+</Section>
+
+<style>
+  .hist__lead { margin-block-start: 1rem; }
+
+  /* ── Zeitstrahl ───────────────────────────────────────────────────────── */
+  .tl {
+    position: relative;
+    margin-block-start: 2.5rem;
+    padding-inline-start: 2.25rem;
+    max-inline-size: 62rem;
+  }
+
+  /* Die ungefüllte Linie. Sie steht immer, damit der Strahl auch ohne
+     Bewegung als Strahl zu erkennen ist. */
+  .tl::before {
+    content: '';
+    position: absolute;
+    inset-block: 0.6rem 1.4rem;
+    inset-inline-start: 0.4rem;
+    inline-size: 2px;
+    background: var(--band-line);
+  }
+
+  /* Der gefüllte Teil, der beim Scrollen mitwächst. */
+  .tl__fill {
+    position: absolute;
+    inset-block: 0.6rem 1.4rem;
+    inset-inline-start: 0.4rem;
+    inline-size: 2px;
+    background: var(--color-blue);
+    transform-origin: top;
+    scale: 1 1;
+  }
+  @supports (animation-timeline: view()) {
+    .tl__fill {
+      scale: 1 0;
+      animation: tl-grow linear both;
+      animation-timeline: view();
+      animation-range: cover 12% cover 78%;
+    }
+  }
+  @keyframes tl-grow { to { scale: 1 1; } }
+
+  .tl__row {
+    position: relative;
+    display: grid;
+    gap: 0.1rem 1.5rem;
+    padding-block: 0.9rem;
+    transition: background-color 200ms linear;
+  }
+
+  .tl__dot {
+    position: absolute;
+    inset-inline-start: -2.1rem;
+    inset-block-start: 1.25rem;
+    inline-size: 0.7rem;
+    block-size: 0.7rem;
+    border-radius: 50%;
+    background: var(--band-bg);
+    border: 2px solid var(--color-blue);
+    transition: background-color 200ms linear, transform 200ms cubic-bezier(0.22, 0.8, 0.3, 1);
+  }
+
+  .tl__year { font-size: 1.125rem; color: var(--band-tech); white-space: nowrap; transition: color 200ms linear; }
+  .tl__text { font-size: 1rem; line-height: 1.55; max-inline-size: 58ch; }
+
+  @media (hover: hover) {
+    .tl__row:hover .tl__dot { background: var(--color-blue); transform: scale(1.25); }
+    .tl__row:hover .tl__year { color: var(--color-blue-deep); }
+  }
+
+  @media (width >= 34rem) {
+    .tl__row { grid-template-columns: 7rem minmax(0, 1fr); align-items: baseline; }
+  }
+
+  .hist__photo { display: block; margin-block-start: 2.5rem; max-inline-size: 32rem; }
+  .hist__photo :global(img) { inline-size: 100%; block-size: auto; display: block; border-radius: 2px; }
+  .hist__family { margin-block-start: 1.75rem; }
+  .hist__more { margin-block-start: 1.5rem; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tl__fill { animation: none; scale: 1 1; }
+    .tl__row, .tl__dot, .tl__year { transition: none; }
+  }
+</style>

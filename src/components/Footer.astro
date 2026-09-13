@@ -1,0 +1,108 @@
+---
+/**
+ * Fouss. NAP-Daten (Numm, Adress, Telefon) kommen aus `src/data/company.ts` a
+ * stinn dofir op der ganzer Säit an am JSON-LD Zeechen fir Zeechen identesch.
+ */
+import Logo from './Logo.astro';
+import LangSwitcher from './LangSwitcher.astro';
+import OpeningHours from './OpeningHours.astro';
+import { company } from '../data/company';
+import { t } from '../i18n';
+import { path, type Locale, type RouteKey } from '../i18n/routes';
+
+interface Props {
+  locale: Locale;
+  route: RouteKey;
+}
+const { locale, route } = Astro.props;
+
+const pages: RouteKey[] = ['pallets', 'crates', 'repair', 'ispm15', 'delivery', 'history', 'contact'];
+const pageLabel: Record<string, string> = {
+  pallets: t(locale, 'nav.pallets'),
+  crates: t(locale, 'nav.crates'),
+  repair: t(locale, 'products.repair.title'),
+  ispm15: t(locale, 'nav.stamp'),
+  delivery: t(locale, 'nav.delivery'),
+  history: t(locale, 'history.heading'),
+  contact: t(locale, 'nav.contact'),
+};
+---
+
+<footer class="foot band band--dark">
+  <div class="shell foot__grid">
+    <div class="foot__col">
+      <h2 class="t-label">{t(locale, 'footer.company')}</h2>
+      <span class="foot__logo logo-slot"><Logo title={false} /></span>
+      <address class="foot__address">
+        <span class="foot__name">{company.legalName}</span>
+        <span>{company.address.street}</span>
+        <span>{company.address.postalCode} {company.address.locality}</span>
+        <span>{t(locale, 'common.country')}</span>
+      </address>
+      <p class="foot__lines">
+        <a class="link" href={`tel:${company.phoneE164}`}>{company.phoneDisplay}</a><br />
+        {company.phoneSecondary.publish && (
+          <><a class="link" href={`tel:${company.phoneSecondary.e164}`}>{company.phoneSecondary.display}</a><br /></>
+        )}
+        <a class="link" href={`mailto:${company.email}`}>{company.email}</a>
+      </p>
+      <OpeningHours locale={locale} />
+    </div>
+
+    <div class="foot__col">
+      <h2 class="t-label">{t(locale, 'footer.pages')}</h2>
+      <ul class="foot__list">
+        {pages.map((p) => (
+          <li><a class="foot__link" href={path(p, locale)}>{pageLabel[p]}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="foot__col">
+      <h2 class="t-label">{t(locale, 'footer.legalNav')}</h2>
+      <ul class="foot__list">
+        <li><a class="foot__link" href={path('legal', locale)}>{t(locale, 'footer.legal')}</a></li>
+        <li><a class="foot__link" href={path('privacy', locale)}>{t(locale, 'footer.privacy')}</a></li>
+      </ul>
+      <h2 class="t-label foot__langHead">{t(locale, 'footer.langHeading')}</h2>
+      <LangSwitcher locale={locale} route={route} />
+    </div>
+  </div>
+
+  <div class="shell foot__base">
+    <p class="t-caption">
+      {t(locale, 'footer.rcsLine').replace('{rcs}', company.rcs).replace('{vat}', company.vatId)}
+    </p>
+    <p class="t-caption">{t(locale, 'footer.madeIn')}</p>
+  </div>
+</footer>
+
+<style>
+  .foot { padding-block: 3rem 2rem; }
+  .foot__grid { display: grid; gap: 2.5rem; }
+  @media (width >= 48rem) { .foot__grid { grid-template-columns: 1.4fr 1fr 1fr; gap: 3rem; } }
+
+  .foot__col > * + * { margin-block-start: 1rem; }
+  .foot__logo { block-size: 5.5rem; }
+  .foot__address { display: grid; font-style: normal; font-size: 1rem; line-height: 1.5; }
+  .foot__name { font-family: var(--font-mark); font-weight: 600; }
+  .foot__lines { font-size: 1rem; line-height: 1.8; }
+
+  .foot__list { display: grid; gap: 0.125rem; }
+  .foot__link {
+    display: inline-flex; align-items: center; min-block-size: 2.25rem;
+    font-family: var(--font-mark); font-weight: 500; font-size: 1rem;
+    text-decoration: none; color: inherit;
+    border-block-end: 2px solid transparent;
+  }
+  .foot__link:hover { border-block-end-color: var(--color-blue); }
+  .foot__langHead { margin-block-start: 1.75rem; }
+
+  .foot__base {
+    margin-block-start: 2.5rem;
+    padding-block-start: 1.25rem;
+    border-block-start: 1px solid var(--band-line);
+    display: flex; flex-wrap: wrap; gap: 0.25rem 2rem; justify-content: space-between;
+  }
+  .foot__base .t-caption { color: var(--band-muted); }
+</style>

@@ -1,0 +1,122 @@
+---
+/**
+ * Karte und Position.
+ *
+ * Zweispaltig: links die Karte in fester, begrenzter Breite, rechts Adresse,
+ * Plus Code, Koordinaten und Telefon. Über die volle Seitenbreite nahm die
+ * Karte fast den ganzen Bildschirm ein, ohne dabei mehr zu zeigen — der
+ * Ausschnitt ist derselbe.
+ *
+ * Das Bild liegt im Projekt (aus OpenStreetMap-Daten, `scripts/build-map.mjs`).
+ * Beim Aufruf der Seite geht keine einzige Anfrage nach außen: kein stiller
+ * Google-Maps-Embed, der Schriften, Skripte und Cookies aus einem Drittland
+ * lädt, bevor der Besucher gefragt wurde. Der Google-Maps-Link geht erst beim
+ * Klick raus.
+ *
+ * Koordinaten und Plus Code stehen zusätzlich als Text da, weil Fahrer genau
+ * damit arbeiten.
+ */
+import { company } from '../data/company';
+import { t } from '../i18n';
+import type { Locale } from '../i18n/routes';
+
+interface Props { locale: Locale; headingLevel?: 'h2' | 'h3' }
+const { locale, headingLevel = 'h3' } = Astro.props;
+const H = headingLevel;
+
+const { latitude: lat, longitude: lon, plusCode } = company.geo;
+const routeUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lon}`;
+---
+
+<div class="map">
+  <H class="t-label map__head">{t(locale, 'delivery.addressHeading')}</H>
+
+  <div class="map__grid">
+    <figure class="map__fig">
+      <picture>
+        <source srcset="/img/kaart-mertzig.avif" type="image/avif" />
+        <source srcset="/img/kaart-mertzig.webp" type="image/webp" />
+        <img
+          src="/img/kaart-mertzig.png"
+          width="960"
+          height="640"
+          loading="lazy"
+          decoding="async"
+          alt={t(locale, 'delivery.mapAlt')}
+        />
+      </picture>
+      <figcaption class="t-caption">{t(locale, 'delivery.mapAttribution')}</figcaption>
+    </figure>
+
+    <div class="map__side">
+      <dl class="map__data">
+        <div>
+          <dt class="t-label">{t(locale, 'common.address')}</dt>
+          <dd>
+            <address class="map__address">
+              {company.address.street}<br />
+              {company.address.postalCode} {company.address.locality}<br />
+              {t(locale, 'common.country')}
+            </address>
+          </dd>
+        </div>
+        <div>
+          <dt class="t-label">{t(locale, 'common.plusCode')}</dt>
+          <dd class="t-num">{plusCode}</dd>
+        </div>
+        <div>
+          <dt class="t-label">{t(locale, 'common.coordinates')}</dt>
+          <dd class="t-num">{lat.toFixed(5)}, {lon.toFixed(5)}</dd>
+        </div>
+        <div>
+          <dt class="t-label">{t(locale, 'common.phone')}</dt>
+          <dd><a class="link" href={`tel:${company.phoneE164}`}>{company.phoneDisplay}</a></dd>
+        </div>
+      </dl>
+
+      <p class="map__route">
+        <a class="btn btn--quiet" href={routeUrl} rel="noopener nofollow" target="_blank">
+          {t(locale, 'common.openRoute')}
+        </a>
+      </p>
+      <p class="t-caption map__routeNote">{t(locale, 'common.openRouteNote')}</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .map__head { display: block; }
+
+  .map__grid {
+    margin-block-start: 1rem;
+    display: grid;
+    gap: 1.75rem;
+    align-items: start;
+  }
+  @media (width >= 46rem) {
+    .map__grid { grid-template-columns: minmax(0, 22rem) minmax(0, 1fr); gap: 2.5rem; }
+  }
+
+  .map__fig { margin: 0; }
+  .map__fig img {
+    inline-size: 100%;
+    block-size: auto;
+    display: block;
+    border: 1px solid var(--band-line);
+    border-radius: 3px;
+  }
+  /* Am Handy sonst fast ein Drittel des Bildschirms. Beschnitten statt
+     verkleinert — verkleinert wäre die Beschriftung nicht mehr lesbar. */
+  @media (width < 46rem) {
+    .map__fig img { block-size: 11rem; object-fit: cover; object-position: center; }
+  }
+  .map__fig figcaption { margin-block-start: 0.5rem; }
+
+  .map__data { display: grid; gap: 1rem 2rem; }
+  @media (width >= 30rem) { .map__data { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .map__data dd { margin-block-start: 0.2rem; font-size: 1rem; }
+  .map__address { font-style: normal; line-height: 1.5; }
+
+  .map__route { margin-block-start: 1.5rem; }
+  .map__routeNote { margin-block-start: 0.5rem; }
+</style>

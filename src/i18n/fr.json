@@ -1,0 +1,596 @@
+{
+  "common": {
+    "onRequest": "sur demande",
+    "skipToContent": "Aller directement au contenu",
+    "menu": "Menu",
+    "closeMenu": "Fermer le menu",
+    "langLabel": "Langue",
+    "langSwitch": "Changer de langue",
+    "required": "champ obligatoire",
+    "optional": "facultatif",
+    "backHome": "Retour à l’accueil",
+    "readMore": "En savoir plus",
+    "print": "Imprimer cette page",
+    "phone": "Téléphone",
+    "fax": "Fax",
+    "email": "E-mail",
+    "address": "Adresse",
+    "country": "Luxembourg",
+    "vatId": "N° TVA",
+    "rcs": "RCS Luxembourg",
+    "plusCode": "Plus Code",
+    "coordinates": "Coordonnées",
+    "openRoute": "Ouvrir l’itinéraire dans Google Maps",
+    "openRouteNote": "Le lien ne sort vers l’extérieur qu’au moment du clic.",
+    "source": "Source",
+    "breadcrumb": "Vous êtes ici"
+  },
+  "nav": {
+    "pallets": "Palettes",
+    "crates": "Caisses",
+    "stamp": "Le cachet",
+    "delivery": "Livraison",
+    "contact": "Contact",
+    "label": "Navigation principale",
+    "repair": "Réparation"
+  },
+  "meta": {
+    "home": {
+      "title": "KASEL — Palettes et caisses en bois sur mesure, Mertzig",
+      "description": "Palettes et caisses en bois fabriquées à Mertzig. Dimensions standard, sur mesure, caisses export avec cachet IPPC. Scierie propre, 9 000 m² de stockage."
+    },
+    "pallets": {
+      "title": "Palettes bois Luxembourg — dimensions et CP | KASEL",
+      "description": "Palettes standard, palettes CP et palettes spéciales selon votre spécification technique. Découpe à la commande dans notre scierie à Mertzig, au Luxembourg."
+    },
+    "crates": {
+      "title": "Caisses bois sur mesure pour l’export, Luxembourg | KASEL",
+      "description": "Caisses en bois pour cuivre, verre, aluminium et machines. Fermées ou à claire-voie, avec cachet IPPC pour la Chine, l’Australie et la Nouvelle-Zélande."
+    },
+    "repair": {
+      "title": "Réparation de palettes au Luxembourg, n° 079 | KASEL",
+      "description": "Nous réparons palettes et caisses d’occasion et les remarquons selon la norme. Seules les entreprises enregistrées peuvent le faire — la nôtre porte le n° 079."
+    },
+    "ispm15": {
+      "title": "NIMP 15 au Luxembourg — cachet IPPC, n° 079 | KASEL",
+      "description": "Trois entreprises au Luxembourg figurent comme producteurs au registre NIMP 15. Quand un cachet est requis, ce qu'il remplace, et ce qui se passe s'il manque."
+    },
+    "delivery": {
+      "title": "Livraison & enlèvement — accès, cour et quai | KASEL",
+      "description": "Pour chauffeurs et transporteurs : accès au site de Mertzig, cour, quai, documents, langues parlées. Adresse, Plus Code et carte sur une page. Imprimable."
+    },
+    "history": {
+      "title": "Depuis 1959 — l’histoire de l’entreprise familiale | KASEL",
+      "description": "De la menuiserie de Bissen en 1959 aux 9 000 m² de halls à Mertzig. Les étapes de l’entreprise familiale Kasel, année après année. Trois générations, un site."
+    },
+    "contact": {
+      "title": "Contact et demande — KASEL, Zone Industrielle Mertzig",
+      "description": "Demande pour palettes, caisses sur mesure, réparation ou stockage. 12, Zone Industrielle, L-9166 Mertzig. Téléphone +352 888 334-1, tom@kasel.lu. Écrivez-nous."
+    },
+    "thanks": {
+      "title": "Merci pour votre demande | KASEL",
+      "description": "Votre demande nous est parvenue. Voici ce qui se passe maintenant et comment nous joindre directement."
+    },
+    "legal": {
+      "title": "Mentions légales — Emballages en Bois Kasel S.à r.l.",
+      "description": "Dénomination, forme juridique, adresse, téléphone, e-mail, numéros RCS et TVA d’Emballages en Bois Kasel S.à r.l. à Mertzig, Luxembourg. Gérant : Tom Kasel."
+    },
+    "privacy": {
+      "title": "Protection des données — ce que nous faisons | KASEL",
+      "description": "Quelles données le formulaire de demande recueille, à quelle fin, sur quelle base légale, combien de temps nous les gardons et quels sont vos droits RGPD."
+    },
+    "notfound": {
+      "title": "Page introuvable | KASEL",
+      "description": "Cette page n’existe pas (ou plus)."
+    }
+  },
+  "hero": {
+    "h1": "Palettes et caisses en bois, fabriquées sur mesure.",
+    "body": "Scierie intégrée à Mertzig, 9 000 m² de stockage. Nous coupons le bois seulement quand votre commande est là.",
+    "ctaPrimary": "Envoyer une demande",
+    "ctaSecondary": "Configurer une caisse",
+    "stampAlt": "Le cachet IPPC : le symbole de l’épi, le code pays LU, le numéro d’enregistrement 079 et le code de traitement.",
+    "markAlt": "KASEL"
+  },
+  "facts": {
+    "heading": "En bref",
+    "sinceTerm": "Depuis",
+    "sawmillTerm": "Scierie",
+    "sawmillValue": "intégrée",
+    "storageTerm": "Stockage",
+    "exportTerm": "Export",
+    "exportValue": "dans le monde entier"
+  },
+  "stampShort": {
+    "heading": "Votre envoi a-t-il besoin d'un cachet IPPC ?",
+    "yesTerm": "Chine, Australie, Nouvelle-Zélande",
+    "yesValue": "oui",
+    "noTerm": "À l'intérieur de l'UE",
+    "noValue": "non",
+    "body": "Pour ces pays, le bois doit être traité et marqué. Sans cachet, l'envoi reste bloqué au port de destination. Nous le faisons nous-mêmes, vous n'avez rien à organiser.",
+    "link": "Ce qu'il faut, et quand"
+  },
+  "rail": {
+    "ispm": "NIMP 15",
+    "producer": "Producteur",
+    "authority": "Autorité",
+    "registry": "Registre",
+    "treatment": "Traitement",
+    "pallets": "Palettes",
+    "crates": "Caisses",
+    "cratesValue": "sur mesure",
+    "configurator": "Configurateur",
+    "stamp": "Cachet",
+    "ramp": "Quai",
+    "spaces": "Places",
+    "since": "Depuis",
+    "faq": "Questions",
+    "inquiry": "Demande",
+    "storage": "Stockage",
+    "sawmill": "Scierie",
+    "sawmillValue": "intégrée",
+    "team": "Équipe",
+    "references": "Références",
+    "reply": "Réponse"
+  },
+  "products": {
+    "heading": "Ce que nous faisons",
+    "pallets": {
+      "title": "Palettes",
+      "body": "Palettes standard, palettes CP et palettes spéciales sur mesure. Comme nous scions nous-mêmes, nous ne dépendons pas des dimensions en stock.",
+      "link": "Gamme et spécification",
+      "drawingAlt": "Dessin d’une palette vue de dessus et de côté : planches de dessus, dés et semelles."
+    },
+    "crates": {
+      "title": "Caisses sur mesure",
+      "body": "Caisses pour le transport maritime de cuivre, verre, aluminium et machines. Fermées ou à claire-voie, avec cachet IPPC pour les pays tiers.",
+      "link": "Types de construction et marchandises",
+      "drawingAlt": "Dessin d’une caisse export fermée avec semelles en dessous et le cachet IPPC sur le côté."
+    },
+    "repair": {
+      "title": "Réparation et réemploi",
+      "body": "Nous réparons caisses et palettes d'occasion et les remarquons. Seules les entreprises enregistrées peuvent le faire. La nôtre porte le numéro 079.",
+      "link": "Ce qui s’applique en cas de réparation",
+      "drawingAlt": "Dessin d’une palette dont une planche de dessus est remplacée, et du nouveau cachet."
+    }
+  },
+  "about": {
+    "heading": "Qui nous sommes",
+    "body": "Une entreprise familiale. Henry Kasel a commencé à Bissen en 1959 ; aujourd'hui, son petit-fils Tom dirige la production. L'administration est restée dans la famille.",
+    "timeline": "Les étapes"
+  },
+  "photos": {
+    "hall": "Vue dans le hall de stockage : piles de palettes et de caisses sous la charpente métallique bleue.",
+    "pallets": "Palettes empilées vues de près : planches de dessus, dés et planches inférieures.",
+    "crates": "Caisses en bois empilées, en bois équarri et panneaux.",
+    "marked": "Caisses finies portant les marquages apposés sur la face avant.",
+    "repair": "Palettes d'occasion empilées dans la cour, en attente de contrôle et de réparation.",
+    "machine": "La machine à palettes dans le hall, avec bras robotisé et bois en entrée.",
+    "sawline": "La longue ligne de sciage dans le hall de production.",
+    "worker": "Un salarié à la ligne de sciage dans le hall.",
+    "yard": "La cour avec le hall et les piles de palettes, vue de l'extérieur.",
+    "timber": "Bois équarri découpé et empilé, cernes visibles en bout.",
+    "credit": "Photos"
+  },
+  "config": {
+    "heading": "Configurer une caisse",
+    "lead": "Indiquez les dimensions de votre marchandise. Le dessin montre la caisse correspondante. Toutes les indications partent avec la demande.",
+    "disclaimer": "Le dessin est un ordre de grandeur, pas une indication de construction. Le prix et le dimensionnement définitif vous parviennent dès que nous avons lu votre demande.",
+    "fieldsetSize": "Dimensions et poids",
+    "fieldsetBuild": "Marchandise, destination et construction",
+    "exampleTag": "Exemple",
+    "fields": {
+      "inner": {
+        "label": "Dimensions intérieures de la marchandise",
+        "hint": "en millimètres"
+      },
+      "length": "Longueur",
+      "width": "Largeur",
+      "height": "Hauteur",
+      "weight": {
+        "label": "Poids",
+        "hint": "en kilogrammes"
+      },
+      "cargo": "Marchandise",
+      "cargoHint": "À saisir librement. Par exemple cuivre, verre, aluminium, machines.",
+      "dest": "Destination",
+      "qty": "Quantité",
+      "build": "Construction",
+      "outer": {
+        "label": "Dimensions extérieures",
+        "hint": "intérieur plus épaisseur de paroi"
+      }
+    },
+    "cargo": {
+      "copper": "Cuivre",
+      "glass": "Verre",
+      "aluminium": "Aluminium",
+      "machine": "Machine ou installation"
+    },
+    "dest": {
+      "eu": "UE",
+      "cn": "Chine",
+      "au": "Australie",
+      "nz": "Nouvelle-Zélande",
+      "third": "autre pays tiers"
+    },
+    "build": {
+      "closed": "fermée",
+      "slatted": "à claire-voie",
+      "autoNote": "Préréglage selon la marchandise. Vous pouvez changer."
+    },
+    "out": {
+      "heading": "Ce qui en découle",
+      "outer": "Dimensions extérieures",
+      "skids": "Semelles",
+      "boardThickness": "Épaisseur des planches",
+      "volume": "Volume",
+      "guide": "Ordre de grandeur",
+      "stampOn": "Cachet IPPC sur deux faces opposées",
+      "stampOff": "Pas de cachet IPPC nécessaire"
+    },
+    "rule": {
+      "third": "La Chine, l’Australie et la Nouvelle-Zélande exigent du bois traité NIMP 15 avec cachet IPPC. Nous pouvons l’apposer, numéro d’enregistrement 079.",
+      "eu": "À l’intérieur de l’UE, aucun traitement NIMP 15 n’est requis ; le cachet remplace au besoin le passeport phytosanitaire."
+    },
+    "actions": {
+      "submit": "Envoyer comme demande",
+      "download": "Télécharger le dessin",
+      "reset": "Réinitialiser"
+    },
+    "noscript": "Sans JavaScript, le dessin ne se met pas à jour. Les champs ci-dessous fonctionnent malgré tout : remplissez-les et envoyez-les avec la demande. Il nous faut les dimensions intérieures, le poids, la marchandise, la destination et la quantité.",
+    "drawingLabelStatic": "Dessin d’exemple d’une caisse export avec lignes de cote, semelles et cachet IPPC.",
+    "liveIntro": "Dessin",
+    "srSummary": "Caisse {outer} mm à l’extérieur, {skids} semelles, {build}, {stamp}."
+  },
+  "stamp": {
+    "heading": "Le cachet",
+    "lead": "Sur le cachet figure tout ce dont le contrôleur du port de destination a besoin. Voici chaque champ, un par un : ce qu’il signifie, et ce qui se passe s’il manque.",
+    "fields": {
+      "ippc": {
+        "title": "Le symbole IPPC",
+        "what": "L’épi stylisé indique que le bois a été traité conformément à la norme phytosanitaire internationale NIMP 15.",
+        "without": "S’il manque, la douane du pays de destination traite l’envoi comme du bois non traité."
+      },
+      "lu": {
+        "title": "LU",
+        "what": "Le code pays ISO du pays où le traitement et le marquage ont eu lieu.",
+        "without": "Il indique à l’autorité du pays de destination quel registre elle doit consulter."
+      },
+      "number": {
+        "title": "079",
+        "what": "Notre numéro d’enregistrement auprès de l’ASTA, l’Administration des Services Techniques de l’Agriculture. Il est unique, incessible et vérifiable publiquement.",
+        "without": "Au Luxembourg, il existe trois producteurs enregistrés."
+      },
+      "code": {
+        "title": "Le code de traitement",
+        "what": "Il indique le traitement appliqué : HT pour traitement thermique, DB pour écorcé.",
+        "without": "Sans code, le cachet est incomplet et donc invalide."
+      },
+      "twoSides": {
+        "title": "Deux faces",
+        "what": "Le cachet doit être apposé de façon visible et durable, de préférence sur deux faces opposées.",
+        "without": "Le contrôleur le trouve alors, quelle que soit la position de la caisse dans le conteneur."
+      },
+      "noRedOrange": {
+        "title": "Ni rouge, ni orange",
+        "what": "Ces couleurs sont réservées au marquage des marchandises dangereuses.",
+        "without": "C’est pourquoi vous ne les voyez pas non plus sur ce site."
+      },
+      "afterRepair": {
+        "title": "À remarquer après chaque réparation",
+        "what": "Si une palette est réemployée, recyclée ou réparée, elle doit être marquée à nouveau, et tous ses composants doivent être traités.",
+        "without": "C’est pourquoi nous ne réparons pas seulement, nous remarquons aussi."
+      },
+      "replaces": {
+        "title": "Ce qu’il remplace",
+        "what": "À l’intérieur de l’UE, le cachet remplace le passeport phytosanitaire ; à l’export, le certificat phytosanitaire.",
+        "without": "Il s’applique au bois massif à partir de 6 mm d’épaisseur, pas au bois reconstitué."
+      }
+    },
+    "whatItMeans": "Ce que cela signifie",
+    "whatIfMissing": "Ce qui se passe si cela manque",
+    "registryHeading": "Les trois producteurs enregistrés au Luxembourg",
+    "registryNote": "Ce n’est pas une affirmation de notre part, c’est inscrit au registre public.",
+    "sourceLine": "Source : Single Window for Logistics, Luxembourg (ASTA), état au 8 avril 2025.",
+    "cta": "Configurer une caisse"
+  },
+  "delivery": {
+    "heading": "Livraison & enlèvement",
+    "lead": "Pour les chauffeurs et les transporteurs : voici comment se déroule la livraison chez nous.",
+    "stepsHeading": "Le chemin jusqu’au site",
+    "steps": {
+      "entry": {
+        "title": "Entrée par le hall principal",
+        "body": "C’est le seul accès à la cour et au quai."
+      },
+      "yard": {
+        "title": "Traverser jusqu’à la cour",
+        "body": "Passez tout droit, le long du hall."
+      },
+      "ramp": {
+        "title": "Se placer au quai",
+        "body": "Restez dans le camion, nous venons à vous."
+      },
+      "papers": {
+        "title": "Nous apportons les documents au camion",
+        "body": "Vous n’avez pas à monter au bureau."
+      }
+    },
+    "factsHeading": "Sur place",
+    "facts": {
+      "spaces": "Places poids lourds",
+      "overnight": "Nuitée possible",
+      "languages": "Langues à l’accueil",
+      "access": "Accès"
+    },
+    "addressHeading": "Adresse et position",
+    "mapAlt": "Carte de la Zone Industrielle de Mertzig avec la position de l’entreprise, une échelle et une flèche du nord.",
+    "mapAttribution": "Données cartographiques © OpenStreetMap contributors. L'image est hébergée sur cette page. Aucune requête ne part vers l'extérieur.",
+    "printHeading": "Sur une page, à imprimer",
+    "printBody": "Cette page est composée pour tenir sur une feuille. Imprimez-la et posez-la dans le camion.",
+    "shortHeading": "En bref",
+    "pending": "Nous mettrons ces indications en ligne dès qu’elles seront confirmées. D’ici là : appelez, nous vous indiquons le chemin. {phone}"
+  },
+  "history": {
+    "heading": "Historique",
+    "lead": "Trois générations, une entreprise.",
+    "entries": {
+      "1959": "Henry Kasel fonde à Bissen une menuiserie de trois salariés. L’emballage en bois s’en dégage peu à peu.",
+      "1973": "Création de la Maison Kasel à Bissen.",
+      "1994": "18 salariés, la limite de capacité est atteinte. Les clients internationaux réclament des installations plus grandes.",
+      "1995": "Déménagement dans la Zone Industrielle de Mertzig, avec stockage et bureaux.",
+      "1997": "Deux nouveaux halls de stockage. La surface totale atteint depuis 9 000 m².",
+      "2002": "Modernisation complète de tous les secteurs.",
+      "2008": "La nouvelle machine à palettes entre en service.",
+      "2014": "Création d’Emballages en Bois Kasel S.à r.l. sous Tom Kasel, qui reprend la production."
+    },
+    "short": {
+      "1959": "Menuiserie à Bissen",
+      "1973": "Fondation de Maison Kasel",
+      "1994": "18 salariés, site trop petit",
+      "1995": "Déménagement à Mertzig",
+      "1997": "Deux halls, 9 000 m²",
+      "2002": "Tout modernisé",
+      "2008": "Nouvelle machine à palettes",
+      "2014": "Tom Kasel reprend"
+    },
+    "family": "Pierrot Kasel a succédé à son père Henry. Des membres de la famille dirigent toujours l’administration. Tom Kasel dirige la société de production."
+  },
+  "faq": {
+    "heading": "Questions fréquentes",
+    "items": {
+      "china": {
+        "q": "Mon envoi vers la Chine a-t-il besoin d’un cachet IPPC ?",
+        "a": "Oui. La Chine, l’Australie et la Nouvelle-Zélande exigent du bois traité NIMP 15 avec un cachet IPPC valide. Nous pouvons l’apposer, numéro d’enregistrement 079."
+      },
+      "eu": {
+        "q": "Et à l’intérieur de l’UE ?",
+        "a": "Aucun traitement NIMP 15 n’y est requis. Le cachet remplace au besoin le passeport phytosanitaire."
+      },
+      "leadtime": {
+        "q": "Dans quels délais pouvez-vous livrer ?",
+        "a": "Nous coupons le bois quand la commande arrive, et nous disposons de 9 000 m² de stockage. Le délai dans votre cas, nous vous le donnons dès que nous avons lu votre demande. Indiquez-nous la quantité et la date souhaitée."
+      },
+      "repair": {
+        "q": "Pouvez-vous réparer nos palettes d’occasion ?",
+        "a": "Oui, et nous les remarquons ensuite, comme la norme l’exige."
+      },
+      "storage": {
+        "q": "Pouvez-vous stocker de la marchandise finie pour nous ?",
+        "a": "Oui. La marchandise finie part le plus souvent directement, mais elle peut être stockée et expédiée sur appel."
+      },
+      "sizes": {
+        "q": "Quelles dimensions sont standard ?",
+        "a": "Palettes standard, palettes CP et palettes spéciales selon votre spécification. Indiquez-nous la dimension dont vous avez besoin. Nous coupons à la commande et ne dépendons pas des dimensions en stock."
+      },
+      "driver-access": {
+        "q": "Par où entre-t-on en camion ?",
+        "a": "Par le hall principal. C'est le seul accès à la cour et au quai. Le trajet complet figure sur la page Livraison & enlèvement."
+      }
+    },
+    "lead": "Ce que les acheteurs et les chauffeurs nous demandent le plus souvent.",
+    "nudge": "Votre question n’y figure pas ? Écrivez-nous, nous répondons.",
+    "nudgeCta": "Envoyer une demande"
+  },
+  "form": {
+    "heading": "Demande",
+    "lead": "Cinq champs sont obligatoires. Plus vous en remplissez, plus notre réponse sera précise.",
+    "summaryHeading": "Depuis le configurateur",
+    "summaryEdit": "Modifier",
+    "summaryEmpty": "Rien de configuré pour l’instant.",
+    "fields": {
+      "company": "Société",
+      "contact": "Interlocuteur",
+      "email": "E-mail",
+      "subject": "Que faut-il fabriquer ?",
+      "message": "Message",
+      "phone": "Téléphone",
+      "qty": "Quantité",
+      "leadDate": {
+        "label": "Date souhaitée",
+        "hint": "jour où vous avez besoin de la marchandise"
+      },
+      "place": {
+        "label": "Lieu de livraison",
+        "hint": "la localité et le pays suffisent"
+      },
+      "file": {
+        "label": "Dessin ou photo",
+        "hint": "PDF, PNG ou JPG · un fichier · 10 Mo max."
+      }
+    },
+    "subjects": {
+      "pallets": "Palettes",
+      "crates": "Caisses sur mesure",
+      "repair": "Réparation",
+      "storage": "Stockage",
+      "unsure": "encore indéterminé"
+    },
+    "consent": "J’accepte que mes données soient enregistrées et utilisées pour répondre à cette demande. Le détail figure dans la politique de protection des données.",
+    "consentLink": "politique de protection des données",
+    "submit": "Envoyer la demande",
+    "sending": "envoi en cours …",
+    "errors": {
+      "company": "Indiquez le nom de la société.",
+      "contact": "Indiquez avec qui nous parlons.",
+      "email": "Merci de vérifier l'adresse e-mail. Par exemple : nom@societe.lu",
+      "subject": "Choisissez ce qui doit être fabriqué.",
+      "message": "Dites-nous brièvement de quoi il s’agit.",
+      "consent": "Sans votre accord, nous ne pouvons pas traiter ces données.",
+      "file": "Ce fichier ne passe pas. Sont acceptés PDF, PNG ou JPG jusqu’à 10 Mo.",
+      "summary": "Il manque encore {count} indication.",
+      "summaryPlural": "Il manque encore {count} indications.",
+      "network": "La demande n’est pas passée. Réessayez, ou écrivez directement à {email}."
+    },
+    "successHeading": "Merci. Votre demande est arrivée.",
+    "successBody": "Nous revenons vers vous dans un jour ouvrable.",
+    "successNext": "Si c’est urgent, appelez : {phone}.",
+    "summaryRemove": "Retirer les dimensions",
+    "summaryRemoveHint": "La demande partira alors sans les dimensions de caisse."
+  },
+  "footer": {
+    "company": "Entreprise",
+    "pages": "Pages",
+    "legalNav": "Mentions",
+    "langHeading": "Langue",
+    "legal": "Mentions légales",
+    "privacy": "Protection des données",
+    "rcsLine": "RCS Luxembourg {rcs} · TVA {vat}",
+    "madeIn": "Fabriqué à Mertzig, canton de Diekirch, Luxembourg."
+  },
+  "hours": {
+    "office": "Bureau et téléphone",
+    "ramp": "Livraison et enlèvement",
+    "heading": "Horaires"
+  },
+  "pallets": {
+    "h1": "Palettes en bois",
+    "lead": "Palettes standard, palettes CP et palettes selon votre spécification technique. Comme nous scions nous-mêmes, nous ne dépendons pas des dimensions en stock.",
+    "standardHeading": "Dimensions standard",
+    "cpHeading": "Palettes CP",
+    "cpNote": "Les dimensions CP sont fixées par la norme CP. Quels types nous avons en stock et lesquels nous fabriquons à la commande : demandez-nous.",
+    "customHeading": "Palettes spéciales",
+    "customBody": "Envoyez-nous votre dessin ou votre spécification technique. Nous construisons selon vos indications.",
+    "table": {
+      "caption": "Les valeurs qui manquent encore ici, nous vous les donnons sur demande.",
+      "size": "Dimensions (mm)",
+      "load": "Charge admissible",
+      "wood": "Essence",
+      "drying": "Séchage",
+      "ispm": "NIMP 15",
+      "type": "Type",
+      "ispmYes": "possible"
+    }
+  },
+  "crates": {
+    "h1": "Caisses sur mesure",
+    "lead": "Caisses pour le transport maritime de cuivre, verre, aluminium et machines. Fermées ou à claire-voie, selon le poids et la marchandise.",
+    "buildHeading": "Types de construction",
+    "closedTitle": "Fermée",
+    "closedBody": "Entièrement bardée. Pour le verre et pour tout ce qui ne supporte ni la poussière ni l'humidité.",
+    "slattedTitle": "À claire-voie",
+    "slattedBody": "Lattage avec espacements. Plus léger et moins cher quand la marchandise est stable par elle-même. Typique pour les machines et les profilés aluminium.",
+    "cargoHeading": "Marchandise",
+    "cargoBody": "Le cuivre, le verre et l'aluminium partent le plus souvent par mer. Tous trois posent des exigences différentes aux semelles et à l'arrimage. Indiquez-nous donc le poids et le centre de gravité.",
+    "exportHeading": "Expédition outre-mer",
+    "exportBody": "Nous disposons de l’agrément du Service Technique de l’Agriculture pour la fabrication de palettes et de caisses conformes aux règles d’importation de la Chine, de l’Australie et de la Nouvelle-Zélande.",
+    "configCta": "Configurer une caisse"
+  },
+  "repair": {
+    "h1": "Réparation et réemploi",
+    "lead": "Nous réparons caisses et palettes d’occasion et les remettons en service. Beaucoup de nos emballages servent ainsi plusieurs années.",
+    "ruleHeading": "Pourquoi le numéro 079 compte ici",
+    "ruleBody": "Une palette réemployée, recyclée ou réparée doit être marquée à nouveau. Tous ses composants doivent être traités. Seules les entreprises enregistrées peuvent le faire. Nous le sommes, et vous récupérez donc la palette avec un cachet valide.",
+    "whatHeading": "Ce que nous faisons",
+    "whatItems": [
+      "Contrôler et trier les palettes et caisses d’occasion",
+      "Remplacer planches, dés et semelles abîmés",
+      "Remarquer après réparation, comme la norme l’exige",
+      "Livrer sur site ou tenir à disposition sur appel"
+    ],
+    "cta": "Proposer des palettes d’occasion"
+  },
+  "ispm15": {
+    "h1": "NIMP 15 au Luxembourg",
+    "lead": "NIMP 15 est la norme internationale applicable aux emballages en bois dans le commerce mondial. Elle vise à empêcher que des organismes nuisibles passent d'un continent à l'autre avec le bois d'emballage. Qui peut traiter et marquer selon la norme figure dans un registre public.",
+    "whoHeading": "Qui peut apposer le cachet au Luxembourg",
+    "whoBody": "Trois entreprises. Nous en sommes une, avec le numéro d’enregistrement 079. La liste est tenue par l’ASTA et elle est publique.",
+    "fieldsHeading": "Le cachet, champ par champ",
+    "rulesHeading": "Ce qui s’applique par ailleurs",
+    "rules": [
+      "Le cachet doit être durable et ne peut pas être transféré.",
+      "Il doit être apposé de façon visible, de préférence sur deux faces opposées.",
+      "Le rouge et l’orange sont à éviter, car ces couleurs sont réservées aux marchandises dangereuses.",
+      "Si une palette est réemployée, recyclée ou réparée, elle doit être marquée à nouveau ; tous ses composants doivent être traités.",
+      "Le marquage ne peut être détruit que par incinération complète.",
+      "Il s’applique au bois massif à partir de 6 mm d’épaisseur, pas au bois reconstitué.",
+      "Le cachet remplace le passeport phytosanitaire dans les échanges intracommunautaires et le certificat phytosanitaire à l’export."
+    ],
+    "whenHeading": "Quand vous en avez besoin",
+    "whenBody": "Pour la Chine, l'Australie et la Nouvelle-Zélande, toujours. Pour les autres pays tiers, cela dépend de la destination. Indiquez-la dans votre demande, nous vous le dirons.",
+    "cta": "Configurer une caisse"
+  },
+  "contact": {
+    "h1": "Contact",
+    "lead": "Écrivez-nous ce dont vous avez besoin. Plus la demande est précise, plus vite vous aurez une offre.",
+    "directHeading": "En direct",
+    "visitHeading": "Sur place",
+    "driverHint": "Vous êtes chauffeur ? Tout ce qu’il vous faut se trouve sur la page Livraison & enlèvement."
+  },
+  "thanks": {
+    "h1": "Merci. Votre demande est arrivée.",
+    "body": "Nous revenons vers vous dans un jour ouvrable.",
+    "nextHeading": "Ce qui se passe maintenant",
+    "next": [
+      "Tom lit la demande et vérifie s'il manque quelque chose.",
+      "Vous recevez une réponse par e-mail, avec prix, dimensions et délai, si les indications suffisent.",
+      "Si quelque chose n'est pas clair, il appelle."
+    ],
+    "urgent": "Urgent ? Appelez : {phone}."
+  },
+  "legal": {
+    "h1": "Mentions légales",
+    "operatorHeading": "Éditeur de ce site",
+    "contactHeading": "Contact",
+    "registerHeading": "Registre et fiscalité",
+    "responsibleHeading": "Responsable du contenu",
+    "purposeHeading": "Objet social",
+    "disputeHeading": "Règlement des litiges",
+    "disputeBody": "La Commission européenne met à disposition une plateforme de règlement en ligne des litiges. Nous ne sommes ni tenus ni disposés à participer à une procédure de règlement devant un organe de médiation de la consommation.",
+    "liabilityHeading": "Responsabilité pour les liens",
+    "liabilityBody": "Notre site contient des liens vers des sites externes. Nous n’avons aucune influence sur leur contenu. La responsabilité du contenu des pages liées incombe toujours à leur éditeur.",
+    "supervisionHeading": "Autorité de tutelle",
+    "supervisionBody": "L’enregistrement NIMP 15 est tenu par l’Administration des Services Techniques de l’Agriculture (ASTA).",
+    "licenceHeading": "Autorisation d’établissement"
+  },
+  "privacy": {
+    "h1": "Protection des données",
+    "lead": "En bref : nous ne posons aucun cookie, nous n’avons aucun traçage, et les polices ainsi que la carte de ce site ne se chargent pas depuis des serveurs tiers. C’est pourquoi vous ne voyez pas de bandeau.",
+    "controllerHeading": "Responsable du traitement",
+    "whatHeading": "Quelles données nous recevons",
+    "whatBody": "Uniquement celles que vous saisissez vous-même dans le formulaire : société, interlocuteur, e-mail et description de votre commande. En option : téléphone, quantité, date souhaitée, lieu de livraison et, le cas échéant, un fichier joint. Si vous utilisez le configurateur, les valeurs configurées sont transmises. Vous les voyez sur la page avant l'envoi.",
+    "whyHeading": "À quelle fin",
+    "whyBody": "Pour répondre à votre demande et, si une commande en découle, pour l’exécuter.",
+    "legalBasisHeading": "Base légale",
+    "legalBasisBody": "Art. 6, par. 1, point b du RGPD (mesures précontractuelles) et, pour la case du formulaire, art. 6, par. 1, point a du RGPD (consentement). Vous pouvez retirer votre consentement à tout moment.",
+    "retentionHeading": "Combien de temps",
+    "retentionBody": "Les demandes qui ne donnent pas lieu à une commande sont supprimées après deux ans. Celles qui débouchent sur une commande sont conservées aussi longtemps que les lois commerciales et fiscales l'exigent. Au Luxembourg, dix ans.",
+    "processorsHeading": "Qui d’autre intervient",
+    "processorsBody": "Le formulaire passe par une fonction serveur chez Supabase ; le traitement a lieu dans l’UE. L’e-mail lui-même part via notre service d’envoi. Nous ne transmettons pas vos données et nous ne les vendons pas.",
+    "hostingHeading": "Hébergement et journaux serveur",
+    "hostingBody": "Le serveur web consigne des données d’accès techniques, comme tout serveur. Ces journaux ne servent qu’à l’exploitation et à la sécurité du site.",
+    "cookiesHeading": "Cookies",
+    "cookiesBody": "Aucun. Ni propres, ni tiers. Il n’y a pas non plus d’outil de mesure d’audience.",
+    "rightsHeading": "Vos droits",
+    "rightsBody": "Vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation du traitement, de portabilité et d’opposition. Écrivez pour cela à {email}.",
+    "authorityHeading": "Autorité de contrôle",
+    "authorityBody": "Commission nationale pour la protection des données (CNPD), 15, boulevard du Jazz, L-4370 Belvaux, Luxembourg.",
+    "updatedHeading": "Mise à jour"
+  },
+  "notfound": {
+    "h1": "Cette page n’existe pas.",
+    "body": "L’adresse a peut-être changé, ou le lien est ancien. Voici les pages qui existent.",
+    "searchHint": "Vous cherchez quelque chose de précis ? Écrivez-nous : {email}"
+  }
+}

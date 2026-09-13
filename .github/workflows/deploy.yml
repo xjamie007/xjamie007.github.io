@@ -1,0 +1,63 @@
+# Bauen a verëffentlechen.
+#
+# Leeft bei all Push op `main`. Wat d'Préifung net besteet, geet net live —
+# `npm run verify` ass d'Gerippe vun der Iwwergab-Checklëscht a leeft hei mat.
+#
+# GitHub Pages muss an de Repository-Astellungen op „GitHub Actions" stoen.
+# Fir en anere Host (Netlify, Cloudflare Pages, eegene Server) bleift de
+# `build`-Job identesch — nëmmen den `deploy`-Job gëtt ersat.
+name: Bauen a verëffentlechen
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Typen a Sproochen: eng feelend Iwwersetzung brécht de Build mat Absicht.
+      - name: Typen préiwen
+        run: npx astro check
+
+      - name: Bauen
+        env:
+          PUBLIC_INQUIRY_ENDPOINT: ${{ secrets.PUBLIC_INQUIRY_ENDPOINT }}
+        run: npx astro build
+
+      # Faarwen, hreflang, Alt-Texter, dout Linken, JS-Budget, Geheimnisser.
+      - name: Iwwergab-Préifung
+        run: node scripts/verify.mjs
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,135 @@
+---
+/**
+ * Die drei Produktlinien.
+ *
+ * Spezifikationszeilen mit Foto — KEINE gleich großen abgerundeten Karten.
+ * Die Zeilen haben unterschiedliche Höhe, weil die Inhalte unterschiedlich
+ * lang sind. Sie werden auch NICHT nummeriert: drei Produkte sind keine
+ * Reihenfolge.
+ *
+ * Hier steht das Foto, nicht die Zeichnung: ein Einkäufer will zuerst sehen,
+ * wie die Ware aussieht. Die technischen Zeichnungen stehen auf den
+ * Detailseiten, wo sie erklären, wie gebaut wird.
+ */
+import Section from '../Section.astro';
+import RailItem from '../RailItem.astro';
+import Photo from '../Photo.astro';
+import { t } from '../../i18n';
+import { anchors, path, type Locale, type RouteKey } from '../../i18n/routes';
+import type { PhotoKey } from '../../data/photos';
+import { storageAreaSqm } from '../../data/company';
+import { num } from '../../i18n';
+
+interface Props { locale: Locale; wide?: boolean }
+const { locale, wide = false } = Astro.props;
+
+const lines: { key: 'pallets' | 'crates' | 'repair'; route: RouteKey; photo: PhotoKey }[] = [
+  { key: 'pallets', route: 'pallets', photo: 'pallets' },
+  { key: 'crates', route: 'crates', photo: 'crates' },
+  { key: 'repair', route: 'repair', photo: 'repair' },
+];
+---
+
+<Section wide={wide} id={anchors.products} labelledby="produkter-h2" class="band--mist">
+{!wide && (
+    <Fragment slot="rail">
+    <RailItem term={t(locale, 'rail.sawmill')} value={t(locale, 'rail.sawmillValue')} numeric={false} />
+    <RailItem term={t(locale, 'rail.storage')} value={`${num(locale, storageAreaSqm)} m²`} />
+  </Fragment>
+  )}
+
+
+  <h2 id="produkter-h2" class="t-h2">{t(locale, 'products.heading')}</h2>
+
+  <div class="lines">
+    {lines.map(({ key, route, photo }) => (
+      <article class="line reveal">
+        <a class="line__link hoverable" href={path(route, locale)} tabindex="-1" aria-hidden="true">
+          <Photo locale={locale} name={photo} sizes="(min-width: 42rem) 20rem, 92vw" class="line__photo" />
+        </a>
+        <div class="line__text">
+          <h3 class="t-h3 line__title">{t(locale, `products.${key}.title`)}</h3>
+          <p class="t-body line__body">{t(locale, `products.${key}.body`)}</p>
+          <p class="line__more">
+            <a class="line__cta" href={path(route, locale)}>
+              <span>{t(locale, `products.${key}.link`)}</span>
+              <svg viewBox="0 0 24 16" aria-hidden="true" focusable="false">
+                <path d="M0 8h21M15 1l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </p>
+        </div>
+      </article>
+    ))}
+  </div>
+</Section>
+
+<style>
+  .lines { margin-block-start: 2.5rem; }
+
+  .line {
+    display: grid;
+    gap: 1.25rem 2.5rem;
+    padding-block: 2rem;
+    border-block-start: 1px solid var(--band-line);
+  }
+  .line:last-child { border-block-end: 1px solid var(--band-line); }
+
+  .line__link { display: block; }
+  .line__photo { display: block; }
+  .line__photo :global(img) {
+    inline-size: 100%;
+    max-inline-size: 24rem;
+    block-size: auto;
+    display: block;
+    border-radius: 2px;
+  }
+
+  .line__body { margin-block-start: 0.5rem; }
+  .line__more { margin-block-start: 1rem; }
+
+  /* Der Pfeil läuft beim Überfahren los. Er sitzt am Link, nicht an einem
+     Knopf — die ganze Zeile führt ohnehin auf dieselbe Seite. */
+  .line__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-mark);
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--band-accent);
+    text-decoration: none;
+    padding-block: 0.25rem;
+  }
+  .line__cta span {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: 0% 2px;
+    transition: background-size 280ms cubic-bezier(0.22, 0.8, 0.3, 1);
+    padding-block-end: 0.12em;
+  }
+  .line__cta svg {
+    inline-size: 1.35rem;
+    block-size: auto;
+    flex: none;
+    transition: transform 280ms cubic-bezier(0.22, 0.8, 0.3, 1);
+  }
+  @media (hover: hover) {
+    .line:hover .line__cta span,
+    .line__cta:hover span,
+    .line__cta:focus-visible span { background-size: 100% 2px; }
+    .line:hover .line__cta svg,
+    .line__cta:hover svg { transform: translateX(5px); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .line__cta span { transition: none; background-size: 100% 2px; }
+    .line__cta svg { transition: none; }
+    @media (hover: hover) { .line:hover .line__cta svg { transform: none; } }
+  }
+
+  @media (width >= 42rem) {
+    .line { grid-template-columns: 20rem minmax(0, 1fr); align-items: start; }
+    .line__photo :global(img) { max-inline-size: none; }
+  }
+</style>

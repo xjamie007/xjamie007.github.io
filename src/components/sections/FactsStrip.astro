@@ -1,0 +1,55 @@
+---
+/**
+ * Vier Zahlen direkt unter dem Hero.
+ *
+ * Das ist der Kern des Auftrags an die Startseite: wer hier landet, soll in
+ * fünfzehn Sekunden wissen, mit wem er es zu tun hat — ohne einen Absatz zu
+ * lesen. Vier Begriffe, vier Werte, fertig.
+ */
+import Section from '../Section.astro';
+import { history } from '../../data/history';
+import { storageAreaSqm } from '../../data/company';
+import { t, num } from '../../i18n';
+import type { Locale } from '../../i18n/routes';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+
+const facts = [
+  { term: t(locale, 'facts.sinceTerm'), value: history[0].year, numeric: true },
+  { term: t(locale, 'facts.sawmillTerm'), value: t(locale, 'facts.sawmillValue'), numeric: false },
+  { term: t(locale, 'facts.storageTerm'), value: `${num(locale, storageAreaSqm)} m²`, numeric: true },
+  { term: t(locale, 'facts.exportTerm'), value: t(locale, 'facts.exportValue'), numeric: false },
+];
+---
+
+<Section wide tight labelledby="facts-h2" class="facts">
+  <h2 id="facts-h2" class="sr-only">{t(locale, 'facts.heading')}</h2>
+  <dl class="facts__list">
+    {facts.map((f) => (
+      <div class="facts__item reveal">
+        <dt class="t-label facts__term">{f.term}</dt>
+        <dd class:list={['facts__value', f.numeric && 't-num']}>{f.value}</dd>
+      </div>
+    ))}
+  </dl>
+</Section>
+
+<style>
+  .facts__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem 2rem;
+  }
+  @media (width >= 48rem) { .facts__list { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+  .facts__item { padding-inline-start: 1rem; border-inline-start: 3px solid var(--color-blue); }
+  .facts__term { color: var(--band-tech); display: block; }
+  .facts__value {
+    margin-block-start: 0.15rem;
+    font-family: var(--font-mark);
+    font-weight: 600;
+    font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+    line-height: 1.15;
+  }
+</style>

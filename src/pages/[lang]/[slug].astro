@@ -1,0 +1,68 @@
+---
+/**
+ * All Ënnersäit.
+ *
+ * Eng eenzeg Datei fir all Sprooch a jiddwer Ënnersäit: d'Slugs kommen aus
+ * `src/i18n/routes.ts`, esou datt Navigatioun, Sproochëmschalter, hreflang,
+ * Sitemap a Breadcrumbs ni auserneelafen. 10 Säiten × 4 Sproochen = 40 URLen,
+ * all statesch virgebak.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PalletsPage from '../../components/pages/PalletsPage.astro';
+import CratesPage from '../../components/pages/CratesPage.astro';
+import RepairPage from '../../components/pages/RepairPage.astro';
+import Ispm15Page from '../../components/pages/Ispm15Page.astro';
+import DeliveryPage from '../../components/pages/DeliveryPage.astro';
+import HistoryPage from '../../components/pages/HistoryPage.astro';
+import ContactPage from '../../components/pages/ContactPage.astro';
+import ThanksPage from '../../components/pages/ThanksPage.astro';
+import LegalPage from '../../components/pages/LegalPage.astro';
+import PrivacyPage from '../../components/pages/PrivacyPage.astro';
+import { graph, organization, website, webPage, breadcrumbs, faqPage, service } from '../../lib/jsonld';
+import { breadcrumbFor } from '../../lib/seo';
+import { LOCALES, routes, subpageKeys, type Locale, type RouteKey } from '../../i18n/routes';
+
+export function getStaticPaths() {
+  return LOCALES.flatMap((lang) =>
+    subpageKeys.map((key) => ({
+      params: { lang, slug: routes[key][lang] },
+      props: { locale: lang, route: key },
+    })),
+  );
+}
+
+const { locale, route } = Astro.props as { locale: Locale; route: RouteKey };
+
+const views: Partial<Record<RouteKey, any>> = {
+  pallets: PalletsPage,
+  crates: CratesPage,
+  repair: RepairPage,
+  ispm15: Ispm15Page,
+  delivery: DeliveryPage,
+  history: HistoryPage,
+  contact: ContactPage,
+  thanks: ThanksPage,
+  legal: LegalPage,
+  privacy: PrivacyPage,
+};
+const View = views[route]!;
+
+/* Nëmme wat och tatsächlech op DËSER Säit steet, kënnt an d'Schema. */
+const extra = [];
+if (route === 'ispm15') extra.push(faqPage(locale, ['china', 'eu', 'repair']));
+if (route === 'pallets') extra.push(faqPage(locale, ['sizes', 'repair']), service(Astro.site, locale, 'pallets'));
+if (route === 'crates') extra.push(service(Astro.site, locale, 'crates'));
+if (route === 'repair') extra.push(service(Astro.site, locale, 'repair'));
+
+const jsonld = graph([
+  organization(Astro.site, locale),
+  website(Astro.site, locale),
+  webPage(Astro.site, locale, route),
+  breadcrumbs(Astro.site, locale, breadcrumbFor(route)),
+  ...extra,
+]);
+---
+
+<BaseLayout locale={locale} route={route} jsonld={jsonld} bodyClass={route === 'delivery' ? 'is-printable' : undefined}>
+  <View locale={locale} />
+</BaseLayout>
