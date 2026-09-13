@@ -66,52 +66,39 @@ const { locale } = Astro.props;
     display: block;
   }
 
-  /* ── Etappen als waagerechtes Band ─────────────────────────────────────
-     Untereinander ließen acht kurze Zeilen die halbe Breite leer stehen. */
+  /* ── Etappen ───────────────────────────────────────────────────────────
+     Waagerecht nur dort, wo alle acht in EINE Reihe passen (ab 64 rem).
+     Darunter senkrecht. Vorher lief das Band über zwei oder vier Spalten und
+     die Linie lag nur über der ersten Reihe — alle weiteren Punkte hingen
+     ohne Linie in der Luft. */
   .hs {
     position: relative;
     margin-block-start: 2rem;
-    padding-block-start: 1.75rem;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.75rem 1.5rem;
   }
-  @media (width >= 40rem) { .hs { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-  @media (width >= 64rem) { .hs { grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 1.5rem 1rem; } }
 
-  .hs::before {
+  /* — senkrecht (Vorgabe) — */
+  .hs { padding-inline-start: 2.25rem; gap: 0; }
+  .hs::before,
+  .hs__fill {
     content: '';
     position: absolute;
-    inset-block-start: 0;
-    inset-inline: 0.4rem;
-    block-size: 2px;
-    background: var(--band-line);
-  }
-  .hs__fill {
-    position: absolute;
-    inset-block-start: 0;
+    inset-block: 0.75rem 1.5rem;
     inset-inline-start: 0.4rem;
-    inline-size: calc(100% - 0.8rem);
-    block-size: 2px;
-    background: var(--color-blue);
-    transform-origin: left;
-    scale: 1 1;
+    inline-size: 2px;
   }
+  .hs::before { background: var(--band-line); }
+  .hs__fill { background: var(--color-blue); transform-origin: top; scale: 1 1; }
   @supports (animation-timeline: view()) {
-    .hs__fill {
-      scale: 0 1;
-      animation: hs-grow linear both;
-      animation-timeline: view();
-      animation-range: cover 22% cover 68%;
-    }
+    .hs__fill { scale: 1 0; animation: hs-grow-y linear both; animation-timeline: view(); animation-range: cover 15% cover 72%; }
   }
-  @keyframes hs-grow { to { scale: 1 1; } }
+  @keyframes hs-grow-y { to { scale: 1 1; } }
 
-  .hs__item { position: relative; display: grid; gap: 0.2rem; }
+  .hs__item { position: relative; display: grid; gap: 0.15rem; padding-block: 0.85rem; }
   .hs__dot {
     position: absolute;
-    inset-block-start: -2.1rem;
-    inset-inline-start: 0;
+    inset-block-start: 1.15rem;
+    inset-inline-start: -2.1rem;
     inline-size: 0.7rem;
     block-size: 0.7rem;
     border-radius: 50%;
@@ -119,6 +106,35 @@ const { locale } = Astro.props;
     border: 2px solid var(--color-blue);
     transition: background-color 200ms linear, transform 220ms cubic-bezier(0.22, 0.8, 0.3, 1);
   }
+
+  @media (width >= 40rem) {
+    .hs__item { grid-template-columns: 8rem minmax(0, 1fr); align-items: baseline; gap: 0 1.5rem; }
+  }
+
+  /* — waagerecht, sobald acht Spalten nebeneinander passen — */
+  @media (width >= 64rem) {
+    .hs {
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      gap: 1.5rem 1rem;
+      padding-inline-start: 0;
+      padding-block-start: 1.75rem;
+    }
+    .hs::before,
+    .hs__fill {
+      inset-block: 0 auto;
+      inset-inline: 0.4rem;
+      inline-size: auto;
+      block-size: 2px;
+    }
+    .hs__fill { transform-origin: left; }
+    @supports (animation-timeline: view()) {
+      .hs__fill { scale: 0 1; animation-name: hs-grow-x; animation-range: cover 22% cover 68%; }
+    }
+    .hs__item { grid-template-columns: none; padding-block: 0; gap: 0.2rem; }
+    .hs__dot { inset-block-start: -2.1rem; inset-inline-start: 0; }
+  }
+  @keyframes hs-grow-x { to { scale: 1 1; } }
+
   .hs__year {
     font-size: 1.25rem;
     font-weight: 600;

@@ -461,18 +461,11 @@
   .cfg { display: grid; gap: 2.5rem; }
 
   @media (width >= 64rem) {
-    /* Lénks d'Eingab, riets d'Zeechnung. Am DOM steet d'Zeechnung fir d'éischt,
-       well se um Handy uewe stoe soll — d'Raster dréint dat um Desktop ëm. */
+    /* Links die Eingabe, rechts die Zeichnung. Im Markup steht die Zeichnung
+       zuerst, weil sie am Handy oben stehen soll — das Raster dreht das um. */
     .cfg { grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: 3.5rem; align-items: start; }
     .cfg__stage { grid-column: 2; grid-row: 1; position: sticky; top: 2.5rem; }
     .cfg__form { grid-column: 1; grid-row: 1; }
-  }
-
-  @media (width < 64rem) {
-    /* Um Handy bleift d'Zeechnung beim Scrollen vun der Eingab sichtbar. */
-    .cfg__stage { position: sticky; top: 0; z-index: 1; background: var(--band-bg); padding-block-end: 0.75rem; }
-    .cfg__figure { max-block-size: 42vh; display: flex; flex-direction: column; }
-    .cfg__figure .crate { max-block-size: 34vh; inline-size: auto; margin-inline: auto; }
   }
 
   .crate { inline-size: 100%; block-size: auto; color: var(--color-ink); }
@@ -499,6 +492,29 @@
     font-size: 1rem;
     line-height: 1.55;
     max-inline-size: 56ch;
+  }
+
+  @media (width < 64rem) {
+    /* Am Handy war der klebende Block 740 px hoch bei 812 px Bildschirm: die
+       Zeichnung PLUS die abgeleiteten Werte. Damit lagen die Eingabefelder
+       dauerhaft darunter und waren praktisch nicht erreichbar.
+       `display: contents` löst die Klammer auf, dann lässt sich die Reihenfolge
+       einzeln setzen: Zeichnung (klebt, klein) → Eingabe → Ergebnis. */
+    .cfg__stage { display: contents; }
+    .cfg__figure {
+      order: 1;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      margin: 0;
+      padding-block-end: 0.6rem;
+      background: var(--band-bg);
+      border-block-end: 1px solid var(--band-line);
+    }
+    .cfg__figure .crate { max-block-size: 24vh; inline-size: auto; margin-inline: auto; }
+    .cfg__form { order: 2; }
+    .cfg__out { order: 3; margin-block-start: 0; padding-block-start: 1.5rem; border-block-start: 1px solid var(--band-line); }
+    .cfg { gap: 1.5rem; }
   }
 
   .cfg__set { border: 0; padding: 0; margin: 0; }

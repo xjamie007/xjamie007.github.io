@@ -125,6 +125,14 @@
     "repair": {
       "value": "Reparatur",
       "reviewed": false
+    },
+    "open": {
+      "value": "Menü",
+      "reviewed": false
+    },
+    "langShort": {
+      "value": "Sprooch",
+      "reviewed": false
     }
   },
   "meta": {

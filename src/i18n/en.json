@@ -32,7 +32,9 @@
     "delivery": "Delivery",
     "contact": "Contact",
     "label": "Main navigation",
-    "repair": "Repair"
+    "repair": "Repair",
+    "open": "Menu",
+    "langShort": "Language"
   },
   "meta": {
     "home": {
